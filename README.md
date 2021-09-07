@@ -4,9 +4,45 @@ In the meantime, you might find this helpful too:
 https://hackmd.io/@levicook/HJcDneEWF
 
 
+## Environment Variables
 
+To run the project, first create a `.env` file at the root directory and define the following variables:
 
+```
+REACT_APP_CANDY_MACHINE_CONFIG="redacted"
+```
 
+This is a Solana account address. You can get the value for this from the `.cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
+
+```
+REACT_APP_CANDY_MACHINE_ID="redacted"
+```
+
+Same as above; this is a Solana account address. You can get the value for this from the `./cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
+
+```
+REACT_APP_CANDY_START_DATE=1630422000000
+```
+
+This is a unix time stamp that configures when your mint will be open.
+
+```
+REACT_APP_SOLANA_NETWORK=devnet
+```
+
+This identifies the Solana network you want to connect to. Options are `devnet`, `testnet`, and `mainnet`.
+
+```
+REACT_APP_SOLANA_RPC_HOST=https://explorer-api.devnet.solana.com
+```
+
+This identifies the RPC server your web app will access the Solana network through.
+
+```
+REACT_APP_TREASURY_ADDRESS="redacted"
+```
+
+This the Solana address that receives the funds gathered during the minting process. More docs coming as we can test this.
 
 
 
