@@ -25,7 +25,7 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
-const MintButton = styled(WalletDialogButton)`padding: 10px; border-radius: 2px; background: #6163ff`; // add your styles here
+const MintButton = styled(WalletDialogButton)`padding: 10px; border-radius: 2px; background: #6163ff; margin-bottom: 20px`; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -161,8 +161,9 @@ const Home = (props: HomeProps) => {
   const containerStyles = {
     display: 'flex',
     flexDirection: 'column' as any,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+
   }
 
   return (
@@ -173,12 +174,13 @@ const Home = (props: HomeProps) => {
         <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
       </>  
       } */}
-      <div style={{display: 'flex', flexDirection: 'row'}}>
-        <h1 style={{color: 'white', fontSize: '42px'}}>Sol</h1>
-        <h1 style={{color: '#5658dd', fontSize: '42px'}}>Penguins</h1>
+      
+      <div style={{display: 'flex', flexDirection: 'row', marginBottom: '5px'}}>
+        <h1 style={{color: 'white', fontSize: '42px', marginBottom: '5px', marginTop: '5px'}}>Sol</h1>
+        <h1 style={{color: '#5658dd', fontSize: '42px', marginBottom: '5px',  marginTop: '5px'}}>Penguins</h1>
       </div>
 
-      <h3 style={{color: '#9ca9b3', marginBottom: '50px'}}>8,888 SolPenguins sliding around on the Solana blockchain.</h3>
+      <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>8,888 SolPenguins sliding around on the Solana blockchain.</h3>
 
 
       <MintContainer>
@@ -210,7 +212,7 @@ const Home = (props: HomeProps) => {
         )}
       </MintContainer>
 
-      <img src={penguin} style={{width: '600px', marginTop: '50px'}}/>
+      <img src={penguin} style={{width: '550px'}}/>
 
       <Snackbar
         open={alertState.open}
