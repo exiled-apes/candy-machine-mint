@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glow {
+  text-shadow: 0 0 10px #a5eef3;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #101010;
+  font-size: 18px;
+  padding: 16px 64px;
+  border-radius: 6px;
+  border: 4px solid white;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: #101010;
+  color: white;
+  font-size: 18px;
+  padding: 16px 64px;
+  border-radius: 6px;
+  border: 4px solid white;
+}
