@@ -62,14 +62,17 @@ const App = () => {
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletDialogProvider>
-            <Home
+            <div style={{marginTop: '50px'}}>
+
+           ` <Home
               candyMachineId={candyMachineId}
               config={config}
               connection={connection}
               startDate={startDateSeed}
               treasury={treasury}
               txTimeout={txTimeout}
-            />
+            />`
+            </div>
           </WalletDialogProvider>
         </WalletProvider>
       </ConnectionProvider>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
+import penguin from './media/penguin.png'
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -25,7 +25,7 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
-const MintButton = styled(Button)``; // add your styles here
+const MintButton = styled(WalletDialogButton)`padding: 10px; border-radius: 2px; background: #6163ff`; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -158,43 +158,59 @@ const Home = (props: HomeProps) => {
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
+  const containerStyles = {
+    display: 'flex',
+    flexDirection: 'column' as any,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
   return (
-    <main>
-      {wallet.connected && 
+    <main style={containerStyles}>
+      {/* {wallet.connected && 
       <>
         <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
         <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
       </>  
-      }
+      } */}
+      <div style={{display: 'flex', flexDirection: 'row'}}>
+        <h1 style={{color: 'white', fontSize: '42px'}}>Sol</h1>
+        <h1 style={{color: '#5658dd', fontSize: '42px'}}>Penguins</h1>
+      </div>
+
+      <h3 style={{color: '#9ca9b3', marginBottom: '50px'}}>8,888 SolPenguins sliding around on the Solana blockchain.</h3>
+
 
       <MintContainer>
         {!wallet.connected ? (
           <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <MintButton
+          ) : (
+            <MintButton
             disabled={isSoldOut || isMinting || !isActive}
             onClick={onMint}
             variant="contained"
-          >
+            >
             {isSoldOut ? (
               "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
-              ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
+              ) : isActive ? (
+                isMinting ? (
+                  <CircularProgress />
+                  ) : (
+                    "MINT"
+                    )
+                    ) : (
+                      <Countdown
+                      date={startDate}
+                      onMount={({ completed }) => completed && setIsActive(true)}
+                      onComplete={() => setIsActive(true)}
+                      renderer={renderCounter}
+                      />
+                      )}
           </MintButton>
         )}
       </MintContainer>
+
+      <img src={penguin} style={{width: '600px', marginTop: '50px'}}/>
 
       <Snackbar
         open={alertState.open}
