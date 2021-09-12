@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+.frow {
+  display: 'flex';
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+text-white {
+  color: white;
+}

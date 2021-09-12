@@ -1,6 +1,6 @@
 import "./App.css";
 import { useMemo } from "react";
-
+import NavBar from "./navBar/navBar";
 import Home from "./Home";
 
 import * as anchor from "@project-serum/anchor";
@@ -48,22 +48,35 @@ const App = () => {
     []
   );
 
+  const container = {
+    display: 'flex',
+    flexDirection: 'column' as any,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
   return (
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletDialogProvider>
-          <Home
-            candyMachineId={candyMachineId}
-            config={config}
-            connection={connection}
-            startDate={startDateSeed}
-            treasury={treasury}
-            txTimeout={txTimeout}
-          />
-        </WalletDialogProvider>
-      </WalletProvider>
-    </ConnectionProvider>
-  );
+    <div style={{background: 'black'}}>
+      <NavBar />
+      <div style={{...container, }}>
+      <ConnectionProvider endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect>
+          <WalletDialogProvider>
+            <Home
+              candyMachineId={candyMachineId}
+              config={config}
+              connection={connection}
+              startDate={startDateSeed}
+              treasury={treasury}
+              txTimeout={txTimeout}
+            />
+          </WalletDialogProvider>
+        </WalletProvider>
+      </ConnectionProvider>
+
+      </div>
+    </div>
+    );
 };
 
 export default App;

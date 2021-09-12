@@ -160,13 +160,12 @@ const Home = (props: HomeProps) => {
 
   return (
     <main>
-      {wallet.connected && (
+      {wallet.connected && 
+      <>
         <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-      )}
-
-      {wallet.connected && (
         <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-      )}
+      </>  
+      }
 
       <MintContainer>
         {!wallet.connected ? (
