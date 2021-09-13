@@ -25,7 +25,7 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
-const MintButton = styled(WalletDialogButton)`padding: 10px; border-radius: 2px; background: #6163ff; margin-bottom: 20px`; // add your styles here
+const MintButton = styled(WalletDialogButton)`background: #6163ff;`; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -184,35 +184,35 @@ const Home = (props: HomeProps) => {
 
 
       <MintContainer>
-        {!wallet.connected ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-          ) : (
-            <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-            >
-            {isSoldOut ? (
-              "SOLD OUT"
-              ) : isActive ? (
-                isMinting ? (
-                  <CircularProgress />
+        {wallet.connected && 
+        <MintButton
+        disabled={isSoldOut || isMinting || !isActive}
+        onClick={onMint}
+        variant="contained"
+        >
+          {isSoldOut ? (
+            "SOLD OUT"
+            ) : isActive ? (
+              isMinting ? (
+                <CircularProgress />
+                ) : (
+                  "MINT"
+                  )
                   ) : (
-                    "MINT"
-                    )
-                    ) : (
-                      <Countdown
-                      date={startDate}
-                      onMount={({ completed }) => completed && setIsActive(true)}
-                      onComplete={() => setIsActive(true)}
-                      renderer={renderCounter}
-                      />
-                      )}
-          </MintButton>
-        )}
+                    <Countdown
+                    date={startDate}
+                    onMount={({ completed }) => completed && setIsActive(true)}
+                    onComplete={() => setIsActive(true)}
+                    renderer={renderCounter}
+                    />
+                    )}
+        </MintButton>
+        }
       </MintContainer>
 
-      <img src={penguin} style={{width: '550px'}}/>
+      <img src={penguin} style={{width: '550px', marginTop: '20px'}}/>
+
+      {!wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
 
       <Snackbar
         open={alertState.open}

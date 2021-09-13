@@ -56,7 +56,7 @@ const App = () => {
   }
 
   return (
-    <div style={{background: 'black'}}>
+    <div style={{background: 'black', height: '100vh'}}>
       <NavBar />
       <div style={{...container, }}>
       <ConnectionProvider endpoint={endpoint}>
