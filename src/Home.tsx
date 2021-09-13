@@ -25,7 +25,7 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
-const MintButton = styled(WalletDialogButton)`background: #6163ff;`; // add your styles here
+const MintButton = styled(Button)`background: #6163ff; color: white`; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -182,6 +182,7 @@ const Home = (props: HomeProps) => {
 
       <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>8,888 SolPenguins sliding around on the Solana blockchain.</h3>
 
+      {!wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
 
       <MintContainer>
         {wallet.connected && 
@@ -211,8 +212,6 @@ const Home = (props: HomeProps) => {
       </MintContainer>
 
       <img src={penguin} style={{width: '550px', marginTop: '20px'}}/>
-
-      {!wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
 
       <Snackbar
         open={alertState.open}
