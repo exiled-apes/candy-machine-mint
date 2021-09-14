@@ -24,3 +24,15 @@
   border-radius: 6px;
   border: 4px solid white;
 }
+
+#landing-section-2 {
+  background-image: url("../assets//landing/landing-2.png");
+}
+
+#vision {
+  background-image: url("../assets//landing/stars-bg.png");
+}
+
+#team {
+  background-image: url("../assets//landing/planet-bg.png");
+}
