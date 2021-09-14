@@ -6,7 +6,7 @@ import Flag from "../assets/landing/Flag.png";
 import Spaceship from "../assets/landing/spaceship.png";
 import Avatar from "../assets/landing/team-avatar.png";
 
-function Landing() {
+function Landing(props) {
   const [effect, setEffect] = useState(null);
   const effectRef = useRef(null);
 
