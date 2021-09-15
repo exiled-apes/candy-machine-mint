@@ -53,7 +53,7 @@ const App = () => {
         getSolletWallet({ network }),
         getSolletExtensionWallet({ network })
     ],
-    [network]
+    []
   );
 
   return (
