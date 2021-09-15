@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./styles/index.css";
 // import App from './App';
 import Landing from "./pages/Landing.jsx";
-import { Router, RouteComponentProps } from "@reach/router";
+import { Router } from "@reach/router";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(

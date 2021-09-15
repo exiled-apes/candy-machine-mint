@@ -5,6 +5,7 @@ import Ticker from "react-ticker";
 import Flag from "../assets/landing/Flag.png";
 import Spaceship from "../assets/landing/spaceship.png";
 import Avatar from "../assets/landing/team-avatar.png";
+import Nav from "../components/Nav";
 
 function Landing(props) {
   const [effect, setEffect] = useState(null);
@@ -33,12 +34,13 @@ function Landing(props) {
   }, [effect]);
 
   return (
-    <div>
+    <div className="relative">
+      <Nav />
       <div
         ref={effectRef}
         className="bg-black text-white w-full h-screen flex items-center px-30 py-40 relative"
       >
-        <div>
+        <div className="max-w-5xl">
           <h1 className=" text-7xl font-black italic">
             1st COMMUNITY-OWNED{" "}
             <span className="text-primary-light relative glow">
@@ -48,7 +50,12 @@ function Landing(props) {
           </h1>
           <div className="mt-10 space-x-5 font-orb">
             <button className="btn-primary font-black">GEN-1 NFT DROP</button>
-            <a href="#" className="btn-secondary font-black">
+            <a
+              href="https://discord.com/invite/bBeHKHHSu5"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary font-black"
+            >
               JOIN DISCORD
             </a>
           </div>
@@ -70,7 +77,7 @@ function Landing(props) {
         className="h-screen bg-center bg-cover flex items-center px-30 relative"
         id="landing-section-2"
       >
-        <img src={Flag} className="absolute top-0 right-0" />
+        <img src={Flag} alt="sgf-flag" className="absolute top-0 right-0" />
         <div>
           <h1 className="text-primary-light text-5xl font-black italic glow">
             AHOY SPACE CADETS
@@ -110,7 +117,7 @@ function Landing(props) {
               </p>
             </div>
           </div>
-          <img src={Spaceship} className="justify-self-end" />
+          <img src={Spaceship} alt="spaceship" className="justify-self-end" />
         </div>
         <div>
           <p className="mt-10 text-white text-3xl font-orb uppercase">
@@ -121,7 +128,12 @@ function Landing(props) {
 
           <div className="mt-10 space-x-3 font-orb">
             <button className="btn-primary font-black">GEN-1 NFT DROP</button>
-            <a href="#" className="btn-secondary font-black">
+            <a
+              href="https://discord.com/invite/bBeHKHHSu5"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary font-black"
+            >
               JOIN DISCORD
             </a>
           </div>
