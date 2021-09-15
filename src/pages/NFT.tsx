@@ -8,6 +8,8 @@ import General from "../assets/nft/general.png";
 import Lieutenant from "../assets/nft/lieutenant.png";
 import Soldier from "../assets/nft/soldier.png";
 import CyborgBreakdown from "../assets/nft/cyborg-breakdown.png";
+import CyborgShadow from "../assets/nft/cyborg-shadow.png";
+
 import Mercury from "../assets/nft/bg/mercury-bg.png";
 import Earth from "../assets/nft/bg/earth-bg.png";
 import Mars from "../assets/nft/bg/mars-bg.png";
@@ -18,7 +20,7 @@ import Neptune from "../assets/nft/bg/neptune-bg.png";
 
 function NFT(props: RouteComponentProps) {
   return (
-    <div className="relative bg-black">
+    <div className="relative bg-black pb-20">
       <Nav />
       <div
         className=" text-white w-full h-screen px-30 py-40 relative bg-center bg-cover  grid grid-cols-2"
@@ -135,10 +137,8 @@ function NFT(props: RouteComponentProps) {
           />
         </div>
         <div className="text-center mt-36 text-white uppercase font-orb">
-          <h1 className="text-3xl font-black ">
-            lastly <span className="text-primary-dark">bg</span> reflects
-            cybgorg's space base posting
-          </h1>
+          lastly <span className="text-primary-dark">bg</span> reflects
+          <h1 className="text-3xl font-black ">cybgorg's space base posting</h1>
           <div className="mt-16 grid grid-cols-4 gap-14 text-lg font-medium">
             <div>
               <img src={Mercury} alt="" className="mx-auto" />
@@ -172,6 +172,104 @@ function NFT(props: RouteComponentProps) {
             </div>
           </div>
         </div>
+      </div>
+      <div className="py-14 px-36 mt-24">
+        <h1 className="text-primary-light text-5xl text-center uppercase glow font-black italic">
+          Forces explained
+        </h1>
+        <div className="mt-16">
+          <div className="bg-gray-dark border border-gray-light rounded-md w-full grid grid-cols-3 gap-5 p-10 pb-0">
+            <div className="text-white font-orb font-medium space-y-5 text-xl">
+              <p>PILOTS OF SGF’S EM DRIVE WARSHIPS.</p>
+              <p>GREAT WINGMEN IN CYBERNETIC RAVES.</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+            </div>
+            <div>
+              <p className="uppercase font-black italic text-2xl text-aviators text-right tracking-wide">
+                aviators
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-16">
+          <div className="bg-gray-dark border border-gray-light rounded-md w-full grid grid-cols-3 gap-5 p-10 pb-0">
+            <div className="text-white font-orb font-medium space-y-5 text-xl">
+              <p>IMAGINE HULK’S POWER DIALLED UP BY 10</p>
+              <p>YOU BETTER NOT GET INTO A CAGE FIGHT WITH THEM.</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+            </div>
+            <div>
+              <p className="uppercase font-black italic text-2xl text-warriors text-right tracking-wide">
+                warriors
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-16">
+          <div className="bg-gray-dark border border-gray-light rounded-md w-full grid grid-cols-3 gap-5 p-10 pb-0">
+            <div className="text-white font-orb font-medium space-y-5 text-xl uppercase">
+              <p>They operate in stealth.</p>
+              <p>
+                Not much is known AS opponenents didn’t live to tell the tale.
+              </p>
+            </div>
+            <div className="flex justify-center items-center">
+              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+            </div>
+            <div>
+              <p className="uppercase font-black italic text-2xl text-marines text-right tracking-wide">
+                marines
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-16">
+          <div className="bg-gray-dark border border-gray-light rounded-md w-full grid grid-cols-3 gap-5 p-10 pb-0">
+            <div className="text-white font-orb font-medium space-y-5 text-xl">
+              <p>GALACTIC SCALE WAR REQUIRES GALACTIC LEVEL FORCE.</p>
+              <p>YOU CALL THEM WHEN SHIT HAS REALLY HIT THE FAN.</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+            </div>
+            <div>
+              <p className="uppercase font-black italic text-2xl text-brawlers text-right tracking-wide">
+                brawlers
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-16">
+          <div className="bg-gray-dark border border-gray-light rounded-md w-full grid grid-cols-3 gap-5 p-10 pb-0">
+            <div className="text-white font-orb font-medium space-y-5 text-xl">
+              <p>CYBERNETIC MUTATION INCRESAED THEIR IQ OVER 9000</p>
+              <p>SGF’S NEURAL ENGINE TO POWER STRATEGIC DECISION MAKING.</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+            </div>
+            <div>
+              <p className="uppercase font-black italic text-2xl text-tacticians text-right tracking-wide">
+                tacticians
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
+        <button className="btn-primary font-black mt-4 mr-3">ROADMAP</button>
+        <a
+          href="https://discord.com/invite/bBeHKHHSu5"
+          target="_blank"
+          rel="noreferrer"
+          className="btn-secondary font-black mt-4"
+        >
+          JOIN DISCORD
+        </a>
       </div>
     </div>
   );
