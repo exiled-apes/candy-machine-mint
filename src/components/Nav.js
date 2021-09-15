@@ -1,4 +1,5 @@
-import React from "react";
+import { Link } from "@reach/router";
+
 import Discord from "../assets/icons/discord.svg";
 import Twitter from "../assets/icons/twitter.svg";
 
@@ -7,11 +8,15 @@ function Nav() {
     <header className="text-white bg-black absolute top-0 inset-x-0 h-16 z-10 flex justify-between items-center px-16">
       <div className="flex items-center space-x-10">
         <div>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
         <nav className="font-orb font-medium text-sm uppercase">
           <ul className="flex space-x-7">
-            <li>gen-1 nft drop</li>
+            <li>
+              <Link to="/nft">gen-1 nft drop</Link>
+            </li>
             <li>roadmap</li>
             <li>tokenomics</li>
             <li>faq</li>

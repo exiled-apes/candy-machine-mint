@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import GLOBE from "vanta/dist/vanta.globe.min";
 import Ticker from "react-ticker";
+import { Link } from "@reach/router";
+
+import Nav from "../components/Nav";
 
 import Flag from "../assets/landing/Flag.png";
 import Spaceship from "../assets/landing/spaceship.png";
 import Avatar from "../assets/landing/team-avatar.png";
-import Nav from "../components/Nav";
 
 function Landing(props) {
   const [effect, setEffect] = useState(null);
@@ -49,7 +52,9 @@ function Landing(props) {
             🔭 BUILT ON SOLANA
           </h1>
           <div className="mt-10 space-x-5 font-orb">
-            <button className="btn-primary font-black">GEN-1 NFT DROP</button>
+            <Link to="/nft" className="btn-primary font-black">
+              GEN-1 NFT DROP
+            </Link>
             <a
               href="https://discord.com/invite/bBeHKHHSu5"
               target="_blank"

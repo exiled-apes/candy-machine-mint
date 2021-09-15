@@ -5,6 +5,7 @@ import "./styles/index.css";
 import Landing from "./pages/Landing.jsx";
 import { Router } from "@reach/router";
 import reportWebVitals from "./reportWebVitals";
+import NFT from "./pages/NFT";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,6 +13,7 @@ ReactDOM.render(
     <div className="font-inter">
       <Router>
         <Landing path="/" />
+        <NFT path="/nft" />
       </Router>
     </div>
   </React.StrictMode>,
