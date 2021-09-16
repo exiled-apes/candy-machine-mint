@@ -1,4 +1,4 @@
-import { RouteComponentProps } from "@reach/router";
+import { Link, RouteComponentProps } from "@reach/router";
 import Nav from "../components/Nav";
 
 import RevenueShare from "../assets/tokenomics/revenue-share.svg";
@@ -6,7 +6,7 @@ import Summary from "../assets/tokenomics/summary-illustration.svg";
 
 function Tokenomics(props: RouteComponentProps) {
   return (
-    <div className="min-h-screen" style={{ background: "#101010" }}>
+    <div className="min-h-screen pb-30" style={{ background: "#101010" }}>
       <Nav />
       <main>
         {/* Hero section */}
@@ -96,6 +96,19 @@ function Tokenomics(props: RouteComponentProps) {
           </div>
         </div>
       </main>
+      <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
+        <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
+          ROADMAP
+        </Link>
+        <a
+          href="https://discord.com/invite/bBeHKHHSu5"
+          target="_blank"
+          rel="noreferrer"
+          className="btn-secondary font-black mt-4"
+        >
+          JOIN DISCORD
+        </a>
+      </div>
     </div>
   );
 }

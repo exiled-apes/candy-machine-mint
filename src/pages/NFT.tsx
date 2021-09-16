@@ -1,4 +1,4 @@
-import { RouteComponentProps } from "@reach/router";
+import { Link, RouteComponentProps } from "@reach/router";
 
 import Nav from "../components/Nav";
 
@@ -20,7 +20,7 @@ import Neptune from "../assets/nft/bg/neptune-bg.png";
 
 function NFT(props: RouteComponentProps) {
   return (
-    <div className="relative bg-black pb-20">
+    <div className="relative pb-20" style={{ background: "#101010" }}>
       <Nav />
       <div
         className=" text-white w-full h-screen px-30 py-40 relative bg-center bg-cover  grid grid-cols-2"
@@ -35,9 +35,9 @@ function NFT(props: RouteComponentProps) {
             first ip drop by sgf media house
           </p>
           <div className="mt-8 font-orb flex flex-wrap">
-            <button className="btn-primary font-black mt-4 mr-3">
+            <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
               ROADMAP
-            </button>
+            </Link>
             <a
               href="https://discord.com/invite/bBeHKHHSu5"
               target="_blank"
@@ -261,7 +261,9 @@ function NFT(props: RouteComponentProps) {
         </div>
       </div>
       <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
-        <button className="btn-primary font-black mt-4 mr-3">ROADMAP</button>
+        <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
+          ROADMAP
+        </Link>
         <a
           href="https://discord.com/invite/bBeHKHHSu5"
           target="_blank"

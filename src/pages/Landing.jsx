@@ -132,7 +132,9 @@ function Landing(props) {
           </p>
 
           <div className="mt-10 space-x-3 font-orb">
-            <button className="btn-primary font-black">GEN-1 NFT DROP</button>
+            <Link to="/nft" className="btn-primary font-black">
+              GEN-1 NFT DROP
+            </Link>
             <a
               href="https://discord.com/invite/bBeHKHHSu5"
               target="_blank"
