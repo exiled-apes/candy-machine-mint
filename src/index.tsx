@@ -7,6 +7,7 @@ import { Router } from "@reach/router";
 import reportWebVitals from "./reportWebVitals";
 import NFT from "./pages/NFT";
 import Roadmap from "./pages/Roadmap";
+import Tokenomics from "./pages/Tokenomics";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Landing path="/" />
         <NFT path="/nft" />
         <Roadmap path="/roadmap" />
+        <Tokenomics path="/tokenomics" />
       </Router>
     </div>
   </React.StrictMode>,
