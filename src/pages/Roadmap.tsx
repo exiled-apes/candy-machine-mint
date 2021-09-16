@@ -24,7 +24,7 @@ function Roadmap(props: RouteComponentProps) {
             <div className="absolute bg-primary-dark rounded-full inset-0 filter  blur-sm"></div>
             <div className="h-4 w-4 bg-primary-light rounded-full m-auto relative z-10"></div>
           </div>
-          <div>
+          <div className="w-full">
             <h3 className="font-orb text-2xl font-medium uppercase">
               Q3 2021 - Force Formation
             </h3>
@@ -259,7 +259,7 @@ function Roadmap(props: RouteComponentProps) {
         <div className="w-1 mx-2.5 mt-2 rounded-full h-full absolute top-0 left-0 bg-primary-light z-0"></div>
       </div>
       <div className="mt-30">
-        <img src={RoadmapImage} alt="roadmap" />
+        <img src={RoadmapImage} alt="roadmap" className="mx-auto" />
       </div>
       <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
         <button className="btn-primary font-black mt-4 mr-3">FAQS</button>
