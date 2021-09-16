@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.css";
-// import App from './App';
+
 import Landing from "./pages/Landing.jsx";
 import { Router } from "@reach/router";
 import reportWebVitals from "./reportWebVitals";
 import NFT from "./pages/NFT";
+import Roadmap from "./pages/Roadmap";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Router>
         <Landing path="/" />
         <NFT path="/nft" />
+        <Roadmap path="/roadmap" />
       </Router>
     </div>
   </React.StrictMode>,

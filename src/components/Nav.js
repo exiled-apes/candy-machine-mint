@@ -17,7 +17,9 @@ function Nav() {
             <li>
               <Link to="/nft">gen-1 nft drop</Link>
             </li>
-            <li>roadmap</li>
+            <li>
+              <Link to="/roadmap">roadmap</Link>
+            </li>
             <li>tokenomics</li>
             <li>faq</li>
           </ul>
