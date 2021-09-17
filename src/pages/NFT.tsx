@@ -23,6 +23,13 @@ import Marine from "../assets/nft/cyborgs/marine.svg";
 import Tactician from "../assets/nft/cyborgs/tactician.svg";
 import Warrior from "../assets/nft/cyborgs/warrior.svg";
 
+import PlanetBrown from "../assets/nft/decorative/planet-brown.svg";
+import Meteor from "../assets/nft/decorative/meteor.svg";
+import PlanetBlue from "../assets/nft/decorative/planet-blue.svg";
+import Satelite from "../assets/nft/decorative/satelite.svg";
+import StoneGrey from "../assets/nft/decorative/stone-grey.svg";
+import WhiteSpaceship from "../assets/nft/decorative/white-spaceship.png";
+
 function NFT(props: RouteComponentProps) {
   return (
     <div className="relative pb-20" style={{ background: "#101010" }}>
@@ -59,7 +66,12 @@ function NFT(props: RouteComponentProps) {
           </div>
         </div>
       </div>
-      <div className="py-14 px-48 uppercase">
+      <div className="py-14 px-48 uppercase relative">
+        <img
+          src={PlanetBrown}
+          alt="Brown Planet"
+          className="absolute top-0 left-0"
+        />
         <h1 className="text-5xl text-primary-light glow font-black italic text-center">
           mint details
         </h1>
@@ -82,7 +94,12 @@ function NFT(props: RouteComponentProps) {
           </div>
         </div>
       </div>
-      <div className="py-14 px-36 mt-24">
+      <div className="py-14  mt-24 relative">
+        <img
+          src={StoneGrey}
+          alt="StoneGrey"
+          className="absolute top-0 right-0"
+        />
         <h1 className="text-primary-light text-5xl text-center uppercase glow font-black italic">
           Rarities explained
         </h1>
@@ -91,7 +108,12 @@ function NFT(props: RouteComponentProps) {
           <span className="text-primary-dark">5 forces</span>
         </p>
         <img src={Cyborgs} alt="cyborgs" className="mt-14 mx-auto" />
-        <div className="text-white font-orb  uppercase">
+        <div className="text-white font-orb uppercase relative px-36">
+          <img
+            src={Satelite}
+            alt="Satelite"
+            className="absolute top-0 left-0"
+          />
           <p className="text-2xl font-black text-center mt-28">
             further division comes across{" "}
             <span className="text-primary-dark">ranks</span>
@@ -132,7 +154,8 @@ function NFT(props: RouteComponentProps) {
             </div>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center px-36 relative">
+          <img src={Meteor} alt="Meteor" className="absolute right-0 top-0" />
           <h1 className="font-orb font-black text-white text-3xl mt-36 uppercase">
             Then each cyborg embraces unique set of{" "}
             <span className="text-primary-dark">traits</span>
@@ -143,9 +166,16 @@ function NFT(props: RouteComponentProps) {
             className="mx-auto mt-16"
           />
         </div>
-        <div className="text-center mt-36 text-white uppercase font-orb">
-          lastly <span className="text-primary-dark">bg</span> reflects
-          <h1 className="text-3xl font-black ">cybgorg's space base posting</h1>
+        <div className="text-center mt-36 text-white uppercase font-orb px-36 relative">
+          <img
+            src={WhiteSpaceship}
+            alt="WhiteSpaceship"
+            className="absolute top-0 left-0"
+          />
+          <h1 className="text-3xl font-black ">
+            lastly <span className="text-primary-dark">bg</span> reflects
+            cybgorg's space base posting
+          </h1>
           <div className="mt-16 grid grid-cols-4 gap-14 text-lg font-medium">
             <div>
               <img src={Mercury} alt="" className="mx-auto" />
@@ -180,7 +210,12 @@ function NFT(props: RouteComponentProps) {
           </div>
         </div>
       </div>
-      <div className="py-14 px-36 mt-24">
+      <div className="py-14 px-36 mt-24 relative">
+        <img
+          src={PlanetBlue}
+          alt="PlanetBlue"
+          className="absolute top-0 right-0"
+        />
         <h1 className="text-primary-light text-5xl text-center uppercase glow font-black italic">
           Forces explained
         </h1>
