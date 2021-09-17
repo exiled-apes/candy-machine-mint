@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import NFT from "./pages/NFT";
 import Roadmap from "./pages/Roadmap";
 import Tokenomics from "./pages/Tokenomics";
+import FAQ from "./pages/FAQ";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <NFT path="/nft" />
         <Roadmap path="/roadmap" />
         <Tokenomics path="/tokenomics" />
+        <FAQ path="/faq" />
       </Router>
     </div>
   </React.StrictMode>,

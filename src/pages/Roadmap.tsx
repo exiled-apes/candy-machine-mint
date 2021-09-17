@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
+import { Link, RouteComponentProps } from "@reach/router";
 import Nav from "../components/Nav";
 
 import Ship from "../assets/roadmap/ship.png";
@@ -262,7 +262,9 @@ function Roadmap(props: RouteComponentProps) {
         <img src={RoadmapImage} alt="roadmap" className="mx-auto" />
       </div>
       <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
-        <button className="btn-primary font-black mt-4 mr-3">FAQS</button>
+        <Link to="/faq" className="btn-primary font-black mt-4 mr-3">
+          FAQS
+        </Link>
         <a
           href="https://discord.com/invite/bBeHKHHSu5"
           target="_blank"

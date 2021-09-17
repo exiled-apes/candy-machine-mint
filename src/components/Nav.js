@@ -23,7 +23,9 @@ function Nav() {
             <li>
               <Link to="/tokenomics">tokenomics</Link>
             </li>
-            <li>faq</li>
+            <li>
+              <Link to="/faq">faq</Link>
+            </li>
           </ul>
         </nav>
       </div>
