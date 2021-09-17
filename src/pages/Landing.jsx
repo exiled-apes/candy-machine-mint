@@ -6,7 +6,7 @@ import { Link } from "@reach/router";
 
 import Nav from "../components/Nav";
 
-import Spaceship from "../assets/landing/spaceship.png";
+import Spaceship from "../assets/landing/spaceship.svg";
 import Avatar from "../assets/landing/team-avatar.png";
 
 function Landing(props) {
@@ -85,10 +85,10 @@ function Landing(props) {
           <h1 className="text-primary-light text-5xl font-black italic glow text-center">
             AHOY SPACE CADETS
           </h1>
-          <div className="font-orb text-3xl text-center text-white mt-10 space-y-2 uppercase">
+          <div className="font-orb font-black text-3xl text-center text-white mt-10 space-y-2 uppercase">
             <p>
               Welcome To{" "}
-              <span className="text-primary-dark font-medium">
+              <span className="text-primary-dark glow">
                 SGF’s Mission Control
               </span>{" "}
               room.
@@ -102,7 +102,7 @@ function Landing(props) {
         </div>
       </div>
       <div
-        className="h-screen bg-center bg-cover relative  py-28 pl-36"
+        className="h-screen bg-center bg-cover relative  pb-28 pt-44 pl-36"
         id="vision"
       >
         <div className="grid grid-cols-2">
@@ -110,7 +110,7 @@ function Landing(props) {
             <h1 className="text-primary-light glow text-5xl font-black italic uppercase">
               SGF's Vision
             </h1>
-            <div className="uppercase font-orb text-3xl mt-10 font-medium">
+            <div className="uppercase font-orb text-3xl mt-10 font-black">
               <p>
                 To build <br />
                 the Sci-Fi media house <br />
@@ -120,13 +120,19 @@ function Landing(props) {
               </p>
             </div>
           </div>
-          <img src={Spaceship} alt="spaceship" className="justify-self-end" />
+          <img
+            src={Spaceship}
+            alt="spaceship"
+            className="justify-self-end w-5/6"
+          />
         </div>
         <div>
-          <p className="mt-10 text-white text-3xl font-orb uppercase">
+          <p className="mt-10 text-white text-3xl font-orb uppercase font-black">
             Intellectual property DROPs planned:
             <br />
-            <span className="font-medium">GENSIS 10k Gen-1 CYBORG</span>
+            <span className="text-primary-dark glow">
+              GENSIS 10k Gen-1 CYBORG
+            </span>
           </p>
 
           <div className="mt-10 space-x-3 font-orb">
@@ -144,7 +150,7 @@ function Landing(props) {
           </div>
         </div>
       </div>
-      <div className="h-screen bg-center bg-cover pt-20 relative" id="team">
+      <div className="h-screen bg-center bg-cover pt-40 relative" id="team">
         <div className="bg-black bg-opacity-40 h-full absolute inset-0 z-0"></div>
         <div className="relative z-10">
           <h1 className="uppercase text-primary-light glow font-black italic text-5xl text-center">

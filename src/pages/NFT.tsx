@@ -2,13 +2,12 @@ import { Link, RouteComponentProps } from "@reach/router";
 
 import Nav from "../components/Nav";
 
-import HeroCyborg from "../assets/nft/hero.png";
-import Cyborgs from "../assets/nft/cyborgs.png";
+import HeroCyborg from "../assets/nft/cyborgs.gif";
+import Cyborgs from "../assets/nft/cyborgs.svg";
 import General from "../assets/nft/general.png";
 import Lieutenant from "../assets/nft/lieutenant.png";
 import Soldier from "../assets/nft/soldier.png";
 import CyborgBreakdown from "../assets/nft/cyborg-breakdown.png";
-import CyborgShadow from "../assets/nft/cyborg-shadow.png";
 
 import Mercury from "../assets/nft/bg/mercury-bg.png";
 import Earth from "../assets/nft/bg/earth-bg.png";
@@ -17,6 +16,12 @@ import Jupiter from "../assets/nft/bg/jupiter-bg.png";
 import Saturn from "../assets/nft/bg/saturn-bg.png";
 import Uranus from "../assets/nft/bg/uranus-bg.png";
 import Neptune from "../assets/nft/bg/neptune-bg.png";
+
+import Aviator from "../assets/nft/cyborgs/aviator.svg";
+import Brawler from "../assets/nft/cyborgs/brawler.svg";
+import Marine from "../assets/nft/cyborgs/marine.svg";
+import Tactician from "../assets/nft/cyborgs/tactician.svg";
+import Warrior from "../assets/nft/cyborgs/warrior.svg";
 
 function NFT(props: RouteComponentProps) {
   return (
@@ -49,7 +54,9 @@ function NFT(props: RouteComponentProps) {
           </div>
         </div>
         <div className="grid items-center justify-center">
-          <img src={HeroCyborg} alt="Cyborg hero" />
+          <div className="border-primary-light rounded-md border-8 w-1/2 mx-auto div-glow">
+            <img src={HeroCyborg} alt="Cyborg hero" />
+          </div>
         </div>
       </div>
       <div className="py-14 px-48 uppercase">
@@ -83,7 +90,7 @@ function NFT(props: RouteComponentProps) {
           sgf cyborgs are divided into{" "}
           <span className="text-primary-dark">5 forces</span>
         </p>
-        <img src={Cyborgs} alt="cyborgs" className="mt-14" />
+        <img src={Cyborgs} alt="cyborgs" className="mt-14 mx-auto" />
         <div className="text-white font-orb  uppercase">
           <p className="text-2xl font-black text-center mt-28">
             further division comes across{" "}
@@ -184,7 +191,11 @@ function NFT(props: RouteComponentProps) {
               <p>GREAT WINGMEN IN CYBERNETIC RAVES.</p>
             </div>
             <div className="flex justify-center items-center">
-              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+              <img
+                src={Aviator}
+                alt="Shadowy Super Cyborg"
+                className="mt-auto"
+              />
             </div>
             <div>
               <p className="uppercase font-black italic text-2xl text-aviators text-right tracking-wide">
@@ -200,7 +211,11 @@ function NFT(props: RouteComponentProps) {
               <p>YOU BETTER NOT GET INTO A CAGE FIGHT WITH THEM.</p>
             </div>
             <div className="flex justify-center items-center">
-              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+              <img
+                src={Warrior}
+                alt="Shadowy Super Cyborg"
+                className="mt-auto"
+              />
             </div>
             <div>
               <p className="uppercase font-black italic text-2xl text-warriors text-right tracking-wide">
@@ -218,7 +233,11 @@ function NFT(props: RouteComponentProps) {
               </p>
             </div>
             <div className="flex justify-center items-center">
-              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+              <img
+                src={Marine}
+                alt="Shadowy Super Cyborg"
+                className="mt-auto"
+              />
             </div>
             <div>
               <p className="uppercase font-black italic text-2xl text-marines text-right tracking-wide">
@@ -234,7 +253,11 @@ function NFT(props: RouteComponentProps) {
               <p>YOU CALL THEM WHEN SHIT HAS REALLY HIT THE FAN.</p>
             </div>
             <div className="flex justify-center items-center">
-              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+              <img
+                src={Brawler}
+                alt="Shadowy Super Cyborg"
+                className="mt-auto"
+              />
             </div>
             <div>
               <p className="uppercase font-black italic text-2xl text-brawlers text-right tracking-wide">
@@ -250,7 +273,11 @@ function NFT(props: RouteComponentProps) {
               <p>SGF’S NEURAL ENGINE TO POWER STRATEGIC DECISION MAKING.</p>
             </div>
             <div className="flex justify-center items-center">
-              <img src={CyborgShadow} alt="Shadowy Super Cyborg" />
+              <img
+                src={Tactician}
+                alt="Shadowy Super Cyborg"
+                className="mt-auto"
+              />
             </div>
             <div>
               <p className="uppercase font-black italic text-2xl text-tacticians text-right tracking-wide">
@@ -260,18 +287,24 @@ function NFT(props: RouteComponentProps) {
           </div>
         </div>
       </div>
-      <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
-        <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
-          ROADMAP
-        </Link>
-        <a
-          href="https://discord.com/invite/bBeHKHHSu5"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-secondary font-black mt-4"
-        >
-          JOIN DISCORD
-        </a>
+      <div className="mt-8 font-orb ">
+        <p className="text-sm font-medium text-gray text-center font-inter">
+          Can’t find an answer to your query? Don’t worry, we’ve got your
+          back...
+        </p>
+        <div className="flex flex-wrap justify-center items-center">
+          <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
+            ROADMAP
+          </Link>
+          <a
+            href="https://discord.com/invite/bBeHKHHSu5"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-secondary font-black mt-4"
+          >
+            JOIN DISCORD
+          </a>
+        </div>
       </div>
     </div>
   );

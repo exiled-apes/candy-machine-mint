@@ -18,7 +18,7 @@ function Roadmap(props: RouteComponentProps) {
         </h1>
         <img src={Ship} alt="Super Cool Spaceship" className="mt-10 mx-auto" />
       </div>
-      <div className="text-white mx-48 -mt-48 relative z-20">
+      <div className="text-white mx-48 -mt-48 relative z-10">
         <div className="flex">
           <div className="h-6 w-6 rounded-full flex-shrink-0 mt-1 mr-10 flex relative">
             <div className="absolute bg-primary-dark rounded-full inset-0 filter  blur-sm"></div>
@@ -265,18 +265,24 @@ function Roadmap(props: RouteComponentProps) {
         <img src={RoadmapImage} alt="roadmap" className="w-full" />
       </div>
 
-      <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
-        <Link to="/faq" className="btn-primary font-black mt-4 mr-3">
-          FAQS
-        </Link>
-        <a
-          href="https://discord.com/invite/bBeHKHHSu5"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-secondary font-black mt-4"
-        >
-          JOIN DISCORD
-        </a>
+      <div className="mt-8 font-orb ">
+        <p className="text-sm font-medium text-gray text-center font-inter">
+          Can’t find an answer to your query? Don’t worry, we’ve got your
+          back...
+        </p>
+        <div className="flex flex-wrap justify-center items-center">
+          <Link to="/faq" className="btn-primary font-black mt-4 mr-3">
+            FAQS
+          </Link>
+          <a
+            href="https://discord.com/invite/bBeHKHHSu5"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-secondary font-black mt-4"
+          >
+            JOIN DISCORD
+          </a>
+        </div>
       </div>
     </div>
   );

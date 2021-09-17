@@ -96,18 +96,24 @@ function Tokenomics(props: RouteComponentProps) {
           </div>
         </div>
       </main>
-      <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
-        <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
-          ROADMAP
-        </Link>
-        <a
-          href="https://discord.com/invite/bBeHKHHSu5"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-secondary font-black mt-4"
-        >
-          JOIN DISCORD
-        </a>
+      <div className="mt-8 font-orb ">
+        <p className="text-sm font-medium text-gray text-center font-inter">
+          Can’t find an answer to your query? Don’t worry, we’ve got your
+          back...
+        </p>
+        <div className="flex flex-wrap justify-center items-center">
+          <Link to="/roadmap" className="btn-primary font-black mt-4 mr-3">
+            ROADMAP
+          </Link>
+          <a
+            href="https://discord.com/invite/bBeHKHHSu5"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-secondary font-black mt-4"
+          >
+            JOIN DISCORD
+          </a>
+        </div>
       </div>
     </div>
   );

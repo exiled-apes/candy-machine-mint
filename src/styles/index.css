@@ -6,6 +6,10 @@
   text-shadow: 0 0 10px #5c8588;
 }
 
+.div-glow {
+  box-shadow: 2px 2px 20px #94d2d7;
+}
+
 .btn-primary {
   display: inline-block;
   background-color: white;
