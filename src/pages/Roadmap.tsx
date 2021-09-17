@@ -3,7 +3,7 @@ import { Link, RouteComponentProps } from "@reach/router";
 import Nav from "../components/Nav";
 
 import Ship from "../assets/roadmap/ship.png";
-import RoadmapImage from "../assets/roadmap/roadmap.png";
+import RoadmapImage from "../assets/roadmap/roadmap.svg";
 
 function Roadmap(props: RouteComponentProps) {
   return (
@@ -256,11 +256,15 @@ function Roadmap(props: RouteComponentProps) {
             </div>
           </div>
         </div>
-        <div className="w-1 mx-2.5 mt-2 rounded-full h-full absolute top-0 left-0 bg-primary-light z-0"></div>
+        <div
+          className="w-1 mx-2.5 mt-2 rounded-full absolute top-0 left-0 bg-primary-light"
+          style={{ height: `calc(100% + 111px)` }}
+        ></div>
       </div>
       <div className="mt-30">
-        <img src={RoadmapImage} alt="roadmap" className="mx-auto" />
+        <img src={RoadmapImage} alt="roadmap" className="w-full" />
       </div>
+
       <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
         <Link to="/faq" className="btn-primary font-black mt-4 mr-3">
           FAQS

@@ -79,15 +79,14 @@ function Landing(props) {
         </div>
       </div>
       <div
-        className="h-screen bg-center bg-cover flex items-center px-30 relative"
+        className="h-screen bg-center bg-cover flex items-center px-30 relative bg-gray-dark"
         id="landing-section-2"
       >
-        <img src={Flag} alt="sgf-flag" className="absolute top-0 right-0" />
-        <div>
-          <h1 className="text-primary-light text-5xl font-black italic glow">
+        <div className="w-full">
+          <h1 className="text-primary-light text-5xl font-black italic glow text-center">
             AHOY SPACE CADETS
           </h1>
-          <div className="font-orb text-3xl text-white mt-10 space-y-2 uppercase">
+          <div className="font-orb text-3xl text-center text-white mt-10 space-y-2 uppercase">
             <p>
               Welcome To{" "}
               <span className="text-primary-dark font-medium">
