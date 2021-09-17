@@ -1,12 +1,12 @@
-import { Link, RouteComponentProps } from "@reach/router";
-import Nav from "../components/Nav";
+import { Link, RouteComponentProps } from '@reach/router';
+import Nav from '../components/Nav';
 
-import RevenueShare from "../assets/tokenomics/revenue-share.svg";
-import Summary from "../assets/tokenomics/summary-illustration.svg";
+import RevenueShare from '../assets/tokenomics/revenue-share.svg';
+import Summary from '../assets/tokenomics/summary-illustration.svg';
 
 function Tokenomics(props: RouteComponentProps) {
   return (
-    <div className="min-h-screen pb-30" style={{ background: "#101010" }}>
+    <div className="min-h-screen pb-30" style={{ background: '#101010' }}>
       <Nav />
       <main>
         {/* Hero section */}
@@ -27,7 +27,7 @@ function Tokenomics(props: RouteComponentProps) {
             <p className="text-center text-white font-orb font-black text-3xl uppercase mt-20">
               💸 <br />
               30% of
-              <br />{" "}
+              <br />{' '}
               <span className="text-primary-dark">secondary royalties</span>
               <br /> from GEN 1 CYBORG SALES
               <br /> DIRECTLY INVESTED INTO THE COMMUNITY
@@ -40,11 +40,11 @@ function Tokenomics(props: RouteComponentProps) {
             <p className="text-center text-white font-orb font-black text-3xl uppercase mt-24">
               💸
               <br /> 3.5% of
-              <br />{" "}
+              <br />{' '}
               <span className="text-primary-dark">secondary royalties</span>
               <br /> FROM all future NFT drops sales
               <br /> disbursed pro-rata
-              <br /> to{" "}
+              <br /> to{' '}
               <span className="text-primary-dark">GEN 1 CYBORG HOLDERS</span>
             </p>
             <div className="grid grid-cols-3 font-orb font-black text-lg text-white uppercase mt-16 max-w-7xl mx-auto">
@@ -75,12 +75,12 @@ function Tokenomics(props: RouteComponentProps) {
               <br /> 0.5% of
               <br /> <span className="text-primary-dark">taKE RATE</span> FROM
               <br /> SGF’s FLAGSHIP FIGHTER GENRE GAME
-              <br /> IS ALLOCATED TO{" "}
+              <br /> IS ALLOCATED TO{' '}
               <span className="text-primary-dark">
                 EARLY BELEIVERS STAKE POOL
               </span>
               <br />
-              <br /> STAKING{" "}
+              <br /> STAKING{' '}
               <span className="text-primary-dark">GEN-1 CYBORG</span> to the
               above POOL ACCRUES <br />
               <span className="text-primary-dark">

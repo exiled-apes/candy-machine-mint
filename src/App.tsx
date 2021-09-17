@@ -1,23 +1,23 @@
-import "./App.css";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
-import Home from "./pages/Home";
+import Home from './pages/MintHome';
+import { RouteComponentProps } from '@reach/router';
 
-import * as anchor from "@project-serum/anchor";
-import { clusterApiUrl } from "@solana/web3.js";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import * as anchor from '@project-serum/anchor';
+import { clusterApiUrl } from '@solana/web3.js';
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import {
   getPhantomWallet,
   getSolflareWallet,
   getSolletWallet,
-} from "@solana/wallet-adapter-wallets";
+} from '@solana/wallet-adapter-wallets';
 
 import {
   ConnectionProvider,
   WalletProvider,
-} from "@solana/wallet-adapter-react";
+} from '@solana/wallet-adapter-react';
 
-import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
+import { WalletDialogProvider } from '@solana/wallet-adapter-material-ui';
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -40,7 +40,7 @@ const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
 
 const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
-const App = () => {
+const App = (props: RouteComponentProps) => {
   const endpoint = useMemo(() => clusterApiUrl(network), []);
 
   const wallets = useMemo(
