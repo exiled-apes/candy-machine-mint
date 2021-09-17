@@ -37,22 +37,28 @@ yarn build
 
 #### Environment Variables
 
-To run the project, first create a `.env` file at the root directory and define the following variables:
+To run the project, first rename the `.env.example` file at the root directory to `.env` and update the following variables:
 
 ```
-REACT_APP_CANDY_MACHINE_CONFIG="redacted"
+REACT_APP_CANDY_MACHINE_CONFIG=__PLACEHOLDER__
 ```
 
 This is a Solana account address. You can get the value for this from the `.cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
 
 ```
-REACT_APP_CANDY_MACHINE_ID="redacted"
+REACT_APP_CANDY_MACHINE_ID=__PLACEHOLDER__
 ```
 
 Same as above; this is a Solana account address. You can get the value for this from the `./cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
 
 ```
-REACT_APP_CANDY_START_DATE=1630422000000
+REACT_APP_TREASURY_ADDRESS=__PLACEHOLDER__
+```
+
+This the Solana address that receives the funds gathered during the minting process. More docs coming as we can test this.
+
+```
+REACT_APP_CANDY_START_DATE=__PLACEHOLDER__
 ```
 
 This is a unix time stamp that configures when your mint will be open.
@@ -68,15 +74,6 @@ REACT_APP_SOLANA_RPC_HOST=https://explorer-api.devnet.solana.com
 ```
 
 This identifies the RPC server your web app will access the Solana network through.
-
-```
-REACT_APP_TREASURY_ADDRESS="redacted"
-```
-
-This the Solana address that receives the funds gathered during the minting process. More docs coming as we can test this.
-
-
-
 
 # Getting Started with Create React App
 
