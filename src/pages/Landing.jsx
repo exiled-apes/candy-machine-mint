@@ -6,7 +6,6 @@ import { Link } from "@reach/router";
 
 import Nav from "../components/Nav";
 
-import Flag from "../assets/landing/Flag.png";
 import Spaceship from "../assets/landing/spaceship.png";
 import Avatar from "../assets/landing/team-avatar.png";
 
@@ -19,9 +18,9 @@ function Landing(props) {
       setEffect(
         GLOBE({
           el: effectRef.current,
-          mouseControls: false,
-          touchControls: false,
-          gyroControls: false,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: true,
           scale: 1.0,
           scaleMobile: 1.0,
           size: 0.75,
@@ -108,7 +107,7 @@ function Landing(props) {
       >
         <div className="grid grid-cols-2">
           <div className="text-white">
-            <h1 className="text-primary-light glow text-5xl font-black italic">
+            <h1 className="text-primary-light glow text-5xl font-black italic uppercase">
               SGF's Vision
             </h1>
             <div className="uppercase font-orb text-3xl mt-10 font-medium">

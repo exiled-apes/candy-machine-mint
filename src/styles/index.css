@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .glow {
-  text-shadow: 0 0 10px #a5eef3;
+  text-shadow: 0 0 10px #5c8588;
 }
 
 .btn-primary {
