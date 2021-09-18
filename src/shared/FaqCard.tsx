@@ -7,12 +7,23 @@ const FaqCard = ({question, answer}: {question: string, answer: string}) => {
       style={{
         padding: '24px 32px',
         background: '#25282c',
-        height: '100%',
-        margin: '10px'
+        minHeight: '100%',
+        margin: '10px',
+        width: '30%'
       }
     }>
-    <p>{answer}</p>
-    <span style={{color:'white', borderTop: '#33363a'}}>{question}</span> 
+    <p style={{borderBottom: '1px solid #33363a', paddingBottom: '15px'}}>{answer}</p>
+    <span 
+      style={{
+        color:'white',
+        borderTop: '#33363a',
+        paddingTop: '10px',
+        paddingBottom: '20px',
+        fontSize: '18px'
+      }}
+      >
+      {question}
+    </span> 
     </div>
   )
 }

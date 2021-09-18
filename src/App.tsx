@@ -127,7 +127,7 @@ const App = () => {
               question='Who is behind ProjectName'
             />
             <FaqCard
-              answer='We are a team a developers from around the world passionate about NFTs and the Solana ecosystem. We want to generate NFTs that are not only fun, but also have utility. Join our Discord to learn more about the team.'
+              answer='Once the minting process starts, one of the available SolPenguins will be sent to you. SolPenguins use the Metaplex protocol, which is the premier NFT protocol on Solana. This means that you will be able to view your NFT in any wallet/application supporting Metaplex.'
               question='Who is behind ProjectName'
             />
             <FaqCard
