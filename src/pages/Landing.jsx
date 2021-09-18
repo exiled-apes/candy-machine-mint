@@ -17,7 +17,8 @@ function Landing(props) {
 
   useEffect(() => {
     headingRef.current.classList.remove("opacity-0");
-    headGlow.current.classList.add("glow");
+    headingRef.current.classList.remove("-translate-x-6");
+    headGlow.current.classList.add("heading-glow");
     if (!effect) {
       setEffect(
         GLOBE({
@@ -48,12 +49,12 @@ function Landing(props) {
       >
         <div className="max-w-5xl">
           <h1
-            className=" text-7xl font-black italic transition-all opacity-0 duration-500"
+            className="text-7xl font-black italic transform transition-all opacity-0 -translate-x-6 duration-700 ease-in-out"
             ref={headingRef}
           >
             1st COMMUNITY-OWNED{" "}
             <span
-              className="text-primary-light relative delay-500 duration-700"
+              className="text-primary-light relative delay-700 duration-500"
               ref={headGlow}
             >
               SCI-FI MEDIA HOUSE{" "}
