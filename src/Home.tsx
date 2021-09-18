@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import penguin from './media/penguin.png'
+import placeHolderImage from './media/image-placeholder.jpeg'
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -176,11 +176,11 @@ const Home = (props: HomeProps) => {
       } */}
       
       <div style={{display: 'flex', flexDirection: 'row', marginBottom: '5px'}}>
-        <h1 style={{color: 'white', fontSize: '42px', marginBottom: '5px', marginTop: '5px'}}>Sol</h1>
-        <h1 style={{color: '#5658dd', fontSize: '42px', marginBottom: '5px',  marginTop: '5px'}}>Penguins</h1>
+        <h1 style={{color: 'white', fontSize: '42px', marginBottom: '5px', marginTop: '5px'}}>Place</h1>
+        <h1 style={{color: '#5658dd', fontSize: '42px', marginBottom: '5px',  marginTop: '5px'}}>Holder</h1>
       </div>
 
-      <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>8,888 SolPenguins sliding around on the Solana blockchain.</h3>
+      <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>This is placeholder text that can be replaced.</h3>
 
       {!wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
 
@@ -211,7 +211,7 @@ const Home = (props: HomeProps) => {
         }
       </MintContainer>
 
-      <img src={penguin} style={{width: '550px', marginTop: '20px'}}/>
+      <img src={placeHolderImage} style={{width: '550px', marginTop: '20px'}}/>
 
       <Snackbar
         open={alertState.open}
