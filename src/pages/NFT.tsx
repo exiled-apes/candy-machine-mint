@@ -108,7 +108,7 @@ function NFT(props: RouteComponentProps) {
           <span className="text-primary-dark">5 forces</span>
         </p>
         <img src={Cyborgs} alt="cyborgs" className="mt-14 mx-auto" />
-        <div className="text-white font-orb uppercase relative px-48">
+        <div className="text-white font-orb uppercase relative px-48 ">
           <img
             src={Satelite}
             alt="Satelite"
@@ -118,7 +118,8 @@ function NFT(props: RouteComponentProps) {
             further division comes across{" "}
             <span className="text-primary-dark">ranks</span>
           </p>
-          <div className="grid grid-cols-3 text-center mt-16">
+
+          <div className="grid grid-cols-3 text-center mt-16 max-w-6xl mx-auto">
             <div className="flex flex-col">
               <div className="flex items-center justify-center">
                 <img src={General} alt="" />
@@ -176,7 +177,7 @@ function NFT(props: RouteComponentProps) {
             lastly <span className="text-primary-dark">bg</span> reflects
             cybgorg's space base posting
           </h1>
-          <div className="mt-16 grid grid-cols-4 gap-14 text-lg font-medium">
+          <div className="mt-16 grid grid-cols-4 gap-14 text-lg font-medium max-w-6xl mx-auto">
             <div>
               <img src={Mercury} alt="" className="mx-auto" />
               <p className="mt-5">mercury</p>
@@ -194,7 +195,7 @@ function NFT(props: RouteComponentProps) {
               <p className="mt-5">Jupiter</p>
             </div>
           </div>
-          <div className="mt-10 mx-20 grid grid-cols-3 gap-14 text-lg font-medium">
+          <div className="mt-10 grid grid-cols-3 gap-14 text-lg font-medium max-w-3xl mx-auto">
             <div>
               <img src={Saturn} alt="" className="mx-auto" />
               <p className="mt-5">Saturn</p>

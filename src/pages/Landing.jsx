@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import GLOBE from "vanta/dist/vanta.globe.min";
 import Ticker from "react-ticker";
 import { Link } from "@reach/router";
-import Fade from "react-reveal/Fade";
 
 import Nav from "../components/Nav";
 
@@ -13,8 +12,12 @@ import Avatar from "../assets/landing/team-avatar.png";
 function Landing(props) {
   const [effect, setEffect] = useState(null);
   const effectRef = useRef(null);
+  const headingRef = useRef(null);
+  const headGlow = useRef(null);
 
   useEffect(() => {
+    headingRef.current.classList.remove("opacity-0");
+    headGlow.current.classList.add("glow");
     if (!effect) {
       setEffect(
         GLOBE({
@@ -44,15 +47,20 @@ function Landing(props) {
         className="bg-black text-white w-full h-screen flex items-center px-30 py-40 relative"
       >
         <div className="max-w-5xl">
-          <Fade left>
-            <h1 className=" text-7xl font-black italic">
-              1st COMMUNITY-OWNED{" "}
-              <span className="text-primary-light relative glow">
-                SCI-FI MEDIA HOUSE{" "}
-              </span>{" "}
-              🔭 BUILT ON SOLANA
-            </h1>
-          </Fade>
+          <h1
+            className=" text-7xl font-black italic transition-all opacity-0 duration-500"
+            ref={headingRef}
+          >
+            1st COMMUNITY-OWNED{" "}
+            <span
+              className="text-primary-light relative delay-500 duration-700"
+              ref={headGlow}
+            >
+              SCI-FI MEDIA HOUSE{" "}
+            </span>{" "}
+            🔭 BUILT ON SOLANA
+          </h1>
+
           <div className="mt-10 space-x-5 font-orb">
             <Link to="/nft" className="btn-primary font-black">
               GEN-1 NFT DROP
