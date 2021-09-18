@@ -1,7 +1,6 @@
 import React from 'react'
-import placeHolderImage from '../media/image-placeholder.jpeg'
 
-const TextAndImage = ({reversed}: {reversed: boolean}) => {
+const TextAndImage = ({reversed, image, text}: {reversed?: boolean, image: string, text: string}) => {
 
   return (
     <div className='frow' 
@@ -16,15 +15,10 @@ const TextAndImage = ({reversed}: {reversed: boolean}) => {
     }}>
     <div style={{width: '50%'}}>
       <h3 style={{marginBottom: '12px', color: 'white'}}>Text Header</h3>
-      <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
-      </p> 
+      <p>{text}</p> 
     </div>
     <div>
-      <img  style={{width: '400px'}} src={placeHolderImage}/>
+      <img  style={{width: '400px'}} src={image}/>
     </div>
   </div>
   )
