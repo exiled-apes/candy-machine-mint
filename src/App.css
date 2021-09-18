@@ -2,11 +2,23 @@
   text-align: center;
 }
 
+body {
+  color: #9ca9b3;
+  font-size: 1rem;
+}
+
 .frow {
-  display: 'flex';
+  display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: '100%'
 }
 
 text-white {

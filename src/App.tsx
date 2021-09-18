@@ -18,6 +18,7 @@ import {
 } from "@solana/wallet-adapter-react";
 
 import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
+import TextAndImage from "./shared/TextAndImage";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -48,35 +49,47 @@ const App = () => {
     []
   );
 
+  const FreeText = () => {
+    return (
+    <div style={{borderTop: '1px solid #25282c', ...container, width: '50%', marginBottom: '30px'}} className='flex-column'>
+      <h2 style={{paddingTop: '30px'}}>Generic Second Header</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      </p>
+    </div>
+    )
+  }
+
   const container = {
-    display: 'flex',
-    flexDirection: 'column' as any,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   }
 
   return (
     <div style={{background: 'black'}}>
       <NavBar />
-      <div style={{...container, }}>
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
-          <WalletDialogProvider>
-            <div style={{marginTop: '0px'}}>
-
-           ` <Home
-              candyMachineId={candyMachineId}
-              config={config}
-              connection={connection}
-              startDate={startDateSeed}
-              treasury={treasury}
-              txTimeout={txTimeout}
-            />`
-            </div>
-          </WalletDialogProvider>
-        </WalletProvider>
-      </ConnectionProvider>
-
+      <div style={{...container, }} className='flex-column'>
+        <div style={{marginBottom: '30px'}}>
+          <ConnectionProvider endpoint={endpoint}>
+            <WalletProvider wallets={wallets} autoConnect>
+              <WalletDialogProvider>
+              ` <Home
+                candyMachineId={candyMachineId}
+                config={config}
+                connection={connection}
+                startDate={startDateSeed}
+                treasury={treasury}
+                txTimeout={txTimeout}
+              />`
+              </WalletDialogProvider>
+            </WalletProvider>
+          </ConnectionProvider>
+        </div>
+        <FreeText />
+        <TextAndImage />
+        <TextAndImage reversed/>
+        <TextAndImage />
       </div>
     </div>
     );
