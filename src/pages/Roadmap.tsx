@@ -51,25 +51,6 @@ function Roadmap(props: RouteComponentProps) {
               <div className="bg-gray-dark border border-gray-light rounded-md w-full p-10">
                 <div className="flex justify-between items-baseline">
                   <h4 className="font-black italic uppercase text-xl">
-                    Gen-1 Cyborg NFT drop (2000)
-                  </h4>
-                  <div className="flex space-x-3 text-sm">
-                    <p>Mint: X</p>
-                    <p>Date: TBD</p>
-                  </div>
-                </div>
-                <p className="text-lg mt-5 font-medium text-gray">
-                  First enlistment into the 5 forces start. <br />
-                  Only the bravest souls are granted passage and take their
-                  rightful place. <br />
-                  Everything that may go wrong, will go wrong. <br />
-                  Still they believe that all is not lost and want to give
-                  humanity a fighting chance.
-                </p>
-              </div>
-              <div className="bg-gray-dark border border-gray-light rounded-md w-full p-10">
-                <div className="flex justify-between items-baseline">
-                  <h4 className="font-black italic uppercase text-xl">
                     Gen-1 Cyborg NFT drop (8000)
                   </h4>
                   <div className="text-sm">
@@ -83,6 +64,22 @@ function Roadmap(props: RouteComponentProps) {
                   Generals start to coordinate to build out their factions whule
                   lietutants and soliders work together to setup garricks and
                   weapon machinery factories.
+                </p>
+              </div>
+              <div className="bg-gray-dark border border-gray-light rounded-md w-full p-10">
+                <div className="flex justify-between items-baseline">
+                  <h4 className="font-black italic uppercase text-xl">
+                    GEN-1 SECONDARY MARKETPLACE LISTING LAUNCHED
+                  </h4>
+                  <div className="text-sm">
+                    <p>Date: TBD</p>
+                  </div>
+                </div>
+                <p className="text-lg mt-5 font-medium text-gray">
+                  SGF Media House partners with most leading marketplaces to
+                  launch secondary marketplace listing. <br /> Some people may
+                  want to opt out after feeling the intense pressure from the
+                  training.
                 </p>
               </div>
             </div>

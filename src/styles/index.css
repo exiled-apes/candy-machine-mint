@@ -6,6 +6,10 @@
   text-shadow: 4px 4px 40px #81d4da;
 }
 
+.nav-glow {
+  text-shadow: 8px 8px 80px #019fab;
+}
+
 .div-glow {
   box-shadow: 2px 2px 20px #94d2d7;
 }

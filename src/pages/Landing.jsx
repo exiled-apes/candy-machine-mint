@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import GLOBE from "vanta/dist/vanta.globe.min";
 import Ticker from "react-ticker";
 import { Link } from "@reach/router";
+import Fade from "react-reveal/Fade";
 
 import Nav from "../components/Nav";
 
@@ -21,9 +22,9 @@ function Landing(props) {
           mouseControls: true,
           touchControls: true,
           gyroControls: true,
-          scale: 1.0,
+          scale: 1,
           scaleMobile: 1.0,
-          size: 0.75,
+          size: 0.65,
           color: 0xadf9ff,
           color2: 0xadf9ff,
           backgroundColor: 0x000,
@@ -43,13 +44,15 @@ function Landing(props) {
         className="bg-black text-white w-full h-screen flex items-center px-30 py-40 relative"
       >
         <div className="max-w-5xl">
-          <h1 className=" text-7xl font-black italic">
-            1st COMMUNITY-OWNED{" "}
-            <span className="text-primary-light relative glow">
-              SCI-FI MEDIA HOUSE{" "}
-            </span>{" "}
-            🔭 BUILT ON SOLANA
-          </h1>
+          <Fade left>
+            <h1 className=" text-7xl font-black italic">
+              1st COMMUNITY-OWNED{" "}
+              <span className="text-primary-light relative glow">
+                SCI-FI MEDIA HOUSE{" "}
+              </span>{" "}
+              🔭 BUILT ON SOLANA
+            </h1>
+          </Fade>
           <div className="mt-10 space-x-5 font-orb">
             <Link to="/nft" className="btn-primary font-black">
               GEN-1 NFT DROP
@@ -70,8 +73,7 @@ function Landing(props) {
             {() => (
               <div className="relative z-10 bg-primary-light py-3 ml-3 font-medium">
                 {" "}
-                * LAUNCHING ON 15TH SEPTEMBER * MINT PRICE 0.99 SOL * JOIN
-                DISCORD *{" "}
+                * LAUNCHING ON 15TH SEPTEMBER * MINT PRICE 0.99 SOL *{" "}
               </div>
             )}
           </Ticker>

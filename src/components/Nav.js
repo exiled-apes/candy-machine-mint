@@ -19,7 +19,7 @@ function Nav() {
             <li>
               <Link
                 to="/nft"
-                className={pathname === "/nft" && "text-primary-light glow"}
+                className={pathname === "/nft" && "text-primary-light nav-glow"}
               >
                 gen-1 nft drop
               </Link>
@@ -27,7 +27,9 @@ function Nav() {
             <li>
               <Link
                 to="/roadmap"
-                className={pathname === "/roadmap" && "text-primary-light glow"}
+                className={
+                  pathname === "/roadmap" && "text-primary-light nav-glow"
+                }
               >
                 roadmap
               </Link>
@@ -36,7 +38,7 @@ function Nav() {
               <Link
                 to="/tokenomics"
                 className={
-                  pathname === "/tokenomics" && "text-primary-light glow"
+                  pathname === "/tokenomics" && "text-primary-light nav-glow"
                 }
               >
                 tokenomics
@@ -45,7 +47,7 @@ function Nav() {
             <li>
               <Link
                 to="/faq"
-                className={pathname === "/faq" && "text-primary-light glow"}
+                className={pathname === "/faq" && "text-primary-light nav-glow"}
               >
                 faq
               </Link>

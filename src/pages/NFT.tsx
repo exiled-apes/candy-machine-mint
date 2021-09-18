@@ -7,7 +7,7 @@ import Cyborgs from "../assets/nft/cyborgs.svg";
 import General from "../assets/nft/general.png";
 import Lieutenant from "../assets/nft/lieutenant.png";
 import Soldier from "../assets/nft/soldier.png";
-import CyborgBreakdown from "../assets/nft/cyborg-breakdown.png";
+import CyborgBreakdown from "../assets/nft/cyborg-breakdown.svg";
 
 import Mercury from "../assets/nft/bg/mercury-bg.png";
 import Earth from "../assets/nft/bg/earth-bg.png";
@@ -108,7 +108,7 @@ function NFT(props: RouteComponentProps) {
           <span className="text-primary-dark">5 forces</span>
         </p>
         <img src={Cyborgs} alt="cyborgs" className="mt-14 mx-auto" />
-        <div className="text-white font-orb uppercase relative px-36">
+        <div className="text-white font-orb uppercase relative px-48">
           <img
             src={Satelite}
             alt="Satelite"
@@ -166,7 +166,7 @@ function NFT(props: RouteComponentProps) {
             className="mx-auto mt-16"
           />
         </div>
-        <div className="text-center mt-36 text-white uppercase font-orb px-36 relative">
+        <div className="text-center mt-36 text-white uppercase font-orb px-52 relative">
           <img
             src={WhiteSpaceship}
             alt="WhiteSpaceship"
