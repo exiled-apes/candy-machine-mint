@@ -20,6 +20,7 @@ import {
 
 import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
 import TextAndImage from "./shared/TextAndImage";
+import Footer from "./shared/Footer";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -136,7 +137,12 @@ const App = () => {
             />
           </div>
         </div>
-
+        <Footer 
+          image={placeHolderImage}
+          disclaimer='this is a generic disclaimer statement'
+          roadmapLink='https://www.solpenguins.com/'
+          faqLink='https://www.solpenguins.com/'
+        />
       </div>
     </div>
     );
