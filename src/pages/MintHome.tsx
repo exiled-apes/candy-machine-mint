@@ -1,10 +1,14 @@
+/* eslint-disable react/jsx-no-target-blank */
+/* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
 import { Button, CircularProgress, Snackbar } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import Nav from '../components/Nav';
+import { Logo } from '../components/Nav';
 import { Link } from '@reach/router';
+
+import { WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
 
 import * as anchor from '@project-serum/anchor';
 
@@ -51,7 +55,7 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-
+  // const [itemsRemaining, setItemsRemaining] = useState<number>();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: '',
@@ -168,9 +172,63 @@ const Home = (props: HomeProps) => {
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
+  //TODO: create useEffect to liveDate, mints remaining & mint price info without connecting to a wallet address
+
+  console.log('isActive', isActive);
   return (
     <main>
-      <Nav />
+      <header className="text-white bg-black absolute top-0 inset-x-0 h-16 z-10 flex justify-between items-center px-16">
+        <div className="flex items-center space-x-10">
+          <div>
+            <Link to="/">
+              <Logo />
+            </Link>
+          </div>
+        </div>
+        <div className="flex space-x-7 text-2xl">
+          <div className="flex flex-col justify-center">
+            {wallet.connected && (
+              <p className="text-sm">
+                Address: {shortenAddress(wallet.publicKey?.toBase58() || '')}
+              </p>
+            )}
+
+            {wallet.connected && (
+              <p className="text-sm">
+                Balance: {(balance || 0).toLocaleString()} SOL
+              </p>
+            )}
+          </div>
+          <div>
+            {!wallet.connected ? (
+              <ConnectButton
+                style={{
+                  backgroundColor: '#101010',
+                  color: 'white',
+                  fontSize: '16px',
+                  borderRadius: '6px',
+                  border: '4px solid white',
+                }}
+              >
+                Connect Wallet
+              </ConnectButton>
+            ) : (
+              <WalletDisconnectButton
+                startIcon={undefined}
+                style={{
+                  backgroundColor: '#101010',
+                  color: 'white',
+                  fontSize: '16px',
+                  borderRadius: '6px',
+                  border: '4px solid white',
+                }}
+              >
+                Disconnect
+              </WalletDisconnectButton>
+            )}
+          </div>
+        </div>
+      </header>
       <div>
         <div
           className="h-screen bg-center bg-cover grid items-center relative "
@@ -185,19 +243,21 @@ const Home = (props: HomeProps) => {
             <div className="flex flex-row justify-evenly">
               <div>
                 <p className="font-orb text-1xl text-white mt-10 space-y-2 uppercase">
-                  MINTING STARTS IN
+                  {isActive ? 'MINTING STARTS' : 'MINTING STARTS IN'}
                 </p>
-                <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold">
-                  00 : 12 : 36
-                </p>
-                <button>+ Add reminder</button>
+                <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold"></p>
+                {!isActive && (
+                  <button>
+                    TODO: insert google calender invite here(+ Add reminder)
+                  </button>
+                )}
               </div>
               <div>
                 <p className="font-orb text-1xl text-white mt-10 space-y-2 uppercase">
                   CYBORGS AVAILABLE
                 </p>
                 <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold">
-                  10,000 / 10,000
+                  {/* {itemsRemaining} / 10,000 */}
                 </p>
               </div>
               <div>
@@ -205,17 +265,37 @@ const Home = (props: HomeProps) => {
                   MINT PRICE
                 </p>
                 <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold">
-                  0.99 SOL
+                  {/* 0.99 SOL */}
                 </p>
               </div>
             </div>
             <div className="flex justify-center">
-              {/* className="btn-secondary font-black" */}
               <MintContainer>
                 {!wallet.connected ? (
-                  <ConnectButton>Connect Wallet</ConnectButton>
+                  <ConnectButton
+                    style={{
+                      display: 'inline-block',
+                      backgroundColor: '#101010',
+                      color: 'white',
+                      fontSize: '16px',
+                      padding: '12px 54px',
+                      borderRadius: '6px',
+                      border: '4px solid white',
+                    }}
+                  >
+                    Connect Wallet
+                  </ConnectButton>
                 ) : (
                   <MintButton
+                    style={{
+                      display: 'inline-block',
+                      backgroundColor: '#101010',
+                      color: 'white',
+                      fontSize: '16px',
+                      padding: '12px 54px',
+                      borderRadius: '6px',
+                      border: '4px solid white',
+                    }}
                     disabled={isSoldOut || isMinting || !isActive}
                     onClick={onMint}
                     variant="contained"
@@ -226,17 +306,10 @@ const Home = (props: HomeProps) => {
                       isMinting ? (
                         <CircularProgress />
                       ) : (
-                        'MINT'
+                        'MINT CYBORG'
                       )
                     ) : (
-                      <Countdown
-                        date={startDate}
-                        onMount={({ completed }) =>
-                          completed && setIsActive(true)
-                        }
-                        onComplete={() => setIsActive(true)}
-                        renderer={renderCounter}
-                      />
+                      'MINT CYBORG (SOON)'
                     )}
                   </MintButton>
                 )}
@@ -354,13 +427,12 @@ const Home = (props: HomeProps) => {
           </a>
         </div>
       </div>
-      {wallet.connected && (
-        <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || '')}</p>
-      )}
-
-      {wallet.connected && (
-        <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-      )}
+      <Countdown
+        date={startDate}
+        // onMount={({ completed }) => completed && setIsActive(true)}
+        onComplete={() => setIsActive(true)}
+        renderer={renderCounter}
+      />
       <Snackbar
         open={alertState.open}
         autoHideDuration={6000}

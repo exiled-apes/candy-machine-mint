@@ -1,7 +1,7 @@
-import { Link } from "@reach/router";
+import { Link } from '@reach/router';
 
-import Discord from "../assets/icons/discord.svg";
-import Twitter from "../assets/icons/twitter.svg";
+import Discord from '../assets/icons/discord.svg';
+import Twitter from '../assets/icons/twitter.svg';
 
 function Nav() {
   return (
@@ -49,7 +49,7 @@ function Nav() {
 
 export default Nav;
 
-const Logo = () => (
+export const Logo = () => (
   <svg
     width={188}
     height={32}
