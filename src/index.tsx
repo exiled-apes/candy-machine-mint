@@ -16,10 +16,10 @@ ReactDOM.render(
     <div className="font-inter">
       <Router>
         <Landing path="/" />
-        <NFT path="/nft" />
-        <Roadmap path="/roadmap" />
-        <Tokenomics path="/tokenomics" />
-        <FAQ path="/faq" />
+        <NFT path="nft" />
+        <Roadmap path="roadmap" />
+        <Tokenomics path="tokenomics" />
+        <FAQ path="faq" />
       </Router>
     </div>
   </React.StrictMode>,
