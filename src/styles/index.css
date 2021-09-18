@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .glow {
-  text-shadow: 0 0 10px #5c8588;
+  text-shadow: 4px 4px 40px #81d4da;
 }
 
 .div-glow {
