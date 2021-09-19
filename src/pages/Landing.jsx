@@ -49,7 +49,7 @@ function Landing(props) {
       >
         <div className="max-w-5xl">
           <h1
-            className="text-7xl font-black italic transform transition-all opacity-0 -translate-x-6 duration-700 ease-in-out"
+            className="text-7xl font-black italic transform transition-all opacity-0 -translate-x-6 duration-900 ease-out"
             ref={headingRef}
           >
             1st COMMUNITY-OWNED{" "}

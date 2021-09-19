@@ -124,11 +124,14 @@ function NFT(props: RouteComponentProps) {
               <div className="flex items-center justify-center">
                 <img src={General} alt="" />
               </div>
-              <div className="mt-3 text-3xl font-medium">
+              <div className="mt-3 text-3xl">
                 <p>General</p>
               </div>
               <div className="text-lg mt-2">
                 <p>Lead from the front</p>
+              </div>
+              <div className="text-lg mt-0.5 text-yellow-200">
+                <p>LEGENDARY (5%)</p>
               </div>
             </div>
             <div className=" flex flex-col">
@@ -141,6 +144,9 @@ function NFT(props: RouteComponentProps) {
               <div className="text-lg mt-2">
                 <p>scale the impact</p>
               </div>
+              <div className="text-lg mt-0.5 text-blue-200">
+                <p>RARE (20%)</p>
+              </div>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center justify-center">
@@ -151,6 +157,9 @@ function NFT(props: RouteComponentProps) {
               </div>
               <div className="text-lg mt-2">
                 <p>execute bravely</p>
+              </div>
+              <div className="text-lg mt-0.5 text-green-200">
+                <p>COMMON (75%)</p>
               </div>
             </div>
           </div>
