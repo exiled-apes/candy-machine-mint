@@ -26,7 +26,7 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div`
 width: 30%;
-height: 20%;
+height: 30%;
 position: absolute;
 top: 50%;
 left: 50%;
@@ -47,7 +47,10 @@ const MainContainer = styled.div`
   height: 100vh;
 `; // add your styles here
 
-const MintButton = styled(Button)`
+const MintButton = styled(Button)``; // add your styles here
+
+const ButtonContainer = styled(Button)`
+  height: 80%;
 `; // add your styles here
 
 const AirdogsLink = styled.div`
@@ -185,12 +188,15 @@ const Home = (props: HomeProps) => {
       <MintContainer>
         <p>Minted NFTs: {remainingNFTs === undefined? "?" : (initialAmountOfNFTs-(remainingNFTs || 0)).toLocaleString()} / {initialAmountOfNFTs.toLocaleString()}</p>
         {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
+          <ButtonContainer>
+            <ConnectButton>Connect Wallet</ConnectButton>
+          </ButtonContainer>
         ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
+          <ButtonContainer><MintButton
+              disabled={isSoldOut || isMinting || !isActive}
+              onClick={onMint}
+              variant="contained"
+              color="primary"
           >
             {isSoldOut ? (
               "SOLD OUT"
@@ -208,7 +214,7 @@ const Home = (props: HomeProps) => {
                 renderer={renderCounter}
               />
             )}
-          </MintButton>
+          </MintButton></ButtonContainer>
         )}
         <Snackbar
         open={alertState.open}
