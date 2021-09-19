@@ -29,6 +29,7 @@ import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
   getCandyMachineState,
+  getCandyMachineStateViaPrivateKey,
   mintOneToken,
   shortenAddress,
 } from '../lib/candy-machine';
@@ -55,7 +56,9 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-  // const [itemsRemaining, setItemsRemaining] = useState<number>();
+  const [totalItemsRemaining, setTotalItemsRemaining] = useState<number>();
+  const [solPrice, setSolPrice] = useState<number>();
+  const [totalItems, setTotalItems] = useState<number>();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: '',
@@ -173,6 +176,18 @@ const Home = (props: HomeProps) => {
   }, [wallet, props.candyMachineId, props.connection]);
 
   //TODO: create useEffect to liveDate, mints remaining & mint price info without connecting to a wallet address
+  useEffect(() => {
+    (async () => {
+      const info = await getCandyMachineStateViaPrivateKey(
+        props.candyMachineId,
+        props.connection
+      );
+      setTotalItemsRemaining(info.itemsRemaining);
+      setTotalItems(info.itemsAvailable);
+      setSolPrice(info.price);
+      // console.log('info', info);
+    })();
+  }, [props.candyMachineId, props.connection]);
 
   console.log('isActive', isActive);
   return (
@@ -245,10 +260,17 @@ const Home = (props: HomeProps) => {
                 <p className="font-orb text-1xl text-white mt-10 space-y-2 uppercase">
                   {isActive ? 'MINTING STARTS' : 'MINTING STARTS IN'}
                 </p>
-                <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold"></p>
+                <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold">
+                  <Countdown
+                    date={startDate}
+                    onMount={({ completed }) => completed && setIsActive(true)}
+                    onComplete={() => setIsActive(true)}
+                    renderer={renderCounter}
+                  />
+                </p>
                 {!isActive && (
                   <button>
-                    TODO: insert google calender invite here(+ Add reminder)
+                    {/* TODO: insert google calender invite here(+ Add reminder) */}
                   </button>
                 )}
               </div>
@@ -257,7 +279,7 @@ const Home = (props: HomeProps) => {
                   CYBORGS AVAILABLE
                 </p>
                 <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold">
-                  {/* {itemsRemaining} / 10,000 */}
+                  {totalItemsRemaining} / {totalItems}
                 </p>
               </div>
               <div>
@@ -265,11 +287,11 @@ const Home = (props: HomeProps) => {
                   MINT PRICE
                 </p>
                 <p className="font-orb text-3xl text-white mt-1 space-y-2 uppercase bold">
-                  {/* 0.99 SOL */}
+                  {solPrice} SOL
                 </p>
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-8">
               <MintContainer>
                 {!wallet.connected ? (
                   <ConnectButton
@@ -318,7 +340,7 @@ const Home = (props: HomeProps) => {
           </div>
         </div>
       </div>
-      <div style={{ background: '#101010' }}>
+      <div style={{ background: '#101010', paddingBottom: '2rem' }}>
         <h2 className="text-primary-light relative glow text-4xl text-center">
           HOW IT WORKS?
         </h2>
@@ -427,12 +449,6 @@ const Home = (props: HomeProps) => {
           </a>
         </div>
       </div>
-      <Countdown
-        date={startDate}
-        // onMount={({ completed }) => completed && setIsActive(true)}
-        onComplete={() => setIsActive(true)}
-        renderer={renderCounter}
-      />
       <Snackbar
         open={alertState.open}
         autoHideDuration={6000}
@@ -456,9 +472,13 @@ interface AlertState {
 }
 
 const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
-  return (
+  return completed ? (
+    'Now!'
+  ) : (
     <CounterText>
-      {hours} hours, {minutes} minutes, {seconds} seconds
+      <p>
+        {hours} : {minutes} : {seconds}
+      </p>
     </CounterText>
   );
 };

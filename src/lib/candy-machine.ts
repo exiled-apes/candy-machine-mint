@@ -1,10 +1,11 @@
 import * as anchor from "@project-serum/anchor";
-
+import { Keypair, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import {
   MintLayout,
   TOKEN_PROGRAM_ID,
   Token,
 } from "@solana/spl-token";
+import bs58 from 'bs58';
 
 export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey(
   "cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ"
@@ -30,6 +31,14 @@ interface CandyMachineState {
   itemsRedeemed: number;
   itemsRemaining: number;
   goLiveDate: Date,
+}
+interface CandyMachineStateViaPrivateKey {
+  candyMachine: CandyMachine;
+  itemsAvailable: number;
+  itemsRedeemed: number;
+  itemsRemaining: number;
+  goLiveDate: Date,
+  price: number,
 }
 
 export const awaitTransactionSignatureConfirmation = async (
@@ -305,4 +314,54 @@ export const shortenAddress = (address: string, chars = 4): string => {
 
 const sleep = (ms: number): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export const getCandyMachineStateViaPrivateKey = async (
+  candyMachineId: anchor.web3.PublicKey,
+  connection: anchor.web3.Connection,
+): Promise<CandyMachineStateViaPrivateKey> => {
+
+  const walletKey = anchor.web3.Keypair.fromSecretKey(
+      new Uint8Array(
+        bs58.decode(
+          '3VbWCV7G55YE8dMbSyGSuH23KE4cJoCy4asy6ED3UA9sJuNDtvUX3MJ3dAwv3M3QgDVj1ihfTwgbaP2tNkF7PVrp'
+        )
+      )
+    );
+
+  const walletWrapper = new anchor.Wallet(walletKey);
+
+  const provider = new anchor.Provider(connection, walletWrapper, {
+    preflightCommitment: "recent",
+  });
+
+  const idl = await anchor.Program.fetchIdl(
+    CANDY_MACHINE_PROGRAM,
+    provider
+  );
+
+  const program = new anchor.Program(idl, CANDY_MACHINE_PROGRAM, provider);
+  const candyMachine = {
+    id: candyMachineId,
+    connection,
+    program,
+  }
+
+  const state: any = await program.account.candyMachine.fetch(candyMachineId);
+  const itemsAvailable = state.data.itemsAvailable.toNumber();
+  const itemsRedeemed = state.itemsRedeemed.toNumber();
+  const itemsRemaining = itemsAvailable - itemsRedeemed;
+  const price = state.data.price /LAMPORTS_PER_SOL;
+
+  let goLiveDate = state.data.goLiveDate.toNumber();
+  goLiveDate = new Date(goLiveDate * 1000);
+
+  return {
+    candyMachine,
+    itemsAvailable,
+    itemsRedeemed,
+    itemsRemaining,
+    goLiveDate,
+    price,
+  };
 }
