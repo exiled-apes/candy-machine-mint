@@ -24,3 +24,12 @@ body {
 text-white {
   color: white;
 }
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-svg {
+  fill: #6163ff;
+}
