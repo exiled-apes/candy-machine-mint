@@ -29,8 +29,22 @@ import PlanetBlue from "../assets/nft/decorative/planet-blue.svg";
 import Satelite from "../assets/nft/decorative/satelite.svg";
 import StoneGrey from "../assets/nft/decorative/stone-grey.svg";
 import WhiteSpaceship from "../assets/nft/decorative/white-spaceship.png";
+import { useEffect, useRef } from "react";
 
 function NFT(props: RouteComponentProps) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const headingGlow = useRef<HTMLSpanElement>(null);
+  const cyborgGif = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    headingRef.current?.classList.remove("opacity-0");
+    headingRef.current?.classList.remove("-translate-x-8");
+
+    headingGlow.current?.classList.add("glow");
+
+    cyborgGif.current?.classList.remove("translate-x-8");
+    cyborgGif.current?.classList.remove("opacity-0");
+    cyborgGif.current?.classList.remove("scale-75");
+  }, []);
   return (
     <div className="relative pb-20" style={{ background: "#101010" }}>
       <Nav />
@@ -39,8 +53,16 @@ function NFT(props: RouteComponentProps) {
         id="nft-drop-hero"
       >
         <div className="flex flex-col items-start justify-center">
-          <h1 className="font-black italic text-7xl uppercase">
-            <span className="text-primary-light glow">Gen-1 Cyborg</span>
+          <h1
+            className="font-black italic text-7xl uppercase  transform transition-all opacity-0 -translate-x-8 duration-500 ease-out"
+            ref={headingRef}
+          >
+            <span
+              className="text-primary-light delay-500 duration-300"
+              ref={headingGlow}
+            >
+              Gen-1 Cyborg
+            </span>
             <br /> NFT drop
           </h1>
           <p className="uppercase font-black italic text-xl mt-7">
@@ -61,7 +83,10 @@ function NFT(props: RouteComponentProps) {
           </div>
         </div>
         <div className="grid items-center justify-center">
-          <div className="border-primary-light rounded-md border-8 w-1/2 mx-auto div-glow">
+          <div
+            className="border-primary-light rounded-md border-8 w-1/2 mx-auto transition-all  transform duration-500 ease-out opacity-0 translate-x-8 scale-75"
+            ref={cyborgGif}
+          >
             <img src={HeroCyborg} alt="Cyborg hero" />
           </div>
         </div>

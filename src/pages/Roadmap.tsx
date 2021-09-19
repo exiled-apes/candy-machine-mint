@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, RouteComponentProps } from "@reach/router";
 import Nav from "../components/Nav";
 
@@ -6,6 +6,13 @@ import Ship from "../assets/roadmap/ship.png";
 import RoadmapImage from "../assets/roadmap/roadmap.svg";
 
 function Roadmap(props: RouteComponentProps) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    headingRef.current?.classList.remove("-translate-y-8");
+    headingRef.current?.classList.remove("opacity-0");
+    headingRef.current?.classList.remove("scale-90");
+    headingRef.current?.classList.add("glow");
+  }, []);
   return (
     <div style={{ background: "#101010" }} className="pb-30">
       <Nav />
@@ -13,7 +20,10 @@ function Roadmap(props: RouteComponentProps) {
         id="roadmap-hero"
         className="w-full h-screen py-40 relative bg-center bg-cover"
       >
-        <h1 className="text-primary-light glow text-5xl uppercase font-black italic text-center">
+        <h1
+          className="text-primary-light text-6xl uppercase font-black italic text-center duration-400 transition-all ease-out transform -translate-y-8 opacity-0 scale-90"
+          ref={headingRef}
+        >
           Roadmap
         </h1>
         <img src={Ship} alt="Super Cool Spaceship" className="mt-10 mx-auto" />
