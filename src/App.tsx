@@ -44,8 +44,12 @@ const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
 const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 const theme = createTheme({
+  typography: {fontFamily: 'Changa One'},
     palette: {
         type: 'dark',
+        primary: {
+          main: '#192024',
+        },
     },
     overrides: {
         MuiButtonBase: {
