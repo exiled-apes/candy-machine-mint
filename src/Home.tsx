@@ -41,6 +41,8 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
+  const [counter, setCounter] = useState<any>({});
+  const [price, setPrice] = useState<number | null>(null);
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -132,7 +134,7 @@ const Home = (props: HomeProps) => {
     (async () => {
       if (!wallet) return;
 
-      const { candyMachine, goLiveDate, itemsRemaining } =
+      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable, price } =
         await getCandyMachineState(
           wallet as anchor.Wallet,
           props.candyMachineId,
@@ -142,6 +144,11 @@ const Home = (props: HomeProps) => {
       setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
+      setCounter({
+        itemsRemaining,
+        itemsAvailable
+      });
+      setPrice(price);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
@@ -154,6 +161,15 @@ const Home = (props: HomeProps) => {
       {wallet && (
         <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
       )}
+      
+      {!!counter && wallet &&(
+        <>
+          Items available: {counter.itemsRemaining} / {counter.itemsAvailable}
+          <br />
+          <br />
+        </>
+      )}
+
 
       <MintContainer>
         {!wallet ? (
@@ -170,7 +186,7 @@ const Home = (props: HomeProps) => {
               isMinting ? (
                 <CircularProgress />
               ) : (
-                "MINT"
+                `MINT FOR ${price} SOL `
               )
             ) : (
               <Countdown
