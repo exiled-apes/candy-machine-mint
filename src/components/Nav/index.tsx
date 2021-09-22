@@ -23,7 +23,7 @@ const Nav = () => {
             <li key={link} onClick={() => setSelected(link)}>
               <a
                 href={link}
-                className={`nav-link ${selected == link && "nav-link--active"}`}
+                className={`nav-link ${selected === link && "nav-link--active"}`}
               >
                 {" "}
                 {name}

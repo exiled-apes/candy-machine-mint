@@ -23,7 +23,6 @@ import {
 
 import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
 import { createTheme, ThemeProvider } from "@material-ui/core";
-import { Collection } from "typescript";
 import Rarity from "./components/Rarity";
 import RoadMap from "./components/RoadMap";
 import Follow from "./components/Follow";

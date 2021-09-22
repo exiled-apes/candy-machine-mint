@@ -17,6 +17,7 @@
 }
 .carousel {
   width: 80%;
+  margin-right: 2rem;
 }
 .rarity__option {
   background: rgba(196, 196, 196, 0.1);

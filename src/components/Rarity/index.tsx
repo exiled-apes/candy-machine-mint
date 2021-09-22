@@ -27,7 +27,7 @@ const Rarity = () => {
       <div className="rarity-menu">
         <div className="rarity-options">
           {rarityList.map((rarity) => (
-            <div onClick={() => setSelected(rarity)} className={`rarity__option ${selected == rarity && 'rarity__option--selected'} `}>{rarity}</div>
+            <div onClick={() => setSelected(rarity)} className={`rarity__option ${selected === rarity && 'rarity__option--selected'} `}>{rarity}</div>
           ))}
          
         </div>

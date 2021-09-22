@@ -6,5 +6,5 @@
   box-sizing: border-box;
   width: 100vw ‰ !important;
   background: url("./images/top-background.png");
-  background-size: contain;
+  background-size: cover;
 }

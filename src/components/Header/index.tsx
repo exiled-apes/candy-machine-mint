@@ -1,5 +1,4 @@
 import React from "react";
-import ZGirls from "../../images/zgirls.svg";
 import ZGirl from "../../images/zgirl.svg";
 import "./styles.css";
 interface Props {
