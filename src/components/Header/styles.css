@@ -1,5 +1,6 @@
 .header {
   padding: 12rem 0rem;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +21,7 @@
   color: white;
   line-height: 28px;
   margin-top: 2rem;
+  font-weight: 800;
 }
 .connect-button {
   color: white !important;

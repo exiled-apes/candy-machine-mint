@@ -8,7 +8,6 @@ interface Props {
 const Header:React.FC<Props> = ({children}) => {
   return (
     <div className="header">
-      <img src={ZGirls} alt="zgirls" />
       <p className="header__content">
         A limited set of 3 333 unique algorithm generated Z Girls artworks has
         over 100 hand-drawn traits which made each of NFT one-of-a-kind. Make
