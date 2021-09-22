@@ -3,14 +3,10 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
 import * as anchor from "@project-serum/anchor";
-
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
-
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -19,13 +15,23 @@ import {
   shortenAddress,
 } from "./candy-machine";
 
-const ConnectButton = styled(WalletDialogButton)``;
+import "./Home.scss";
+
+const ConnectButton = styled(WalletDialogButton)`
+  color: yellow;
+`;
 
 const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
 const MintButton = styled(Button)``; // add your styles here
+
+interface AlertState {
+  open: boolean;
+  message: string;
+  severity: "success" | "info" | "warning" | "error" | undefined;
+}
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -41,17 +47,25 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-
+  const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: "",
     severity: undefined,
   });
-
   const [startDate, setStartDate] = useState(new Date(props.startDate));
 
   const wallet = useWallet();
-  const [candyMachine, setCandyMachine] = useState<CandyMachine>();
+
+  console.log("wallet", wallet);
+
+  const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
+    return (
+      <CounterText>
+        {hours} hours, {minutes} minutes, {seconds} seconds
+      </CounterText>
+    );
+  };
 
   const onMint = async () => {
     try {
@@ -159,71 +173,56 @@ const Home = (props: HomeProps) => {
   }, [wallet, props.candyMachineId, props.connection]);
 
   return (
-    <main>
-      {wallet.connected && (
-        <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-      )}
-
-      {wallet.connected && (
-        <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-      )}
-
-      <MintContainer>
-        {!wallet.connected ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
-              ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
-          </MintButton>
+    <div className="home">
+      Home goes here
+      <main>
+        {wallet.connected && (
+          <>
+            <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
+            <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
+          </>
         )}
-      </MintContainer>
 
-      <Snackbar
-        open={alertState.open}
-        autoHideDuration={6000}
-        onClose={() => setAlertState({ ...alertState, open: false })}
-      >
-        <Alert
+        <MintContainer>
+          {wallet.connected && (
+            <MintButton
+              disabled={isSoldOut || isMinting || !isActive}
+              onClick={onMint}
+              variant="contained"
+            >
+              {isSoldOut ? (
+                "SOLD OUT"
+              ) : isActive ? (
+                isMinting ? (
+                  <CircularProgress />
+                ) : (
+                  "MINT"
+                )
+              ) : (
+                <Countdown
+                  date={startDate}
+                  onMount={({ completed }) => completed && setIsActive(true)}
+                  onComplete={() => setIsActive(true)}
+                  renderer={renderCounter}
+                />
+              )}
+            </MintButton>
+          )}
+        </MintContainer>
+        <Snackbar
+          open={alertState.open}
+          autoHideDuration={6000}
           onClose={() => setAlertState({ ...alertState, open: false })}
-          severity={alertState.severity}
         >
-          {alertState.message}
-        </Alert>
-      </Snackbar>
-    </main>
-  );
-};
-
-interface AlertState {
-  open: boolean;
-  message: string;
-  severity: "success" | "info" | "warning" | "error" | undefined;
-}
-
-const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
-  return (
-    <CounterText>
-      {hours} hours, {minutes} minutes, {seconds} seconds
-    </CounterText>
+          <Alert
+            onClose={() => setAlertState({ ...alertState, open: false })}
+            severity={alertState.severity}
+          >
+            {alertState.message}
+          </Alert>
+        </Snackbar>
+      </main>
+    </div>
   );
 };
 

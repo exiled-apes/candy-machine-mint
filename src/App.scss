@@ -1,0 +1,13 @@
+.app {
+  padding: 100px;
+
+  .wallet-adapter-button {
+    margin: 0 auto;
+  }
+  .wallet-adapter-dropdown {
+    width: 100%;
+  }
+  .wallet-adapter-dropdown-list {
+    right: calc(50% - 116px);
+  }
+}

@@ -1,0 +1,36 @@
+@import "~bulma/sass/utilities/functions";
+
+$cascading-white: #f6f6f6;
+$cascading-white-invert: findColorInvert($cascading-white);
+$frost-grey: #838383;
+$frost-grey-invert: findColorInvert($frost-grey);
+$shadowed-steel: #4b4b4b;
+$shadowed-steel-invert: findColorInvert($shadowed-steel);
+
+$lingonberry: #ff2a61;
+$lingonberry-invert: findColorInvert($lingonberry);
+$mint-jelly: #3dd3aa;
+$mint-jelly-invert: findColorInvert($mint-jelly);
+
+$custom-colors: (
+  "cascading-white": (
+    $cascading-white,
+    $cascading-white-invert,
+  ),
+  "lingonberry": (
+    $lingonberry,
+    $lingonberry-invert,
+  ),
+  "mint-jelly": (
+    $mint-jelly,
+    $mint-jelly-invert,
+  ),
+  "frost-grey": (
+    $frost-grey,
+    $frost-grey-invert,
+  ),
+  "shadowed-steel": (
+    $shadowed-steel,
+    $shadowed-steel-invert,
+  ),
+);
