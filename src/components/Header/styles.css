@@ -10,7 +10,7 @@
 .rarity-heading {
   text-align: center;
   font-size: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 .header__content {
   font-size: 1.3rem;
@@ -19,7 +19,7 @@
   text-align: center;
   color: white;
   line-height: 28px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .connect-button {
   color: white !important;
@@ -28,7 +28,7 @@
   background: #cca146 !important;
   box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.1) !important;
   border-radius: 12 !important;
-  margin-top: 4rem !important;
+  margin-top: 1rem !important;
 }
 .z-girl {
   position: absolute;

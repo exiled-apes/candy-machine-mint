@@ -1,32 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import Zombie from "../../images/zombie.png";
 import Slider from "react-slick";
+const rarityList = [
+  "Head",
+  "Body",
+  "Background",
+  "Hat",
+  "Glasses",
+  "Beard",
+  "Necklace",
+  "Other",
+];
 const Rarity = () => {
+  const [selected, setSelected] = useState("Head");
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
   return (
-    <div className="rarity-container">
+    <div className="rarity-container" id="rarity">
       <h1 className="rarity-heading">Rarity Chart</h1>
       <div className="rarity-menu">
         <div className="rarity-options">
-          <div className="rarity__option rarity__option--selected ">Head</div>
-          <div className="rarity__option">Body</div>
-          <div className="rarity__option">Background</div>
-          <div className="rarity__option">Hat</div>
-          <div className="rarity__option">Glasses</div>
-          <div className="rarity__option">Beard</div>
-          <div className="rarity__option">Necklace</div>
-          <div className="rarity__option">Other</div>
+          {rarityList.map((rarity) => (
+            <div onClick={() => setSelected(rarity)} className={`rarity__option ${selected == rarity && 'rarity__option--selected'} `}>{rarity}</div>
+          ))}
+         
         </div>
         <div className="carousel">
           <Slider {...settings}>
-            <div  className="rare-zombie">
+            <div className="rare-zombie">
               <img src={Zombie} alt="zombie" />
               <p>Earing 2. Uncommon</p>
               <p>1.76%</p>

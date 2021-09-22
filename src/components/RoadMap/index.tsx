@@ -3,7 +3,7 @@ import "./styles.css";
 import Path from "../../images/path.svg";
 const RoadMap = () => {
   return (
-    <div className="roadmap-container">
+    <div className="roadmap-container" id="roadmap">
       <div>
         <h1 className="roadmap__heading">RoadMap</h1>
         <div>
@@ -74,7 +74,7 @@ const RoadMap = () => {
           </div>
         </div>
       </div>
-      <div className="about-container">
+      <div className="about-container" id="about">
         <h1>About</h1>
         <p>
           This is our first and only one NFT collection of beautiful Creepy

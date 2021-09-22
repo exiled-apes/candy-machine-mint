@@ -3,7 +3,7 @@ import "./styles.css"
 import Zombie from "../../images/zombie.png";
 const Collections = () => {
     return (
-        <div className="collection-container">
+        <div className="collection-container" id="collection">
            <h1 className="collection-heading">Collections</h1>
            <div className="collection-images"> 
                 <img src={Zombie} className="collection-image" alt="zombie"/>

@@ -44,3 +44,6 @@
 .rare-zombie p {
   text-align: center;
 }
+.rare-zombie img {
+  width: 90%;
+}

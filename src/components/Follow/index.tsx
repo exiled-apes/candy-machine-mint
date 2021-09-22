@@ -6,7 +6,7 @@ import "./styles.css";
 const Follow = () => {
   return (
     <div>
-      <div className="follow-container">
+      <div className="follow-container" id="social">
         <h1>Follow Us</h1>
         <div>
           <a href="/">

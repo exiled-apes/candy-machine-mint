@@ -1,32 +1,36 @@
-import React from "react";
-import './styles.css';
-import Logo from '../../images/logo.svg';
+import React, { useState } from "react";
+import "./styles.css";
+import Logo from "../../images/zgirls.svg";
+
+const links = [
+  { name: "Home", link: "#home" },
+  { name: "Collection", link: "#collection" },
+  { name: "About", link: "#about" },
+  { name: "Rarity", link: "#rarity" },
+  { name: "RoadMap", link: "#roadmap" },
+  { name: "Social", link: "#social" },
+];
 const Nav = () => {
+  const [selected, setSelected] = useState("#home");
   return (
-    <div className="nav">
+    <div className="nav" id="#home">
       <div>
-        <img src={Logo} alt="logo" />
+        <img src={Logo} alt="logo" width="100"/>
       </div>
       <ul className="nav-links">
-        <li>
-          <a href="/" className="nav-link nav-link--active"> Home</a>
-        </li>
-        <li>
-          <a href="/" className="nav-link">Collection</a>
-        </li>
-        <li>
-          <a href="/" className="nav-link">About</a>
-        </li>
-        <li>
-          <a href="/" className="nav-link">Rarity Check</a>
-        </li>
-        <li>
-          <a href="/" className="nav-link">RoadMap</a>
-        </li>
-        <li>
-          <a href="/" className="nav-link">Social</a>
-        </li>
-        
+        {links.map(({ name, link }) => {
+          return (
+            <li key={link} onClick={() => setSelected(link)}>
+              <a
+                href={link}
+                className={`nav-link ${selected == link && "nav-link--active"}`}
+              >
+                {" "}
+                {name}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
