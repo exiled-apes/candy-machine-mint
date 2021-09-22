@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
+import Nav from './components/Nav/index';
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -134,19 +134,24 @@ const Home = (props: HomeProps) => {
     (async () => {
       if (!wallet) return;
 
-      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable, price } =
-        await getCandyMachineState(
-          wallet as anchor.Wallet,
-          props.candyMachineId,
-          props.connection
-        );
+      const {
+        candyMachine,
+        goLiveDate,
+        itemsRemaining,
+        itemsAvailable,
+        price,
+      } = await getCandyMachineState(
+        wallet as anchor.Wallet,
+        props.candyMachineId,
+        props.connection
+      );
 
       setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
       setCounter({
         itemsRemaining,
-        itemsAvailable
+        itemsAvailable,
       });
       setPrice(price);
     })();
@@ -157,19 +162,17 @@ const Home = (props: HomeProps) => {
       {wallet && (
         <p>Address: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
+      <Nav/>
 
-      {wallet && (
-        <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-      )}
-      
-      {!!counter && wallet &&(
+      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+
+      {!!counter && wallet && (
         <>
           Items available: {counter.itemsRemaining} / {counter.itemsAvailable}
           <br />
           <br />
         </>
       )}
-
 
       <MintContainer>
         {!wallet ? (

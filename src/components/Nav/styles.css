@@ -1,0 +1,26 @@
+.nav {
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(35, 26, 44, 0.85)
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin-right: 4rem;
+}
+.nav-link {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  margin: 0 2rem;
+
+}
+
+.nav-link--active {
+  padding: 1rem 1.4rem;
+  background: #cca146;
+  border-radius: 12px;
+}
