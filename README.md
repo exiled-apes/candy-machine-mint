@@ -49,13 +49,13 @@ This is a Solana account address. You can get the value for this from the `.cach
 REACT_APP_CANDY_MACHINE_ID=__PLACEHOLDER__
 ```
 
-Same as above; this is a Solana account address. You can get the value for this from the `./cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
+This is a Solana account address. You must use the public address of your created candy machine, otherwise you'll get errors. The public address is shown after you run create_candy_machine with metaplex cli.
 
 ```
 REACT_APP_TREASURY_ADDRESS=__PLACEHOLDER__
 ```
 
-This the Solana address that receives the funds gathered during the minting process. More docs coming as we can test this.
+This is the Solana address that receives funds gathered during the minting process. You must use the public address of the wallet that ran candy machine, otherwise you'll get errors. More docs coming as we can test this.
 
 ```
 REACT_APP_CANDY_START_DATE=__PLACEHOLDER__
