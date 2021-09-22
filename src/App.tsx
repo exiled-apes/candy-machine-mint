@@ -2,9 +2,9 @@ import "./App.css";
 import { useMemo } from "react";
 
 import Mint from "./Home";
-import Nav from "./components/Nav"
-import Header from "./components/Header"
-import Collections from "./components/Collections"
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import Collections from "./components/Collections";
 import * as anchor from "@project-serum/anchor";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
@@ -26,6 +26,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Collection } from "typescript";
 import Rarity from "./components/Rarity";
 import RoadMap from "./components/RoadMap";
+import Follow from "./components/Follow";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -92,20 +93,23 @@ const App = () => {
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletDialogProvider>
-            <Nav />
-            <Header>
-            <Mint
-              candyMachineId={candyMachineId}
-              config={config}
-              connection={connection}
-              startDate={startDateSeed}
-              treasury={treasury}
-              txTimeout={txTimeout}
-            />
-            </Header>
-            <Collections/>
-            <Rarity/>
-            <RoadMap/>
+            <div className="section">
+              <Nav />
+              <Header>
+                <Mint
+                  candyMachineId={candyMachineId}
+                  config={config}
+                  connection={connection}
+                  startDate={startDateSeed}
+                  treasury={treasury}
+                  txTimeout={txTimeout}
+                />
+              </Header>
+              <Collections />
+            </div>
+            <Rarity />
+            <RoadMap />
+            <Follow />
           </WalletDialogProvider>
         </WalletProvider>
       </ConnectionProvider>

@@ -1,0 +1,17 @@
+.follow-container {
+  padding: 7rem;
+  background-color: #34244c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.follow-container img {
+    margin:1rem;
+}
+.copyright {
+    
+    background-color: #231A2C;
+    color:white;
+    text-align: center;
+    padding:1rem
+}
