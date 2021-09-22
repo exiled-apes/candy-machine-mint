@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import Nav from './components/Nav/index';
+import Nav from "./components/Nav/index";
+import Header from "./components/Header";
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -162,7 +163,6 @@ const Home = (props: HomeProps) => {
       {wallet && (
         <p>Address: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
-      <Nav/>
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
@@ -176,7 +176,9 @@ const Home = (props: HomeProps) => {
 
       <MintContainer>
         {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
+          <ConnectButton className="connect-button">
+            Connect Wallet
+          </ConnectButton>
         ) : (
           <MintButton
             disabled={isSoldOut || isMinting || !isActive}

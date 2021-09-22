@@ -1,8 +1,9 @@
 import "./App.css";
 import { useMemo } from "react";
 
-import Home from "./Home";
-
+import Mint from "./Home";
+import Nav from "./components/Nav"
+import Header from "./components/Header"
 import * as anchor from "@project-serum/anchor";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
@@ -44,28 +45,28 @@ const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
 const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 const theme = createTheme({
-    palette: {
-        type: 'dark',
+  palette: {
+    type: "dark",
+  },
+  overrides: {
+    MuiButtonBase: {
+      root: {
+        justifyContent: "flex-start",
+      },
     },
-    overrides: {
-        MuiButtonBase: {
-            root: {
-                justifyContent: 'flex-start',
-            },
-        },
-        MuiButton: {
-            root: {
-                textTransform: undefined,
-                padding: '12px 16px',
-            },
-            startIcon: {
-                marginRight: 8,
-            },
-            endIcon: {
-                marginLeft: 8,
-            },
-        },
+    MuiButton: {
+      root: {
+        textTransform: undefined,
+        padding: "12px 16px",
+      },
+      startIcon: {
+        marginRight: 8,
+      },
+      endIcon: {
+        marginLeft: 8,
+      },
     },
+  },
 });
 
 const App = () => {
@@ -73,32 +74,35 @@ const App = () => {
 
   const wallets = useMemo(
     () => [
-        getPhantomWallet(),
-        getSlopeWallet(),
-        getSolflareWallet(),
-        getSolletWallet({ network }),
-        getSolletExtensionWallet({ network })
+      getPhantomWallet(),
+      getSlopeWallet(),
+      getSolflareWallet(),
+      getSolletWallet({ network }),
+      getSolletExtensionWallet({ network }),
     ],
     []
   );
 
   return (
-      <ThemeProvider theme={theme}>
-        <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect>
-            <WalletDialogProvider>
-              <Home
-                candyMachineId={candyMachineId}
-                config={config}
-                connection={connection}
-                startDate={startDateSeed}
-                treasury={treasury}
-                txTimeout={txTimeout}
-              />
-            </WalletDialogProvider>
-          </WalletProvider>
-        </ConnectionProvider>
-      </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <ConnectionProvider endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect>
+          <WalletDialogProvider>
+            <Nav />
+            <Header>
+            <Mint
+              candyMachineId={candyMachineId}
+              config={config}
+              connection={connection}
+              startDate={startDateSeed}
+              treasury={treasury}
+              txTimeout={txTimeout}
+            />
+            </Header>
+          </WalletDialogProvider>
+        </WalletProvider>
+      </ConnectionProvider>
+    </ThemeProvider>
   );
 };
 
