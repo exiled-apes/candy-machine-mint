@@ -25,6 +25,7 @@ import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Collection } from "typescript";
 import Rarity from "./components/Rarity";
+import RoadMap from "./components/RoadMap";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -104,6 +105,7 @@ const App = () => {
             </Header>
             <Collections/>
             <Rarity/>
+            <RoadMap/>
           </WalletDialogProvider>
         </WalletProvider>
       </ConnectionProvider>

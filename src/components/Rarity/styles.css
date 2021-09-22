@@ -1,48 +1,46 @@
 .rarity-container {
-    padding: 4rem 0rem;
-    margin-top: 10rem;
-    background-color: rgba(52, 36, 76, 0.9);
-    z-index: 2;
-    padding-left: 5rem;
+  padding: 4rem 0rem;
+  margin-top: 10rem;
+  background-color: rgba(52, 36, 76, 0.9);
+  z-index: 2;
+  padding-left: 5rem;
 }
 .rarity-menu {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 .rarity-options {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
 .carousel {
-    width: 80%;
+  width: 80%;
 }
 .rarity__option {
-    background: rgba(196, 196, 196, 0.1);
-    /* Purple */
-    width: fit-content;
-    border: 1px solid #34244c;
-    box-sizing: border-box;
-    border-radius: 12px;
-    padding:1rem 2rem;
-    margin-bottom: 0.3rem;
-    color: white;
-
-  }
-  .rarity__option--selected {
-    background: #CCA146;
-    /* White */
-    border: 1px solid #FFFFFF;
-    color:black
-  }
+  background: rgba(196, 196, 196, 0.1);
+  cursor: pointer; /* Purple */
+  width: fit-content;
+  border: 1px solid #34244c;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  margin-bottom: 0.3rem;
+  color: white;
+}
+.rarity__option--selected {
+  background: #cca146;
+  /* White */
+  border: 1px solid #ffffff;
+  color: black;
+}
 
 .rare-zombie {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .rare-zombie p {
-    text-align: center;
+  text-align: center;
 }
