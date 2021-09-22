@@ -1,0 +1,28 @@
+.collection-container {
+  padding: 4rem 2rem;
+  background-color: rgba(52, 36, 76, 0.9);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.collection-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95vw;
+}
+.collection-image {
+  width: 17%;
+}
+.collection-heading {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 4rem;
+}
+.collection-detail {
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    width: 60vw;
+    text-align: center;
+}
