@@ -43,6 +43,7 @@ const Home = (props: HomeProps) => {
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [itemsAvailable, setItemsAvailable] = useState<number>();
   const [itemsRemaining, setItemsRemaining] = useState<number>();
+  const [mintPriceInSol, setMintPriceInSol] = useState<number>(0);
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -134,7 +135,7 @@ const Home = (props: HomeProps) => {
     (async () => {
       if (!wallet) return;
 
-      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable } =
+      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable, price } =
         await getCandyMachineState(
           wallet as anchor.Wallet,
           props.candyMachineId,
@@ -146,6 +147,7 @@ const Home = (props: HomeProps) => {
       setCandyMachine(candyMachine);
       setItemsAvailable(itemsAvailable);
       setItemsRemaining(itemsRemaining);
+      setMintPriceInSol(price / LAMPORTS_PER_SOL);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
@@ -178,7 +180,7 @@ const Home = (props: HomeProps) => {
               isMinting ? (
                 <CircularProgress />
               ) : (
-                "MINT"
+                "MINT FOR " + mintPriceInSol + " SOL"
               )
             ) : (
               <Countdown
