@@ -13,6 +13,19 @@
   font-size: 3rem;
   margin-bottom: 2rem;
 }
+.header   p {
+  font-size:1.3rem;
+  font-weight: 800;
+}
+.header main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header main {
+  color: orange;
+  font-size:1.3rem
+}
 .header__content {
   font-size: 1.3rem;
   font-weight: 500;
