@@ -51,9 +51,9 @@ const Rarity = () => {
           <Slider {...settings}>
             {attributesList.map((attribute) => (
               <div className="rare-zombie" key={attribute.def}>
-                <img src={attribute} alt="zombie" />
-                <p>Earing 2. Uncommon</p>
-                <p>1.76%</p>
+                <img src={attribute.src} alt="zombie" />
+                <p>{attribute.title}</p>
+                <p>{attribute.rarity}%</p>
               </div>
             ))}
           </Slider>

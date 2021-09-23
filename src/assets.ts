@@ -17,7 +17,23 @@ import Background4 from "./images/background/background 23.png";
 export const assets: {
   [key: string]: any[];
 } = {
-  Head: [AngledBob, Natural, Fire, CobWeb, Bangs],
-  Other: [FireMouth, IceMouth, OrcMouth, VampireMouth],
-  Background: [Background, Background2, Background3, Background4],
+  Head: [
+    { src: AngledBob, title: "Hat", rarity: 1.24 },
+    { src: Natural, title: "Hat", rarity: 1.24 },
+    { src: Fire, title: "Hat", rarity: 1.24 },
+    { src: CobWeb, title: "Hat", rarity: 1.24 },
+    { src: Bangs, title: "Hat", rarity: 1.24 },
+  ],
+  Other: [
+    { src: FireMouth, title: "Hat", rarity: 1.24 },
+    { src: IceMouth, title: "Hat", rarity: 1.24 },
+    { src: OrcMouth, title: "Hat", rarity: 1.24 },
+    { src: VampireMouth, title: "Hat", rarity: 1.24 },
+  ],
+  Background: [
+    { src: Background, title: "Hat", rarity: 1.24 },
+    { src: Background2, title: "Hat", rarity: 1.24 },
+    { src: Background3, title: "Hat", rarity: 1.24 },
+    { src: Background4, title: "Hat", rarity: 1.24 },
+  ],
 };
