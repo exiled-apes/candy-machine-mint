@@ -25,7 +25,6 @@ const Rarity = () => {
   const attributesList = useMemo(() => {
     //ts ignore
     const attribute = assets[selected];
-    console.log(assets);
     if (attribute) {
       return attribute;
     }
