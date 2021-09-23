@@ -6,6 +6,7 @@
     border: 6px solid #000 !important;
     background-color: #4c11f3 !important;
   }
+
   &__mint-button {
     &--sold-out {
       background: gray !important;
@@ -27,7 +28,25 @@
     border: 10px solid #000000;
   }
 
+  &__mosaic {
+    height: 50px;
+    background: url(./images/conveyor.png);
+    background-size: 800px 50px;
+    -webkit-animation: mosaic 30s linear infinite;
+    animation: mosaic 30s linear infinite;
+  }
+
   &__vending-machine {
     width: 200px;
+  }
+
+  @keyframes mosaic {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -800px 0;
+    }
   }
 }

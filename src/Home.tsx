@@ -36,7 +36,7 @@ export interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
-  const envStartDate = props.startDate;
+  // const envStartDate = props.startDate;
   const [itemsRemaining, setItemsRemaining] = useState<number | null>(null);
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
@@ -60,8 +60,8 @@ const Home = (props: HomeProps) => {
   // };
 
   const onMint = async () => {
+    setIsMinting(true);
     try {
-      setIsMinting(true);
       if (wallet.connected && candyMachine?.program && wallet.publicKey) {
         const mintTxId = await mintOneToken(
           candyMachine,
@@ -148,7 +148,6 @@ const Home = (props: HomeProps) => {
         signAllTransactions: wallet.signAllTransactions,
         signTransaction: wallet.signTransaction,
       } as anchor.Wallet;
-
       const { candyMachine, goLiveDate, itemsRemaining } =
         await getCandyMachineState(
           anchorWallet,
@@ -163,10 +162,12 @@ const Home = (props: HomeProps) => {
   }, [wallet, props.candyMachineId, props.connection]);
 
   const isSoldOut = itemsRemaining === 0;
-  // const isSoldOut = true;
   const isActive = true;
+
   return (
     <section className="home">
+      <div className="pb-4" />
+      <div className="home__mosaic" />
       <section className="hero">
         <div className="hero-body columns is-vcentered">
           <div className="container column pr-6">
