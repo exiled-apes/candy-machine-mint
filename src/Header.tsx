@@ -1,6 +1,5 @@
 import { Alignment, Button, Navbar } from "@blueprintjs/core";
 import React from "react";
-import banner from "../src/images/irrelevant_banner.jpg";
 
 import "./Header.scss";
 
@@ -37,9 +36,6 @@ export default function Header() {
           </a>
         </Navbar.Group>
       </Navbar>
-      <div className="header__banner">
-        <img src={banner} alt="irrelevant-banner" />
-      </div>
     </section>
   );
 }

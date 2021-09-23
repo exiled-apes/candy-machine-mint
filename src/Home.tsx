@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import Countdown from "react-countdown";
-import { Button, CircularProgress, Snackbar } from "@material-ui/core";
+import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import * as anchor from "@project-serum/anchor";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -17,10 +16,9 @@ import {
 } from "@solana/wallet-adapter-react-ui";
 import vendingMachine from "../src/images/vending-machine.svg";
 import cx from "classnames";
+import logo from "../src/images/logo.png";
 
 import "./Home.scss";
-
-const CounterText = styled.span``; // add your styles here
 
 interface AlertState {
   open: boolean;
@@ -38,10 +36,8 @@ export interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
-  const [isActive, setIsActive] = useState(false); // true when countdown completes
+  const envStartDate = props.startDate;
   const [itemsRemaining, setItemsRemaining] = useState<number | null>(null);
-  const [isSoldOut, setIsSoldOut] = useState<boolean>(false);
-  console.log("items remaining", itemsRemaining);
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [alertState, setAlertState] = useState<AlertState>({
@@ -49,18 +45,19 @@ const Home = (props: HomeProps) => {
     message: "",
     severity: undefined,
   });
-  const [startDate, setStartDate] = useState(new Date(props.startDate));
+  const [startDate, setStartDate] = useState<null | Date>(null);
   const wallet = useWallet();
 
   console.log("wallet", wallet);
+  console.log("start date", startDate);
 
-  const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
-    return (
-      <CounterText>
-        {hours} hours, {minutes} minutes, {seconds} seconds
-      </CounterText>
-    );
-  };
+  // const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
+  //   return (
+  //     <CounterText>
+  //       {hours} hours, {minutes} minutes, {seconds} seconds
+  //     </CounterText>
+  //   );
+  // };
 
   const onMint = async () => {
     try {
@@ -96,19 +93,19 @@ const Home = (props: HomeProps) => {
         }
       }
     } catch (error: any) {
-      // TODO: blech:
       let message = error.msg || "Minting failed! Please try again!";
       if (!error.msg) {
         if (error.message.indexOf("0x138")) {
         } else if (error.message.indexOf("0x137")) {
           message = `SOLD OUT!`;
+          setItemsRemaining(0);
         } else if (error.message.indexOf("0x135")) {
           message = `Insufficient funds to mint. Please fund your wallet.`;
         }
       } else {
         if (error.code === 311) {
           message = `SOLD OUT!`;
-          setIsSoldOut(true);
+          setItemsRemaining(0);
         } else if (error.code === 312) {
           message = `Minting period hasn't started yet.`;
         }
@@ -120,22 +117,20 @@ const Home = (props: HomeProps) => {
         severity: "error",
       });
     } finally {
-      // if (wallet?.publicKey) {
-      //   const balance = await props.connection.getBalance(wallet?.publicKey);
-      //   setBalance(balance / LAMPORTS_PER_SOL);
-      // }
+      const anchorWallet = {
+        publicKey: wallet.publicKey,
+        signAllTransactions: wallet.signAllTransactions,
+        signTransaction: wallet.signTransaction,
+      } as anchor.Wallet;
+      const { itemsRemaining } = await getCandyMachineState(
+        anchorWallet,
+        props.candyMachineId,
+        props.connection
+      );
+      setItemsRemaining(itemsRemaining);
       setIsMinting(false);
     }
   };
-
-  // useEffect(() => {
-  //   (async () => {
-  //     if (wallet?.publicKey) {
-  //       const balance = await props.connection.getBalance(wallet.publicKey);
-  //       setBalance(balance / LAMPORTS_PER_SOL);
-  //     }
-  //   })();
-  // }, [wallet, props.connection]);
 
   useEffect(() => {
     (async () => {
@@ -160,40 +155,53 @@ const Home = (props: HomeProps) => {
           props.candyMachineId,
           props.connection
         );
-      console.log("go live date", goLiveDate);
-
+      console.log("gl", goLiveDate);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
+  const isSoldOut = itemsRemaining === 0;
+  // const isSoldOut = true;
+  const isActive = true;
   return (
     <section className="home">
       <section className="hero">
         <div className="hero-body columns is-vcentered">
-          <div className="container column">
-            <p className="title">Minting!</p>
-            <div className="content">
-              <p>
-                Only 10,000 Cow Crew Villagers will be minted, ever!
-                <br /> Every cow will be completely unique and algorithmically
-                generated. Each cow will possess one of many attributes ranging
-                from common to mythic rarity.
+          <div className="container column pr-6">
+            <p className="is-size-4 has-text-white mb-5">
+              Mint an Irrelevant for 0.2 SOL
+            </p>
+            <p className="has-text-white">
+              INITIATE: WAVE 1<br />
+              {"{{ 606 // 4848 }} "}
+            </p>
+            <div className="content has-text-white mt-5 is-size-6">
+              <p className="mb-6">
+                Mint 1-of-606 Artificial Irrelevants collectibles in Wave 1.
+                <br />
+                Each robot is illustrated by hand and generated by code.
+                <br /> There will only ever be a maximum of 4848 robots in
+                existence.
+                <br /> Each collectible is one-of-a kind and will be stored
+                indefinitely on the Solana blockchain.
               </p>
-              <p>
-                The cows minted in this series will be the only Cows in
-                SolanaValley and the only way to obtain them after the initial
-                mint will be through the various Solana NFT marketplaces!
+              <p className="is-italic">
+                “The first wave dove into the abyss head first. Uncertain about
+                what the future might hold, they took a brave first step into a
+                new frontier. With bullish strength, they were destined to leave
+                a mark on history. All great things comes from modest
+                beginnings.”
               </p>
-              <p>We will not be generating any more of this series.</p>
+              <p className="mt-6 is-italic">The legacy begins.</p>
             </div>
           </div>
           <div className="container column">
             <div className="home__mint-machine-card">
               <div className="mb-5">
-                <WalletModalProvider>
-                  <WalletMultiButton />
+                <WalletModalProvider logo={logo}>
+                  <WalletMultiButton className="home__connect-button" />
                 </WalletModalProvider>
               </div>
               <div className="has-text-centered">
@@ -205,13 +213,15 @@ const Home = (props: HomeProps) => {
               </div>
               <div className="home__mint-machine has-text-centered mt-5">
                 <button
+                  disabled={!isActive || isSoldOut || isMinting}
                   className={cx("button home__mint-button has-text-white", {
                     "is-loading": isMinting,
                     "is-invisible": !wallet.connected,
+                    "home__mint-button--sold-out": isSoldOut,
                   })}
                   onClick={onMint}
                 >
-                  Mint Now
+                  {!isSoldOut ? "Mint Now" : "Sold Out"}
                 </button>
               </div>
             </div>

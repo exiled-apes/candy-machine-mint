@@ -1,5 +1,15 @@
 .home {
+  background-color: #121212;
+  height: 100vh;
+
+  &__connect-button {
+    border: 6px solid #000 !important;
+    background-color: #4c11f3 !important;
+  }
   &__mint-button {
+    &--sold-out {
+      background: gray !important;
+    }
     padding: 15px 20px !important;
     width: 165px;
     background: linear-gradient(90deg, #ff2f6d -4.55%, #ff835c 108.1%);
@@ -21,31 +31,3 @@
     width: 200px;
   }
 }
-
-//   <MintContainer>
-
-//     <MintButton
-//       disabled={isSoldOut || isMinting || !isActive}
-//       onClick={onMint}
-//       variant="contained"
-//     >
-//       {isSoldOut ? (
-//         "SOLD OUT"
-//       ) : isActive ? (
-//         isMinting ? (
-//           <CircularProgress />
-//         ) : (
-//           "MINT"
-//         )
-//       ) : (
-//         <Countdown
-//           date={startDate}
-//           onMount={({ completed }) =>
-//             completed && setIsActive(true)
-//           }
-//           onComplete={() => setIsActive(true)}
-//           renderer={renderCounter}
-//         />
-//       )}
-//     </MintButton>
-//   </MintContainer>
