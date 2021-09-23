@@ -12,15 +12,10 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-// import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
-import {
-  WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui";
+
+import Header from "./Header";
 
 import "./App.scss";
-import "./styles/index.scss";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -47,11 +42,9 @@ const App = () => {
 
   return (
     <div className="app">
+      <Header />
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
-          <WalletModalProvider>
-            <WalletMultiButton />
-          </WalletModalProvider>
           <Home
             candyMachineId={candyMachineId}
             config={config}
@@ -60,16 +53,6 @@ const App = () => {
             treasury={treasury}
             txTimeout={txTimeout}
           />
-          {/* <WalletDialogProvider>
-          <Home
-            candyMachineId={candyMachineId}
-            config={config}
-            connection={connection}
-            startDate={startDateSeed}
-            treasury={treasury}
-            txTimeout={txTimeout}
-          />
-        </WalletDialogProvider> */}
         </WalletProvider>
       </ConnectionProvider>
     </div>

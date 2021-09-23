@@ -4,28 +4,23 @@ import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import * as anchor from "@project-serum/anchor";
-import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
   getCandyMachineState,
   mintOneToken,
-  shortenAddress,
 } from "./candy-machine";
+import {
+  WalletModalProvider,
+  WalletMultiButton,
+} from "@solana/wallet-adapter-react-ui";
+import vendingMachine from "../src/images/vending-machine.svg";
+import cx from "classnames";
 
 import "./Home.scss";
 
-const ConnectButton = styled(WalletDialogButton)`
-  color: yellow;
-`;
-
 const CounterText = styled.span``; // add your styles here
-
-const MintContainer = styled.div``; // add your styles here
-
-const MintButton = styled(Button)``; // add your styles here
 
 interface AlertState {
   open: boolean;
@@ -43,9 +38,10 @@ export interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
-  const [balance, setBalance] = useState<number>();
   const [isActive, setIsActive] = useState(false); // true when countdown completes
-  const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
+  const [itemsRemaining, setItemsRemaining] = useState<number | null>(null);
+  const [isSoldOut, setIsSoldOut] = useState<boolean>(false);
+  console.log("items remaining", itemsRemaining);
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [alertState, setAlertState] = useState<AlertState>({
@@ -54,7 +50,6 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
   const [startDate, setStartDate] = useState(new Date(props.startDate));
-
   const wallet = useWallet();
 
   console.log("wallet", wallet);
@@ -125,22 +120,22 @@ const Home = (props: HomeProps) => {
         severity: "error",
       });
     } finally {
-      if (wallet?.publicKey) {
-        const balance = await props.connection.getBalance(wallet?.publicKey);
-        setBalance(balance / LAMPORTS_PER_SOL);
-      }
+      // if (wallet?.publicKey) {
+      //   const balance = await props.connection.getBalance(wallet?.publicKey);
+      //   setBalance(balance / LAMPORTS_PER_SOL);
+      // }
       setIsMinting(false);
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      if (wallet?.publicKey) {
-        const balance = await props.connection.getBalance(wallet.publicKey);
-        setBalance(balance / LAMPORTS_PER_SOL);
-      }
-    })();
-  }, [wallet, props.connection]);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (wallet?.publicKey) {
+  //       const balance = await props.connection.getBalance(wallet.publicKey);
+  //       setBalance(balance / LAMPORTS_PER_SOL);
+  //     }
+  //   })();
+  // }, [wallet, props.connection]);
 
   useEffect(() => {
     (async () => {
@@ -165,64 +160,77 @@ const Home = (props: HomeProps) => {
           props.candyMachineId,
           props.connection
         );
+      console.log("go live date", goLiveDate);
 
-      setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
+      setItemsRemaining(itemsRemaining);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
   return (
-    <div className="home">
-      Home goes here
-      <main>
-        {wallet.connected && (
-          <>
-            <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-            <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-          </>
-        )}
-
-        <MintContainer>
-          {wallet.connected && (
-            <MintButton
-              disabled={isSoldOut || isMinting || !isActive}
-              onClick={onMint}
-              variant="contained"
-            >
-              {isSoldOut ? (
-                "SOLD OUT"
-              ) : isActive ? (
-                isMinting ? (
-                  <CircularProgress />
-                ) : (
-                  "MINT"
-                )
-              ) : (
-                <Countdown
-                  date={startDate}
-                  onMount={({ completed }) => completed && setIsActive(true)}
-                  onComplete={() => setIsActive(true)}
-                  renderer={renderCounter}
+    <section className="home">
+      <section className="hero">
+        <div className="hero-body columns is-vcentered">
+          <div className="container column">
+            <p className="title">Minting!</p>
+            <div className="content">
+              <p>
+                Only 10,000 Cow Crew Villagers will be minted, ever!
+                <br /> Every cow will be completely unique and algorithmically
+                generated. Each cow will possess one of many attributes ranging
+                from common to mythic rarity.
+              </p>
+              <p>
+                The cows minted in this series will be the only Cows in
+                SolanaValley and the only way to obtain them after the initial
+                mint will be through the various Solana NFT marketplaces!
+              </p>
+              <p>We will not be generating any more of this series.</p>
+            </div>
+          </div>
+          <div className="container column">
+            <div className="home__mint-machine-card">
+              <div className="mb-5">
+                <WalletModalProvider>
+                  <WalletMultiButton />
+                </WalletModalProvider>
+              </div>
+              <div className="has-text-centered">
+                <img
+                  className="home__vending-machine"
+                  src={vendingMachine}
+                  alt="vending-machine"
                 />
-              )}
-            </MintButton>
-          )}
-        </MintContainer>
-        <Snackbar
-          open={alertState.open}
-          autoHideDuration={6000}
+              </div>
+              <div className="home__mint-machine has-text-centered mt-5">
+                <button
+                  className={cx("button home__mint-button has-text-white", {
+                    "is-loading": isMinting,
+                    "is-invisible": !wallet.connected,
+                  })}
+                  onClick={onMint}
+                >
+                  Mint Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Snackbar
+        open={alertState.open}
+        autoHideDuration={6000}
+        onClose={() => setAlertState({ ...alertState, open: false })}
+      >
+        <Alert
           onClose={() => setAlertState({ ...alertState, open: false })}
+          severity={alertState.severity}
         >
-          <Alert
-            onClose={() => setAlertState({ ...alertState, open: false })}
-            severity={alertState.severity}
-          >
-            {alertState.message}
-          </Alert>
-        </Snackbar>
-      </main>
-    </div>
+          {alertState.message}
+        </Alert>
+      </Snackbar>
+    </section>
   );
 };
 

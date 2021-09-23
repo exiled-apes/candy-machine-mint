@@ -1,6 +1,8 @@
-.app {
-  padding: 100px;
+@import "@blueprintjs/core/src/common/_variables.scss";
+@import "@blueprintjs/core/src/common/_colors.scss";
+@import "@blueprintjs/core/src/components/_index.scss";
 
+.app {
   .wallet-adapter-button {
     margin: 0 auto;
   }

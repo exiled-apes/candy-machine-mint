@@ -1,2 +1,51 @@
 .home {
+  &__mint-button {
+    padding: 15px 20px !important;
+    width: 165px;
+    background: linear-gradient(90deg, #ff2f6d -4.55%, #ff835c 108.1%);
+    font-weight: 800;
+    border: 6px solid #000 !important;
+    border-radius: 10px !important;
+  }
+
+  &__mint-machine-card {
+    width: 350px;
+    padding: 40px 30px;
+    margin: 0 auto;
+    background: linear-gradient(169.3deg, #99daff -3.23%, #b5ffe4 92.06%);
+    border-radius: 30px;
+    border: 10px solid #000000;
+  }
+
+  &__vending-machine {
+    width: 200px;
+  }
 }
+
+//   <MintContainer>
+
+//     <MintButton
+//       disabled={isSoldOut || isMinting || !isActive}
+//       onClick={onMint}
+//       variant="contained"
+//     >
+//       {isSoldOut ? (
+//         "SOLD OUT"
+//       ) : isActive ? (
+//         isMinting ? (
+//           <CircularProgress />
+//         ) : (
+//           "MINT"
+//         )
+//       ) : (
+//         <Countdown
+//           date={startDate}
+//           onMount={({ completed }) =>
+//             completed && setIsActive(true)
+//           }
+//           onComplete={() => setIsActive(true)}
+//           renderer={renderCounter}
+//         />
+//       )}
+//     </MintButton>
+//   </MintContainer>
