@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Countdown from "react-countdown";
+import Countdown, { zeroPad } from "react-countdown";
 import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import * as anchor from "@project-serum/anchor";
@@ -16,9 +16,38 @@ import {
 } from "@solana/wallet-adapter-react-ui";
 import vendingMachine from "../src/images/vending-machine.svg";
 import cx from "classnames";
-import logo from "../src/images/logo.png";
 
+import logo from "../src/images/logo.png";
 import "./Home.scss";
+
+const countdownRenderer = ({
+  hours,
+  minutes,
+  seconds,
+  completed,
+}: {
+  hours: number;
+  minutes: number;
+  seconds: number;
+  completed: boolean;
+}) => {
+  if (completed) {
+    return (
+      <div className="has-text-white has-background-primary home__countdown has-text-centered mt-3 py-1">
+        <span className="is-size-5">Minting LIVE!!</span>
+      </div>
+    );
+  } else {
+    return (
+      <div className="is-size-4 home__countdown has-text-centered mt-3 py-1 has-background-frost-grey">
+        <span className="has-text-light">
+          {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+        </span>{" "}
+        {"until minting begins!"}
+      </div>
+    );
+  }
+};
 
 interface AlertState {
   open: boolean;
@@ -45,20 +74,11 @@ const Home = (props: HomeProps) => {
     message: "",
     severity: undefined,
   });
-  const [startDate, setStartDate] = useState<null | Date>(
-    new Date(props.startDate * 1000)
+  const [startDate, setStartDate] = useState<number>(props.startDate * 1000);
+  const [countdownComplete, setCountdownComplete] = useState<boolean>(
+    Date.now() >= startDate
   );
   const wallet = useWallet();
-
-  console.log("start date", startDate);
-
-  // const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
-  //   return (
-  //     <CounterText>
-  //       {hours} hours, {minutes} minutes, {seconds} seconds
-  //     </CounterText>
-  //   );
-  // };
 
   const onMint = async () => {
     setIsMinting(true);
@@ -155,8 +175,7 @@ const Home = (props: HomeProps) => {
           props.candyMachineId,
           props.connection
         );
-      console.log("gl", goLiveDate);
-      setStartDate(goLiveDate);
+      // setStartDate(goLiveDate);
       setItemsTotal(itemsAvailable);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
@@ -165,12 +184,23 @@ const Home = (props: HomeProps) => {
   }, [wallet, props.candyMachineId, props.connection]);
 
   const isSoldOut = itemsRemaining === 0;
-  const isActive = true;
+  const isActive = Date.now() >= startDate || countdownComplete;
 
   return (
     <section className="home">
       <div className="pb-4" />
       <div className="home__mosaic" />
+      {!isSoldOut && (
+        <div>
+          <Countdown
+            daysInHours
+            className="home__countdown-timer"
+            date={startDate}
+            onComplete={() => setCountdownComplete(true)}
+            renderer={countdownRenderer}
+          />
+        </div>
+      )}
       <section className="hero">
         <div className="hero-body columns is-vcentered">
           <div className="container column pr-6">
@@ -224,7 +254,6 @@ const Home = (props: HomeProps) => {
                   max={itemsTotal}
                 />
               )}
-
               <div className="home__mint-machine has-text-centered mt-5">
                 <button
                   disabled={!isActive || isSoldOut || isMinting}
