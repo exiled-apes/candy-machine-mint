@@ -36,19 +36,20 @@ export interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
-  // const envStartDate = props.startDate;
+  const [itemsTotal, setItemsTotal] = useState<number>(0);
   const [itemsRemaining, setItemsRemaining] = useState<number | null>(null);
-  const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
+  const [isMinting, setIsMinting] = useState(true);
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: "",
     severity: undefined,
   });
-  const [startDate, setStartDate] = useState<null | Date>(null);
+  const [startDate, setStartDate] = useState<null | Date>(
+    new Date(props.startDate * 1000)
+  );
   const wallet = useWallet();
 
-  console.log("wallet", wallet);
   console.log("start date", startDate);
 
   // const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
@@ -148,7 +149,7 @@ const Home = (props: HomeProps) => {
         signAllTransactions: wallet.signAllTransactions,
         signTransaction: wallet.signTransaction,
       } as anchor.Wallet;
-      const { candyMachine, goLiveDate, itemsRemaining } =
+      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable } =
         await getCandyMachineState(
           anchorWallet,
           props.candyMachineId,
@@ -156,8 +157,10 @@ const Home = (props: HomeProps) => {
         );
       console.log("gl", goLiveDate);
       setStartDate(goLiveDate);
+      setItemsTotal(itemsAvailable);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
+      setIsMinting(false);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
@@ -212,6 +215,16 @@ const Home = (props: HomeProps) => {
                   alt="vending-machine"
                 />
               </div>
+              {isMinting ? (
+                <progress className="my-4 home__progress-bar is-danger progress" />
+              ) : (
+                <progress
+                  className="my-4 home__progress-bar is-danger progress"
+                  value={itemsRemaining + ""}
+                  max={itemsTotal}
+                />
+              )}
+
               <div className="home__mint-machine has-text-centered mt-5">
                 <button
                   disabled={!isActive || isSoldOut || isMinting}

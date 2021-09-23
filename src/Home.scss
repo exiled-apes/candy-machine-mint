@@ -36,6 +36,12 @@
     animation: mosaic 30s linear infinite;
   }
 
+  &__progress-bar {
+    margin: 0 auto;
+    width: 70% !important;
+    border: 4px solid black !important;
+  }
+
   &__vending-machine {
     width: 200px;
   }
