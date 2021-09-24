@@ -74,7 +74,10 @@ const Home = (props: HomeProps) => {
     message: "",
     severity: undefined,
   });
+
   const [startDate, setStartDate] = useState<number>(props.startDate * 1000);
+  // const [startDate, setStartDate] = useState<number>(Date.now() + 10000);
+
   const [countdownComplete, setCountdownComplete] = useState<boolean>(
     Date.now() >= startDate
   );
@@ -175,7 +178,7 @@ const Home = (props: HomeProps) => {
           props.candyMachineId,
           props.connection
         );
-      // setStartDate(goLiveDate);
+      setStartDate(goLiveDate);
       setItemsTotal(itemsAvailable);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
@@ -280,7 +283,10 @@ const Home = (props: HomeProps) => {
           onClose={() => setAlertState({ ...alertState, open: false })}
           severity={alertState.severity}
         >
-          {alertState.message}
+          <div>
+            {/* <img className='' src={logo} alt="success-mint-logo" /> */}
+            {alertState.message}
+          </div>
         </Alert>
       </Snackbar>
     </section>
