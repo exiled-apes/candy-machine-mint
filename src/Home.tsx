@@ -173,10 +173,10 @@ const Home = (props: HomeProps) => {
 
       <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>This is placeholder text that can be replaced.</h3>
 
-      {wallet && !wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
+      {!wallet && <ConnectButton>Connect Wallet</ConnectButton>}
 
       <MintContainer>
-        {wallet && wallet.connected && 
+        {wallet && 
         <MintButton
         disabled={isSoldOut || isMinting || !isActive}
         onClick={onMint}
