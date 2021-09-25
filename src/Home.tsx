@@ -69,18 +69,18 @@ const Home = (props: HomeProps) => {
   const [itemsRemaining, setItemsRemaining] = useState<number | null>(null);
   const [isMinting, setIsMinting] = useState(true);
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
+  // FOR TESTING
+  // const [startDate, setStartDate] = useState<number>(Date.now() + 10000);
+  const [startDate, setStartDate] = useState<number>(props.startDate * 1000);
+  const [countdownComplete, setCountdownComplete] = useState<boolean>(
+    Date.now() >= startDate
+  );
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: "",
     severity: undefined,
   });
 
-  const [startDate, setStartDate] = useState<number>(props.startDate * 1000);
-  // const [startDate, setStartDate] = useState<number>(Date.now() + 10000);
-
-  const [countdownComplete, setCountdownComplete] = useState<boolean>(
-    Date.now() >= startDate
-  );
   const wallet = useWallet();
 
   const onMint = async () => {
@@ -105,7 +105,7 @@ const Home = (props: HomeProps) => {
         if (!status?.err) {
           setAlertState({
             open: true,
-            message: "Congratulations! Mint succeeded!",
+            message: "Congratulations! Mint successful!",
             severity: "success",
           });
         } else {
@@ -193,7 +193,7 @@ const Home = (props: HomeProps) => {
     <section className="home">
       <div className="pb-4" />
       <div className="home__mosaic" />
-      {!isSoldOut && (
+      {/* {!isSoldOut && (
         <div>
           <Countdown
             daysInHours
@@ -203,7 +203,7 @@ const Home = (props: HomeProps) => {
             renderer={countdownRenderer}
           />
         </div>
-      )}
+      )} */}
       <section className="hero">
         <div className="hero-body columns is-vcentered">
           <div className="container column pr-6">
@@ -275,15 +275,16 @@ const Home = (props: HomeProps) => {
         </div>
       </section>
       <Snackbar
-        open={alertState.open}
-        autoHideDuration={6000}
+        open={true}
+        // autoHideDuration={6000}
         onClose={() => setAlertState({ ...alertState, open: false })}
       >
         <Alert
           onClose={() => setAlertState({ ...alertState, open: false })}
           severity={alertState.severity}
+          // severity="success"
         >
-          <div>
+          <div className={cx("home__snackbar", {})}>
             {/* <img className='' src={logo} alt="success-mint-logo" /> */}
             {alertState.message}
           </div>
