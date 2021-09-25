@@ -275,7 +275,7 @@ const Home = (props: HomeProps) => {
         </div>
       </section>
       <Snackbar
-        open={true}
+        open={alertState.open}
         // autoHideDuration={6000}
         onClose={() => setAlertState({ ...alertState, open: false })}
       >
