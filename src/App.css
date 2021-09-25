@@ -1,3 +1,35 @@
 .App {
   text-align: center;
 }
+
+body {
+  color: #9ca9b3;
+  font-size: 1rem;
+}
+
+.frow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: '100%'
+}
+
+text-white {
+  color: white;
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-svg {
+  fill: #6163ff;
+}

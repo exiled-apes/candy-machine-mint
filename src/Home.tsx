@@ -3,12 +3,12 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
+import placeHolderImage from './media/image-placeholder.jpeg'
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { AnchorWallet, useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
 import {
@@ -25,7 +25,7 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
-const MintButton = styled(Button)``; // add your styles here
+const MintButton = styled(Button)`background: #6163ff; color: white`; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -48,9 +48,13 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
+  interface IAnchorWallet extends AnchorWallet {
+    connected?: boolean;
+  }
+
   const [startDate, setStartDate] = useState(new Date(props.startDate));
 
-  const wallet = useAnchorWallet();
+  const wallet: IAnchorWallet | undefined = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
   const onMint = async () => {
@@ -145,44 +149,60 @@ const Home = (props: HomeProps) => {
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
-  return (
-    <main>
-      {wallet && (
-        <p>Address: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+  const containerStyles = {
+    display: 'flex',
+    flexDirection: 'column' as any,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
 
-      {wallet && (
+  }
+
+  return (
+    <main style={containerStyles}>
+      {/* {wallet.connected && 
+      <>
+        <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
         <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-      )}
+      </>  
+      } */}
+      
+      <div style={{display: 'flex', flexDirection: 'row', marginBottom: '5px'}}>
+        <h1 style={{color: 'white', fontSize: '42px', marginBottom: '5px', marginTop: '5px'}}>Place</h1>
+        <h1 style={{color: '#5658dd', fontSize: '42px', marginBottom: '5px',  marginTop: '5px'}}>Holder</h1>
+      </div>
+
+      <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>This is placeholder text that can be replaced.</h3>
+
+      {!wallet && <ConnectButton>Connect Wallet</ConnectButton>}
 
       <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
+        {wallet && 
+        <MintButton
+        disabled={isSoldOut || isMinting || !isActive}
+        onClick={onMint}
+        variant="contained"
+        >
+          {isSoldOut ? (
+            "SOLD OUT"
             ) : isActive ? (
               isMinting ? (
                 <CircularProgress />
-              ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
-          </MintButton>
-        )}
+                ) : (
+                  "MINT"
+                  )
+                  ) : (
+                    <Countdown
+                    date={startDate}
+                    onMount={({ completed }) => completed && setIsActive(true)}
+                    onComplete={() => setIsActive(true)}
+                    renderer={renderCounter}
+                    />
+                    )}
+        </MintButton>
+        }
       </MintContainer>
+
+      <img src={placeHolderImage} style={{width: '550px', marginTop: '20px'}}/>
 
       <Snackbar
         open={alertState.open}
