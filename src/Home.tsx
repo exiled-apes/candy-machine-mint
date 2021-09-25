@@ -8,7 +8,7 @@ import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { AnchorWallet, useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
 import {
@@ -48,9 +48,13 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
+  interface IAnchorWallet extends AnchorWallet {
+    connected?: boolean;
+  }
+
   const [startDate, setStartDate] = useState(new Date(props.startDate));
 
-  const wallet = useAnchorWallet();
+  const wallet: IAnchorWallet | undefined = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
   const onMint = async () => {
@@ -169,10 +173,10 @@ const Home = (props: HomeProps) => {
 
       <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>This is placeholder text that can be replaced.</h3>
 
-      {!wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
+      {wallet && !wallet.connected && <ConnectButton>Connect Wallet</ConnectButton> }
 
       <MintContainer>
-        {wallet.connected && 
+        {wallet && wallet.connected && 
         <MintButton
         disabled={isSoldOut || isMinting || !isActive}
         onClick={onMint}
