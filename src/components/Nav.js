@@ -1,11 +1,13 @@
-import { Link } from '@reach/router';
+import { Link, useLocation } from '@reach/router';
 
 import Discord from '../assets/icons/discord.svg';
 import Twitter from '../assets/icons/twitter.svg';
 
 function Nav() {
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
-    <header className="text-white bg-black absolute top-0 inset-x-0 h-16 z-10 flex justify-between items-center px-16">
+    <header className="text-white bg-black fixed z-20 top-0 inset-x-0 h-16 flex justify-between items-center px-16">
       <div className="flex items-center space-x-10">
         <div>
           <Link to="/">
@@ -15,15 +17,41 @@ function Nav() {
         <nav className="font-orb font-medium text-sm uppercase">
           <ul className="flex space-x-7">
             <li>
-              <Link to="/nft">gen-1 nft drop</Link>
+              <Link
+                to="/nft"
+                className={pathname === '/nft' && 'text-primary-light nav-glow'}
+              >
+                gen-1 nft drop
+              </Link>
             </li>
             <li>
-              <Link to="/roadmap">roadmap</Link>
+              <Link
+                to="/roadmap"
+                className={
+                  pathname === '/roadmap' && 'text-primary-light nav-glow'
+                }
+              >
+                roadmap
+              </Link>
             </li>
             <li>
-              <Link to="/tokenomics">tokenomics</Link>
+              <Link
+                to="/tokenomics"
+                className={
+                  pathname === '/tokenomics' && 'text-primary-light nav-glow'
+                }
+              >
+                tokenomics
+              </Link>
             </li>
-            <li>faq</li>
+            <li>
+              <Link
+                to="/faq"
+                className={pathname === '/faq' && 'text-primary-light nav-glow'}
+              >
+                faq
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

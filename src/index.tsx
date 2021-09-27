@@ -9,6 +9,7 @@ import NFT from './pages/NFT';
 import Roadmap from './pages/Roadmap';
 import Tokenomics from './pages/Tokenomics';
 import Mint from './App';
+import FAQ from './pages/FAQ';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Roadmap path="/roadmap" />
         <Tokenomics path="/tokenomics" />
         <Mint path="mint" />
+        <FAQ path="faq" />
       </Router>
     </div>
   </React.StrictMode>,
@@ -29,4 +31,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);

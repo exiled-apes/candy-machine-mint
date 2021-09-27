@@ -22,6 +22,10 @@ module.exports = {
         inter: "'Inter', sans-serif",
         orb: "'Orbitron', sans-serif",
       },
+      transitionDuration: {
+        900: "900ms",
+        400: "400ms",
+      },
     },
   },
   variants: {

@@ -1,11 +1,18 @@
-import React from "react";
-import { RouteComponentProps } from "@reach/router";
+import React, { useEffect, useRef } from "react";
+import { Link, RouteComponentProps } from "@reach/router";
 import Nav from "../components/Nav";
 
 import Ship from "../assets/roadmap/ship.png";
-import RoadmapImage from "../assets/roadmap/roadmap.png";
+import RoadmapImage from "../assets/roadmap/roadmap.svg";
 
 function Roadmap(props: RouteComponentProps) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    headingRef.current?.classList.remove("-translate-y-8");
+    headingRef.current?.classList.remove("opacity-0");
+    headingRef.current?.classList.remove("scale-90");
+    headingRef.current?.classList.add("glow");
+  }, []);
   return (
     <div style={{ background: "#101010" }} className="pb-30">
       <Nav />
@@ -13,12 +20,15 @@ function Roadmap(props: RouteComponentProps) {
         id="roadmap-hero"
         className="w-full h-screen py-40 relative bg-center bg-cover"
       >
-        <h1 className="text-primary-light glow text-5xl uppercase font-black italic text-center">
+        <h1
+          className="text-primary-light text-6xl uppercase font-black italic text-center duration-400 transition-all ease-out transform -translate-y-8 opacity-0 scale-90"
+          ref={headingRef}
+        >
           Roadmap
         </h1>
         <img src={Ship} alt="Super Cool Spaceship" className="mt-10 mx-auto" />
       </div>
-      <div className="text-white mx-48 -mt-48 relative z-20">
+      <div className="text-white mx-48 -mt-48 relative z-10">
         <div className="flex">
           <div className="h-6 w-6 rounded-full flex-shrink-0 mt-1 mr-10 flex relative">
             <div className="absolute bg-primary-dark rounded-full inset-0 filter  blur-sm"></div>
@@ -29,25 +39,6 @@ function Roadmap(props: RouteComponentProps) {
               Q3 2021 - Force Formation
             </h3>
             <div className="mt-10 space-y-10">
-              <div className="bg-gray-dark border border-gray-light rounded-md w-full p-10">
-                <div className="flex justify-between items-baseline">
-                  <h4 className="font-black italic uppercase text-xl">
-                    Gen-1 Cyborg NFT drop (2000)
-                  </h4>
-                  <div className="flex space-x-3 text-sm">
-                    <p>Mint: X</p>
-                    <p>Date: TBD</p>
-                  </div>
-                </div>
-                <p className="text-lg mt-5 font-medium text-gray">
-                  First enlistment into the 5 forces start. <br />
-                  Only the bravest souls are granted passage and take their
-                  rightful place. <br />
-                  Everything that may go wrong, will go wrong. <br />
-                  Still they believe that all is not lost and want to give
-                  humanity a fighting chance.
-                </p>
-              </div>
               <div className="bg-gray-dark border border-gray-light rounded-md w-full p-10">
                 <div className="flex justify-between items-baseline">
                   <h4 className="font-black italic uppercase text-xl">
@@ -83,6 +74,22 @@ function Roadmap(props: RouteComponentProps) {
                   Generals start to coordinate to build out their factions whule
                   lietutants and soliders work together to setup garricks and
                   weapon machinery factories.
+                </p>
+              </div>
+              <div className="bg-gray-dark border border-gray-light rounded-md w-full p-10">
+                <div className="flex justify-between items-baseline">
+                  <h4 className="font-black italic uppercase text-xl">
+                    GEN-1 SECONDARY MARKETPLACE LISTING LAUNCHED
+                  </h4>
+                  <div className="text-sm">
+                    <p>Date: TBD</p>
+                  </div>
+                </div>
+                <p className="text-lg mt-5 font-medium text-gray">
+                  SGF Media House partners with most leading marketplaces to
+                  launch secondary marketplace listing. <br /> Some people may
+                  want to opt out after feeling the intense pressure from the
+                  training.
                 </p>
               </div>
             </div>
@@ -256,21 +263,33 @@ function Roadmap(props: RouteComponentProps) {
             </div>
           </div>
         </div>
-        <div className="w-1 mx-2.5 mt-2 rounded-full h-full absolute top-0 left-0 bg-primary-light z-0"></div>
+        <div
+          className="w-1 mx-2.5 mt-2 rounded-full absolute top-0 left-0 bg-primary-light"
+          style={{ height: `calc(100% + 111px)` }}
+        ></div>
       </div>
       <div className="mt-30">
-        <img src={RoadmapImage} alt="roadmap" className="mx-auto" />
+        <img src={RoadmapImage} alt="roadmap" className="w-full" />
       </div>
-      <div className="mt-8 font-orb flex flex-wrap justify-center items-center">
-        <button className="btn-primary font-black mt-4 mr-3">FAQS</button>
-        <a
-          href="https://discord.com/invite/bBeHKHHSu5"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-secondary font-black mt-4"
-        >
-          JOIN DISCORD
-        </a>
+
+      <div className="mt-8 font-orb ">
+        <p className="text-sm font-medium text-gray text-center font-inter">
+          Can’t find an answer to your query? Don’t worry, we’ve got your
+          back...
+        </p>
+        <div className="flex flex-wrap justify-center items-center">
+          <Link to="/faq" className="btn-primary font-black mt-4 mr-3">
+            FAQS
+          </Link>
+          <a
+            href="https://discord.com/invite/bBeHKHHSu5"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-secondary font-black mt-4"
+          >
+            JOIN DISCORD
+          </a>
+        </div>
       </div>
     </div>
   );
