@@ -9,45 +9,17 @@ import {
   awaitTransactionSignatureConfirmation,
   getCandyMachineState,
   mintOneToken,
-} from "./candy-machine";
+} from "../javascript/candy-machine";
 import {
   WalletModalProvider,
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
-import vendingMachine from "../src/images/vending-machine.svg";
 import cx from "classnames";
+import { whitelistedIds } from "../utils/whitelist-machine";
 
-import logo from "../src/images/logo.png";
-import "./Home.scss";
-
-const countdownRenderer = ({
-  hours,
-  minutes,
-  seconds,
-  completed,
-}: {
-  hours: number;
-  minutes: number;
-  seconds: number;
-  completed: boolean;
-}) => {
-  if (completed) {
-    return (
-      <div className="has-text-white has-background-primary home__countdown has-text-centered mt-3 py-1">
-        <span className="is-size-5">Minting LIVE!!</span>
-      </div>
-    );
-  } else {
-    return (
-      <div className="is-size-4 home__countdown has-text-centered mt-3 py-1 has-background-frost-grey">
-        <span className="has-text-light">
-          {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-        </span>{" "}
-        {"until minting begins!"}
-      </div>
-    );
-  }
-};
+import logo from "../images/logo.png";
+import vendingMachine from "../images/vending-machine.svg";
+import { countdownRenderer } from "./Home";
 
 interface AlertState {
   open: boolean;
@@ -55,7 +27,7 @@ interface AlertState {
   severity: "success" | "info" | "warning" | "error" | undefined;
 }
 
-export interface HomeProps {
+interface PresaleProps {
   candyMachineId: anchor.web3.PublicKey;
   config: anchor.web3.PublicKey;
   connection: anchor.web3.Connection;
@@ -64,14 +36,13 @@ export interface HomeProps {
   txTimeout: number;
 }
 
-const Home = (props: HomeProps) => {
-  const [itemsTotal, setItemsTotal] = useState<number>(0);
+const Presale = (props: PresaleProps) => {
   const [itemsRemaining, setItemsRemaining] = useState<number | null>(null);
-  const [isMinting, setIsMinting] = useState(true);
+  const [isMinting, setIsMinting] = useState(false);
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   // FOR TESTING
-  // const [startDate, setStartDate] = useState<number>(Date.now() + 10000);
-  const [startDate, setStartDate] = useState<number>(props.startDate * 1000);
+  // const [startDate, setStartDate] = useState<number>(1632841200 + 10000);
+  const startDate = props.startDate * 1000;
   const [countdownComplete, setCountdownComplete] = useState<boolean>(
     Date.now() >= startDate
   );
@@ -93,7 +64,6 @@ const Home = (props: HomeProps) => {
           wallet.publicKey,
           props.treasury
         );
-
         const status = await awaitTransactionSignatureConfirmation(
           mintTxId,
           props.txTimeout,
@@ -134,24 +104,12 @@ const Home = (props: HomeProps) => {
           message = `Minting period hasn't started yet.`;
         }
       }
-
       setAlertState({
         open: true,
         message,
         severity: "error",
       });
     } finally {
-      const anchorWallet = {
-        publicKey: wallet.publicKey,
-        signAllTransactions: wallet.signAllTransactions,
-        signTransaction: wallet.signTransaction,
-      } as anchor.Wallet;
-      const { itemsRemaining } = await getCandyMachineState(
-        anchorWallet,
-        props.candyMachineId,
-        props.connection
-      );
-      setItemsRemaining(itemsRemaining);
       setIsMinting(false);
     }
   };
@@ -166,34 +124,35 @@ const Home = (props: HomeProps) => {
       ) {
         return;
       }
-
       const anchorWallet = {
         publicKey: wallet.publicKey,
         signAllTransactions: wallet.signAllTransactions,
         signTransaction: wallet.signTransaction,
       } as anchor.Wallet;
-      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable } =
-        await getCandyMachineState(
-          anchorWallet,
-          props.candyMachineId,
-          props.connection
-        );
-      setStartDate(goLiveDate);
-      setItemsTotal(itemsAvailable);
+      const { candyMachine, itemsRemaining } = await getCandyMachineState(
+        anchorWallet,
+        props.candyMachineId,
+        props.connection
+      );
+      // setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
-      setIsMinting(false);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
   const isSoldOut = itemsRemaining === 0;
   const isActive = Date.now() >= startDate || countdownComplete;
+  const isWhitelisted =
+    wallet.publicKey?.toBase58() &&
+    whitelistedIds.includes(wallet.publicKey?.toBase58());
+
+  const mintPeriodOver = Date.now() - startDate > 60000;
 
   return (
     <section className="home">
       <div className="pb-4" />
       <div className="home__mosaic" />
-      {/* {!isSoldOut && (
+      {!isSoldOut && !mintPeriodOver && (
         <div>
           <Countdown
             daysInHours
@@ -203,36 +162,11 @@ const Home = (props: HomeProps) => {
             renderer={countdownRenderer}
           />
         </div>
-      )} */}
+      )}
       <section className="hero">
         <div className="hero-body columns is-vcentered">
           <div className="container column pr-6">
-            <p className="is-size-4 has-text-white mb-5">
-              Mint an Irrelevant for 0.2 SOL
-            </p>
-            <p className="has-text-white">
-              INITIATE: WAVE 1<br />
-              {"{{ 606 // 4848 }} "}
-            </p>
-            <div className="content has-text-white mt-5 is-size-6">
-              <p className="mb-6">
-                Mint 1-of-606 Artificial Irrelevants collectibles in Wave 1.
-                <br />
-                Each robot is illustrated by hand and generated by code.
-                <br /> There will only ever be a maximum of 4848 robots in
-                existence.
-                <br /> Each collectible is one-of-a kind and will be stored
-                indefinitely on the Solana blockchain.
-              </p>
-              <p className="is-italic">
-                “The first wave dove into the abyss head first. Uncertain about
-                what the future might hold, they took a brave first step into a
-                new frontier. With bullish strength, they were destined to leave
-                a mark on history. All great things comes from modest
-                beginnings.”
-              </p>
-              <p className="mt-6 is-italic">The legacy begins.</p>
-            </div>
+            <p className="is-size-4 has-text-white mb-5">Whitelist Presale</p>
           </div>
           <div className="container column">
             <div className="home__mint-machine-card">
@@ -248,41 +182,37 @@ const Home = (props: HomeProps) => {
                   alt="vending-machine"
                 />
               </div>
-              {isMinting ? (
-                <progress className="my-4 home__progress-bar is-danger progress" />
-              ) : (
-                <progress
-                  className="my-4 home__progress-bar is-danger progress"
-                  value={itemsRemaining + ""}
-                  max={itemsTotal}
-                />
+              {wallet?.connected && (
+                <div className="home__mint-machine has-text-centered mt-5">
+                  {isWhitelisted ? (
+                    <button
+                      disabled={!isActive || isSoldOut || isMinting}
+                      className={cx("button home__mint-button has-text-white", {
+                        "is-loading": isMinting,
+                        "is-invisible": !wallet.connected,
+                        "home__mint-button--sold-out": isSoldOut,
+                      })}
+                      onClick={onMint}
+                    >
+                      {!isSoldOut ? "Mint Now" : "Sold Out"}
+                    </button>
+                  ) : (
+                    <div>You are not part of this presale.</div>
+                  )}
+                </div>
               )}
-              <div className="home__mint-machine has-text-centered mt-5">
-                <button
-                  disabled={!isActive || isSoldOut || isMinting}
-                  className={cx("button home__mint-button has-text-white", {
-                    "is-loading": isMinting,
-                    "is-invisible": !wallet.connected,
-                    "home__mint-button--sold-out": isSoldOut,
-                  })}
-                  onClick={onMint}
-                >
-                  {!isSoldOut ? "Mint Now" : "Sold Out"}
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </section>
       <Snackbar
         open={alertState.open}
-        // autoHideDuration={6000}
+        autoHideDuration={6000}
         onClose={() => setAlertState({ ...alertState, open: false })}
       >
         <Alert
           onClose={() => setAlertState({ ...alertState, open: false })}
           severity={alertState.severity}
-          // severity="success"
         >
           <div className={cx("home__snackbar", {})}>
             {/* <img className='' src={logo} alt="success-mint-logo" /> */}
@@ -294,4 +224,4 @@ const Home = (props: HomeProps) => {
   );
 };
 
-export default Home;
+export default Presale;

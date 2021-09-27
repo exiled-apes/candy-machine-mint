@@ -82,11 +82,14 @@ export const awaitTransactionSignatureConfirmation = async (
     while (!done && queryStatus) {
       // eslint-disable-next-line no-loop-func
       (async () => {
+
+        console.log('in while')
         try {
           const signatureStatuses = await connection.getSignatureStatuses([
             txid,
           ]);
           status = signatureStatuses && signatureStatuses.value[0];
+          console.log('status in here is', status)
           if (!done) {
             if (!status) {
               console.log("REST null result for", txid, status);

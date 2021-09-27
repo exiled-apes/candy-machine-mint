@@ -28,9 +28,12 @@
     border: 10px solid #000000;
   }
 
+  &__snackbar {
+  }
+
   &__mosaic {
     height: 50px;
-    background: url(./images/conveyor.png);
+    background: url(../images/conveyor.png);
     background-size: 800px 50px;
     -webkit-animation: mosaic 30s linear infinite;
     animation: mosaic 30s linear infinite;
