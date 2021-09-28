@@ -18,6 +18,7 @@ import cx from "classnames";
 import Header from "../components/Header";
 
 import logo from "../images/logo.png";
+import gif from "../images/bot-gif.gif";
 import vendingMachine from "../images/vending-machine.png";
 import emptyMachine from "../images/empty-machine.png";
 
@@ -300,7 +301,7 @@ const Home = (props: HomeProps) => {
             <Alert severity="info">
               <AlertTitle>Attempting to mint Irrelevant...</AlertTitle>
               <div className="has-text-centered">
-                {/* <img src={} alt="bot-img" /> */}
+                <img className="home__gif" src={gif} alt="bot-img" />
               </div>
             </Alert>
           )}

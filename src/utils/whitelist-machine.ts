@@ -27,4 +27,6 @@ export const whitelistedIds = [
   '9TqvfBFaxABg7hPJZp4RY3vhzUgCT9rrLQmpTZGTFsoZ',
   "4c58i3TYsogbduHGh4dAksRQajAKZVoatF2qKdeVXNDZ",
   'G8XeXpGrDXpVbUZ8N18SBjpE5DwuChf8ejxr38rtdwT3',
+  '7etxJfm56TATvSa7r8PYZgD1dJbV9E83xWjp11XBcSXy',
+  '4J1sq5NtWHuWU1gvjVYwnFu2oHzXMUxXzWfsaGGwjPzs',
 ]

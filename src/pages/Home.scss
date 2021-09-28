@@ -12,6 +12,11 @@
     background-color: #4c11f3 !important;
   }
 
+  &__gif {
+    width: 64px;
+    height: 64px;
+  }
+
   &__mint-button {
     &--sold-out {
       background: gray !important;
