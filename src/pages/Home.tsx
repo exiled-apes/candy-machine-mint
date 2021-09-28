@@ -91,7 +91,6 @@ const Home = (props: HomeProps) => {
   const wallet = useWallet();
 
   const onMint = async () => {
-    setIsMinting(true);
     try {
       if (wallet.connected && candyMachine?.program && wallet.publicKey) {
         const mintTxId = await mintOneToken(
@@ -100,7 +99,7 @@ const Home = (props: HomeProps) => {
           wallet.publicKey,
           props.treasury
         );
-
+        setIsMinting(true);
         const status = await awaitTransactionSignatureConfirmation(
           mintTxId,
           props.txTimeout,
