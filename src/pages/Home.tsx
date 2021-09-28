@@ -172,7 +172,7 @@ const Home = (props: HomeProps) => {
           props.candyMachineId,
           props.connection
         );
-      console.log("ia", itemsAvailable);
+      console.log(itemsRemaining);
       // setItemsTotal(itemsAvailable);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
@@ -291,9 +291,14 @@ const Home = (props: HomeProps) => {
         >
           {isMinting ? (
             <Alert severity="info">
-              <AlertTitle>Minting Irrelevant...</AlertTitle>
               <div className="has-text-centered">
+                <div className="has-text-weight-bold">
+                  TRANSMISSION RECEIVED.
+                </div>
                 <img className="home__gif" src={gif} alt="bot-img" />
+                <div className="has-text-weight-bold">
+                  MINTING IRRELEVANT...
+                </div>
               </div>
             </Alert>
           ) : (

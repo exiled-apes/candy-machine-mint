@@ -1,12 +1,12 @@
 export const whitelistedIds = [
-  'GqKcxYm7JkCRMVD1zTZQW52NDd4VsdERLX2gSfmd18sw','6KUQQEEnebeSWR28rAuMi3soPfLemKP29xUCqNwktN82','bJZ5HGGdeJUX7vNni2Q5ks7p5hnQAcuLpahbTpgMG7s',
+  'GqKcxYm7JkCRMVD1zTZQW52NDd4VsdERLX2gSfmd18sw','6KUQQEEnebeSWR28rAuMi3soPfLemKP29xUCqNwktN82',
   '4LBUPX7zfGzqdho666K4ueu9kipXkQFoCpNCYmQwdVmi',
+  'bJZ5HGGdeJUX7vNni2Q5ks7p5hnQAcuLpahbTpgMG7s',
   '7n5DGDVDnLVBw3oT4e4yDjnp7ZETy4cq544UUgpkpso9',
   'bJZ5HGGdeJUX7vNni2Q5ks7p5hnQAcuLpahbTpgMG7s',
   '6BpW3cPTtcTbCfkqjLECFfG38QqeDRQEHpQSc8SQkVeN',
   '8PdqmeKdn3999sT3jkkx3JRquGqZAfr3m7F4G5NoWkuG',
   '95zRKcAzCGfoWjSL9wRsWP36iz35ghdxMWJPteCTVs9s',
-  // group starts here
   '6i4sjkL6GaXPP4b5mA4ArWYgRK4mMKQiz3rnRJDT3AB6',
   'RGfFMm5aWtQNRb9L3pt9kB5doeyQM6iuYnhzJLy2YGg',
   'RtguRrm5yBqK1hy6yHibSe3nMQPZSKfYHdFau3PxLDr',
@@ -29,4 +29,13 @@ export const whitelistedIds = [
   'G8XeXpGrDXpVbUZ8N18SBjpE5DwuChf8ejxr38rtdwT3',
   '7etxJfm56TATvSa7r8PYZgD1dJbV9E83xWjp11XBcSXy',
   '4J1sq5NtWHuWU1gvjVYwnFu2oHzXMUxXzWfsaGGwjPzs',
+  'Ept8apWDiNumpFJ6z9qun8Sz4h9RdxfpGzD2Qe2YJVqc',
+  '9DyNdJfNdsAUBUt8d1Xk9mGumPcafHduFcSkyDeX3ZhV',
+  'BCuJhdUyaUuchwWkxgJN9gfRtffnAZi6x77CxgqRzVmh',
+  'onBGFwSLpaJii6TQbgH4aSTeoeXP8GFtvZi285caX8tJr6',
+  '6XbeDCCBvv7UWfRCUX6R26nidck3TW39Q2izZNYAwxC7',
+  'Af8Y4p6ysCXM71wrQ5dYBpFnzsLu2RdHcnqz3Wsc6ZBx',
+  '8KX34hcLH7mvQvcr1Znu3w4UNqANvtX9w4JArEM3Rq4N',
+  'CeiuKU14Vf9bZoGoYYrEP2k2Co1pGRufRXirVCoF7miB',
+  '7ZffkAy2PZfKo1gupFgvpx1auyrsv1devo24pVtUMtyR',
 ]
