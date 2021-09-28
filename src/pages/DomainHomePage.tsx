@@ -1,7 +1,7 @@
 import Header from "../components/Header";
+import bannerImage from "../images/banner.jpg";
 
 import "./DomainHomePage.scss";
-import bannerImage from "../images/banner.jpg";
 
 const DomainHomePage = () => {
   return (

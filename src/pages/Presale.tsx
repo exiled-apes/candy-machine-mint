@@ -47,9 +47,9 @@ const Presale = (props: PresaleProps) => {
   const presaleWaveId = wave + "p";
 
   // FOR TESTING
-  const startDate = 1632809802316;
+  // const startDate = 1632809802316;
 
-  // const startDate = props.startDate * 1000;
+  const startDate = props.startDate * 1000;
   const [countdownComplete, setCountdownComplete] = useState<boolean>(
     Date.now() >= startDate
   );
@@ -246,10 +246,7 @@ const Presale = (props: PresaleProps) => {
             onClose={() => setAlertState({ ...alertState, open: false })}
             severity={alertState.severity}
           >
-            <div className={cx("home__snackbar", {})}>
-              {/* <img className='' src={logo} alt="success-mint-logo" /> */}
-              {alertState.message}
-            </div>
+            <div>{alertState.message}</div>
           </Alert>
         </Snackbar>
       </section>

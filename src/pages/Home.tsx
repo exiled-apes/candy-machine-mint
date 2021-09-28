@@ -20,7 +20,9 @@ import Header from "../components/Header";
 import logo from "../images/logo.png";
 import vendingMachine from "../images/vending-machine.png";
 import emptyMachine from "../images/empty-machine.png";
+
 import "./Home.scss";
+import { AlertTitle } from "@material-ui/lab";
 
 export const countdownRenderer = ({
   hours,
@@ -73,9 +75,9 @@ const Home = (props: HomeProps) => {
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
   // FOR TESTING
-  const startDate = 1632808906226;
+  // const startDate = 1632808906226;
 
-  // const startDate = props.startDate * 1000;
+  const startDate = props.startDate * 1000;
   const [countdownComplete, setCountdownComplete] = useState<boolean>(
     Date.now() >= startDate
   );
@@ -169,6 +171,7 @@ const Home = (props: HomeProps) => {
           props.candyMachineId,
           props.connection
         );
+      console.log("ia", itemsAvailable);
       // setItemsTotal(itemsAvailable);
       setCandyMachine(candyMachine);
       setItemsRemaining(itemsRemaining);
@@ -281,20 +284,26 @@ const Home = (props: HomeProps) => {
           </div>
         </section>
         <Snackbar
-          open={alertState.open}
-          autoHideDuration={6000}
+          // open={alertState.open}
+          open={true}
+          autoHideDuration={isMinting ? 0 : 6000}
           onClose={() => setAlertState({ ...alertState, open: false })}
         >
-          <Alert
-            onClose={() => setAlertState({ ...alertState, open: false })}
-            severity={alertState.severity}
-            // severity="success"
-          >
-            <div className={cx("home__snackbar", {})}>
-              {/* <img className='' src={logo} alt="success-mint-logo" /> */}
-              {alertState.message}
-            </div>
-          </Alert>
+          {false ? (
+            <Alert
+              onClose={() => setAlertState({ ...alertState, open: false })}
+              severity={alertState.severity}
+            >
+              <div className="home__snackbar">{alertState.message}</div>
+            </Alert>
+          ) : (
+            <Alert severity="info">
+              <AlertTitle>Attempting to mint Irrelevant...</AlertTitle>
+              <div className="has-text-centered">
+                {/* <img src={} alt="bot-img" /> */}
+              </div>
+            </Alert>
+          )}
         </Snackbar>
       </section>
     </>

@@ -1,10 +1,11 @@
 export const whitelistedIds = [
   'GqKcxYm7JkCRMVD1zTZQW52NDd4VsdERLX2gSfmd18sw','6KUQQEEnebeSWR28rAuMi3soPfLemKP29xUCqNwktN82','bJZ5HGGdeJUX7vNni2Q5ks7p5hnQAcuLpahbTpgMG7s',
-  // '4LBUPX7zfGzqdho666K4ueu9kipXkQFoCpNCYmQwdVmi',
+  '4LBUPX7zfGzqdho666K4ueu9kipXkQFoCpNCYmQwdVmi',
   '7n5DGDVDnLVBw3oT4e4yDjnp7ZETy4cq544UUgpkpso9',
   'bJZ5HGGdeJUX7vNni2Q5ks7p5hnQAcuLpahbTpgMG7s',
   '6BpW3cPTtcTbCfkqjLECFfG38QqeDRQEHpQSc8SQkVeN',
   '8PdqmeKdn3999sT3jkkx3JRquGqZAfr3m7F4G5NoWkuG',
+  '95zRKcAzCGfoWjSL9wRsWP36iz35ghdxMWJPteCTVs9s',
   // group starts here
   '6i4sjkL6GaXPP4b5mA4ArWYgRK4mMKQiz3rnRJDT3AB6',
   'RGfFMm5aWtQNRb9L3pt9kB5doeyQM6iuYnhzJLy2YGg',
@@ -22,5 +23,8 @@ export const whitelistedIds = [
   '6MbDaRFbTfotuWehWjfpb6s7yAG49QT5d2guwSu8jCcC',
   'EHJxHMqCjGL5geyyAUSQ4oj9o34VbwRxcKGoC2LYHJiT',
   'G9cbVX6DVb8RkPnRbm6is3YnQvXJ22AXm3aze9LcSa6d',
-  'ExHjH7nZufPmsbTZc1n9R1iWMGJPDaJTeDv3PA75iunH'
+  'ExHjH7nZufPmsbTZc1n9R1iWMGJPDaJTeDv3PA75iunH',
+  '9TqvfBFaxABg7hPJZp4RY3vhzUgCT9rrLQmpTZGTFsoZ',
+  "4c58i3TYsogbduHGh4dAksRQajAKZVoatF2qKdeVXNDZ",
+  'G8XeXpGrDXpVbUZ8N18SBjpE5DwuChf8ejxr38rtdwT3',
 ]
