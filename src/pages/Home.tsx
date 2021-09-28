@@ -33,7 +33,6 @@ export const countdownRenderer = ({
   seconds: number;
   completed: boolean;
 }) => {
-  console.log("completed?", completed);
   if (completed) {
     return (
       <div className="has-text-white has-background-primary home__countdown has-text-centered mt-3 py-1">
@@ -74,9 +73,9 @@ const Home = (props: HomeProps) => {
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
   // FOR TESTING
-  // const startDate = 1632806867457;
+  const startDate = 1632808906226;
 
-  const startDate = props.startDate * 1000;
+  // const startDate = props.startDate * 1000;
   const [countdownComplete, setCountdownComplete] = useState<boolean>(
     Date.now() >= startDate
   );

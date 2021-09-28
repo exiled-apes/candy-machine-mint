@@ -22,6 +22,7 @@ import vendingMachine from "../images/vending-machine.png";
 
 import { countdownRenderer } from "./Home";
 import { wave } from "../Application";
+import Header from "../components/Header";
 
 interface AlertState {
   open: boolean;
@@ -46,9 +47,9 @@ const Presale = (props: PresaleProps) => {
   const presaleWaveId = wave + "p";
 
   // FOR TESTING
-  // const startDate = Date.now() + 10000;
+  const startDate = 1632809802316;
 
-  const startDate = props.startDate * 1000;
+  // const startDate = props.startDate * 1000;
   const [countdownComplete, setCountdownComplete] = useState<boolean>(
     Date.now() >= startDate
   );
@@ -167,86 +168,92 @@ const Presale = (props: PresaleProps) => {
   const notActive = !isActive || isSoldOut || isOverThreshold;
 
   return (
-    <section className="home">
-      <div className="pb-4" />
-      <div className="home__mosaic" />
-      {!isSoldOut && !mintPeriodOver && (
-        <div>
-          <Countdown
-            daysInHours
-            className="home__countdown-timer"
-            date={startDate}
-            onComplete={() => setCountdownComplete(true)}
-            renderer={countdownRenderer}
-          />
-        </div>
-      )}
-      <section className="hero">
-        <div className="hero-body columns is-vcentered">
-          <div className="container column pr-6">
-            <p className="is-size-4 has-text-white mb-5">Whitelist Presale</p>
+    <>
+      <Header />
+      <section className="home">
+        <div className="pb-4" />
+        <div className="home__mosaic" />
+        {!isSoldOut && !mintPeriodOver && (
+          <div>
+            <Countdown
+              daysInHours
+              className="home__countdown-timer"
+              date={startDate}
+              onComplete={() => setCountdownComplete(true)}
+              renderer={countdownRenderer}
+            />
           </div>
-          <div className="container column">
-            <div className="home__mint-machine-card">
-              <div className="mb-5">
-                <WalletModalProvider logo={logo}>
-                  <WalletMultiButton className="home__connect-button" />
-                </WalletModalProvider>
-              </div>
-              <div className="has-text-centered">
-                {!isActive || isSoldOut ? (
-                  <img
-                    className="home__vending-machine"
-                    src={vendingMachine}
-                    alt="vending-machine"
-                  />
-                ) : (
-                  <img
-                    className="home__vending-machine"
-                    src={vendingMachine}
-                    alt="vending-machine"
-                  />
-                )}
-              </div>
-              {wallet?.connected && (
-                <div className="home__mint-machine has-text-centered mt-5">
-                  {isWhitelisted ? (
-                    <button
-                      disabled={notActive || isMinting}
-                      className={cx("button home__mint-button has-text-white", {
-                        "is-loading": isMinting,
-                        "is-invisible": !wallet.connected,
-                        "home__mint-button--sold-out": isSoldOut,
-                      })}
-                      onClick={onMint}
-                    >
-                      {!isSoldOut ? "Mint Now" : "Sold Out"}
-                    </button>
+        )}
+        <section className="hero">
+          <div className="hero-body columns is-vcentered">
+            <div className="container column pr-6">
+              <p className="is-size-4 has-text-white mb-5">Whitelist Presale</p>
+            </div>
+            <div className="container column">
+              <div className="home__mint-machine-card">
+                <div className="mb-5">
+                  <WalletModalProvider logo={logo}>
+                    <WalletMultiButton className="home__connect-button" />
+                  </WalletModalProvider>
+                </div>
+                <div className="has-text-centered">
+                  {!isActive || isSoldOut ? (
+                    <img
+                      className="home__vending-machine"
+                      src={vendingMachine}
+                      alt="vending-machine"
+                    />
                   ) : (
-                    <div>You are not part of this presale.</div>
+                    <img
+                      className="home__vending-machine"
+                      src={vendingMachine}
+                      alt="vending-machine"
+                    />
                   )}
                 </div>
-              )}
+                {wallet?.connected && (
+                  <div className="home__mint-machine has-text-centered mt-5">
+                    {isWhitelisted ? (
+                      <button
+                        disabled={notActive || isMinting}
+                        className={cx(
+                          "button home__mint-button has-text-white",
+                          {
+                            "is-loading": isMinting,
+                            "is-invisible": !wallet.connected,
+                            "home__mint-button--sold-out": isSoldOut,
+                          }
+                        )}
+                        onClick={onMint}
+                      >
+                        {!isSoldOut ? "Mint Now" : "Sold Out"}
+                      </button>
+                    ) : (
+                      <div>You are not part of this presale.</div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <Snackbar
-        open={alertState.open}
-        autoHideDuration={6000}
-        onClose={() => setAlertState({ ...alertState, open: false })}
-      >
-        <Alert
+        </section>
+        <Snackbar
+          open={alertState.open}
+          autoHideDuration={6000}
           onClose={() => setAlertState({ ...alertState, open: false })}
-          severity={alertState.severity}
         >
-          <div className={cx("home__snackbar", {})}>
-            {/* <img className='' src={logo} alt="success-mint-logo" /> */}
-            {alertState.message}
-          </div>
-        </Alert>
-      </Snackbar>
-    </section>
+          <Alert
+            onClose={() => setAlertState({ ...alertState, open: false })}
+            severity={alertState.severity}
+          >
+            <div className={cx("home__snackbar", {})}>
+              {/* <img className='' src={logo} alt="success-mint-logo" /> */}
+              {alertState.message}
+            </div>
+          </Alert>
+        </Snackbar>
+      </section>
+    </>
   );
 };
 

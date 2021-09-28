@@ -17,6 +17,7 @@ import {
 
 import "./Application.scss";
 import Presale from "./pages/Presale";
+import DomainHomePage from "./pages/DomainHomePage";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -36,6 +37,7 @@ const presaleStartDateSeed = parseInt(
   10
 );
 const txTimeout = 50000; // milliseconds (confirm this works for your project)
+
 export const wave = 2;
 
 const Application = () => {
@@ -72,6 +74,7 @@ const Application = () => {
             </Route>
           </WalletProvider>
         </ConnectionProvider>
+        <Route exact path="/" component={DomainHomePage} />
       </div>
     </Router>
   );
