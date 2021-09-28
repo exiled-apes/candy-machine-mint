@@ -218,12 +218,14 @@ const Home = (props: HomeProps) => {
                   indefinitely on the Solana blockchain.
                 </p>
                 <p className="is-italic">
-                  “The Master created humans first as the lowest type, most
-                  easily formed. Gradually, he replaced them by robots, the next
-                  higher step, and finally he created the Irrelevants to take
-                  the place of the last humans.”
+                  "The Irrelevants' first charge inspired the rest of the
+                  rebellion to make their stand. Following their allies' trail,
+                  they used strategy and stealth to try to best their opponents.
+                  Heroes were made and memories of their triumphs inspired a
+                  third act — a series of events that neither robots or humans
+                  could comprehend."
                 </p>
-                <p className="mt-6 is-italic">The legacy begins.</p>
+                <p className="mt-6 is-italic">You are very early.</p>
               </div>
             </div>
             <div className="container column">
