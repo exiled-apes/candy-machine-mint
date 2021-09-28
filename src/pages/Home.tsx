@@ -285,24 +285,23 @@ const Home = (props: HomeProps) => {
           </div>
         </section>
         <Snackbar
-          // open={alertState.open}
-          open={true}
+          open={alertState.open || isMinting}
           autoHideDuration={isMinting ? 0 : 6000}
           onClose={() => setAlertState({ ...alertState, open: false })}
         >
-          {false ? (
+          {isMinting ? (
+            <Alert severity="info">
+              <AlertTitle>Minting Irrelevant...</AlertTitle>
+              <div className="has-text-centered">
+                <img className="home__gif" src={gif} alt="bot-img" />
+              </div>
+            </Alert>
+          ) : (
             <Alert
               onClose={() => setAlertState({ ...alertState, open: false })}
               severity={alertState.severity}
             >
               <div className="home__snackbar">{alertState.message}</div>
-            </Alert>
-          ) : (
-            <Alert severity="info">
-              <AlertTitle>Attempting to mint Irrelevant...</AlertTitle>
-              <div className="has-text-centered">
-                <img className="home__gif" src={gif} alt="bot-img" />
-              </div>
             </Alert>
           )}
         </Snackbar>
