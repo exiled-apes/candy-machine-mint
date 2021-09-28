@@ -1,6 +1,11 @@
 .home {
   background-color: #121212;
-  height: 100vh;
+  height: 110vh;
+
+  .hero {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 
   &__connect-button {
     border: 6px solid #000 !important;
@@ -20,6 +25,10 @@
   }
 
   &__mint-machine-card {
+    &--inactive {
+      background: linear-gradient(28.3deg, #99daff -117.23%, black 55.06%);
+    }
+
     width: 350px;
     padding: 40px 30px;
     margin: 0 auto;

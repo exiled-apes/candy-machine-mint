@@ -36,6 +36,7 @@ const presaleStartDateSeed = parseInt(
   10
 );
 const txTimeout = 50000; // milliseconds (confirm this works for your project)
+export const wave = 2;
 
 const Application = () => {
   const customHistory = createBrowserHistory();
@@ -49,7 +50,7 @@ const Application = () => {
       <div className="app">
         <ConnectionProvider endpoint={endpoint}>
           <WalletProvider wallets={wallets}>
-            <Route exact path="/mint">
+            <Route exact path="/mint-wv2">
               <Home
                 candyMachineId={candyMachineId}
                 config={config}
@@ -59,7 +60,7 @@ const Application = () => {
                 txTimeout={txTimeout}
               />
             </Route>
-            <Route exact path="/presale">
+            <Route exact path="/psale">
               <Presale
                 candyMachineId={candyMachineId}
                 config={config}
