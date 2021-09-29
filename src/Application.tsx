@@ -52,7 +52,7 @@ const Application = () => {
       <div className="app">
         <ConnectionProvider endpoint={endpoint}>
           <WalletProvider wallets={wallets}>
-            <Route exact path="/mint-wv2">
+            {/* <Route exact path="/mint-wv2">
               <Home
                 candyMachineId={candyMachineId}
                 config={config}
@@ -71,7 +71,7 @@ const Application = () => {
                 treasury={treasury}
                 txTimeout={txTimeout}
               />
-            </Route>
+            </Route> */}
           </WalletProvider>
         </ConnectionProvider>
         <Route exact path="/" component={DomainHomePage} />
