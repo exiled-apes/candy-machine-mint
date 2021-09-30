@@ -85,7 +85,7 @@ const App = () => {
   return (
       <ThemeProvider theme={theme}>
         <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect>
+          <WalletProvider wallets={wallets} autoConnect={true}>
             <WalletDialogProvider>
               <Home
                 candyMachineId={candyMachineId}
