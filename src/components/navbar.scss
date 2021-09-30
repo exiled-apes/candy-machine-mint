@@ -1,0 +1,37 @@
+.cus-nav {
+  background-color: transparent;
+  color: #fff;
+
+  .link-style {
+    color: #fff !important;
+    margin-left: 1rem;
+    font-weight: bold;
+  }
+
+  .nav-logo {
+    height: 100px;
+  }
+}
+
+.linkh {
+  color: #666;
+  display: inline-block;
+  margin: 0;
+  text-transform: uppercase;
+}
+.linkh:after {
+  display: block;
+  content: "";
+  border-bottom: solid 3px #fff;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.linkh:hover:after {
+  transform: scaleX(1);
+}
+.linkh.fromRight:after {
+  transform-origin: 100% 50%;
+}
+.linkh.fromLeft:after {
+  transform-origin: 0% 50%;
+}

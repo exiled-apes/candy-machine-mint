@@ -1,0 +1,10 @@
+.home {
+  height: 92vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .home {
+     height: auto;
+   }
+}
+

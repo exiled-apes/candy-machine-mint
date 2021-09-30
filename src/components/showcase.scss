@@ -1,0 +1,15 @@
+.showcase {
+  height: 100%;
+  display: block;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 600px) {
+  .showcase {
+    height: 300px;
+    .showcase-img {
+      height: 300px;
+    }
+  }
+}

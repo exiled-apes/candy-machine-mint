@@ -1,0 +1,35 @@
+.story {
+  margin-top: 4rem;
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+  }
+  .title {
+    color: violet;
+    font-weight: bold;
+  }
+}
+
+.banner {
+  margin-top: 10rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .story {
+    margin-top: 5rem;
+    .title {
+      color: violet;
+      font-size: 1.9rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 1.125rem;
+      text-align: center;
+      line-height: 2.3rem;
+    }
+  }
+}
+

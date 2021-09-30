@@ -1,0 +1,37 @@
+.roadmap {
+  margin-top: 8rem;
+  .title {
+    color: violet;
+    font-weight: bold;
+  }
+  .text-wrapper {
+    margin-top: 2rem;
+
+    .number-text {
+      color: #61dafb;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .roadmap {
+    margin-top: 5rem;
+
+    .text-wrapper {
+      margin-top: 2rem;
+
+      .subtitle {
+        font-size: 1.125rem;
+        line-height: 2.3rem;
+      }
+    }
+  }
+}

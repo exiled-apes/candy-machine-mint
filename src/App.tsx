@@ -1,7 +1,11 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import React, {useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useMemo } from "react";
 
-import Home from "./Home";
+import Home from "./pages/Home";
 
 import * as anchor from "@project-serum/anchor";
 import { clusterApiUrl } from "@solana/web3.js";
@@ -82,10 +86,15 @@ const App = () => {
     []
   );
 
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   return (
       <ThemeProvider theme={theme}>
         <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect={true}>
+          <WalletProvider wallets={wallets} autoConnect>
             <WalletDialogProvider>
               <Home
                 candyMachineId={candyMachineId}

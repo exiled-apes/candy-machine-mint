@@ -1,0 +1,27 @@
+.team {
+  margin-top: 8rem;
+  .team-img {
+    border-radius: 10px;
+  }
+  .sub {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .title {
+    color: violet;
+    font-weight: bold;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .team-img {
+    margin-top: 1rem;
+  }
+}
