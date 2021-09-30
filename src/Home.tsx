@@ -57,6 +57,32 @@ const Home = (props: HomeProps) => {
   const wallet = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
+  const refreshCandyMachineState = () => {
+    (async () => {
+      if (!wallet) return;
+
+      const {
+        candyMachine,
+        goLiveDate,
+        itemsAvailable,
+        itemsRemaining,
+        itemsRedeemed,
+      } = await getCandyMachineState(
+        wallet as anchor.Wallet,
+        props.candyMachineId,
+        props.connection
+      );
+
+      setItemsAvailable(itemsAvailable);
+      setItemsRemaining(itemsRemaining);
+      setItemsRedeemed(itemsRedeemed);
+
+      setIsSoldOut(itemsRemaining === 0);
+      setStartDate(goLiveDate);
+      setCandyMachine(candyMachine);
+    })();
+  };
+
   const onMint = async () => {
     try {
       setIsMinting(true);
@@ -120,6 +146,7 @@ const Home = (props: HomeProps) => {
         setBalance(balance / LAMPORTS_PER_SOL);
       }
       setIsMinting(false);
+      refreshCandyMachineState();
     }
   };
 
@@ -132,31 +159,11 @@ const Home = (props: HomeProps) => {
     })();
   }, [wallet, props.connection]);
 
-  useEffect(() => {
-    (async () => {
-      if (!wallet) return;
-
-      const {
-        candyMachine,
-        goLiveDate,
-        itemsAvailable,
-        itemsRemaining,
-        itemsRedeemed,
-      } = await getCandyMachineState(
-        wallet as anchor.Wallet,
-        props.candyMachineId,
-        props.connection
-      );
-
-      setItemsAvailable(itemsAvailable);
-      setItemsRemaining(itemsRemaining);
-      setItemsRedeemed(itemsRedeemed);
-
-      setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
-      setCandyMachine(candyMachine);
-    })();
-  }, [wallet, props.candyMachineId, props.connection]);
+  useEffect(refreshCandyMachineState, [
+    wallet,
+    props.candyMachineId,
+    props.connection,
+  ]);
 
   return (
     <main>
