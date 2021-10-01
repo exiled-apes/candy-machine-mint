@@ -1,2 +1,21 @@
 .rarity-tool {
+  &__card {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }
+  &__left-nav {
+    position: fixed;
+    width: 200px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    height: 100%;
+    padding-top: 50px;
+  }
+
+  &__main {
+    margin-left: 200px !important;
+  }
 }
