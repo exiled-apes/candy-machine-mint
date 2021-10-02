@@ -16,10 +16,21 @@
   }
 
   &__icon {
+    &--common {
+      background: linear-gradient(135deg, #ffffff 0%, #c9c9c9 100%);
+    }
+    &--rare {
+      background: linear-gradient(130.68deg, #45ff8f 0%, #4dfff4 108.78%);
+    }
+    &--epic {
+      background: linear-gradient(130.68deg, #ffc0de 0%, #bd00ff 108.78%);
+    }
+    &--legendary {
+      background: linear-gradient(119.07deg, #ffc876 19.21%, #ff0000 134.25%);
+    }
     width: 20px;
     height: 20px;
     border-radius: 100px;
-    background: linear-gradient(130.68deg, #45ff8f 0%, #4dfff4 108.78%);
     position: absolute;
     top: 7px;
     right: -11px;

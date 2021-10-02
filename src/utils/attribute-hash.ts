@@ -24,10 +24,11 @@ export const rarityHashMap = {
   'Amethyst': 'RARE',
   'Short Circuit': 'RARE',
   'Winky': 'RARE',
-  'Star Struck': 'RARE',
+  'StarStruck': 'RARE',
   'Grills': 'RARE',
   'Plasma': 'RARE',
   'Daisy': 'RARE',
+  'Pristine': 'RARE',
   'Energy Sword': 'RARE',
   'Graph': 'PRETTY EPIC',
   'Future': 'PRETTY EPIC',
@@ -55,6 +56,8 @@ export const rarityHashMap = {
   'Double Cool Chameleon': 'DANG, LEGENDARY',
   'Giga Stabbed': 'DANG, LEGENDARY',
   'Double Flame Chameleon': 'DANG, LEGENDARY',
+  'Scuffed': 'COMMON',
+  'Abused': 'COMMON',
 }
 
 export const attributesArray = {
@@ -62,4 +65,5 @@ export const attributesArray = {
   body: ['Silver', 'Cobalt', 'Rose Quartz', 'Nuclear', 'Copper', 'Gold', 'Rusty', 'Amethyst', 'Diamond', 'Graphite', 'Rainbow', 'Crystal Blue', 'Crystal Red', 'Crystal Yellow', 'Crystal White'],
   expression: ['!Oh','Crying', 'Zen', 'Grateful', 'Short Circuit', 'Winky', 'Star Stuck', 'Grills', 'Terminator', 'Gum', 'Bot', 'Screentime', 'Mecha Mask'],
   equipment: ['Receiver', 'Sprout', 'Antennae', 'Hanabi', 'None', 'Plasma', 'Daisy', 'Energy Sword', 'Fried Egg', 'The Nest', 'Cool Chameleon', 'Flame Chameleon', 'Double Cool Chameleon', 'Double Flame Chameleon', 'Sol Sword'],
+  damage: ['Pristine', 'Scuffed', 'Abused', 'None']
 }

@@ -1,17 +1,12 @@
-import { Icon, InputGroup, Spinner, SpinnerSize } from "@blueprintjs/core";
+import { Spinner, SpinnerSize } from "@blueprintjs/core";
 import axios from "axios";
-import { debounce } from "lodash";
-import {
-  ChangeEvent,
-  FormEvent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { debounce, find, get } from "lodash";
+import { useCallback, useEffect, useState } from "react";
 import AttributeList from "../components/AttributeList";
-import BotCard from "../components/BotCard";
 import Header from "../components/Header";
+import { rarityHashMap } from "../utils/attribute-hash";
 import { botsJson } from "../utils/bots";
+import cx from "classnames";
 
 import "./RarityTool.scss";
 
@@ -22,6 +17,10 @@ export type BotType = {
 
 type BotsKeyType = {
   [key: string]: BotType;
+};
+
+type RarityHashType = {
+  [key: string]: string;
 };
 
 type BotDataType = {
@@ -63,29 +62,69 @@ const RarityTool = () => {
     setLoading(false);
   }
 
-  const renderIcon = () => {
-    return <div className="rarity-tool__icon" />;
+  const renderIcon = (rarity: string) => {
+    const classname = cx("rarity-tool__icon", {
+      "rarity-tool__icon--common": rarity === "COMMON",
+      "rarity-tool__icon--rare": rarity === "LOOKS RARE",
+      "rarity-tool__icon--epic": rarity === "PRETTY EPIC",
+      "rarity-tool__icon--legendary": rarity === "DANG LEGENDARY",
+    });
+    return <div className={classname} />;
   };
 
-  const renderTraits = () => {
+  const renderTraits = (bot: BotDataType | null) => {
+    const categories = [
+      "Backgrounds",
+      "Body",
+      "Equipment",
+      "Damage",
+      "Expression",
+    ];
+    if (!bot) {
+      categories.map((category) => (
+        <div className="flex uppercase">
+          <div className="text-white text-center rarity-tool__trait rarity-tool__trait--background rarity-tool__trait--bordered">
+            {category === "Backgrounds" ? "Background" : category}
+          </div>
+          <div className="rarity-tool__trait bg-gray-300 text-black text-center rarity-tool__trait--borderless">
+            ?
+          </div>
+          <div className="bg-white text-black text-center rarity-tool__trait rarity-tool__trait--bordered">
+            ?
+          </div>
+        </div>
+      ));
+    }
     return (
       <div>
-        {["Backgrounds", "Body", "Equipment", "Damage", "Expression"].map(
-          (category) => (
+        {categories.map((category) => {
+          const matchingCategory = find(
+            bot?.attributes,
+            (trait) => trait.trait_type === category
+          );
+          const traitName = matchingCategory?.value;
+          console.log("tn", traitName, category);
+          let rarity = get(rarityHashMap, [`${traitName}`], "N/A");
+          if (traitName === "none" && category === "Damage") {
+            rarity = "RARE";
+          } else if (rarity === "RARE") {
+            rarity = "LOOKS RARE";
+          }
+          return (
             <div className="flex uppercase">
               <div className="text-white text-center rarity-tool__trait rarity-tool__trait--background rarity-tool__trait--bordered">
                 {category === "Backgrounds" ? "Background" : category}
               </div>
               <div className="rarity-tool__trait bg-gray-300 text-black text-center rarity-tool__trait--borderless">
-                SKY
+                {bot ? traitName : "?"}
               </div>
               <div className="bg-white text-black text-center rarity-tool__trait rarity-tool__trait--bordered">
-                COMMON
-                {renderIcon()}
+                {bot ? rarity : "?"}
+                {rarity !== "N/A" && renderIcon(rarity)}
               </div>
             </div>
-          )
-        )}
+          );
+        })}
       </div>
     );
   };
@@ -97,7 +136,7 @@ const RarityTool = () => {
         <div className="uppercase">RATCHET RICKY'S RARITY APPRAISAL</div>
         <div className="flex">
           <div className="mt-5">
-            {bot ? (
+            {bot && !loading ? (
               <img
                 className="rarity-tool__bot-image"
                 alt="bot-pfp"
@@ -105,11 +144,9 @@ const RarityTool = () => {
               />
             ) : (
               <div className="rarity-tool__placeholder-img">
-                {
-                  <div className="flex content-center h-full justify-center">
-                    {loading && <Spinner size={SpinnerSize.LARGE} />}
-                  </div>
-                }
+                <div className="flex content-center h-full justify-center">
+                  {loading && <Spinner size={SpinnerSize.LARGE} />}
+                </div>
               </div>
             )}
             <div className="rarity-tool__bot-name mt-3 uppercase text-center border-black border-4 border-solid bg-white flex items-center justify-center">
@@ -123,7 +160,7 @@ const RarityTool = () => {
               type="text"
               onChange={(e) => setQuery(e.currentTarget.value)}
             />
-            {renderTraits()}
+            {renderTraits(bot)}
           </div>
         </div>
       </div>
