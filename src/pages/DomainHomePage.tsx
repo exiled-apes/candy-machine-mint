@@ -8,7 +8,7 @@ const DomainHomePage = () => {
     <div>
       <Header />
       <div className="domain-home has-text-centered pt-4">
-        <img src={bannerImage} alt="banner" />
+        <img className="m-auto" src={bannerImage} alt="banner" />
         <div className="has-text-white is-size-5 mt-3">
           Mint page is no longer here, please check #announcements for updates
           in our Discord:

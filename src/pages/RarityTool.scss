@@ -1,21 +1,64 @@
 .rarity-tool {
+  background: linear-gradient(142.3deg, #dcdcdc 0%, #ffffff 101.66%);
+  height: 100vh;
+
+  &__bot-image {
+    border: 4px solid black;
+    width: 240px;
+  }
+
+  &__bot-name {
+    height: 40px;
+  }
   &__card {
     width: 200px;
     height: 200px;
-    background-color: blue;
-  }
-  &__left-nav {
-    position: fixed;
-    width: 200px;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    height: 100%;
-    padding-top: 50px;
   }
 
-  &__main {
-    margin-left: 200px !important;
+  &__icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background: linear-gradient(130.68deg, #45ff8f 0%, #4dfff4 108.78%);
+    position: absolute;
+    top: 7px;
+    right: -11px;
+    border: 3px solid black;
+  }
+
+  &__placeholder-img {
+    width: 240px;
+    height: 240px;
+    border: 3px solid black;
+  }
+
+  &__search {
+    border: 3px solid black;
+    border-radius: 3px;
+    height: 34px;
+  }
+
+  &__trait {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 40px;
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    &--borderless {
+      border-top: 3px solid #000;
+      border-bottom: 3px solid #000;
+    }
+
+    &--bordered {
+      border: 3px solid #000;
+    }
+
+    &--background {
+      background-color: #232323;
+      width: 130px;
+    }
   }
 }
