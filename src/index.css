@@ -1,15 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #303030;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.sc-dlfnuX {
+  text-align: center;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.sc-bdfBQB.MuiButton-containedPrimary,
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.sc-hKgJUU {
+  background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.sc-hKgJUU {
+  width: 12rem;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.sc-bdfBQB.MuiButton-containedPrimary:hover,
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.sc-hKgJUU:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+body {
+  padding: 4rem;
+  background-repeat: repeat;
+  /* background-size: cover; */
+  /* background-position: center; */
+}
+span.MuiButton-label {
+  justify-content: center;
 }
