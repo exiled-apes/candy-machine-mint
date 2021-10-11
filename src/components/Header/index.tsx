@@ -1,5 +1,5 @@
 import React from "react";
-import ZGirl from "../../images/zgirl.svg";
+import ZGirl from "../../images/Zombie_Site.png";
 import "./styles.css";
 interface Props {
     children?: React.ReactChild
@@ -7,13 +7,16 @@ interface Props {
 const Header:React.FC<Props> = ({children}) => {
   return (
     <div className="header">
-      <p className="header__content">
-        A limited set of 3 333 unique algorithm generated Z Girls artworks has
-        over 100 hand-drawn traits which made each of NFT one-of-a-kind. Make
-        sure to have it in your digital collection!
-      </p>
+      <div className="header__content">
+        The ZGirls are an army of 10,000 uniquely generated zombie girls that exist forever in the Solana blockchain.
+Each one is randomly generated with over 100 hand-drawn features, and each description is uniquely generated with over 4600 girl first name,1000 last name and 550 hobbies and interests.
+      </div>
+      <br />
+      <br />
+      <br />
       {children}
       <img src={ZGirl} alt="zombie girl" className="z-girl"/>
+      <img src={ZGirl} alt="zombie girl" className="z-girl-two"/>
     </div>
   );
 };

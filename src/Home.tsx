@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
+
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -40,8 +41,10 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-  const [counter, setCounter] = useState<any>({});
-  const [price, setPrice] = useState<number | null>(null);
+
+  const [itemsAvailable, setItemsAvailable] = useState(0);
+  const [itemsRedeemed, setItemsRedeemed] = useState(0);
+  const [itemsRemaining, setItemsRemaining] = useState(0);
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -53,6 +56,32 @@ const Home = (props: HomeProps) => {
 
   const wallet = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
+
+  const refreshCandyMachineState = () => {
+    (async () => {
+      if (!wallet) return;
+
+      const {
+        candyMachine,
+        goLiveDate,
+        itemsAvailable,
+        itemsRemaining,
+        itemsRedeemed,
+      } = await getCandyMachineState(
+        wallet as anchor.Wallet,
+        props.candyMachineId,
+        props.connection
+      );
+
+      setItemsAvailable(itemsAvailable);
+      setItemsRemaining(itemsRemaining);
+      setItemsRedeemed(itemsRedeemed);
+
+      setIsSoldOut(itemsRemaining === 0);
+      setStartDate(goLiveDate);
+      setCandyMachine(candyMachine);
+    })();
+  };
 
   const onMint = async () => {
     try {
@@ -117,6 +146,7 @@ const Home = (props: HomeProps) => {
         setBalance(balance / LAMPORTS_PER_SOL);
       }
       setIsMinting(false);
+      refreshCandyMachineState();
     }
   };
 
@@ -129,54 +159,26 @@ const Home = (props: HomeProps) => {
     })();
   }, [wallet, props.connection]);
 
-  useEffect(() => {
-    (async () => {
-      if (!wallet) return;
-
-      const {
-        candyMachine,
-        goLiveDate,
-        itemsRemaining,
-        itemsAvailable,
-        price,
-      } = await getCandyMachineState(
-        wallet as anchor.Wallet,
-        props.candyMachineId,
-        props.connection
-      );
-
-      setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
-      setCandyMachine(candyMachine);
-      setCounter({
-        itemsRemaining,
-        itemsAvailable,
-      });
-      setPrice(price);
-    })();
-  }, [wallet, props.candyMachineId, props.connection]);
+  useEffect(refreshCandyMachineState, [
+    wallet,
+    props.candyMachineId,
+    props.connection,
+  ]);
 
   return (
     <main>
       {wallet && (
-        <p>Address: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
+        <div><p className="header_one">Wallet: </p><p className="header_tree">{shortenAddress(wallet.publicKey.toBase58() || "")}</p></div>
       )}
 
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+      {wallet && <div><p className="header_one"> Balance: </p><p className="header_tree">{(balance || 0).toLocaleString()} SOL</p></div>}
 
-      {!!counter && wallet && (
-        <>
-          Items available: {counter.itemsRemaining} / {counter.itemsAvailable}
-          <br />
-          <br />
-        </>
-      )}
+      {wallet && <div><p className="header_one">Total Available: </p><p className="header_tree">{itemsRemaining}/{itemsAvailable}</p><br /><br /></div>}
+
 
       <MintContainer>
         {!wallet ? (
-          <ConnectButton className="connect-button">
-            Connect Wallet
-          </ConnectButton>
+          <ConnectButton className="connect-button">Connect Wallet</ConnectButton>
         ) : (
           <MintButton
             disabled={isSoldOut || isMinting || !isActive}
@@ -189,7 +191,7 @@ const Home = (props: HomeProps) => {
               isMinting ? (
                 <CircularProgress />
               ) : (
-                `MINT FOR ${price} SOL `
+                "MINT FOR 1 SOL"
               )
             ) : (
               <Countdown
@@ -228,7 +230,7 @@ interface AlertState {
 const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
   return (
     <CounterText>
-      {hours} hours, {minutes} minutes, {seconds} seconds
+      {hours + (days || 0) * 24} hours, {minutes} minutes, {seconds} seconds
     </CounterText>
   );
 };

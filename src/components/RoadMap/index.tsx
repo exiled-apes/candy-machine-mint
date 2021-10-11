@@ -13,13 +13,10 @@ const RoadMap = () => {
               <img src={Path} className="path" alt="path" />
             </div>
             <div className="roadmap__step-detail">
-              <h4>Day 1</h4>
+              <h4>Launch of ZGirls (Q4 2021):</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
-                aliquet semper lobortis praesent ultrices non egestas. Interdum
-                sed ut ultrices pulvinar laoreet eu sed. Iaculis amet magna nibh
-                bibendum accumsan morbi magna diam. Scelerisque proin sed ac
-                fringilla sapien vitae ornare volutpat nec.
+              An army of zombie girls is ready to be released on Soalana.
+              The listing of the project on the big platforms of Solanart, SolSea, DigitalEyes, Magic Eden
               </p>
             </div>
           </div>
@@ -29,13 +26,10 @@ const RoadMap = () => {
               <img src={Path} className="path" alt="path" />
             </div>
             <div className="roadmap__step-detail roadmap__step-detail-next">
-              <h4>Day 1</h4>
+              <h4>Launch of Zcity (Q4 2021):</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
-                aliquet semper lobortis praesent ultrices non egestas. Interdum
-                sed ut ultrices pulvinar laoreet eu sed. Iaculis amet magna nibh
-                bibendum accumsan morbi magna diam. Scelerisque proin sed ac
-                fringilla sapien vitae ornare volutpat nec.
+              A marketplace that will bring together all the zombie-themed NFTs. 
+               (you are creator, collector of Zombie NFT or you just want to sell your zombie in the auction Zcity is for you)
               </p>
             </div>
           </div>
@@ -46,13 +40,10 @@ const RoadMap = () => {
               <img src={Path} className="path" alt="path" />
             </div>
             <div className="roadmap__step-detail">
-              <h4>Day 1</h4>
+              <h4>Launch of ZFamilly (Q1 2022):</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
-                aliquet semper lobortis praesent ultrices non egestas. Interdum
-                sed ut ultrices pulvinar laoreet eu sed. Iaculis amet magna nibh
-                bibendum accumsan morbi magna diam. Scelerisque proin sed ac
-                fringilla sapien vitae ornare volutpat nec.
+              The biggest giveaway the NFT Community on Solana will ever see. 
+              Distribution of royalties and the launch of new generation NFTs (more details will be released).
               </p>
             </div>
           </div>
@@ -62,13 +53,11 @@ const RoadMap = () => {
               4
             </div>
             <div className="roadmap__step-detail  roadmap__step-detail-next">
-              <h4>Day 1</h4>
+              <h4>Launch of ZCommunity (Q2 2022):</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
-                aliquet semper lobortis praesent ultrices non egestas. Interdum
-                sed ut ultrices pulvinar laoreet eu sed. Iaculis amet magna nibh
-                bibendum accumsan morbi magna diam. Scelerisque proin sed ac
-                fringilla sapien vitae ornare volutpat nec.
+              An animated series of Zombie invasion after each episode of the series is launched, 
+              the episode will be offered in NFT, and the new character or 3D object will also be sold on our market place (Zcity)
+
               </p>
             </div>
           </div>
@@ -77,55 +66,24 @@ const RoadMap = () => {
       <div className="about-container" id="about">
         <h1>About</h1>
         <p>
-          This is our first and only one NFT collection of beautiful Creepy
-          Girls.
+        The ZGirls isn't just another NFT project. Its a story that you can be a part of and decide its future.
         </p>
         <p>
-          Creepy Girls Collection is about pure art. Every person will love his
-          own CG. Some people see themselves there the others - some people they
-          love. Or just join the aesthetic pleasure.
+        The goal of launching ZGirls is to create a community around NFTs but especially around of Zombies art, 
+        lotteries and giveaways will be offered several times a month to develop our community.
         </p>
         <p>
-          There are more than 120 traits in it and some of them are rare. All
-          the prevalence is shown in our Rarity Chart where you can see the
-          names of most rare treats. You can also try to find a combination of
-          several of them if you’re lucky to find such a gem.
+        Our next big goal will be to launch an NFTs marketplace specializing in zombie illustrations, 
+        and to complete the ZFamilly collection (More details will be announced as the project progresses).
         </p>
         <p>
-          After recent discussion with our community in Discord we decided to
-          reduce the size of collection to a 3333 (instead of initial 10k). That
-          made CG even more unique, diversive and valuable. The size is final
-          and we won’t ever expand or reduce it.
+        The royalties will be divided among the owners of the NFT ZGirls and the other portion will be donated to charity.
         </p>
         <p>
-          We are also about to launch our own Merch with Creepys. That could be
-          T-Shirts, Facemasks, Hoodies or Phone Cases. We want those girls to
-          come into the real world with you!
-        </p>
-        <p>
-          There are also some plans to make a game based on that art. And the
-          development has already started but we won’t make any pre-sales or big
-          promises. We will show you that when it will be on the stage where you
-          can see some real progress.
-        </p>
-        <p>
-          What else to expect. There is a plan of creation of a new Creepy
-          collection that will be as gorgeous as this one. Likely even more of
-          course. All owners of Creepy Girls will have big chances to get an NFT
-          from the new collection for free! The more Girls you have the more
-          chances to get another exclusive NFT. Those who own 10 Creepy Girls
-          will have a guaranteed random Rare art. If you have more than 10 -
-          those extra will also participate in a “lottery” to get another common
-          Creepy from the collection. I must tell you that this is gonna be not
-          that soon. Probably Only after all the CG collection is sold. So don’t
-          worry that we will make some fact and low quality and low valuable
-          arts. We’re not going to that hole.
-        </p>
-        <p>
-          We’re willing to gather a strong community around this Creepy Art. We
-          will listen to you and decide together what will be the next move.
-        </p>
-        <h2><span>ZGirls</span> Love you</h2>
+        We’re willing to gather a strong community around this Zombie Art. 
+        We will listen to you and decide together what will be the next move.
+        </p>        
+        <h2><span>The ZGirls</span> Team</h2>
       </div>
     </div>
   );

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./styles.css";
 import Logo from "../../images/zgirls.svg";
 
+
 const links = [
   { name: "Home", link: "#home" },
   { name: "Collection", link: "#collection" },
-  { name: "About", link: "#about" },
   { name: "Rarity", link: "#rarity" },
   { name: "RoadMap", link: "#roadmap" },
+  { name: "About", link: "#about" },
   { name: "Social", link: "#social" },
 ];
 const Nav = () => {
@@ -28,7 +29,7 @@ const Nav = () => {
                 {" "}
                 {name}
               </a>
-            </li>
+            </li>           
           );
         })}
       </ul>

@@ -10,17 +10,24 @@
   align-items: center;
   margin-right: 4rem;
 }
+.nav-links :hover{
+  color : #cca146;
+
+}
 .nav-link {
   font-size: 1.1rem;
   text-decoration: none;
   color: white;
   font-weight: 600;
   margin: 0 2rem;
-
 }
 
 .nav-link--active {
   padding: 1rem 1.4rem;
   background: #cca146;
   border-radius: 12px;
+}
+
+.nav-link--active :hover {
+  color: white;
 }

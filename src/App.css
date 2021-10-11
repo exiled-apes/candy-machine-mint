@@ -3,8 +3,8 @@
 }
 .section{
   background-repeat: no-repeat;
+  width: 100vw;
   box-sizing: border-box;
-  width: 100vw ‰ !important;
   background: url("./images/top-background.png");
   background-size: cover;
 }

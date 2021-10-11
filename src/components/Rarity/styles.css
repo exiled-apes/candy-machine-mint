@@ -1,5 +1,5 @@
 .rarity-container {
-  padding: 4rem 0rem;
+  padding: 2rem 0rem;
   margin-top: 4rem;
   background-color: rgba(52, 36, 76, 0.9);
   z-index: 2;
@@ -18,6 +18,7 @@
 .carousel {
   width: 80%;
   margin-right: 2rem;
+  margin-bottom: 10rem;
 }
 .rarity__option {
   background: rgba(196, 196, 196, 0.1);
@@ -26,7 +27,7 @@
   border: 1px solid #34244c;
   box-sizing: border-box;
   border-radius: 12px;
-  padding: 1rem 2rem;
+  padding: 5px 2rem;
   margin-bottom: 0.3rem;
   color: white;
 }
@@ -44,7 +45,24 @@
 }
 .rare-zombie p {
   text-align: center;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 600;
 }
 .rare-zombie img {
   width: 90%;
+}
+.rarity__option p{
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.rarity__option :hover {
+  color: #cca146;
+}
+
+.rarity__option--selected :hover{
+  color: white;
 }

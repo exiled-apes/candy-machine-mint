@@ -4,23 +4,25 @@ import Slider from "react-slick";
 import { useMemo } from "react";
 import { assets } from "../../assets";
 const rarityList = [
-  "Head",
-  "Body",
   "Background",
-  "Hat",
-  "Glasses",
-  "Beard",
-  "Necklace",
-  "Other",
+  "Skins",
+  "Eyes",
+  "Nose",
+  "Clothes",
+  "Accessory",
+  "Hair",
+  "Hats",
+  "Mouth",
+  "Glasses"
 ];
 const Rarity = () => {
-  const [selected, setSelected] = useState("Head");
+  const [selected, setSelected] = useState("Background");
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 300,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
   };
   const attributesList = useMemo(() => {
     //ts ignore
@@ -43,7 +45,7 @@ const Rarity = () => {
                 selected === rarity && "rarity__option--selected"
               } `}
             >
-              {rarity}
+              <p>{rarity}</p>
             </div>
           ))}
         </div>
