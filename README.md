@@ -61,7 +61,7 @@ This the Solana address that receives the funds gathered during the minting proc
 REACT_APP_CANDY_START_DATE=__PLACEHOLDER__
 ```
 
-This is a unix time stamp that configures when your mint will be open.
+This is a unix time stamp in milliseconds that configures when your mint will be open.
 
 ```
 REACT_APP_SOLANA_NETWORK=devnet
