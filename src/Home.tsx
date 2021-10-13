@@ -45,6 +45,7 @@ margin-top: 15%;
 bottom: 10%;
 display: flex;
 justify-content: center;
+display: hidden;
 `; // add your styles here
 
 const MintButton = styled(Button)`
