@@ -1,15 +1,168 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #303030;
-  color: #FFFFFF;
+  background-color: #111111;
+  color: #e3fddf;
+  font-family: 'Dogica Pixel';
+  font-size: 1.5vw;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Dogica Pixel';
+    
 }
+
+.first {
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.TopMenu {
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  position: relative;
+
+}
+@font-face { font-family: blox2; src: url(Blox2.ttf); }
+@font-face {font-family:"Dogica Pixel";src:url("Dogica_Pixel.eot?") format("eot"),url("Dogica_Pixel.woff") format("woff"),url("Dogica_Pixel.ttf") format("truetype"),url("Dogica_Pixel.svg#Dogica_Pixel") format("svg");font-weight:normal;font-style:normal;}
+
+.homee {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #23dbb2;
+  font-family: 'blox2';
+  letter-spacing: 3px;
+  position: relative;
+}
+.Headp {
+  position: relative;
+  text-align: center;
+  padding: 1%;
+}
+.boxers {
+  display: inline-block;
+  margin: 0 auto;
+  text-align:center;
+  font-size: 6vw;
+  font-family: 'blox2';
+  background-color: #f3ec78;
+  background-image: linear-gradient(45deg, #60176c, #fda0fb, #05c1f4);
+  background-size: 100%;
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+
+  
+
+}
+.sol {
+  display: inline-block;
+  margin: 0 auto;
+  text-align:center;
+  font-size: 6vw;
+  font-family: 'blox2';
+  background-color: #f3ec78;
+  background-image: linear-gradient(20deg, #f123f2, #0df1a9);
+  background-size: 100%;  
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.second {
+  height: 100vh;
+  width: 100vw;
+   text-shadow: 1.5px -1.5px #e709e7, -1.5px 1.5px #02fcff;
+}
+
+model-viewer {
+  position: absolute;
+  height: 150vh;
+  width: 100vw;
+  overflow: hidden;
+  margin-top: -10%;
+  margin-left: 1%;
+
+}
+
+.info {
+  
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #23dbb2;
+  font-family: 'blox2';
+  font-weight: normal;
+  letter-spacing: 3px;
+  line-height: 100%;
+  margin-bottom: -2%;
+ }
+
+.teamins {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  }
+
+  .alchemist {
+    text-align: center;
+    display: block;
+    margin: 15px;
+    box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
+    }
+  
+  .gb {
+    display: block;
+    text-align: center;
+    margin: 15px;
+    box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
+    }
+
+.teamtxt {
+margin: 5px;
+}
+
+.foot {
+  display: flex;
+  flex-direction: row;
+  text-shadow: 0.5px -0.5px #e709e7, -0.5px 0.5px #ffffff;
+  justify-content: center;
+  font-size: 2vw;
+  position: relative;
+}
+
+.discord {
+  margin-right: 2%;
+  font-family: 'blox2';
+  color:darkmagenta;
+  letter-spacing: 3px;
+}
+
+.twitter {
+margin-left: 2%;
+  color:deepskyblue;
+  font-family: 'blox2';
+  letter-spacing: 3px;
+}
+
+footer {
+padding-left: 10%;
+padding-right: 10%;
+line-height: 200%;
+
+}
+
+.u {
+  position: relative;
+ margin-top: 20%;
+
+}
+
+li {
+  list-style-position: outside;
+}
+

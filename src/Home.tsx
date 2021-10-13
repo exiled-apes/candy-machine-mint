@@ -10,6 +10,7 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+import { fff } from "./3d.js";
 
 import {
   CandyMachine,
@@ -19,13 +20,47 @@ import {
   shortenAddress,
 } from "./candy-machine";
 
-const ConnectButton = styled(WalletDialogButton)``;
+const ConnectButton = styled(WalletDialogButton)`
+
+  && {{
+        background: transparent;
+         color: #23dbb2;
+        font-size: 1.5vw;
+        text-shadow: 1px -1px #ffffff, -1px 1px #e709e7;
+        margin-top: 100%;
+        position: absolute;
+        font-family: 'blox2';
+        letter-spacing: 3px;
+        
+     }}
+`;
 
 const CounterText = styled.span``; // add your styles here
 
-const MintContainer = styled.div``; // add your styles here
+const MintContainer = styled.div`
+position: relative;
+margin-left: 45%;
+margin-right: 45%;
+margin-top: 15%;
+bottom: 10%;
+display: flex;
+justify-content: center;
+`; // add your styles here
 
-const MintButton = styled(Button)``; // add your styles here
+const MintButton = styled(Button)`
+&& {{
+  position: absolute;
+  font-family: 'blox2';
+  font-size: 2vw;
+  letter-spacing: 3px;
+  background: transparent;
+  color: #23dbb2;
+  text-shadow: 0.5px -0.5px #ffffff, -1px 1px #e709e7;}}
+  bottom: 5%;
+  &:hover {
+    font-weight: bold;
+}}
+`; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -164,63 +199,134 @@ const Home = (props: HomeProps) => {
     props.candyMachineId,
     props.connection,
   ]);
-
+  
+const aaa = fff()
   return (
     <main>
-      {wallet && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
-
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
-
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
-
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
-
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
-
-      <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Walet</ConnectButton>
-        ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
-              ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
-          </MintButton>
+      {aaa}
+      <div className="first">
+          <div className="TopMenu">
+            <a href="/#" className="homee"><p>home</p></a>
+            <a href="/#f1" className="homee"><p>faq</p></a>
+            <a href="https://discord.com" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
+          </div>
+          <div className="Headp">
+            <div className="sol">sol</div><div className="boxers">boxers</div>
+          </div>
+        <div className="u">
+          <h2 className="info"><p>Date: 16.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
+        </div>
+        
+        {wallet && (
+          <p>&nbsp;&nbsp;Wallet: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
         )}
-      </MintContainer>
 
-      <Snackbar
-        open={alertState.open}
-        autoHideDuration={6000}
-        onClose={() => setAlertState({ ...alertState, open: false })}
-      >
-        <Alert
+        {wallet && <p>&nbsp;&nbsp;Balance: {(balance || 0).toLocaleString()} SOL</p>}
+
+        {wallet && <p>&nbsp;&nbsp;Total Available: {itemsAvailable}</p>}
+
+        {wallet && <p>&nbsp;&nbsp;Redeemed: {itemsRedeemed}</p>}
+
+        {wallet && <p>&nbsp;&nbsp;Remaining: {itemsRemaining}</p>}
+
+        <MintContainer>
+          {!wallet ? (
+            <ConnectButton>Connect Walet</ConnectButton>
+          ) : (
+            <MintButton
+              disabled={isSoldOut || isMinting || !isActive}
+              onClick={onMint}
+              variant="contained"
+            >
+              {isSoldOut ? (
+                "SOLD OUT"
+              ) : isActive ? (
+                isMinting ? (
+                  <CircularProgress />
+                ) : (
+                  "MINT"
+                )
+              ) : (
+                <Countdown
+                  date={startDate}
+                  onMount={({ completed }) => completed && setIsActive(true)}
+                  onComplete={() => setIsActive(true)}
+                  renderer={renderCounter}
+                />
+              )}
+            </MintButton>
+          )}
+        </MintContainer>
+  
+        <Snackbar
+          open={alertState.open}
+          autoHideDuration={6000}
           onClose={() => setAlertState({ ...alertState, open: false })}
-          severity={alertState.severity}
         >
-          {alertState.message}
-        </Alert>
-      </Snackbar>
+          <Alert
+            onClose={() => setAlertState({ ...alertState, open: false })}
+            severity={alertState.severity}
+          >
+            {alertState.message}
+          </Alert>
+        </Snackbar>
+
+      </div>
+           
+      <footer>
+       <div id={'f1'} className="intro">
+          <h2 className="info"><p>What is SOLBOXERS</p></h2>
+          <p>A collection 499 Boxer brief NFTs built on Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499  . Total supply is only 499 which officially makes SolBoxers the rarest NFT collectible on Solana ecosystem.
+          </p>
+       </div>
+
+       <div className="rarity">
+          <h2 className="info"><p>Rarity</p></h2>
+          <p>Unique, Algorithmically generated, Common to epic</p>
+       </div>
+
+       <div className="roadmap">
+          <h2 className="info"><p>RoadMap</p></h2>
+          <ul>
+          <li>Listing on Solanart, MagicEden, DigitalEyes and alpha.art.</li>
+          <li>No initial royalty system, thus We will be able to be listed centralized NFT marketplaces such as FTX, Coinbase. Instead, Team will Create Community wallet with 20% from sales for future Marketing activities.</li>
+            <p> &nbsp;&nbsp;&nbsp;- Discord invite contest</p>
+            <p> &nbsp;&nbsp;&nbsp;- Illustration art contest</p>
+            <p> &nbsp;&nbsp;&nbsp;- Cross giveaways with other projects on Solana</p>
+            <p> &nbsp;&nbsp;&nbsp;- Regular social media giveaways, campaign</p>
+            <p> &nbsp;&nbsp;&nbsp;- Floor sweeping</p>
+            <li>Addresses participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>
+            <li>STT holders get Exclusive access to and 20% profit from future Decentralized projects that the team develops.</li>
+          </ul>
+         </div>
+
+       <div className="team">
+          <h2 className="info"><p>Team</p></h2>
+          <div className="teamins">
+            <div className="alchemist">
+              <img src="2.jpg" width="235" height="235" alt="Image1"></img>
+              <div className="teamtxt">
+                DEV: Gerel
+              </div>
+            </div>
+            <div className="gb">
+              <img src="1.jpg" width="235" height="235" alt="Image1"></img>
+              <div className="teamtxt">
+                ART: (FLF)
+              </div>
+            </div>
+          </div>
+       </div>
+
+       <div className="foot">
+          <a href="https://discord.gg/" className="discord"><p>DISCORD</p></a>
+
+          <a href="https://twitter.com/" className="twitter"><p>TWITTER</p></a>
+       </div>
+      </footer>
     </main>
+
   );
 };
 

@@ -20,8 +20,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
     
+    
   },
   "include": [
     "src"
+  ],
+  
+  "typeRoots": [
+    "./typings/",
+    "./node_modules/@types/"
   ],
 }
