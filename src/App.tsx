@@ -13,6 +13,7 @@ import {
   getSolletWallet,
   getSolletExtensionWallet,
 } from "@solana/wallet-adapter-wallets";
+import CustomPage from "./CustomPage";
 
 import {
   ConnectionProvider,
