@@ -25,13 +25,12 @@ const ConnectButton = styled(WalletDialogButton)`
   && {{
         background: transparent;
          color: #23dbb2;
-        font-size: 1.5vw;
-        text-shadow: 1px -1px #ffffff, -1px 1px #e709e7;
+        font-size: 25px;
         margin-top: 100%;
         position: absolute;
         font-family: 'blox2';
         letter-spacing: 3px;
-        
+        line-height: 100%;
      }}
 `;
 
@@ -52,14 +51,15 @@ const MintButton = styled(Button)`
 && {{
   position: absolute;
   font-family: 'blox2';
-  font-size: 2vw;
+  font-size: 25px;
   letter-spacing: 3px;
   background: transparent;
   color: #23dbb2;
-  text-shadow: 0.5px -0.5px #ffffff, -1px 1px #e709e7;}}
+  text-shadow: 0.5px -0.5px #ffffff, -0.5px 0.5px #e709e7;}}
   bottom: 5%;
   &:hover {
     font-weight: bold;
+    font-size: 30px;
 }}
 `; // add your styles here
 
@@ -215,6 +215,12 @@ const aaa = fff()
           <div className="Headp">
             <div className="sol">sol</div><div className="boxers">boxers</div>
           </div>
+          <div className="cube1">
+            <img src="cube1.png"  alt="cube1"></img>
+           </div>
+          <div className="cube2">
+            <img src="cube2.png"  alt="cube2"></img>
+          </div>
         <div className="u">
           <h2 className="info"><p>Date: 16.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
         </div>
@@ -324,6 +330,7 @@ const aaa = fff()
           <a href="https://discord.gg/" className="discord"><p>DISCORD</p></a>
 
           <a href="https://twitter.com/" className="twitter"><p>TWITTER</p></a>
+
        </div>
       </footer>
     </main>
