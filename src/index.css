@@ -3,6 +3,7 @@ body {
   color: #e3fddf;
   font-family: 'Dogica Pixel';
   font-size: 20px;
+  margin: 1px;
 }
 code {
   font-family: 'Dogica Pixel';
@@ -12,9 +13,9 @@ code {
   }
 .TopMenu {
   display: flex;
-  justify-content: center;
+   justify-content: center;
     position: relative;
-}
+  }
 @font-face { font-family: blox2; src: url(Blox2.ttf); }
 @font-face {font-family:"Dogica Pixel";src:url("Dogica_Pixel.eot?") format("eot"),url("Dogica_Pixel.woff") format("woff"),url("Dogica_Pixel.ttf") format("truetype"),url("Dogica_Pixel.svg#Dogica_Pixel") format("svg");font-weight:normal;font-style:normal;}
 .homee {
@@ -24,8 +25,15 @@ code {
   font-family: 'blox2';
   font-size: 25px;
   letter-spacing: 3px;
-  position: relative;
-}
+  }
+  @media only screen and (max-width: 600px) {
+    .homee {
+      padding-left: 5px;
+      padding-right: 5px;
+      font-size: 22px;
+    }
+  }
+  
 .Headp {
   position: relative;
   text-align: center;
@@ -81,7 +89,7 @@ model-viewer {
   font-family: 'blox2';
   font-weight: normal;
   letter-spacing: 3px;
-  line-height: 100%;
+  line-height: 130%;
   margin-bottom: -2%;
  }
 
@@ -96,8 +104,8 @@ model-viewer {
     display: block;
     margin: 15px;
     box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: 1px;
+    padding-left: 1px;
     }
     .flf {
     display: block;
@@ -122,6 +130,7 @@ margin: 5px;
   background-position: right;
 }
 .team {
+ 
   background-image: url(cube2.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -155,18 +164,35 @@ li {
   list-style-position: outside;
 }
 .cube1 {
+  display: inline-block;
   height:100%; width:auto;
   top: 0;
   position: absolute;
-  overflow: hidden;
+ 
 }
 
 .cube2 {
   top: 0;
   right: 0;
   position: absolute;
-  margin: 0;
+
+ 
  }
+ @media only screen and (max-width: 600px) {
+  .cube2 {
+    margin-top: 50%;
+    transform: scale(0.5, 0.5);
+   
+  }
+    .cube1 {
+     margin-top: -45%;
+     
+      transform: scale(0.5, 0.5);
+      
+   
+  }
+  
+}
 .cube3 {
   bottom: 0;
   left: 0;

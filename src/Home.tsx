@@ -216,10 +216,10 @@ const aaa = fff()
             <div className="sol">sol</div><div className="boxers">boxeRs</div>
           </div>
           <div className="cube1">
-            <img src="cube1.png"  alt="cube1"></img>
+            <img src="cube1.png"  alt="Solana NFT"></img>
            </div>
           <div className="cube2">
-            <img src="cube2.png"  alt="cube2"></img>
+            <img src="cube2.png"  alt="meebits"></img>
           </div>
         <div className="u">
           <h2 className="info"><p>Date: 16.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
@@ -312,13 +312,13 @@ const aaa = fff()
           <h2 className="info"><p>Team</p></h2>
           <div className="teamins">
             <div className="dev">
-              <img src="4.png" width="" height="235" alt="Image1"></img>
+              <img src="4.png" width="" height="180" alt="solsocks"></img>
               <div className="teamtxt">
                 DEV: 0Gerel
               </div>
             </div>
             <div className="flf">
-              <img src="1.jpg" width="235" height="235" alt="Image1"></img>
+              <img src="1.jpg" width="180" height="180" alt="socks on solana"></img>
               <div className="teamtxt">
                 ART: (FLF)
               </div>
