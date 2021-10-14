@@ -311,13 +311,13 @@ const aaa = fff()
        <div className="team">
           <h2 className="info"><p>Team</p></h2>
           <div className="teamins">
-            <div className="alchemist">
-              <img src="2.jpg" width="235" height="235" alt="Image1"></img>
+            <div className="dev">
+              <img src="4.png" width="" height="235" alt="Image1"></img>
               <div className="teamtxt">
                 DEV: Gerel
               </div>
             </div>
-            <div className="gb">
+            <div className="flf">
               <img src="1.jpg" width="235" height="235" alt="Image1"></img>
               <div className="teamtxt">
                 ART: (FLF)

@@ -70,8 +70,7 @@ model-viewer {
   width: 100vw;
   overflow: hidden;
   margin-top: -10%;
-  margin-left: 1%;
-}
+  }
 .info {
     text-align: center;
   display: flex;
@@ -91,13 +90,15 @@ model-viewer {
   flex-direction: row;
   justify-content: center;
   }
-  .alchemist {
+  .dev {
     text-align: center;
     display: block;
     margin: 15px;
     box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
+    padding-right: 24px;
+    padding-left: 24px;
     }
-    .gb {
+    .flf {
     display: block;
     text-align: center;
     margin: 15px;
@@ -143,8 +144,9 @@ padding-right: 10%;
 line-height: 200%;
 }
 .u {
-  position: relative;
- margin-top: 20%;
+position: relative;
+margin-top: 20%;
+line-height: 200%;
 }
 li {
   list-style-position: outside;
