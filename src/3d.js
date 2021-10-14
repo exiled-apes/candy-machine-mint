@@ -1,7 +1,7 @@
 export function fff() {
   return (
     
-      <model-viewer src="aa.glb" 
+      <model-viewer src="rr.glb" 
       alt="A 3D model of an astronaut" 
       ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="neutral" 
