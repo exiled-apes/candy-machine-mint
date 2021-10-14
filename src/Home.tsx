@@ -213,7 +213,7 @@ const aaa = fff()
             <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
           </div>
           <div className="Headp">
-            <div className="sol">sol</div><div className="boxers">boxers</div>
+            <div className="sol">sol</div><div className="boxers">boxeRs</div>
           </div>
           <div className="cube1">
             <img src="cube1.png"  alt="cube1"></img>
@@ -314,7 +314,7 @@ const aaa = fff()
             <div className="dev">
               <img src="4.png" width="" height="235" alt="Image1"></img>
               <div className="teamtxt">
-                DEV: Gerel
+                DEV: 0Gerel
               </div>
             </div>
             <div className="flf">
