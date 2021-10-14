@@ -92,6 +92,26 @@ model-viewer {
   line-height: 130%;
   margin-bottom: -2%;
  }
+ .trunk {
+ 
+  margin: 15px;
+  display: inline-block;
+    }
+    .bling {
+  
+  margin: 15px;
+  display: inline-block;
+    }
+    .merchant {
+display:inline-block;
+
+    }
+    .merchtxt {
+    margin: 15px;
+      }
+
+  
+  
 
 .teamins {
   text-align: center;

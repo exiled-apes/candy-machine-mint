@@ -303,6 +303,17 @@ const aaa = fff()
             <p> &nbsp;&nbsp;&nbsp;- Cross giveaways with other projects on Solana</p>
             <p> &nbsp;&nbsp;&nbsp;- Regular social media giveaways, campaign</p>
             <p> &nbsp;&nbsp;&nbsp;- Floor sweeping</p>
+            <div className="merchant">
+            <div className="trunk">
+              <img src="Degen-ape.jpg"  height="180" width="180" alt="solsocks"></img>
+              </div>
+            <div className="bling">
+              <img src="generative-nft.jpg" height="180" width="180" alt="socks on solana"></img>
+            </div>
+            <div className="merchtxt">
+            <p>Official merch store with worldwide Shipping.</p>
+            </div>
+            </div>
             <li>Addresses participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>
             <li>STT holders get Exclusive access to and 20% profit from future Decentralized projects that the team develops.</li>
           </ul>
