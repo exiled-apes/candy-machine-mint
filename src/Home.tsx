@@ -20,9 +20,9 @@ import {
   shortenAddress,
 } from "./candy-machine";
 
-const aaa = fff()
+const aaa = fff();
 
- const ConnectButton = styled(WalletDialogButton)`
+const ConnectButton = styled(WalletDialogButton)`
 
   && {{
         background: transparent;
