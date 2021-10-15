@@ -294,7 +294,7 @@ const Home = (props: HomeProps) => {
 
        <div className="rarity">
           <h2 className="info"><p>Rarity</p></h2>
-          <p>Unique, Algorithmically generated, Common to epic</p>
+          <p>Unique, Algorithmically generated,, Common to epic</p>
        </div>
 
        <div className="roadmap">
