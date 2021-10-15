@@ -80,7 +80,7 @@ model-viewer {
   height: 150vh;
   width: 100vw;
   overflow: hidden;
-  margin-top: -10%;
+  margin-top: -9%;
   }
 .info {
     text-align: center;
@@ -105,15 +105,7 @@ model-viewer {
   display: inline-block;
   box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
     }
-    .merchant {
-
-
-    }
-  
-
-  
-  
-
+ 
 .teamins {
   text-align: center;
   display: flex;
