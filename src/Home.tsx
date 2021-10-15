@@ -22,31 +22,32 @@ import {
 
 const aaa = fff()
 
-const ConnectButton = styled(WalletDialogButton)`
+ const ConnectButton = styled(WalletDialogButton)`
 
   && {{
         background: transparent;
-         color: #23dbb2;
+        color: #23dbb2;
         font-size: 25px;
         margin-top: 100%;
         position: absolute;
         font-family: 'blox2';
         letter-spacing: 3px;
         line-height: 100%;
+        display: hidden;
      }}
 `;
 
 const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div`
-position: relative;
-margin-left: 45%;
-margin-right: 45%;
-margin-top: 15%;
-bottom: 10%;
-display: flex;
-justify-content: center;
-display: hidden;
+  position: relative;
+  margin-left: 45%;
+  margin-right: 45%;
+  margin-top: 15%;
+  bottom: 10%;
+  display: flex;
+  justify-content: center;
+  display: none;
 `; // add your styles here
 
 const MintButton = styled(Button)`
@@ -59,6 +60,7 @@ const MintButton = styled(Button)`
   color: #23dbb2;
   text-shadow: 0.5px -0.5px #ffffff, -0.5px 0.5px #e709e7;}}
   bottom: 5%;
+  display: none;
   &:hover {
     font-weight: bold;
     font-size: 30px;
@@ -211,7 +213,7 @@ const Home = (props: HomeProps) => {
           <div className="TopMenu">
             <a href="/#" className="homee"><p>home</p></a>
             <a href="/#f1" className="homee"><p>faq</p></a>
-            <a href="https://discord.com" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
+            <a href="https://discord.gg/ESYdRqGC" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
             <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
           </div>
           <div className="Headp">
