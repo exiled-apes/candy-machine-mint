@@ -1,3 +1,4 @@
+import { fff } from "./3d.js";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Countdown from "react-countdown";
@@ -10,7 +11,7 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
-import { fff } from "./3d.js";
+
 
 import {
   CandyMachine,
@@ -19,6 +20,8 @@ import {
   mintOneToken,
   shortenAddress,
 } from "./candy-machine";
+
+const aaa = fff()
 
 const ConnectButton = styled(WalletDialogButton)`
 
@@ -201,7 +204,7 @@ const Home = (props: HomeProps) => {
     props.connection,
   ]);
   
-const aaa = fff()
+
   return (
     <main>
       {aaa}
