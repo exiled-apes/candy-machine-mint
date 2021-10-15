@@ -33,7 +33,7 @@ const ConnectButton = styled(WalletDialogButton)`
         font-family: 'blox2';
         letter-spacing: 3px;
         line-height: 100%;
-        display: hidden;
+       
      }}
 `;
 
@@ -47,7 +47,7 @@ const MintContainer = styled.div`
   bottom: 10%;
   display: flex;
   justify-content: center;
-  display: none;
+
 `; // add your styles here
 
 const MintButton = styled(Button)`
@@ -60,7 +60,7 @@ const MintButton = styled(Button)`
   color: #23dbb2;
   text-shadow: 0.5px -0.5px #ffffff, -0.5px 0.5px #e709e7;}}
   bottom: 5%;
-  display: none;
+
   &:hover {
     font-weight: bold;
     font-size: 30px;
@@ -294,7 +294,7 @@ const Home = (props: HomeProps) => {
 
        <div className="rarity">
           <h2 className="info"><p>Rarity</p></h2>
-          <p>Unique, Algorithmically generated,, Common to epic</p>
+          <p>Unique, Algorithmically generated,,, Common to epic</p>
        </div>
 
        <div className="roadmap">
