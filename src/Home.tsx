@@ -214,7 +214,7 @@ const Home = (props: HomeProps) => {
             <a href="/#" className="homee"><p>home</p></a>
             <a href="/#f1" className="homee"><p>faq</p></a>
             <a href="https://discord.gg/ESYdRqGC" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
+            <a href="https://twitter.com/solboxersnft" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
           </div>
           <div className="Headp">
             <div className="sol">sol</div><div className="boxers">boxeRs</div>
@@ -288,13 +288,13 @@ const Home = (props: HomeProps) => {
       <footer>
        <div id={'f1'} className="intro">
           <h2 className="info"><p>What is SOLBOXERS</p></h2>
-          <p>A collection of 499 Boxer brief NFTs built on Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. Total supply is only 499, which officially makes SolBoxers the rarest NFT collectible on Solana ecosystem.
+          <p>A collection of 499 uniquely generated Boxer brief NFTs with proof of ownership stored on the Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. Total supply is only 499, which officially makes SolBoxers the rarest NFT collectible on Solana Metaverse.
           </p>
        </div>
 
        <div className="rarity">
           <h2 className="info"><p>Rarity</p></h2>
-          <p>Unique, Algorithmically generated,, Common to epic</p>
+          <p>Unique, Algorithmically generated, there are some cool rare types of Boxers</p>
        </div>
 
        <div className="roadmap">
@@ -329,7 +329,7 @@ const Home = (props: HomeProps) => {
             <div className="dev">
               <img src="4.png" width="" height="180" alt="solsocks"></img>
               <div className="teamtxt">
-                DEV: 0Gerel
+                DEV: ◎Gerel
               </div>
             </div>
             <div className="flf">
@@ -342,9 +342,9 @@ const Home = (props: HomeProps) => {
        </div>
 
        <div className="foot">
-          <a href="https://discord.gg/" className="discord"><p>DISCORD</p></a>
+          <a href="https://discord.gg/ESYdRqGC" className="discord"><p>DISCORD</p></a>
 
-          <a href="https://twitter.com/" className="twitter"><p>TWITTER</p></a>
+          <a href="https://twitter.com/solboxersnft" className="twitter"><p>TWITTER</p></a>
 
        </div>
       </footer>
