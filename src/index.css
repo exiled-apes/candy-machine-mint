@@ -3,7 +3,8 @@ body {
   color: #e3fddf;
   font-family: 'Dogica Pixel';
   font-size: 20px;
-  margin: 1px;
+  margin-right: 1px;
+  margin-left: 1px;
 }
 code {
   font-family: 'Dogica Pixel';
@@ -96,19 +97,18 @@ model-viewer {
  
   margin: 15px;
   display: inline-block;
+  box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
     }
     .bling {
-  
-  margin: 15px;
+    margin: 15px;
   display: inline-block;
+  box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
     }
     .merchant {
-display:inline-block;
+
 
     }
-    .merchtxt {
-    margin: 15px;
-      }
+  
 
   
   

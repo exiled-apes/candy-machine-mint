@@ -222,7 +222,7 @@ const aaa = fff()
             <img src="cube2.png"  alt="meebits"></img>
           </div>
         <div className="u">
-          <h2 className="info"><p>Date: 16.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
+          <h2 className="info"><p>Date: 17.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
         </div>
         
         {wallet && (
@@ -305,10 +305,10 @@ const aaa = fff()
             <p> &nbsp;&nbsp;&nbsp;- Floor sweeping</p>
             <div className="merchant">
             <div className="trunk">
-              <img src="Degen-ape.jpg"  height="180" width="180" alt="solsocks"></img>
+              <img src="Degen-ape.jpg"  height="180" width="190" alt="solsocks"></img>
               </div>
             <div className="bling">
-              <img src="generative-nft.jpg" height="180" width="180" alt="socks on solana"></img>
+              <img src="generative-nft.jpg" height="180" width="190" alt="socks on solana"></img>
             </div>
             <div className="merchtxt">
             <p>Official merch store with worldwide Shipping.</p>
