@@ -241,7 +241,7 @@ const Home = (props: HomeProps) => {
 
         <MintContainer>
           {!wallet ? (
-            <ConnectButton>Connect Walet</ConnectButton>
+            <ConnectButton>Connect Wallet</ConnectButton>
           ) : (
             <MintButton
               disabled={isSoldOut || isMinting || !isActive}
@@ -286,7 +286,7 @@ const Home = (props: HomeProps) => {
       <footer>
        <div id={'f1'} className="intro">
           <h2 className="info"><p>What is SOLBOXERS</p></h2>
-          <p>A collection 499 Boxer brief NFTs built on Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499  . Total supply is only 499 which officially makes SolBoxers the rarest NFT collectible on Solana ecosystem.
+          <p>A collection of 499 Boxer brief NFTs built on Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. Total supply is only 499, which officially makes SolBoxers the rarest NFT collectible on Solana ecosystem.
           </p>
        </div>
 
@@ -299,7 +299,7 @@ const Home = (props: HomeProps) => {
           <h2 className="info"><p>RoadMap</p></h2>
           <ul>
           <li>Listing on Solanart, MagicEden, DigitalEyes and alpha.art.</li>
-          <li>No initial royalty system, thus We will be able to be listed centralized NFT marketplaces such as FTX, Coinbase. Instead, Team will Create Community wallet with 20% from sales for future Marketing activities.</li>
+          <li>No initial royalty system, thus We will be able to be listed centralized NFT marketplaces such as FTX, Coinbase. Instead, Team will Create a Community wallet with 20% from sales for future Marketing activities.</li>
             <p> &nbsp;&nbsp;&nbsp;- Discord invite contest</p>
             <p> &nbsp;&nbsp;&nbsp;- Illustration art contest</p>
             <p> &nbsp;&nbsp;&nbsp;- Cross giveaways with other projects on Solana</p>
@@ -313,10 +313,10 @@ const Home = (props: HomeProps) => {
               <img src="generative-nft.jpg" height="180" width="190" alt="socks on solana"></img>
             </div>
             <div className="merchtxt">
-            <p>Official merch store with worldwide Shipping.</p>
+            <p>Official merch store with worldwide shipping.</p>
             </div>
             </div>
-            <li>Addresses participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>
+            <li>Addresses which participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>
             <li>STT holders get Exclusive access to and 20% profit from future Decentralized projects that the team develops.</li>
           </ul>
          </div>
