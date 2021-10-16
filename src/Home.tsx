@@ -226,7 +226,7 @@ const Home = (props: HomeProps) => {
             <img src="cube2.png"  alt="meebits"></img>
           </div>
         <div className="u">
-          <h2 className="info"><p>Date: 19.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
+          <h2 className="info"><p>Date: 20.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
         </div>
         
         {wallet && (
@@ -291,10 +291,13 @@ const Home = (props: HomeProps) => {
           <p>A collection of 499 uniquely generated Boxer brief NFTs with proof of ownership stored on the Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. Total supply is only 499, which officially makes SolBoxers the rarest NFT collectible on Solana Metaverse.
           </p>
        </div>
-
+     
+       
        <div className="rarity">
-          <h2 className="info"><p>Rarity</p></h2>
+       <h2 className="info"><p>Rarity</p></h2>
           <p>Unique, Algorithmically generated, there are some cool rare types of Boxers</p>
+          <img className="rare" max-height="100%" max-width="100%" src="rarity4.png"  alt="thugbirds"></img>
+
        </div>
 
        <div className="roadmap">

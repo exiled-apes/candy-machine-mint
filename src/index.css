@@ -213,3 +213,11 @@ li {
   position: absolute;
   
 }
+.rarity {
+
+}
+.rare {
+  display: flex;
+  max-height:50%; max-width:50%;
+  justify-content: center;
+  }
