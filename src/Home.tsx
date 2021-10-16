@@ -226,7 +226,7 @@ const Home = (props: HomeProps) => {
             <img src="cube2.png"  alt="meebits"></img>
           </div>
         <div className="u">
-          <h2 className="info"><p>Date: 17.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
+          <h2 className="info"><p>Date: 19.oct | Supply: 499 | Price: 1.5 SOL</p></h2>
         </div>
         
         {wallet && (
