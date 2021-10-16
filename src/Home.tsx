@@ -342,9 +342,9 @@ const Home = (props: HomeProps) => {
        </div>
 
        <div className="foot">
-          <a href="https://discord.gg/ESYdRqGC" className="discord"><p>DISCORD</p></a>
+          <a href="https://discord.gg/ESYdRqGC" target="_blank" rel="noreferrer" className="discord"><p>DISCORD</p></a>
 
-          <a href="https://twitter.com/solboxersnft" className="twitter"><p>TWITTER</p></a>
+          <a href="https://twitter.com/solboxersnft" target="_blank" rel="noreferrer" className="twitter"><p>TWITTER</p></a>
 
        </div>
       </footer>
