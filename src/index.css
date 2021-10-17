@@ -81,10 +81,10 @@ model-viewer {
   width: 100vw;
   overflow: hidden;
   margin-top: -9%;
-  z-index: 2;
+  z-index: 100;
   }
 .info {
-    text-align: center;
+  text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -96,7 +96,7 @@ model-viewer {
   margin-bottom: -2%;
    }
   .merchant {
-    justify-content: center;
+  
     text-align: center;
   }
  .trunk {
@@ -179,7 +179,7 @@ line-height: 200%;
 }
 li {
   list-style-position: outside;
-  position: absolute;
+  
 }
 .cube1 {
   display: inline-block;
