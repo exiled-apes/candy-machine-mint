@@ -18,6 +18,7 @@ code {
   display: flex;
    justify-content: center;
     position: relative;
+    z-index: 3;
   }
 
 .homee {
@@ -81,7 +82,7 @@ model-viewer {
   width: 100vw;
   overflow: hidden;
   margin-top: -9%;
-  z-index: 100;
+  z-index: 2;
   }
 .info {
   text-align: center;
