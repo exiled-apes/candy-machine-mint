@@ -310,15 +310,13 @@ const Home = (props: HomeProps) => {
             <p> &nbsp;&nbsp;&nbsp;- Cross giveaways with other projects on Solana</p>
             <p> &nbsp;&nbsp;&nbsp;- Regular social media giveaways, campaign</p>
             <p> &nbsp;&nbsp;&nbsp;- Floor sweeping</p>
+            <p> &nbsp;&nbsp;&nbsp;- Sending SOLBOXERS themed boxer-breif and bling-bling to person bought the most expensive SOLBOXER NFT from secondary markets.</p>
             <div className="merchant">
-            <div className="trunk">
+              <div className="trunk">
               <img src="Degen-ape.jpg"  height="180" width="190" alt="solsocks"></img>
               </div>
-            <div className="bling">
+              <div className="bling">
               <img src="generative-nft.jpg" height="180" width="190" alt="socks on solana"></img>
-            </div>
-            <div className="merchtxt">
-            <p>Official merch store with worldwide shipping.</p>
             </div>
             </div>
             <li>Addresses which participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>

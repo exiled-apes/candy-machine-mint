@@ -81,6 +81,7 @@ model-viewer {
   width: 100vw;
   overflow: hidden;
   margin-top: -9%;
+  z-index: 2;
   }
 .info {
     text-align: center;
@@ -93,10 +94,13 @@ model-viewer {
   letter-spacing: 3px;
   line-height: 130%;
   margin-bottom: -2%;
- }
+   }
+  .merchant {
+    justify-content: center;
+    text-align: center;
+  }
  .trunk {
- 
-  margin: 15px;
+   margin: 15px;
   display: inline-block;
   box-shadow: 1.5px -1.5px #ffffff, -1.5px 1.5px #e709e7;
     }
@@ -141,7 +145,7 @@ margin: 5px;
   background-repeat: no-repeat;
   background-size: 30%;
   background-position: right;
-}
+  }
 .team {
  
   background-image: url(cube2.png);
@@ -175,49 +179,47 @@ line-height: 200%;
 }
 li {
   list-style-position: outside;
+  position: absolute;
 }
 .cube1 {
   display: inline-block;
   height:100%; width:auto;
   top: 0;
   position: absolute;
- 
+  z-index: 0;
 }
-
 .cube2 {
   top: 0;
   right: 0;
   position: absolute;
-
- 
+  z-index: 1;
+  overflow: hidden;
+  
  }
  @media only screen and (max-width: 600px) {
   .cube2 {
     margin-top: 50%;
     transform: scale(0.5, 0.5);
    
+    
   }
     .cube1 {
      margin-top: -45%;
      
       transform: scale(0.5, 0.5);
-      
-   
-  }
-  
+    }
 }
 .cube3 {
   bottom: 0;
   left: 0;
   margin: 1px;
   position: absolute;
-  
-}
-.rarity {
-
 }
 .rare {
+  align-items: center;
   display: flex;
-  max-height:50%; max-width:50%;
   justify-content: center;
-  }
+  max-height:70%; max-width:70%;
+  margin: auto; 
+  
+}
