@@ -202,10 +202,8 @@ li {
   .cube2 {
     margin-top: 50%;
     transform: scale(0.5, 0.5);
-   
-    
-  }
-    .cube1 {
+ }
+.cube1 {
      margin-top: -45%;
      
       transform: scale(0.5, 0.5);
@@ -224,4 +222,8 @@ li {
   max-height:70%; max-width:70%;
   margin: auto; 
   
+}
+.mp {
+  text-align: center;
+   color: #e3fddf;
 }

@@ -343,7 +343,9 @@ const Home = (props: HomeProps) => {
           <a href="https://discord.gg/ESYdRqGC" target="_blank" rel="noreferrer" className="discord"><p>DISCORD</p></a>
 
           <a href="https://twitter.com/solboxersnft" target="_blank" rel="noreferrer" className="twitter"><p>TWITTER</p></a>
-
+       </div>
+       <div className="mp">
+       <a href="https://docs.metaplex.com/">powered by Metaplex 🍬 Machine</a>
        </div>
       </footer>
     </main>
