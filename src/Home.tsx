@@ -291,15 +291,12 @@ const Home = (props: HomeProps) => {
           <p>A collection of 499 uniquely generated Boxer brief NFTs with proof of ownership stored on the Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. Total supply is only 499, which officially makes SolBoxers the rarest NFT collectible on Solana Metaverse.
           </p>
        </div>
-     
-       
+
        <div className="rarity">
        <h2 className="info"><p>Rarity</p></h2>
           <p>Unique, Algorithmically generated, there are some cool rare types of Boxers</p>
           <img className="rare" max-height="100%" max-width="100%" src="rarity4.png"  alt="thugbirds"></img>
-
        </div>
-
        <div className="roadmap">
           <h2 className="info"><p>RoadMap</p></h2>
           <ul>
@@ -329,8 +326,8 @@ const Home = (props: HomeProps) => {
           <div className="teamins">
             <div className="dev">
               <img src="4.png" width="" height="180" alt="solsocks"></img>
-              <div className="teamtxt">
-                DEV: ◎Gerel
+              <div className="teamtxt" >
+                 <a href="https://twitter.com/enhgerel">DEV: ◎Gerel</a>
               </div>
             </div>
             <div className="flf">

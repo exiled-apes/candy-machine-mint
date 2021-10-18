@@ -116,7 +116,7 @@ model-viewer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  }
+    }
   .dev {
     text-align: center;
     display: block;
@@ -133,6 +133,7 @@ model-viewer {
     }
 .teamtxt {
 margin: 5px;
+
 }
 .foot {
   display: flex;
