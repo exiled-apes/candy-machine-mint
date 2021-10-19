@@ -212,7 +212,7 @@ const Home = (props: HomeProps) => {
       <div className="first">
           <div className="TopMenu">
             <a href="/#" className="homee"><p>home</p></a>
-            <a href="/#f1" className="homee"><p>faq</p></a>
+            <a href="/#faq1" className="homee"><p>faq</p></a>
             <a href="https://discord.gg/ESYdRqGC" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
             <a href="https://twitter.com/solboxersnft" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
           </div>
@@ -286,22 +286,24 @@ const Home = (props: HomeProps) => {
       </div>
            
       <footer>
-       <div id={'f1'} className="intro">
+       <div id={'faq1'} className="intro">
           <h2 className="info"><p>What is SOLBOXERS</p></h2>
-          <p>A collection of 499 uniquely generated Boxer brief NFTs with proof of ownership stored on the Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. Total supply is only 499, which officially makes SolBoxers the rarest NFT collectible on Solana Metaverse.
+          <p>A collection of 499 uniquely generated Boxer brief NFTs with proof of ownership stored on the Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. </p>
+          <p>Total supply is only 499, which makes SolBoxers one of the rarest NFT collectible on Solana Metaverse.
           </p>
        </div>
 
        <div className="rarity">
        <h2 className="info"><p>Rarity</p></h2>
-          <p>Unique, Algorithmically generated, there are some cool rare types of Boxers</p>
+          <p>Unique, Algorithmically generated, also there are some cool, custom made rare types of Boxers</p>
           <img className="rare" max-height="100%" max-width="100%" src="rarity4.png"  alt="thugbirds"></img>
        </div>
        <div className="roadmap">
           <h2 className="info"><p>RoadMap</p></h2>
           <ul>
-          <li>Listing on Solanart, MagicEden, DigitalEyes and alpha.art.</li>
-          <li>No initial royalty system, thus We will be able to be listed centralized NFT marketplaces such as FTX, Coinbase. Instead, Team will Create a Community wallet with 20% from sales for future Marketing activities.</li>
+          <li>Submit listing requests on possible Secondary marketplaces such as Solanart, MagicEden, DigitalEyes and alpha.art.</li>
+          <p> &nbsp;</p>
+          <li>No initial royalty system, thus We will be able to be listed centralized NFT marketplaces such as FTX, Coinbase(as soon as they integrate Solana blockchain NFT's). Instead, Team will Create a Community wallet with 20% from sales for future Marketing activities that can increase Solboxers value.</li>
             <p> &nbsp;&nbsp;&nbsp;- Discord invite contest</p>
             <p> &nbsp;&nbsp;&nbsp;- Illustration art contest</p>
             <p> &nbsp;&nbsp;&nbsp;- Cross giveaways with other projects on Solana</p>
@@ -316,8 +318,12 @@ const Home = (props: HomeProps) => {
               <img src="generative-nft.jpg" height="180" width="190" alt="socks on solana"></img>
             </div>
             </div>
+            <li>"3D UNDERWEARS" &nbsp;&nbsp; As you can see in the header section of our web, there is 3D versions of Solboxers wearable in the Metaverse! Team will make 3D versions every Solboxer and distribute to owners. As drawing in 3d takes time this could take some time!</li>
+            <p> &nbsp;</p>
             <li>Addresses which participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>
-            <li>STT holders get Exclusive access to and 20% profit from future Decentralized projects that the team develops.</li>
+            <li>STT holders get Exclusive access to and 20% profit from future Decentralized projects that the team develops. (Sounds like a 🤥 promise hah? But anything could happen. Right?)</li>
+            <p> &nbsp;</p>
+            <li>"BIKINI"s &nbsp;&nbsp; Every minting address of 499 SolBoxers get free airdrop of Bikini themed NFT's that can make owner looks HOT😎. Those Bikinis will be created with similar design of Solboxers, So they can be paired up!</li>
           </ul>
          </div>
 
