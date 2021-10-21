@@ -47,12 +47,10 @@ const MintContainer = styled.div`
   bottom: 10%;
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
- `; // add your styles here
-=======
+
   
 `; // add your styles here
->>>>>>> 2bcd59942b92ad5ebca61df2c5f8751973610ebe
+
 
 const MintButton = styled(Button)`
 && {{
