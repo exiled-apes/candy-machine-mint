@@ -47,8 +47,7 @@ const MintContainer = styled.div`
   bottom: 10%;
   display: flex;
   justify-content: center;
-  display: none;
-`; // add your styles here
+ `; // add your styles here
 
 const MintButton = styled(Button)`
 && {{
