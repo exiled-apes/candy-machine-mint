@@ -82,7 +82,7 @@ model-viewer {
   width: 100vw;
   overflow: hidden;
   margin-top: -9%;
-  z-index: 2;
+  
   }
 .info {
   text-align: center;
