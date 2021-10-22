@@ -194,7 +194,7 @@ li {
   top: 0;
   right: 0;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
   
  }
@@ -208,6 +208,8 @@ li {
      
       transform: scale(0.5, 0.5);
     }
+
+
 }
 .cube3 {
   bottom: 0;

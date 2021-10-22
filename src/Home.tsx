@@ -47,21 +47,21 @@ const MintContainer = styled.div`
   bottom: 10%;
   display: flex;
   justify-content: center;
-
+  display: none;
   
 `; // add your styles here
 
 
 const MintButton = styled(Button)`
 && {{
-  position: absolute;
+  position: relative;
   font-family: 'blox2';
   font-size: 25px;
   letter-spacing: 3px;
   background: transparent;
   color: #23dbb2;
   text-shadow: 0.5px -0.5px #ffffff, -0.5px 0.5px #e709e7;}}
-  bottom: 5%;
+  bottom: 10%;
 
   &:hover {
     font-weight: bold;
@@ -215,7 +215,7 @@ const Home = (props: HomeProps) => {
           <div className="TopMenu">
             <a href="/#" className="homee"><p>home</p></a>
             <a href="/#faq1" className="homee"><p>faq</p></a>
-            <a href="https://discord.gg/ESYdRqGC" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
+            <a href="https://discord.gg/qy79dbWPxG" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
             <a href="https://twitter.com/solboxersnft" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
           </div>
           <div className="Headp">
@@ -227,7 +227,9 @@ const Home = (props: HomeProps) => {
           <div className="cube2">
             <img src="cube2.png"  alt="meebits"></img>
           </div>
-        
+        <div className="u">
+          <h2 className="info"><p>First 160 of 499 sold out. Thanks for everyone who beleive in us!</p></h2>
+        </div>
         
         {wallet && (
           <p>&nbsp;&nbsp;Wallet: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
