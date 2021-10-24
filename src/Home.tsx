@@ -329,7 +329,7 @@ const Home = (props: HomeProps) => {
             <li>"3D UNDERWEARS" &nbsp;&nbsp; As you can see in the header section of our web, there is 3D versions of Solboxers wearable in the Metaverse! Team will make 3D versions every Solboxer and distribute to owners. As drawing in 3d takes time this could take some time!</li>
             <p> &nbsp;</p>
             <li>Addresses which participated SOLBOXERS minting process will get free airdrop of STT(SOLBOXERS TEAM TOKEN).</li>
-            <li>STT holders get Exclusive access to and 20% profit from future Decentralized projects that the team develops. (Sounds like a 🤥 promise hah? But anything could happen. Right?)</li>
+            <li>STT token will not be listed on any exchanges, tsus has no value. STT holders get Exclusive access to acquire up to 20% share of future Decentralized projects that the team develops. (Sounds like a 🤥 promise hah? But anything could happen. Right?)</li>
             <p> &nbsp;</p>
             <li>"BIKINI"s &nbsp;&nbsp; Every minting address of 499 SolBoxers get free airdrop of Bikini themed NFT's that can make owner looks HOT😎. Those Bikinis will be created with similar design of Solboxers, So they can be paired up!</li>
           </ul>
