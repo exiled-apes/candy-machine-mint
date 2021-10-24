@@ -228,7 +228,7 @@ const Home = (props: HomeProps) => {
             <img src="cube2.png"  alt="meebits"></img>
           </div>
         <div className="u">
-          <h2 className="info"><p>First 160 of 499 sold out. Thanks for everyone who beleive in us!</p></h2>
+          <h2 className="info"><p>First 160 of 499 sold out. Thanks for everyone who beleive in us.</p></h2>
         </div>
         
         {wallet && (
@@ -293,7 +293,13 @@ const Home = (props: HomeProps) => {
           <p>A collection of 499 uniquely generated Boxer brief NFTs with proof of ownership stored on the Solana blockchain that will be giving you a strong sense of PRIDE in being an owner of 1 of the 499. </p>
           <p>Total supply is only 499, which makes SolBoxers one of the rarest NFT collectible on Solana Metaverse.
           </p>
-       </div>
+          <p>We plan to divide our Collection to 4 pieces. We hope this approach can give our collectors more of "FASHION" type of feeling about our Solboxers NFT.</p>
+          <p> &nbsp;&nbsp;&nbsp;- October 160✔️</p>
+          <p> &nbsp;&nbsp;&nbsp;- November 160</p>
+          <p> &nbsp;&nbsp;&nbsp;- December 160</p>
+          <p> &nbsp;&nbsp;&nbsp;- Christmas 19</p>
+          <p> &nbsp;&nbsp;&nbsp;- Total=499</p>
+        </div>
 
        <div className="rarity">
        <h2 className="info"><p>Rarity</p></h2>
