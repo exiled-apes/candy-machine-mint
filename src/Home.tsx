@@ -294,11 +294,11 @@ const Home = (props: HomeProps) => {
           <p>Total supply is only 499, which makes SolBoxers one of the rarest NFT collectible on Solana Metaverse.
           </p>
           <p>We plan to divide our Collection to 4 pieces. We hope this approach can give our collectors more of "FASHION" type of feeling about our Solboxers NFT.</p>
-          <p> &nbsp;&nbsp;&nbsp;- October 160✔️</p>
-          <p> &nbsp;&nbsp;&nbsp;- November 160</p>
-          <p> &nbsp;&nbsp;&nbsp;- December 160</p>
-          <p> &nbsp;&nbsp;&nbsp;- Christmas 19</p>
-          <p> &nbsp;&nbsp;&nbsp;- Total=499</p>
+          <p> &nbsp;&nbsp;&nbsp;- October 160✔️   (Mint date: Oct-20th)</p>
+          <p> &nbsp;&nbsp;&nbsp;- November 160  (Mint date: TBA)</p>
+          <p> &nbsp;&nbsp;&nbsp;- December 160  (Mint date: TBA)</p>
+          <p> &nbsp;&nbsp;&nbsp;- Christmas 19  (Mint date: TBA)</p>
+          <p> &nbsp;&nbsp;&nbsp;Total=499</p>
         </div>
 
        <div className="rarity">
