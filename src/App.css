@@ -1,3 +1,99 @@
-.App {
+/* 
+*  CSS TABLE OF CONTENTS
+*
+*  1.0 - Global   
+*  2.0 - Utilities
+*  3.0 - Typography
+*  4.0 - Layout
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --bd-font-header-family: 'Space Mono', monospace;
+  --bd-font-body-family: 'Space Mono', monospace;
+
+  --bd-font-weight_stronger: 700;
+  --bd-font-weight_strong: 400;
+
+  --bd-color-primary: purple;
+
+  --bd-transition_all: all 2s ease-in-out;
+}
+
+/*** 1.0 - Global ***/
+p {
+  font-family: var(--bd-font-body-family);
+  font-weight: var(--bd-font-weight_strong);
+  margin: 0;
+}
+
+a {
+  color: var(--bd-color-primary);
+  text-decoration: underline;
+  transition: var(--bd-transition_all);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/*** 2.0 - Utilities ***/
+.u-text-align_center {
   text-align: center;
+}
+
+/*** 3.0 - Typography ***/
+h1 {
+  font-family: var(--bd-font-header-family);
+  font-size: 2rem;
+  font-weight: var(--bd-font-weight_stronger);
+  margin: 0;
+}
+
+@media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+/*** 4.0 - Layout ***/
+main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 0 1rem;
+}
+
+nav, footer {
+  padding: 1rem 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 540px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
 }
