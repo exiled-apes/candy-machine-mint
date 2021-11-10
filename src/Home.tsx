@@ -228,7 +228,7 @@ const Home = (props: HomeProps) => {
             <img src="cube2.png"  alt="meebits"></img>
           </div>
         <div className="u">
-          <h2 className="info"><p>The first 160 of 499 SOLBOXERS sold out. Thanks to everyone who believed in us.</p></h2>
+          <h2 className="info"><p>Date: 14.nov | Editions: 160 | Price: 0.25 SOL</p></h2>
         </div>
         
         {wallet && (
