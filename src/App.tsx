@@ -20,15 +20,15 @@ import {
 import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
 
 const treasury = new anchor.web3.PublicKey(
-  process.env.REACT_APP_TREASURY_ADDRESS!
+  process.env.REACT_APP_TREASURY_ADDRESS="77GpuDBb3BXSpjvm1YSSV8r3yEjpoNYv91ktFzUNAKHK"
 );
 
 const config = new anchor.web3.PublicKey(
-  process.env.REACT_APP_CANDY_MACHINE_CONFIG!
+  process.env.REACT_APP_CANDY_MACHINE_CONFIG="7YjAmyrtg5GLXyBB8a3SSsX7mgoU2W5iWeSPK6qJn7uS"
 );
 
 const candyMachineId = new anchor.web3.PublicKey(
-  process.env.REACT_APP_CANDY_MACHINE_ID!
+  process.env.REACT_APP_CANDY_MACHINE_ID="4fKfFK5hotnw7UTPcyGYy8F1BuJAY73xwayx1EDtsJfi
 );
 
 const network = process.env.REACT_APP_SOLANA_NETWORK as WalletAdapterNetwork;
