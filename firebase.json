@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "build",
+    "site":"test-solba-io",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

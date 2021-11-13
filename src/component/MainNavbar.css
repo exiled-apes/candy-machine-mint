@@ -1,0 +1,9 @@
+.secondaryCollapse{
+    margin-left: 300px;
+}
+
+@media (max-width: 1200px) {
+    .secondaryCollapse {
+        margin-left: 0px;
+    }
+}

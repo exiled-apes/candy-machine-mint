@@ -1,3 +1,132 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Inconsolata" !important;
+  font-size: medium !important;
+  /* background-color: #391265 !important; */
+  background-image: url("./assets/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
+  color:white !important;
+}
+p{
+  font-size:16px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff;
+}
+
+footer {
+  float: inline-end;
+  font-weight: bold;
+}
+
+.slider .sliderRow {
+  width: auto;
+  height: 216px;
+  /* background-size: auto; */
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(1px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1000px, 0, 0);
+  }
+}
+.centeredItem {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mainPad10 {
+  padding-top: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.root {
+  text-align: center;
+}
+.rootColor {
+  text-align: center;
+}
+
+.rootColorBg {
+  text-align: center;
+  background-color: #5bef5b;
+}
+
+.closebtnleft {
+  float: right;
+}
+.closebtnRight {
+  float: left;
+}
+.footer {
+  float: inline-end;
+}
+
+footer,
+.footlink {
+  width: -webkit-fill-available;
+}
+
+.rdmp1{
+  background-image: url("https://via.placeholder.com/500");
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.faqBody{
+  padding: 50px !important;
+  color:black;
+}
+@media screen and (min-width: 992px) {
+  .navOne {
+    float: "left";
+  }
+
+  .navTwo {
+    float: "right";
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mobile {
+    display: flex;
+  }
 }
