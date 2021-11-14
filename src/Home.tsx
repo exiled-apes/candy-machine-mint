@@ -294,7 +294,7 @@ const Home = (props: HomeProps) => {
           <p> &nbsp;&nbsp;&nbsp;- October 160✔️   (Mint date: Oct-20th)</p>
           <p> &nbsp;&nbsp;&nbsp;- November 160  (Mint date: TBA)</p>
           <p> &nbsp;&nbsp;&nbsp;- December 160  (Mint date: TBA)</p>
-          <p> &nbsp;&nbsp;&nbsp;- Christmas 19  (Mint date: TBA)</p>
+          <p> &nbsp;&nbsp;&nbsp;- Christmmas 19  (Mint date: TBA)</p>
           <p> &nbsp;&nbsp;&nbsp;Total=499</p>
         </div>
 
