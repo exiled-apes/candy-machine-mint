@@ -47,7 +47,6 @@ const MintContainer = styled.div`
   bottom: 10%;
   display: flex;
   justify-content: center;
-  display: none;
   
 `; // add your styles here
 
@@ -227,9 +226,7 @@ const Home = (props: HomeProps) => {
           <div className="cube2">
             <img src="cube2.png"  alt="meebits"></img>
           </div>
-        <div className="u">
-          <h2 className="info"><p>12:00pm EST | Editions: 160 | Price: 0.25 SOL</p></h2>
-        </div>
+
         
         {wallet && (
           <p>&nbsp;&nbsp;Wallet: {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
