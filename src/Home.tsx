@@ -214,8 +214,8 @@ const Home = (props: HomeProps) => {
           <div className="TopMenu">
             <a href="/#" className="homee"><p>home</p></a>
             <a href="/#faq1" className="homee"><p>faq</p></a>
-            <a href="https://discord.gg/qy79dbWPxG" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
-            <a href="https://twitter.com/solboxersnft" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
+            <a href="https://discord.gg/XPx2ga6EGU" target="_blank" rel="noreferrer" className="homee"><p>dIscord</p></a>
+            <a href="https://twitter.com/SolBoxers" target="_blank" rel="noreferrer" className="homee"><p>twItter</p></a>
           </div>
           <div className="Headp">
             <div className="sol">sol</div><div className="boxers">boxeRs</div>
