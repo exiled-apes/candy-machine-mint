@@ -14,11 +14,17 @@ const Roadmap = () => {
         >
           <div className="main">
             <h3>ENDANGERED Club NFT Roadmap</h3>
-            {/* <p>
+            {/* 
+            <p>
               Your Shiba! Your Shiba! Your Shiba! Your Shiba!Your Shiba! Your
               Shiba! Your Shiba! Your Shiba! <br></br>
               Your Shiba! Your Shiba! Your Shiba! Your Shiba!
-            </p> */}
+            </p> 
+            
+            
+            
+
+            */}
           </div>
         </Row>
         <Row>
