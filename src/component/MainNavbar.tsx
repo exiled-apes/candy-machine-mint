@@ -13,7 +13,7 @@ const ConnectButton = styled(WalletDialogButton)`
   white-space: nowrap;
 `;
 
-const MainNavbar = ({ wallet }: any) => {
+const MainNavbar = ({ wallet, onMint,isSoldOut,isMinting,isActive }: any) => {
   return (
     <Navbar
       expand={"xl"}
@@ -73,7 +73,8 @@ const MainNavbar = ({ wallet }: any) => {
                   <Col>
                     <Button
                       variant="info"
-                      href="/"
+                      disabled={isSoldOut || isMinting || !isActive}
+                      onClick={onMint}
                       style={{ whiteSpace: "nowrap", padding: "12px 16px" }}
                     >
                       Buy Solba

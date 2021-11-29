@@ -164,7 +164,7 @@ const Home = (props: HomeProps) => {
   return (
     <main>
       <Router>
-        <MainNavbar wallet={wallet} />
+        <MainNavbar wallet={wallet} onMint={onMint} isSoldOut={isSoldOut} isActive={isActive}/>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/myshiba" component={MyShibas} />
@@ -183,7 +183,7 @@ const Home = (props: HomeProps) => {
 
         {wallet && <p>Remaining: {itemsRemaining}</p>}
 
-        <MintContainer>
+        {/* <MintContainer>
           {!wallet ? (
             "connect the wallet"
           ) : (
@@ -210,7 +210,7 @@ const Home = (props: HomeProps) => {
               )}
             </MintButton>
           )}
-        </MintContainer>
+        </MintContainer> */}
 
         <Snackbar
           open={alertState.open}
