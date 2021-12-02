@@ -11,6 +11,8 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
+import { WalletSignTransactionError } from "@solana/wallet-adapter-base";
+
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -45,6 +47,7 @@ const Home = (props: HomeProps) => {
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
+  const [mintPrice, setMintPrice] = useState(0);
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -67,6 +70,7 @@ const Home = (props: HomeProps) => {
         itemsAvailable,
         itemsRemaining,
         itemsRedeemed,
+        mintPrice,
       } = await getCandyMachineState(
         wallet as anchor.Wallet,
         props.candyMachineId,
@@ -76,6 +80,7 @@ const Home = (props: HomeProps) => {
       setItemsAvailable(itemsAvailable);
       setItemsRemaining(itemsRemaining);
       setItemsRedeemed(itemsRedeemed);
+      setMintPrice(mintPrice);
 
       setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
@@ -119,7 +124,9 @@ const Home = (props: HomeProps) => {
     } catch (error: any) {
       // TODO: blech:
       let message = error.msg || "Minting failed! Please try again!";
-      if (!error.msg) {
+      if (error instanceof WalletSignTransactionError) {
+        message = `Wrong Wallet. Please refresh page to reconnect Wallet.`;
+      } else if (!error.msg) {
         if (error.message.indexOf("0x138")) {
         } else if (error.message.indexOf("0x137")) {
           message = `SOLD OUT!`;
@@ -174,6 +181,8 @@ const Home = (props: HomeProps) => {
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
       {wallet && <p>Total Available: {itemsAvailable}</p>}
+
+      {wallet && <p>Mint price: {mintPrice / LAMPORTS_PER_SOL} SOL</p>}
 
       {wallet && <p>Redeemed: {itemsRedeemed}</p>}
 
