@@ -11,6 +11,8 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
+import { WalletSignTransactionError } from "@solana/wallet-adapter-base";
+
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -119,7 +121,9 @@ const Home = (props: HomeProps) => {
     } catch (error: any) {
       // TODO: blech:
       let message = error.msg || "Minting failed! Please try again!";
-      if (!error.msg) {
+      if (error instanceof WalletSignTransactionError) {
+        message = `Wrong Wallet. Please refresh page to reconnect Wallet.`;
+      } else if (!error.msg) {
         if (error.message.indexOf("0x138")) {
         } else if (error.message.indexOf("0x137")) {
           message = `SOLD OUT!`;
