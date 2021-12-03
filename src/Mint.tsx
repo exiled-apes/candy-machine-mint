@@ -94,7 +94,7 @@ const Home = (props: HomeProps) => {
         if (!status?.err) {
           setAlertState({
             open: true,
-            message: 'Congratulations! Mint succeeded!',
+            message: 'Congratulations! Minting Successful!',
             severity: 'success',
           })
         } else {
@@ -186,8 +186,8 @@ const Home = (props: HomeProps) => {
         <img src="/assets/images/logo.png" alt="Solcoins Solanart NFT Logo" />
       </div>
       <div className="limited flex flex-justify">
-        <div className="info">
-          <h1>4501 Solcoins!</h1>
+        <div className="mint-info-container">
+          <h1 className="mintH1">Mint Now!</h1>
 
           {wallet && (
             <div className="mint-info">
@@ -217,18 +217,20 @@ const Home = (props: HomeProps) => {
 
           <MintContainer>
             {!wallet ? (
-              <button tabIndex={0} type="button" onClick={() => document.getElementById('wallet-connect')?.click()}>
+              <button tabIndex={0} type="button" className="go-home-btn" onClick={() => document.getElementById('wallet-connect')?.click()}>
                 Connect Wallet
               </button>
             ) : (
-              <button disabled={isSoldOut || isMinting || !isActive} onClick={onMint} id="mint-nft">
+              <button disabled={isSoldOut || isMinting || !isActive} onClick={onMint} id="mint-nft" className="go-home-btn mint-btn">
                 {isSoldOut ? (
                   'SOLD OUT'
                 ) : isActive ? (
                   isMinting ? (
-                    'WAIT...'
+                    <>
+PLEASE WAIT <span className="dot-flashing"></span>
+                      </>
                   ) : (
-                    'MINT'
+                    'MINT A SOLCOIN'      
                   )
                 ) : (
                   <Countdown
@@ -253,7 +255,7 @@ const Home = (props: HomeProps) => {
           </Snackbar>
         </div>
         <div className="example hop-in">
-          <img src="/assets/images/examples/main.png" alt="Solcoins Solana art NFT Example" />
+          <img src="/assets/images/examples/mint.png" alt="Solcoins Solana art NFT Example" />
         </div>
       </div>
     </section>

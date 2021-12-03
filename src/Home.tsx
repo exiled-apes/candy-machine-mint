@@ -218,8 +218,7 @@ const Home = () => {
           <div className="info">
             <h2>WHEN?</h2>
             <p className="medium">
-              Minting will be directly on the website and will open later this week. Minting will continue until 4501
-              Solcoins have been discovered, or until the community decides enough is enough, whichever comes first.
+              Minting is live! Minting will continue until 4501 Solcoins have been discovered.
             </p>
           </div>
           <div className="example scroll-in-animate envelope-in">
@@ -235,6 +234,9 @@ const Home = () => {
             <p className="medium">
               Minting will take place directly on solcoins.io and nowhere else. After minting, the collection will be
               listed on several marketplaces starting with Digital Eyes and Magic Eden.
+            </p><br/>
+            <p className="medium">
+              <a href="/mint"> Click here to mint Solcoins! </a>
             </p>
           </div>
           <div className="example scroll-in-animate envelope-in">

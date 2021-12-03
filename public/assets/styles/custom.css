@@ -282,6 +282,66 @@ section.layers .limited {
 }
 
 #mint-nft {
-  margin: 10px 20px;
+  margin: 10px 0;
   min-width: 120px;
+}
+
+.mint-info {
+  margin: 10px;
+}
+
+.mintH1{
+  letter-spacing: 3px;
+    -webkit-text-stroke: white;
+    -webkit-text-stroke-color: #fffa;
+    -webkit-text-stroke-width: 2px;
+}
+.mint-info-container{
+  display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.mint-info>div{
+  opacity:0;
+  transform:translateY(20px);
+  animation: details-fade-in 1s ease-out forwards;
+  background:#0001;
+  text-shadow:0 0 2px white;
+}
+.mint-info>div:nth-child(1){
+  animation-delay: .5s;
+  }
+  .mint-info>div:nth-child(2){
+    animation-delay: 1s;
+    }
+    .mint-info>div:nth-child(3){
+      animation-delay: 1.5s;
+      }
+      .mint-info>div:nth-child(4){
+        animation-delay: 2s;
+        }
+        .mint-info>div:nth-child(5){
+          animation-delay: 2.5s;
+          }
+
+@keyframes details-fade-in{
+  from{ 
+    opacity:0;
+    transform:translateY(20px)
+  }
+  to{ 
+    opacity:1;
+    transform:translateY(0)
+  }
+}
+
+.mint-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.mint-btn>.dot-flashing{
+  margin-left:1.7rem;
+  margin-top:1px;
 }
