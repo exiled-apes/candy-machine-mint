@@ -11,10 +11,10 @@ ReactDOM.render(
       <header>
         <div className="limited flex flex-justify">
           <div className="socials flex-center">
-            <a target="_blank" href="https://twitter.com/SOLCOINS_IO">
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/SOLCOINS_IO">
               <img src="/assets/images/socials/twitter.svg" alt="Solcoins NFT Twitter" />
             </a>
-            <a target="_blank" href="https://discord.com/invite/45XTxdHzzB">
+            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/45XTxdHzzB">
               <img src="/assets/images/socials/discord.svg" alt="Solcoins NFT Discord" />
             </a>
           </div>
@@ -37,6 +37,14 @@ ReactDOM.render(
 
       <App />
 
+      <section className="gleam">
+        <div className="flex-justify">
+          <a className="e-widget no-button" href="https://gleam.io/1z5FH/solcoins-treasure-hunt" rel="nofollow">
+            Solcoins Treasure Hunt
+          </a>
+        </div>
+      </section>
+
       <footer>
         <div className="logo">
           <img src="/assets/images/logo.png" alt="Solcoins Logo play-to-earn" />
@@ -46,10 +54,10 @@ ReactDOM.render(
             <span id="copyright">© 2021 Solcoins</span>
           </div>
           <div className="socials flex">
-            <a target="_blank" href="https://twitter.com/SOLCOINS_IO">
+            <a target="_blank" rel="noreferrer" href="https://twitter.com/SOLCOINS_IO">
               <img src="/assets/images/socials/twitter.svg" alt="solcoins twitter" />
             </a>
-            <a target="_blank" href="https://discord.com/invite/45XTxdHzzB">
+            <a target="_blank" rel="noreferrer" href="https://discord.com/invite/45XTxdHzzB">
               <img src="/assets/images/socials/discord.svg" alt="solcoins discord" />
             </a>
           </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Countdown from 'react-countdown'
-import { Button, Snackbar } from '@material-ui/core'
+import { Snackbar } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 
 import * as anchor from '@project-serum/anchor'
