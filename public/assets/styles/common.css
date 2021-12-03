@@ -1,0 +1,126 @@
+:root {
+  --font-family: 'PT Sans', sans-serif;
+  --font-size: 1rem;
+  --color-white: white;
+  --padding-small: 15px;
+  --padding-normal: 20px;
+  --padding-medium: 30px;
+  --padding-large: 50px;
+  --padding-extra: 100px;
+  --z-index-top: 1001;
+
+  --color-green: #00ffa3;
+  --color-blue: #03e1ff;
+  --color-purple: #dc1fff;
+  --color-black: #101921;
+}
+
+body {
+  font-size: var(--font-size);
+  line-height: 1.4;
+  background-color: var(--color-black);
+  color: var(--color-green);
+  min-height: 100vh;
+  overflow: auto;
+}
+
+* {
+  font-family: var(--font-family);
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.limited {
+  width: 90%;
+  max-width: 1040px;
+  margin: auto;
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-justify {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-revert {
+  flex-direction: row-reverse;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.medium {
+  font-size: 1.3rem;
+}
+
+ol {
+  font-size: 1.3rem;
+
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a,
+button,
+.cursor {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+a:hover,
+button:hover,
+.cursor:hover {
+  filter: invert(0.2);
+}
+
+button {
+  background-color: var(--color-black);
+  color: var(--color-green);
+  border: none;
+  padding: var(--padding-small) var(--padding-normal);
+}
+
+@media (max-width: 1023px) {
+  h1 {
+    font-size: 3.2rem;
+  }
+}

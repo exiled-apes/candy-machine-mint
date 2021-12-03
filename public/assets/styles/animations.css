@@ -1,0 +1,55 @@
+.scroll-in-animate.envelope-in {
+  transition: clip-path .3s ease-out;
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 50% 50%, 100% 100%, 50% 50%, 0 100%, 50% 50%)
+}
+
+.scroll-in-animate.envelope-in.in-view {
+  transition: clip-path .3s ease-out;
+  clip-path: polygon(0 0, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0% 50%)
+}
+
+.hop-in{
+  animation:hopin 1.5s 1s linear forwards;
+  transform:translateX(160vw);
+}
+@keyframes hopin{
+  0%{
+    transform:translateX(40vw) translateY(-10px);
+  }
+  5%{
+    transform:translateX(30vw) translateY(-30px);
+  }
+    10%{
+    transform:translateX(20vw) translateY(-40px);
+  }
+  15%{
+    transform:translateX(10vw) translateY(-30px);
+  }
+  20%{
+   transform:translateX(0vw) translateY(-10px);
+  }
+  21%{
+   transform:translateX(-1vw) skewX(10deg) translateY(5px);
+  }
+  25%{
+   transform:translateX(-10vw) skewX(15deg) translateY(0px); 
+  }
+  30%{
+   transform: translateX(-20vw) skewX(25deg);
+  }
+  40%{transform: translateX(-20vw) skewX(15deg); }
+  50%{transform:translateX(0vw) skewX(0);}
+  100%{transform:translateX(0vw);}
+}
+
+.circle-in{
+  animation: circlein .5s ease-in;
+  }
+  @keyframes circlein{
+    from{
+      clip-path:circle(0 at 100% 100%)
+    }
+    to{
+      clip-path:circle(100% at 100% 100%)
+    }
+  }

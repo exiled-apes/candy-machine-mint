@@ -1,0 +1,287 @@
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: var(--z-index-top);
+  padding: var(--padding-small) var(--padding-normal);
+  width: 100%;
+}
+
+header a {
+  padding: var(--padding-small) var(--padding-normal);
+  display: flex;
+  position: relative;
+}
+
+footer {
+  padding-top: var(--padding-large);
+  color: var(--color-green);
+}
+
+a.active::after {
+  content: '';
+  border: 1px solid var(--color-black);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+p.medium a {
+  color: #89cff0;
+}
+
+.socials a {
+  padding: var(--padding-small);
+}
+
+.menu a {
+  color: var(--color-black);
+}
+
+section {
+  padding: var(--padding-extra) 0 var(--padding-normal);
+}
+
+section.intro {
+  background-image: url(/assets/images/gradient.png);
+  background: linear-gradient(0, var(--color-green) 0%, var(--color-blue) 50%, var(--color-purple) 100%);
+  padding: var(--padding-large) 0 0;
+  color: var(--color-black);
+  flex-direction: column;
+  display: flex;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 80%;
+  max-width: 280px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.fp-email {
+  flex-basis: calc(50% - 40px);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.email-form {
+  height: 40px;
+  display: flex;
+  min-width: 300px;
+  max-width: 600px;
+  border: none;
+  color: #fff;
+}
+
+.email-form .email {
+  border: 0;
+  flex: 2 1;
+  padding-inline-start: 20px;
+  border-radius: 8px 0 0 8px;
+  font-size: 14px;
+  background-color: hsla(0, 0%, 100%, 0.2);
+  color: var(--color-black);
+}
+
+.email-form .submit-btn {
+  max-width: 240px;
+  min-width: 100px;
+  background-color: var(--color-purple);
+  border: 0;
+  padding: 8px 20px;
+  color: #fff;
+  font-weight: 700;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 0 8px 8px 0;
+}
+
+.go-home-btn {
+  background-color: var(--color-purple);
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  width: 100%;
+}
+
+.info {
+  width: 60%;
+  flex-basis: calc(50%-40px);
+}
+
+.example {
+  height: 25rem;
+  object-fit: contain;
+  display: flex;
+
+  /* border-color: #72f0ff #07b4cc #10cce6 #10e1fd; */
+  border-color: var(--color-green);
+  border-image: none;
+  border-radius: 10px 0 10px 0;
+  border-style: solid;
+  border-width: 10px;
+}
+
+.example img {
+  width: auto;
+  height: 100%;
+}
+
+.intro .example {
+  height: 35rem;
+  object-fit: contain;
+  margin-top: -10%;
+  border: none;
+}
+
+.banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(50%);
+  background: var(--color-blue);
+  padding: var(--padding-normal);
+}
+
+.banner p {
+  margin-bottom: 0;
+}
+
+.layers .banner {
+  color: var(--color-black);
+  background: var(--color-purple);
+}
+
+section.layers .limited {
+  padding-bottom: var(--padding-extra);
+}
+
+.limited .info {
+  margin-right: var(--padding-large);
+  margin-left: 0;
+}
+
+.flex-revert .info {
+  margin-right: 0;
+  margin-left: var(--padding-large);
+}
+
+@media (max-width: 1023px) {
+  .intro .example {
+    height: 25rem;
+  }
+
+  .limited .info {
+    margin-right: var(--padding-medium);
+  }
+
+  .flex-revert .info {
+    margin-left: var(--padding-medium);
+  }
+
+  .fp-email {
+    padding-top: 5px;
+    margin-bottom: 65px;
+  }
+}
+
+@media (max-width: 820px) {
+  .email-form .email {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768) and (max-width: 1024px) {
+  /* @TODO: Add tablet specific css to push images onto one line like mobile */
+}
+
+@media (max-width: 767px) {
+  section {
+    padding-top: var(--padding-large);
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.7rem;
+  }
+
+  section.layers .limited {
+    padding-bottom: var(--padding-normal);
+  }
+
+  section .limited {
+    flex-direction: column;
+  }
+
+  .intro .example {
+    height: auto;
+    width: 100%;
+  }
+
+  .example {
+    height: auto;
+  }
+
+  .example img {
+    width: 100%;
+    height: auto;
+  }
+
+  .info {
+    width: 100%;
+  }
+
+  .limited .info {
+    margin-right: 0;
+  }
+
+  .flex-revert .info {
+    margin-left: 0;
+  }
+
+  .banner {
+    position: relative;
+    transform: none;
+    margin-bottom: var(--padding-normal);
+  }
+}
+
+@media (max-width: 319px) {
+  .email-form .email {
+    padding-inline-start: 10px;
+    flex: 0 0;
+    font-size: 11px;
+  }
+  .email-form .submit-btn {
+    width: 100px;
+    font-size: 12px;
+  }
+}
+
+#wallet-connect {
+  position: fixed;
+  left: 100%;
+  top: 100%;
+}
+
+.mint-info > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#mint-nft {
+  margin: 10px 20px;
+  min-width: 120px;
+}
