@@ -164,7 +164,12 @@ const Home = (props: HomeProps) => {
   return (
     <main>
       <Router>
-        <MainNavbar wallet={wallet} onMint={onMint} isSoldOut={isSoldOut} isActive={isActive}/>
+        <MainNavbar
+          wallet={wallet}
+          onMint={onMint}
+          isSoldOut={isSoldOut}
+          isActive={isActive}
+        />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/myshiba" component={MyShibas} />

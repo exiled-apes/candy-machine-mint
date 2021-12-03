@@ -48,11 +48,7 @@ const MainNavbar = ({ wallet, onMint,isSoldOut,isMinting,isActive }: any) => {
                 <Nav.Link>Attributes</Nav.Link>
               </LinkContainer>
             </Col> */}
-            <Col style={{ whiteSpace: "nowrap" }}>
-              <LinkContainer to="/">
-                <Nav.Link>My Solbas</Nav.Link>
-              </LinkContainer>
-            </Col>
+           
             <Col>
               <LinkContainer to="/roadmap">
                 <Nav.Link>Roadmap</Nav.Link>

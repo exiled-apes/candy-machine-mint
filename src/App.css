@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+
 html,
 body {
   padding: 0;
@@ -11,10 +12,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  color:white !important;
+  color: white !important;
 }
-p{
-  font-size:16px;
+
+p {
+  font-size: 16px;
 }
 a {
   color: inherit;
@@ -67,6 +69,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: left;
 }
 .mainPad10 {
   padding-top: 10px;
@@ -103,16 +106,9 @@ footer,
   width: -webkit-fill-available;
 }
 
-.rdmp1{
-  background-image: url("https://via.placeholder.com/500");
-  height: 100%;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.faqBody{
+.faqBody {
   padding: 50px !important;
-  color:black;
+  color: black;
 }
 @media screen and (min-width: 992px) {
   .navOne {
@@ -130,3 +126,93 @@ footer,
     display: flex;
   }
 }
+.rdmp1 {
+  background-image: url("./assets/roadmap/roadmap1.png");
+  height: 300px;
+  width: 1000px;
+
+  /* background-position: center; */
+  background-size: contain;
+
+  background-repeat: no-repeat;
+  color: black;
+
+  z-index: 2;
+}
+
+.main-1 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.roadmap-img {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.img-1 {
+  width: 410px;
+}
+
+.rd-text1 {
+  position: absolute;
+  width: 50%;
+  top: 50%;
+
+  left: 50%;
+  color: black;
+  transform: translate(-50%, -50%);
+}
+
+h4 {
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .rd-text1 {
+    width: 45%;
+  }
+
+  .img-1 {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .rd-text1 {
+    width: 55%;
+    font-size: 0.8rem;
+  }
+
+  .img-1 {
+    width: 300px;
+  }
+}
+
+.bdr {
+  border-right: thick double #32a1ce;
+}
+/* @media screen and (max-width: 755px) {
+  .rd-text1 {
+    width: 45%;
+  }
+
+  .img-1 {
+    width: 400px;
+  }
+} */
+
+/* @media screen and (max-width: 420px) {
+  .img-1 {
+    width: 300px;
+  }
+  .rd-text1 {
+    position: absolute;
+    width: 58%;
+    top: 50%;
+    left: 50%;
+    color: black;
+    transform: translate(-50%, -50%);
+  }
+} */

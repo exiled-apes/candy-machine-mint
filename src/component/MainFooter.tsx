@@ -2,9 +2,9 @@ import React from "react";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 import sollamaslogodark from "../assets/avatars/logow.png";
 import joinus from "../assets/avatars/joinus.png";
+import discords from "../assets/buttons/discords.png";
 import { Link } from "react-router-dom";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
-
 
 const MainFooter = () => {
   return (
@@ -12,7 +12,9 @@ const MainFooter = () => {
       <Container fluid>
         <Row style={{ paddingTop: "40px", paddingBottom: "20px" }}>
           <Col md={6}>
-            <img src={sollamaslogodark} height="80" width="300" />
+            <a href="https://endangeredclub.com/">
+              <img src={sollamaslogodark} height="80" width="300" />
+            </a>
             <div style={{ padding: "20px" }}>
               <p>
                 Connect us on Twitter and discord for airdrop of Solba,
@@ -20,7 +22,10 @@ const MainFooter = () => {
               </p>
             </div>
             <div style={{ float: "left", padding: "20px" }}>
-              <img src={joinus} alt="" height="50" width="150" />
+              <a href="https://twitter.com/SolbaNFT">
+                <img src={joinus} alt="" height="50" width="150" />
+              </a>
+
               {/* <div className="icons">
                 <div className="icon">
                   <AiFillTwitterSquare />
@@ -33,7 +38,14 @@ const MainFooter = () => {
                 </div>
               </div> */}
             </div>
+
+            <div style={{ float: "left", padding: "16px 0px 0px 30px" }}>
+              <a href="https://discord.gg/sWVvKXKX">
+                <img src={discords} alt="" height="60" width="60" />
+              </a>
+            </div>
           </Col>
+
           <Col md={6}>
             <Container>
               <Row>
@@ -45,22 +57,17 @@ const MainFooter = () => {
                       to="/"
                       style={{ textDecoration: "none", color: "#fff" }}
                     >
-                      Home
+                      Solaba Home
                     </Link>
-                    <Link
-                      className="col-md-12 footlink"
-                      to="/"
+
+                    <a
+                      href="https://endangeredclub.com/"
+                      className="col-md-12 col-sm-12 footlink"
                       style={{ textDecoration: "none", color: "#fff" }}
                     >
-                      Attributes
-                    </Link>
-                    <Link
-                      className="col-md-12 footlink"
-                      to="/"
-                      style={{ textDecoration: "none", color: "#fff" }}
-                    >
-                      My Shiba
-                    </Link>
+                      Endangered Club Home
+                    </a>
+
                     <Link
                       className="col-md-12 col-sm-12 footlink"
                       to="/roadmap"

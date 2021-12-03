@@ -19,9 +19,8 @@ const Faq = () => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header>What is Solbas NFT?</Accordion.Header>
                 <Accordion.Body className="faqBody">
-                  Solbas are 10,000 algorithmically generated, unique, cute and
-                  collectible Shiba Inu with proof of ownership stored on the
-                  Solana blockchain!
+                Solba are 10,000 algorithmically generated, friendly and cute Shiba Inu. 
+                They come to Solana Blockchain as Solba.
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
@@ -39,7 +38,7 @@ const Faq = () => {
                   3. Connect your Wallet to our website by clicking on the
                   Connect button.
                   <br />
-                  4. Click the “Buy” button on https://www.solba.io and approve
+                  4. Click the “Buy Solba” button on https://www.solba.io and approve
                   the transaction in your Wallet.
                 </Accordion.Body>
               </Accordion.Item>
@@ -57,31 +56,17 @@ const Faq = () => {
                   What art do I receive as the NFT?
                 </Accordion.Header>
                 <Accordion.Body className="faqBody">
-                  You can download your Solba NFT artwork in the My Solbas
-                  page. In addition to your 576*576 NFT artwork, you will also
-                  find profile picture cutouts and the Rarity collectible cards
-                  (display purposes only... for now) in your
-                  https://www.solba.io/ .
+                 You can download your Solba NFT artwork in your Phantom wallet. 
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="5">
-                <Accordion.Header>
-                  What artwork can I download?
-                </Accordion.Header>
-                <Accordion.Body className="faqBody">
-                  You can download your Solba NFT artwork in the My Solbas
-                  page. In addition to your 576*576px NFT artwork, you will also
-                  find profile picture cutouts and the Rarity collectible cards
-                  (display purposes only) in your https://www.solba.io/ .
-                </Accordion.Body>
-              </Accordion.Item>
+            
               <Accordion.Item eventKey="6">
                 <Accordion.Header>
                   What Solana wallets can I use?
                 </Accordion.Header>
                 <Accordion.Body className="faqBody">
-                  At launch we will be allowing purchases and management through
-                  two of Solana’s main wallets; Phantom and Sollet.
+                At launch we will be allowing purchases and management through two of Solana’s main wallets; 
+                Phantom and Sollet. We suggest to use Phantom Wallet.
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="7">
@@ -98,26 +83,17 @@ const Faq = () => {
                   How were the Solbas generated?
                 </Accordion.Header>
                 <Accordion.Body className="faqBody">
-                  All individual pieces of the Solba world have been created
-                  by hand and algorithmically generated using custom code. There
-                  are 165 attributes across 18 categories: These categories
-                  include background, body, type, pattern, tail, expression,
-                  mouth, eyes, skin, glasses, facial hair, hat/hair, mouth
-                  accessories, earring, neck, blankets, flags and best of all,
-                  poop.
+                All individual pieces of the Solba world have been created by hand and algorithmically generated using custom code. There are 205 attributes across 8 categories:
+                 These categories include head accessries, nose, mouth, eyes, tail, body pattern, side items, backgrounds.
                   <br /> <br />
-                  With these combined, it gives a total mathematical combination
-                  of millions of unique Solbas - but with only 10,000 being
-                  minted, some are more unique and rare than others.
+                  With these combined, it gives a total mathematical combination of millions of unique Solbas - but with only 10,000 being minted, some are more unique and rare than others.
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="9">
                 <Accordion.Header>Who is behind Solbas NFT?</Accordion.Header>
                 <Accordion.Body className="faqBody">
-                  The Solbas NFT team are a small group of friends with the
-                  same vision and goal. Our core principles have always been to
-                  deliver the best possible NFT user experience from launch as
-                  well as creating collectible art with utility.
+                The Solba NFT team are a group of blockchain and art professional under the Endangered Club (“END”),
+                 which is a new era crypto pop culture brand.
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="10">
@@ -126,9 +102,8 @@ const Faq = () => {
                   network?
                 </Accordion.Header>
                 <Accordion.Body className="faqBody">
-                  No, we are not affiliated with any other projects on Solana or
-                  in the crypto space. We are an independent team with one focus
-                  - Solbas NFT.
+                Yes we are. Solba NFT is the first NFT collection under Endangered Club (“END”), which is a new era crypto pop culture brand. Have a Solba will bring you membership of Endangered Club (“END”).
+                 To see more details about END, visit https://endangeredclub.com/.
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="11">
