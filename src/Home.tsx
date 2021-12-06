@@ -213,8 +213,6 @@ const Home = (props: HomeProps) => {
           props.connection
         );
 
-
-      console.log("itemsRemaining",itemsRemaining)
       setItemsRemaining(itemsRemaining)
       setItemsRedeemed(itemsRedeemed)
       setItemsAvailable(itemsAvailable)
