@@ -6,10 +6,9 @@ import Alert from "@material-ui/lab/Alert";
 
 import * as anchor from "@project-serum/anchor";
 
-import {LAMPORTS_PER_SOL, PublicKey} from "@solana/web3.js";
-import {TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
 import {
@@ -20,13 +19,57 @@ import {
   shortenAddress,
 } from "./candy-machine";
 
-const ConnectButton = styled(WalletDialogButton)``;
+import tableImage from './assets/images/table.jpg';
 
-const CounterText = styled.span``; // add your styles here
+const Main = styled.main`
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 85vh;
+  background-color: #000;
+  position: relative;
+`;
 
-const MintContainer = styled.div``; // add your styles here
+const ConnectButton = styled(WalletDialogButton)`
+  display: block;
+  width: fit-content;
+  background: #870101 !important;
+  font-size: 36px !important;
+  line-height: 1.2;
+  padding: 10px 20px !important;
+  font-family: "Corleone" !important;
+  font-weight: 300 !important;
+`;
+
+const CounterText = styled.span``; 
+
+const MintContainer = styled.div`
+  width: fit-content;
+  margin: 20px auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100px;
+`; 
 
 const MintButton = styled(Button)``; // add your styles here
+
+const Title = styled.h1`
+  text-align: center;
+  margin: 20px auto;
+  color: #870101;
+  font-size: 6rem;
+  font-family: "Corleone";
+  font-weight: 300;
+  letter-spacing: 4px;
+  @media (min-width: 768px){
+  font-size: 8rem;}
+`; 
+
+const Image = styled.img`
+  display: block;
+  margin: 20px auto;
+  max-width: 100%
+`; 
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -42,12 +85,11 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-  const [tokenMint, setTokenMint] = useState<PublicKey | undefined>(undefined); // Custom spl token for mint price. Typically undefined
-  const [associatedTokenAccountAddress, setAssociatedTokenAccountAddress] = useState<PublicKey | undefined>(undefined); // Associated token for custom spl mint
 
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
+
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: "",
@@ -56,45 +98,12 @@ const Home = (props: HomeProps) => {
 
   const [startDate, setStartDate] = useState(new Date(props.startDate));
 
-  const wallet = useWallet();
+  const wallet = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
-
-
-
-  const updateBalance = async () => {
-    if (wallet?.publicKey) {
-      if (tokenMint && associatedTokenAccountAddress) {
-        const token = new Token(
-            props.connection,
-            tokenMint,
-            TOKEN_PROGRAM_ID,
-            // @ts-ignore
-            wallet
-        )
-        const mintInfo = await token.getMintInfo();
-        try {
-          const associatedTokenAccountInfo = await token.getAccountInfo(associatedTokenAccountAddress);
-          setBalance(associatedTokenAccountInfo.amount.toNumber() / 10 ** mintInfo.decimals);
-        } catch (e) {
-          // if we cant fatch associated address, assume balance is 0
-          setBalance(0);
-        }
-        return;
-      }
-      const balance = await props.connection.getBalance(wallet.publicKey);
-      setBalance(balance / LAMPORTS_PER_SOL);
-    }
-  }
 
   const refreshCandyMachineState = () => {
     (async () => {
       if (!wallet) return;
-
-      const anchorWallet = {
-        publicKey: wallet.publicKey,
-        signAllTransactions: wallet.signAllTransactions,
-        signTransaction: wallet.signTransaction,
-      } as anchor.Wallet;
 
       const {
         candyMachine,
@@ -103,7 +112,7 @@ const Home = (props: HomeProps) => {
         itemsRemaining,
         itemsRedeemed,
       } = await getCandyMachineState(
-        anchorWallet,
+        wallet as anchor.Wallet,
         props.candyMachineId,
         props.connection
       );
@@ -121,13 +130,12 @@ const Home = (props: HomeProps) => {
   const onMint = async () => {
     try {
       setIsMinting(true);
-      if (wallet.connected && candyMachine?.program && wallet.publicKey) {
+      if (wallet && candyMachine?.program) {
         const mintTxId = await mintOneToken(
           candyMachine,
           props.config,
           wallet.publicKey,
-          props.treasury,
-          associatedTokenAccountAddress
+          props.treasury
         );
 
         const status = await awaitTransactionSignatureConfirmation(
@@ -177,7 +185,10 @@ const Home = (props: HomeProps) => {
         severity: "error",
       });
     } finally {
-      await updateBalance();
+      if (wallet) {
+        const balance = await props.connection.getBalance(wallet.publicKey);
+        setBalance(balance / LAMPORTS_PER_SOL);
+      }
       setIsMinting(false);
       refreshCandyMachineState();
     }
@@ -185,73 +196,39 @@ const Home = (props: HomeProps) => {
 
   useEffect(() => {
     (async () => {
-      await updateBalance();
-    })();
-  }, [wallet, props.connection, tokenMint]);
-
-  useEffect(() => {
-    (async () => {
-      if (
-        !wallet ||
-        !wallet.publicKey ||
-        !wallet.signAllTransactions ||
-        !wallet.signTransaction
-      ) {
-        return;
+      if (wallet) {
+        const balance = await props.connection.getBalance(wallet.publicKey);
+        setBalance(balance / LAMPORTS_PER_SOL);
       }
-
-      const anchorWallet = {
-        publicKey: wallet.publicKey,
-        signAllTransactions: wallet.signAllTransactions,
-        signTransaction: wallet.signTransaction,
-      } as anchor.Wallet;
-
-      const { candyMachine, goLiveDate, itemsRemaining, itemsRedeemed, itemsAvailable, tokenMint } =
-        await getCandyMachineState(
-          anchorWallet,
-          props.candyMachineId,
-          props.connection
-        );
-
-      setItemsRemaining(itemsRemaining)
-      setItemsRedeemed(itemsRedeemed)
-      setItemsAvailable(itemsAvailable)
-      setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
-
-      if (tokenMint) {
-        const associatedTokenAccountAddress = await Token.getAssociatedTokenAddress(
-            ASSOCIATED_TOKEN_PROGRAM_ID,
-            TOKEN_PROGRAM_ID,
-            tokenMint,
-            wallet.publicKey
-        );
-        setTokenMint(tokenMint);
-        setAssociatedTokenAccountAddress(associatedTokenAccountAddress);
-      }
-
-      setCandyMachine(candyMachine);
     })();
-  }, [wallet, props.candyMachineId, props.connection]);
+  }, [wallet, props.connection]);
+
+  useEffect(refreshCandyMachineState, [
+    wallet,
+    props.candyMachineId,
+    props.connection,
+  ]);
 
   return (
-    <main>
-      {wallet.connected && (
-        <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
+    <Main>
+      {wallet && (
+        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
 
-      {wallet.connected && (
-        <p>Balance: {(balance || 0).toLocaleString()} {tokenMint ? "" : "SOL"}</p>
-      )}
+      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-{wallet.connected && ( <p>Total Available: {itemsAvailable}</p>)}
+      {wallet && <p>Total Available: {itemsAvailable}</p>}
 
-{wallet.connected && (  <p>Redeemed: {itemsRedeemed}</p>)}
+      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
 
-{wallet.connected && (  <p>Remaining: {itemsRemaining}</p>)}
+      {wallet && <p>Remaining: {itemsRemaining}</p>}
+
+      <Title>Mint Room</Title>
+
+      <Image src={tableImage} alt="mafia accessories" />
 
       <MintContainer>
-        {!wallet.connected ? (
+        {!wallet ? (
           <ConnectButton>Connect Wallet</ConnectButton>
         ) : (
           <MintButton
@@ -279,7 +256,7 @@ const Home = (props: HomeProps) => {
         )}
       </MintContainer>
 
-      <Snackbar
+       <Snackbar
         open={alertState.open}
         autoHideDuration={6000}
         onClose={() => setAlertState({ ...alertState, open: false })}
@@ -291,7 +268,7 @@ const Home = (props: HomeProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
-    </main>
+    </Main>
   );
 };
 
@@ -304,7 +281,7 @@ interface AlertState {
 const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
   return (
     <CounterText>
-      {hours} hours, {minutes} minutes, {seconds} seconds
+      {hours + (days || 0) * 24} hours, {minutes} minutes, {seconds} seconds
     </CounterText>
   );
 };
