@@ -215,15 +215,15 @@ const Home = (props: HomeProps) => {
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
 
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+      {wallet && <p>Your Wallet Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
+      {/* {wallet && <p>Total Left: {itemsAvailable}</p>} */}
 
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
+      {wallet && <p>Minted: {itemsRedeemed} / {itemsRemaining}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
+      {/* {wallet && <p>Left to Mint: {itemsRemaining}</p>} */}
 
-      <Title>Mint Room</Title>
+      <Title>La Famiglia<br /> Minting Ceremony</Title>
 
       <Image src={tableImage} alt="mafia accessories" />
 
