@@ -51,7 +51,15 @@ const MintContainer = styled.div`
   bottom: 100px;
 `; 
 
-const MintButton = styled(Button)``; // add your styles here
+const MintButton = styled(Button)`
+display: block;
+width: fit-content;
+background: #870101 !important;
+font-size: 36px !important;
+line-height: 1.2;
+padding: 10px 20px !important;
+font-family: "Corleone" !important;
+font-weight: 300 !important;`; // add your styles here
 
 const Title = styled.h1`
   text-align: center;
