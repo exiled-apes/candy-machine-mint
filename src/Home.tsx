@@ -40,7 +40,7 @@ const ConnectButton = styled(WalletDialogButton)`
   font-weight: 300 !important;
 `;
 
-const CounterText = styled.span``; 
+const CounterText = styled.span``;
 
 const MintContainer = styled.div`
   width: fit-content;
@@ -48,36 +48,72 @@ const MintContainer = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 100px;
-`; 
+  bottom: 30px;
+  @media (min-width: 600px){
+  bottom: 60px;}
+`;
 
 const MintButton = styled(Button)`
-display: block;
-width: fit-content;
-background: #870101 !important;
-font-size: 36px !important;
-line-height: 1.2;
-padding: 10px 20px !important;
-font-family: "Corleone" !important;
-font-weight: 300 !important;`; // add your styles here
+  display: block;
+  width: fit-content;
+  background: #870101 !important;
+  font-size: 36px !important;
+  line-height: 1.2;
+  padding: 10px 20px !important;
+  font-family: "Corleone" !important;
+  font-weight: 300 !important;
+  span {
+    color: #fff;
+    font-size: 36px !important;
+    line-height: 1.2;
+    padding: 10px 20px !important;
+    font-family: "Corleone" !important;
+    font-weight: 300 !important;
+    letter-spacing: 4px;
+    text-transform: none;
+}
+`;
 
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
   color: #870101;
-  font-size: 6rem;
+  font-size: 3rem;
   font-family: "Corleone";
   font-weight: 300;
   letter-spacing: 4px;
   @media (min-width: 768px){
-  font-size: 8rem;}
-`; 
+  font-size: 6rem;}
+`;
 
 const Image = styled.img`
   display: block;
   margin: 20px auto;
   max-width: 100%
-`; 
+`;
+const InfoBoard = styled.div`
+  width: fit-content;
+  position: absolute;
+  bottom: -55px;
+  @media (min-width: 768px){
+  top: 420px;}
+  @media (min-width: 920px){
+    top: 460px;
+  }
+  @media (min-width: 1440px){
+    top: 480px;
+  }
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 30px;
+  z-index: 1000;
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+`;
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -219,17 +255,21 @@ const Home = (props: HomeProps) => {
 
   return (
     <Main>
-      {wallet && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+      <InfoBoard>
 
-      {wallet && <p>Your Wallet Balance: {(balance || 0).toLocaleString()} SOL</p>}
+        {wallet && (
+          <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
+        )}
 
-      {/* {wallet && <p>Total Left: {itemsAvailable}</p>} */}
+        {wallet && <p>Your Wallet Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-      {wallet && <p>Minted: {itemsRedeemed} / {itemsRemaining}</p>}
+        {/* {wallet && <p>Total Left: {itemsAvailable}</p>} */}
 
-      {/* {wallet && <p>Left to Mint: {itemsRemaining}</p>} */}
+        {wallet && <p>Minted: {itemsRedeemed} / {itemsRemaining}</p>}
+
+        {/* {wallet && <p>Left to Mint: {itemsRemaining}</p>} */}
+
+      </InfoBoard>
 
       <Title>La Famiglia<br /> Minting Ceremony</Title>
 
@@ -250,7 +290,7 @@ const Home = (props: HomeProps) => {
               isMinting ? (
                 <CircularProgress />
               ) : (
-                "MINT"
+                "Mint"
               )
             ) : (
               <Countdown
@@ -264,7 +304,7 @@ const Home = (props: HomeProps) => {
         )}
       </MintContainer>
 
-       <Snackbar
+      <Snackbar
         open={alertState.open}
         autoHideDuration={6000}
         onClose={() => setAlertState({ ...alertState, open: false })}
