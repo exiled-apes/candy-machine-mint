@@ -96,23 +96,27 @@ const Image = styled.img`
 `;
 const InfoBoard = styled.div`
   width: fit-content;
+  height: fit-content;
   position: absolute;
   bottom: -55px;
-  @media (min-width: 768px){
-  top: 420px;}
-  @media (min-width: 920px){
-    top: 460px;
-  }
-  @media (min-width: 1440px){
-    top: 480px;
-  }
   left: 50%;
   transform: translateX(-50%);
   padding: 20px 30px;
   z-index: 100;
+  @media (min-width: 768px){
+  top: 520px;}
+  @media (min-width: 920px){
+    top: 610px;
+  }
+  @media (min-width: 1440px){
+    top: 630px;
+  }
   p {
     margin: 0;
+    font-family: "Corleone";
     font-size: 1rem;
+    font-width: 100;
+    letter-spacing: 3px;
     line-height: 1.5;
     text-align: center;
   }
