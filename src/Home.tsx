@@ -30,6 +30,7 @@ const Main = styled.main`
 `;
 
 const ConnectButton = styled(WalletDialogButton)`
+  z-index: 200;
   display: block;
   width: fit-content;
   background: #870101 !important;
@@ -43,6 +44,7 @@ const ConnectButton = styled(WalletDialogButton)`
 const CounterText = styled.span``;
 
 const MintContainer = styled.div`
+  z-index: 200;
   width: fit-content;
   margin: 20px auto;
   position: absolute;
@@ -55,6 +57,7 @@ const MintContainer = styled.div`
 
 const MintButton = styled(Button)`
   display: block;
+  z-index: 200;
   width: fit-content;
   background: #870101 !important;
   font-size: 36px !important;
@@ -106,7 +109,7 @@ const InfoBoard = styled.div`
   left: 50%;
   transform: translateX(-50%);
   padding: 20px 30px;
-  z-index: 1000;
+  z-index: 100;
   p {
     margin: 0;
     font-size: 1rem;
@@ -285,7 +288,7 @@ const Home = (props: HomeProps) => {
             variant="contained"
           >
             {isSoldOut ? (
-              "SOLD OUT"
+              "Sold Out"
             ) : isActive ? (
               isMinting ? (
                 <CircularProgress />
