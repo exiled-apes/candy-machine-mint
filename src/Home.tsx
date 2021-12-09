@@ -272,7 +272,7 @@ const Home = (props: HomeProps) => {
 
         {/* {wallet && <p>Total Left: {itemsAvailable}</p>} */}
 
-        {wallet && <p>Minted: {itemsRedeemed} / {itemsRemaining}</p>}
+        {wallet && <p>Minted: {itemsRedeemed} / {itemsAvailable}</p>}
 
         {/* {wallet && <p>Left to Mint: {itemsRemaining}</p>} */}
 
