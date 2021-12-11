@@ -52,7 +52,11 @@ const MintContainer = styled.div`
   transform: translateX(-50%);
   bottom: 30px;
   @media (min-width: 600px){
-  bottom: 60px;}
+  bottom: 380px;}
+  @media (min-width: 920px){
+  bottom: 460px;}
+  @media (min-width: 1440px){
+  bottom: 510px;}
 `;
 
 const MintButton = styled(Button)`
