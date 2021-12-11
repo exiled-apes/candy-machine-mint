@@ -246,15 +246,15 @@ export const mintOneToken = async (
   payer: anchor.web3.PublicKey,
   treasury: anchor.web3.PublicKey,
 ): Promise<string> => {
-  const mint = anchor.web3.Keypair.generate();
-  const token = await getTokenWallet(payer, mint.publicKey);
   const { connection, program } = candyMachine;
-  const metadata = await getMetadata(mint.publicKey);
-  const masterEdition = await getMasterEdition(mint.publicKey);
 
-  const rent = await connection.getMinimumBalanceForRentExemption(
-    MintLayout.span
-  );
+  const mint = anchor.web3.Keypair.generate();
+  const [masterEdition, metadata, rent, token] = await Promise.all([
+    getMasterEdition(mint.publicKey),
+    getMetadata(mint.publicKey),
+    connection.getMinimumBalanceForRentExemption(MintLayout.span),
+    getTokenWallet(payer, mint.publicKey),
+  ]);
 
   return await program.rpc.mintNft({
     accounts: {
