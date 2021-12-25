@@ -152,12 +152,12 @@ const Home = (props: HomeProps) => {
 
   useEffect(() => {
     (async () => {
-      if (wallet) {
+      if (wallet?.publicKey) {
         const balance = await props.connection.getBalance(wallet.publicKey);
         setBalance(balance / LAMPORTS_PER_SOL);
       }
     })();
-  }, [wallet, props.connection]);
+  }, [wallet?.publicKey, props.connection]);
 
   useEffect(refreshCandyMachineState, [
     wallet,
