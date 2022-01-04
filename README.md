@@ -1,6 +1,25 @@
-# Candy-Machine-Mint
+# Introduction
 
-The Candy-Machine-Mint project is designed to let users fork, customize, and deploy their own candy machine mint app to a custom domain, ultra fast.
+The Candy-Machine-Mint-V2-Ready-UI project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to the recent Candy Machine V2 Solana release.
+In addition, I share with you a ready to prod UI which can be easily customized with the few css variables of App.css :
+
+```
+:root {
+  --main-background-color: #014C50;
+  --card-background-color: #236467;
+  --card-background-lighter-color: #547C7E;
+  --main-text-color:#F7F6F4;
+  --title-text-color:#AA3C39;
+}
+```
+
+I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind. :)
+
+For instructions on how to set up a V2 candy machine, please refer to Metaplex's documentation [here](https://docs.metaplex.com/candy-machine-v2/Introduction)
+
+## About Forked Candy-Machine-Mint
+
+The [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) project is designed to let users fork, customize, and deploy their own candy machine mint app to a custom domain, ultra fast.
 
 A candy machine is an on-chain Solana program (or smart contract) for managing fair mint. Fair mints:
 * Start and finish at the same time for everyone.
@@ -12,6 +31,8 @@ The Candy-Machine-Mint project is meant to be as simple and usable as possible, 
 
 ### Prerequisites
 
+* Download a Code Editor such as Visual Studio Code.
+
 * Ensure you have recent versions of both `node` and `yarn` installed.
 
 * Follow the instructions [here](https://docs.solana.com/cli/install-solana-cli-tools) to install the Solana Command Line Toolkit.
@@ -21,47 +42,21 @@ The Candy-Machine-Mint project is meant to be as simple and usable as possible, 
 
 ### Installation
 
-1. Fork the project, then clone down. Example:
-```
-git clone git@github.com:exiled-apes/candy-machine-mint.git
-```
-
-2. Build the project. Example:
-```
-cd candy-machine-mint
-yarn install
-yarn build
-```
-
-3. Define your environment variables using the instructions below, and start up the server with `npm start`.
-
-#### Environment Variables
-
-To run the project, first rename the `.env.example` file at the root directory to `.env` and update the following variables:
+#### 1. Fork the project & clone it. Example:
 
 ```
-REACT_APP_CANDY_MACHINE_CONFIG=__PLACEHOLDER__
+git clone https://github.com/Fulgurus/candy-machine-v2-ready-ui.git
 ```
 
-This is a Solana account address. You can get the value for this from the `.cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
+#### 2. Define your environment variables (.env file)
+
+Update the following environment variables in the .env file:
 
 ```
 REACT_APP_CANDY_MACHINE_ID=__PLACEHOLDER__
 ```
 
-Same as above; this is a Solana account address. You can get the value for this from the `./cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
-
-```
-REACT_APP_TREASURY_ADDRESS=__PLACEHOLDER__
-```
-
-This the Solana address that receives the funds gathered during the minting process. More docs coming as we can test this.
-
-```
-REACT_APP_CANDY_START_DATE=__PLACEHOLDER__
-```
-
-This is a unix time stamp that configures when your mint will be open.
+This is the Candy Machine Pubkey you get once you upload & create your candy machine in Metaplex project. You can find back the value from the `.cache/temp.json` file of your Metaplex project. This file is created when you run the `ts-node candy-machine-v2-cli.ts upload ...` command.
 
 ```
 REACT_APP_SOLANA_NETWORK=devnet
@@ -70,18 +65,36 @@ REACT_APP_SOLANA_NETWORK=devnet
 This identifies the Solana network you want to connect to. Options are `devnet`, `testnet`, and `mainnet`.
 
 ```
-REACT_APP_SOLANA_RPC_HOST=https://explorer-api.devnet.solana.com
+REACT_APP_SOLANA_RPC_HOST=https://api.devnet.solana.com
 ```
 
 This identifies the RPC server your web app will access the Solana network through.
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 3. Build the project and test. Go to the root project directory and type the commands :
 
-## Available Scripts
+To install dependencies :
 
-In the project directory, you can run:
+```
+yarn install
+```
+
+To test the app locally in the development mode (localhost:3000) :
+
+```
+yarn start
+```
+
+To build the production package (generated in build folder of the project) :
+
+```
+yarn build
+```
+
+Stat's it !
+
+
+##  Available Commands Recap :
 
 ### `yarn start`
 
@@ -121,3 +134,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## To thank me with a small SOL tip :]
+
+58SevvhmaN4SfCop2HkepAWyM5zykr7Afiv91PAAfPqR

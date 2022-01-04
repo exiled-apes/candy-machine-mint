@@ -1,3 +1,50 @@
-.App {
-  text-align: center;
+/* Customize your main colors in :root variables */
+:root {
+  --main-background-color: #014C50;
+  --card-background-color: #236467;
+  --card-background-lighter-color: #547C7E;
+  --main-text-color:#F7F6F4;
+  --title-text-color:#AA3C39;
+}
+
+body{
+  background-color:var(--main-background-color);
+}
+
+h2, p{
+  color: var(--main-text-color);
+}
+
+h3{
+font-weight: normal;
+}
+
+.MuiFab-extended{
+  height: auto;
+  padding-right: 0 !important;
+}
+
+.MuiFab-label{
+  font-weight: bold;
+}
+
+.MuiPaper-root{
+  background-color: var(--card-background-color) !important;
+}
+
+.MuiButton-containedPrimary:not(.MuiButton-fullWidth){
+  border-radius: 24px !important;
+  padding: 6px 16px;
+}
+
+.MuiButton-label{
+  font-size: 1.2em;
+}
+
+.MuiLinearProgress-colorPrimary{
+  background-color:var(--main-text-color) !important;
+}
+
+.MuiLinearProgress-barColorPrimary{
+  background-color:var(--title-text-color) !important;
 }
