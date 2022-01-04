@@ -5,7 +5,7 @@ But that's not all, I share with you a **Prod-ready Responsive UI** which can be
 
 ![Candy Machine Preview Image](https://i.ibb.co/pWGG0gZ/preview-cm2.png)
 
-I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind. :)
+I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind :)
 
 For instructions on how to set up a V2 candy machine, please refer to Metaplex's documentation [here](https://docs.metaplex.com/candy-machine-v2/Introduction)
 
