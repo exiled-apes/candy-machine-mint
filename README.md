@@ -3,6 +3,8 @@
 The Candy-Machine-Mint-V2-Ready-UI project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to the recent Candy Machine V2 Solana release.
 In addition, I share with you a ready to prod UI which can be easily customized in 5mn.
 
+![Candy Machine Preview Image](https://i.ibb.co/zJHLD8N/demo-mint-page.png)
+
 I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind. :)
 
 For instructions on how to set up a V2 candy machine, please refer to Metaplex's documentation [here](https://docs.metaplex.com/candy-machine-v2/Introduction)
