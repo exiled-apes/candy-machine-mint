@@ -3,7 +3,7 @@
 The **Candy-Machine-V2-Responsive-UI** project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to the recent **Candy Machine V2** Solana release.
 But that's not all, I share with you a **Prod-ready Responsive UI** which can be easily customized in 5mn.
 
-![Candy Machine Preview Image](https://i.ibb.co/zJHLD8N/demo-mint-page.png)
+![Candy Machine Preview Image](https://i.ibb.co/pWGG0gZ/preview-cm2.png)
 
 I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind. :)
 
