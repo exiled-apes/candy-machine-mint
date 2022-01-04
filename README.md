@@ -37,7 +37,7 @@ The Candy-Machine-Mint project is meant to be as simple and usable as possible, 
 #### 1. Fork the project & clone it. Example:
 
 ```
-git clone https://github.com/Fulgurus/candy-machine-v2-ready-ui.git
+git clone https://github.com/Fulgurus/candy-machine-v2-responsive-ui.git
 ```
 
 #### 2. Define your environment variables (.env file)
