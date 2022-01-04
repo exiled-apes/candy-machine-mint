@@ -1,17 +1,7 @@
 # Introduction
 
 The Candy-Machine-Mint-V2-Ready-UI project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to the recent Candy Machine V2 Solana release.
-In addition, I share with you a ready to prod UI which can be easily customized with the few css variables of App.css :
-
-```
-:root {
-  --main-background-color: #014C50;
-  --card-background-color: #236467;
-  --card-background-lighter-color: #547C7E;
-  --main-text-color:#F7F6F4;
-  --title-text-color:#AA3C39;
-}
-```
+In addition, I share with you a ready to prod UI which can be easily customized in 5mn.
 
 I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind. :)
 
@@ -50,13 +40,12 @@ git clone https://github.com/Fulgurus/candy-machine-v2-ready-ui.git
 
 #### 2. Define your environment variables (.env file)
 
-Update the following environment variables in the .env file:
+Rename the `.env.example` file at the root directory to `.env` and update the following variables in the `.env` file:
 
 ```
 REACT_APP_CANDY_MACHINE_ID=__PLACEHOLDER__
 ```
-
-This is the Candy Machine Pubkey you get once you upload & create your candy machine in Metaplex project. You can find back the value from the `.cache/temp.json` file of your Metaplex project. This file is created when you run the `ts-node candy-machine-v2-cli.ts upload ...` command.
+set __PLACEHOLDER__ with the candy machine pubkey you get once you upload & create your candy machine in Metaplex project. You can find back the value from the `.cache/temp.json` file of your Metaplex project. This file is created when you run the `ts-node candy-machine-v2-cli.ts upload ...` command.
 
 ```
 REACT_APP_SOLANA_NETWORK=devnet
@@ -69,7 +58,6 @@ REACT_APP_SOLANA_RPC_HOST=https://api.devnet.solana.com
 ```
 
 This identifies the RPC server your web app will access the Solana network through.
-
 
 #### 3. Build the project and test. Go to the root project directory and type the commands :
 
@@ -91,8 +79,30 @@ To build the production package (generated in build folder of the project) :
 yarn build
 ```
 
-Stat's it !
+#### 4. Customize the website UI :
 
+##### 4.1 `App.css` : update 5 main CSS variables with your custom colors :
+
+```
+:root {
+  --main-background-color: #343A50;
+  --card-background-color: #51576D;
+  --card-background-lighter-color: #7A7F92;
+  --main-text-color:#F7F6F4;
+  --title-text-color:#3CBA8B;
+}
+```
+
+##### 4.2 `public` folder :
+
+- Update existing demo cool cats images (cool-cats.gif, logo.png) with your owns images in project `public` folder. Make sure to name them identically.
+- Add your custom website title in `index.html` : `<title>Mint Page</title>`
+
+##### 4.3 `Home.tsx` :
+
+Scroll down down to line 380 (`return <main> [...]`) and start to update all titles/menu/text/images/text... as wished in the whole React HTML block.
+
+That's it ! Enjoy your beautiful candy machine :)
 
 ##  Available Commands Recap :
 
@@ -137,4 +147,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## To thank me with a small SOL tip :]
 
-58SevvhmaN4SfCop2HkepAWyM5zykr7Afiv91PAAfPqR
+`58SevvhmaN4SfCop2HkepAWyM5zykr7Afiv91PAAfPqR`
