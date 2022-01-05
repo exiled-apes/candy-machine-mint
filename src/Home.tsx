@@ -228,6 +228,8 @@ const Home = (props: HomeProps) => {
     const [itemsAvailable, setItemsAvailable] = useState(0);
     const [itemsRedeemed, setItemsRedeemed] = useState(0);
     const [itemsRemaining, setItemsRemaining] = useState(0);
+    const [price, setPrice] = useState(0);
+    const [whitelistPrice, setWhitelistPrice] = useState(0);
     const [whitelistEnabled, setWhitelistEnabled] = useState(false);
     const [whitelistTokenBalance, setWhitelistTokenBalance] = useState(0);
 
@@ -256,10 +258,14 @@ const Home = (props: HomeProps) => {
             setItemsAvailable(cndy.state.itemsAvailable);
             setItemsRemaining(cndy.state.itemsRemaining);
             setItemsRedeemed(cndy.state.itemsRedeemed);
+            setPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
 
             // fetch whitelist token balance
             if (cndy.state.whitelistMintSettings) {
                 setWhitelistEnabled(true);
+                if (cndy.state.whitelistMintSettings.discountPrice !== null && cndy.state.whitelistMintSettings.discountPrice !== cndy.state.price) {
+                    setWhitelistPrice(cndy.state.whitelistMintSettings.discountPrice?.toNumber() / LAMPORTS_PER_SOL);
+                }
                 let balance = 0;
                 try {
                     const tokenBalance =
@@ -395,7 +401,7 @@ const Home = (props: HomeProps) => {
                             <ConnectButton>Connect Wallet</ConnectButton>}
                     </Wallet>
                 </WalletContainer>
-                <ShimmerTitle>DEMO MINT PAGE</ShimmerTitle>
+                <ShimmerTitle>{whitelistEnabled ? "PRE-SALE IS LIVE !" : "MINT IS LIVE !"}</ShimmerTitle>
                 <br/>
 
 
@@ -404,7 +410,7 @@ const Home = (props: HomeProps) => {
                         <NFT elevation={3}>
                             <h2>My NFT</h2>
                             <br/>
-                            <div><Price label="1 SOL"/><Image
+                            <div><Price label={whitelistEnabled ? (whitelistPrice + " SOL") : (price + " SOL")}/><Image
                                 src="cool-cats.gif"
                                 alt="NFT To Mint"/></div>
                             <br/><br/>
@@ -463,6 +469,8 @@ const Home = (props: HomeProps) => {
                                         ))}
                             </MintButtonContainer>
                             <br/>
+                            {wallet && isActive && whitelistEnabled &&
+                              <h3>MY REMAINING WHITELIST MINT(S) : {whitelistTokenBalance}</h3>}
                         </NFT>
                     </DesContainer>
                     <DesContainer>
