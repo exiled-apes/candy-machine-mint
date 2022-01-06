@@ -420,7 +420,7 @@ const Home = (props: HomeProps) => {
                                                                          value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                             <br/>
                             <MintButtonContainer>
-                                {!isActive && candyMachine?.state.goLiveDate ? (
+                                {!isActive && candyMachine?.state.goLiveDate && (!whitelistEnabled || !whitelistTokenBalance) ? (
                                     <Countdown
                                         date={toDate(candyMachine?.state.goLiveDate)}
                                         onMount={({ completed }) => completed && setIsActive(true)}
