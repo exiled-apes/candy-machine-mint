@@ -8,7 +8,7 @@ import {GatewayProvider} from '@civic/solana-gateway-react';
 import Countdown from "react-countdown";
 import {Snackbar, Paper, LinearProgress, Chip} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import {toDate,AlertState,getAtaForMint} from './utils';
+import {toDate, AlertState, getAtaForMint} from './utils';
 import {MintButton} from './MintButton';
 import {
     CandyMachine,
@@ -17,6 +17,7 @@ import {
     mintOneToken,
     CANDY_MACHINE_PROGRAM,
 } from "./candy-machine";
+const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
 
 const WalletContainer = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const Card = styled(Paper)`
 `;
 
 const MintButtonContainer = styled.div`
-  button.MuiButton-contained:not(.MuiButton-containedPrimary).Mui-disabled{
+  button.MuiButton-contained:not(.MuiButton-containedPrimary).Mui-disabled {
     color: #464646;
   }
 
@@ -67,7 +68,7 @@ const MintButtonContainer = styled.div`
 `;
 
 const WalletAmount = styled.div`
-  color:black;
+  color: black;
   width: auto;
   height: 48px;
   padding: 0 5px 0 16px;
@@ -77,7 +78,7 @@ const WalletAmount = styled.div`
   background-color: var(--main-text-color);
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-weight: 500;
   line-height: 1.75;
   text-transform: uppercase;
@@ -90,7 +91,7 @@ const WalletAmount = styled.div`
   user-select: none;
   vertical-align: middle;
   justify-content: flex-start;
-  gap:10px;
+  gap: 10px;
 
 `;
 
@@ -135,10 +136,27 @@ const Menu = styled.ul`
 
   }
 `;
+
+const SolExplorerLink = styled.a`
+  color: var(--title-text-color);
+  border-bottom: 1px solid var(--title-text-color);
+  font-weight: bold;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  outline: none;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  
+  :hover{
+    border-bottom: 2px solid var(--title-text-color);
+  }
+`;
+
 const Wallet = styled.ul`
   flex: 0 0 auto;
   margin: 0;
-  padding:0;
+  padding: 0;
 `;
 const MainContainer = styled.div`
   display: flex;
@@ -163,7 +181,7 @@ const DesContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  gap:20px;
+  gap: 20px;
 `;
 
 const Price = styled(Chip)`
@@ -224,7 +242,8 @@ export interface HomeProps {
 const Home = (props: HomeProps) => {
     const [balance, setBalance] = useState<number>();
     const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-    const [isActive, setIsActive] = useState(false); // true when countdown completes
+    const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
+    const [solanaExplorerLink, setSolanaExplorerLink] = useState("");
     const [itemsAvailable, setItemsAvailable] = useState(0);
     const [itemsRedeemed, setItemsRedeemed] = useState(0);
     const [itemsRemaining, setItemsRemaining] = useState(0);
@@ -259,6 +278,7 @@ const Home = (props: HomeProps) => {
             setItemsRemaining(cndy.state.itemsRemaining);
             setItemsRedeemed(cndy.state.itemsRedeemed);
             setPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
+            setWhitelistPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
 
             // fetch whitelist token balance
             if (cndy.state.whitelistMintSettings) {
@@ -284,6 +304,7 @@ const Home = (props: HomeProps) => {
                     balance = 0;
                 }
                 setWhitelistTokenBalance(balance);
+                setIsActive(balance > 0);
             } else {
                 setWhitelistEnabled(false);
             }
@@ -298,13 +319,29 @@ const Home = (props: HomeProps) => {
         );
     };
 
+    function displaySuccess(mintPublicKey: any): void {
+        setItemsRemaining(itemsRemaining - 1);
+        if (whitelistTokenBalance && whitelistTokenBalance > 0) {
+            setWhitelistTokenBalance(whitelistTokenBalance - 1);
+        }
+        setItemsRedeemed(itemsRedeemed + 1);
+        const solFeesEstimation = 0.012;
+        if (balance && balance > 0) {
+            setBalance(balance - (whitelistEnabled ? whitelistPrice : price) - solFeesEstimation);
+        }
+        setSolanaExplorerLink(cluster == "devnet"
+            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster=devnet")
+            : ("https://explorer.solana.com/address/" + mintPublicKey));
+    };
+
     const onMint = async () => {
         try {
             setIsMinting(true);
             document.getElementById('#identity')?.click();
             if (wallet && candyMachine?.program && wallet.publicKey) {
+                const mint = anchor.web3.Keypair.generate();
                 const mintTxId = (
-                    await mintOneToken(candyMachine, wallet.publicKey)
+                    await mintOneToken(candyMachine, wallet.publicKey, mint)
                 )[0];
 
                 let status: any = {err: true};
@@ -324,6 +361,9 @@ const Home = (props: HomeProps) => {
                         message: 'Congratulations! Mint succeeded!',
                         severity: 'success',
                     });
+
+                    // update front-end amounts
+                    displaySuccess(mint.publicKey);
                 } else {
                     setAlertState({
                         open: true,
@@ -358,14 +398,10 @@ const Home = (props: HomeProps) => {
                 severity: "error",
             });
         } finally {
-            if (wallet) {
-                const balance = await props.connection.getBalance(wallet.publicKey);
-                setBalance(balance / LAMPORTS_PER_SOL);
-            }
             setIsMinting(false);
-            refreshCandyMachineState();
         }
     };
+
 
     useEffect(() => {
         (async () => {
@@ -413,17 +449,22 @@ const Home = (props: HomeProps) => {
                             <div><Price label={whitelistEnabled ? (whitelistPrice + " SOL") : (price + " SOL")}/><Image
                                 src="cool-cats.gif"
                                 alt="NFT To Mint"/></div>
-                            <br/><br/>
+                            <br/>
+                            {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
+                              <h3>You are whitelisted and can mint {whitelistTokenBalance} times</h3>}
+                            {wallet && isActive && itemsRedeemed > 0 &&
+                              <h3>You already minted {itemsRedeemed} NFT(s).</h3>}
                             {wallet && isActive &&
-                              <h3>TOTAL MINTED : {itemsAvailable-itemsRemaining} / {itemsAvailable}</h3>}
+                                /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
+                              <h3>TOTAL MINTED : {itemsAvailable - itemsRemaining} / {itemsAvailable}</h3>}
                             {wallet && isActive && <BorderLinearProgress variant="determinate"
                                                                          value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                             <br/>
                             <MintButtonContainer>
-                                {!isActive && candyMachine?.state.goLiveDate && (!whitelistEnabled || !whitelistTokenBalance) ? (
+                                {!isActive && candyMachine?.state.goLiveDate ? (
                                     <Countdown
                                         date={toDate(candyMachine?.state.goLiveDate)}
-                                        onMount={({ completed }) => completed && setIsActive(true)}
+                                        onMount={({completed}) => completed && setIsActive(true)}
                                         onComplete={() => {
                                             setIsActive(true);
                                         }}
@@ -469,28 +510,38 @@ const Home = (props: HomeProps) => {
                                         ))}
                             </MintButtonContainer>
                             <br/>
-                            {wallet && isActive && whitelistEnabled &&
-                              <h3>MY REMAINING WHITELIST MINT(S) : {whitelistTokenBalance}</h3>}
+                            {wallet && isActive && solanaExplorerLink &&
+                              <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solana
+                                Explorer</SolExplorerLink>}
                         </NFT>
                     </DesContainer>
                     <DesContainer>
                         <Des elevation={2}>
                             <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 1</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
                         </Des>
                         <Des elevation={2}>
                             <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 2</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
                         </Des>
                         <Des elevation={2}>
                             <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 3</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt.</p>
                         </Des>
                     </DesContainer>
                 </MintContainer>
