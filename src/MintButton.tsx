@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import {CircularProgress} from '@material-ui/core';
-import { GatewayStatus, useGateway } from '@civic/solana-gateway-react';
-import { CandyMachine } from './candy-machine';
+import {GatewayStatus, useGateway} from '@civic/solana-gateway-react';
+import {CandyMachine} from './candy-machine';
 
 
 export const CTAButton = styled(Button)`
   display: block !important;
   margin: 0 auto !important;
   background-color: var(--title-text-color) !important;
-  width: 140px;
   font-size: 1.2em;
 `;
 
@@ -18,14 +17,16 @@ export const MintButton = ({
                                onMint,
                                candyMachine,
                                isMinting,
-                               isActive
+                               isActive,
+                               isSoldOut
                            }: {
     onMint: () => Promise<void>;
     candyMachine: CandyMachine | undefined;
     isMinting: boolean;
     isActive: boolean;
+    isSoldOut: boolean;
 }) => {
-    const { requestGatewayToken, gatewayStatus } = useGateway();
+    const {requestGatewayToken, gatewayStatus} = useGateway();
     const [clicked, setClicked] = useState(false);
     const [isVerifying, setIsVerifying] = useState(false);
 
@@ -34,8 +35,7 @@ export const MintButton = ({
         if (gatewayStatus === GatewayStatus.COLLECTING_USER_INFORMATION && clicked) {
             // when user approves wallet verification txn
             setIsVerifying(true);
-        }
-        else if (gatewayStatus === GatewayStatus.ACTIVE && clicked) {
+        } else if (gatewayStatus === GatewayStatus.ACTIVE && clicked) {
             console.log('Verified human, now minting...');
             onMint();
             setClicked(false);
@@ -45,7 +45,7 @@ export const MintButton = ({
     return (
         <CTAButton
             disabled={
-                candyMachine?.state.isSoldOut ||
+                candyMachine?.state.isSoldOut || isSoldOut ||
                 isMinting ||
                 !isActive ||
                 isVerifying
@@ -64,12 +64,12 @@ export const MintButton = ({
         >
             {!candyMachine ? (
                 "CONNECTING..."
-            ) : candyMachine?.state.isSoldOut ? (
+            ) : candyMachine?.state.isSoldOut || isSoldOut ? (
                 'SOLD OUT'
             ) : isActive ? (
                 isVerifying ? 'VERIFYING...' :
                     isMinting ? (
-                        <CircularProgress />
+                        <CircularProgress/>
                     ) : (
                         "MINT"
                     )

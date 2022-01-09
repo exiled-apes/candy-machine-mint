@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import styled from "styled-components";
+import confetti from "canvas-confetti";
 import * as anchor from "@project-serum/anchor";
 import {LAMPORTS_PER_SOL, PublicKey} from "@solana/web3.js";
 import {useAnchorWallet} from "@solana/wallet-adapter-react";
@@ -17,6 +18,7 @@ import {
     mintOneToken,
     CANDY_MACHINE_PROGRAM,
 } from "./candy-machine";
+
 const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
 
 const WalletContainer = styled.div`
@@ -247,6 +249,7 @@ const Home = (props: HomeProps) => {
     const [itemsAvailable, setItemsAvailable] = useState(0);
     const [itemsRedeemed, setItemsRedeemed] = useState(0);
     const [itemsRemaining, setItemsRemaining] = useState(0);
+    const [isSoldOut, setIsSoldOut] = useState(false);
     const [price, setPrice] = useState(0);
     const [whitelistPrice, setWhitelistPrice] = useState(0);
     const [whitelistEnabled, setWhitelistEnabled] = useState(false);
@@ -320,19 +323,32 @@ const Home = (props: HomeProps) => {
     };
 
     function displaySuccess(mintPublicKey: any): void {
-        setItemsRemaining(itemsRemaining - 1);
+        let remaining = itemsRemaining - 1;
+        setItemsRemaining(remaining);
+        setIsSoldOut(remaining === 0);
         if (whitelistTokenBalance && whitelistTokenBalance > 0) {
-            setWhitelistTokenBalance(whitelistTokenBalance - 1);
+            let balance = whitelistTokenBalance - 1;
+            setWhitelistTokenBalance(balance);
+            setIsActive(balance > 0);
         }
         setItemsRedeemed(itemsRedeemed + 1);
-        const solFeesEstimation = 0.012;
+        const solFeesEstimation = 0.012; // approx
         if (balance && balance > 0) {
             setBalance(balance - (whitelistEnabled ? whitelistPrice : price) - solFeesEstimation);
         }
-        setSolanaExplorerLink(cluster == "devnet"
-            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster=devnet")
+        setSolanaExplorerLink(cluster == "devnet" || cluster == "testnet"
+            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster="+cluster)
             : ("https://explorer.solana.com/address/" + mintPublicKey));
+        throwConfetti();
     };
+
+    function throwConfetti(): void {
+        confetti({
+            particleCount: 400,
+            spread: 70,
+            origin: {y: 0.6},
+        });
+    }
 
     const onMint = async () => {
         try {
@@ -437,7 +453,7 @@ const Home = (props: HomeProps) => {
                             <ConnectButton>Connect Wallet</ConnectButton>}
                     </Wallet>
                 </WalletContainer>
-                <ShimmerTitle>{whitelistEnabled ? "PRE-SALE IS LIVE !" : "MINT IS LIVE !"}</ShimmerTitle>
+                <ShimmerTitle>MINT IS LIVE !</ShimmerTitle>
                 <br/>
 
 
@@ -446,17 +462,15 @@ const Home = (props: HomeProps) => {
                         <NFT elevation={3}>
                             <h2>My NFT</h2>
                             <br/>
-                            <div><Price label={whitelistEnabled ? (whitelistPrice + " SOL") : (price + " SOL")}/><Image
+                            <div><Price label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " SOL") : (price + " SOL")}/><Image
                                 src="cool-cats.gif"
                                 alt="NFT To Mint"/></div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
-                              <h3>You are whitelisted and can mint {whitelistTokenBalance} times</h3>}
-                            {wallet && isActive && itemsRedeemed > 0 &&
-                              <h3>You already minted {itemsRedeemed} NFT(s).</h3>}
+                              <h3>You have {whitelistTokenBalance} whitelist mint(s) remaining.</h3>}
                             {wallet && isActive &&
                                 /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
-                              <h3>TOTAL MINTED : {itemsAvailable - itemsRemaining} / {itemsAvailable}</h3>}
+                              <h3>TOTAL MINTED : {itemsRedeemed} / {itemsAvailable}</h3>}
                             {wallet && isActive && <BorderLinearProgress variant="determinate"
                                                                          value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                             <br/>
@@ -497,6 +511,7 @@ const Home = (props: HomeProps) => {
                                                     candyMachine={candyMachine}
                                                     isMinting={isMinting}
                                                     isActive={isActive}
+                                                    isSoldOut={isSoldOut}
                                                     onMint={onMint}
                                                 />
                                             </GatewayProvider>
@@ -505,6 +520,7 @@ const Home = (props: HomeProps) => {
                                                 candyMachine={candyMachine}
                                                 isMinting={isMinting}
                                                 isActive={isActive}
+                                                isSoldOut={isSoldOut}
                                                 onMint={onMint}
                                             />
                                         ))}
