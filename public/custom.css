@@ -1,0 +1,143 @@
+/* Upravljanje s fontovima i veličinom slova teksta */
+
+h1 {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    font-family: 'Sofia';
+}
+p {
+    font-family: 'Sofia';
+    font-size: 22px;
+}
+a {
+    font-family: 'Sofia';
+}
+
+button {
+    font-family: 'Sofia';
+}
+
+
+/* Upravljanje s ikonama na lijevoj strani ekrana */
+
+/* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+.icon-bar {
+    position: fixed;
+    top: 30%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  /* Style the icon bar links */
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+    font-size: 20px;
+  }
+  
+  /* Style the social media icons with color, if you want */
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .facebook {
+    background: transparent;
+    color: #3B5998;
+  }
+  
+  .twitter {
+    background: transparent;
+    color: #55ACEE;
+  }
+  
+  .google {
+    background: transparent;
+    color: #dd4b39;
+  }
+  
+  .linkedin {
+    background: transparent;
+    color: #007bb5;
+  }
+  
+  .youtube {
+    background: transparent;
+    color: #bb0000;
+  }
+
+  .discord {
+    background: transparent;
+    color: #0c79c2;
+  }
+  
+
+
+  /* Upravljanje s društvenim ikonama na dnu ekrana*/
+
+  .discord2 {
+    background: transparent;
+    color: #0c79c2;
+    display: block;
+    text-align: center;
+    padding: 1px;
+    padding-bottom: 3rem;
+    transition: all 0.3s ease;
+    font-size: 40px;
+  }
+  .twitter2 {
+    background: transparent;
+    color: #55ACEE;
+    display: block;
+    text-align: center;
+    padding: 1px;
+    padding-bottom: 3rem;
+    transition: all 0.3s ease;
+    font-size: 40px;
+  }
+
+/* Upravljanje s FAQs izbornikom */
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    text-align: center;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #FFD700;
+    border-radius: 30px 30px 30px 30px;
+    text-align: center;
+    margin: auto;
+    padding-top: 3%;
+    padding-bottom: 5%;
+
+    outline: none;
+    transition: 0.4s;
+    padding-bottom: 2rem;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+  .active, .accordion:hover {
+    background-color: #FFD700;
+    border-style: solid;
+    border-radius: 30px 30px 0px 0px;
+  }
+
+
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    padding: 0 12px;
+    background-color: #FFD700;
+    border-radius: 0px 0px 30px 30px;
+    text-align: center;
+    display: none;
+    overflow: hidden;
+}
+

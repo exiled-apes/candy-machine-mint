@@ -167,17 +167,18 @@ const Home = (props: HomeProps) => {
 
   return (
     <main>
+      <div className='mint-container'>
       {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
+      {wallet && <p>Total Supply: {itemsAvailable}</p>}
 
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
+      {wallet && <p>Minted: {itemsRedeemed}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
+      {wallet && <p>Remaining: {itemsRemaining}/300</p>}
 
       <MintContainer>
         {!wallet ? (
@@ -206,6 +207,7 @@ const Home = (props: HomeProps) => {
             )}
           </MintButton>
         )}
+
       </MintContainer>
 
       <Snackbar
@@ -220,6 +222,7 @@ const Home = (props: HomeProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
+      </div>
     </main>
   );
 };

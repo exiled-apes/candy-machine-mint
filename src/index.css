@@ -5,11 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #303030;
-  color: #FFFFFF;
+  background-color: #d4af37;
+  color: #000000;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.mint-container {
+  background-color: #FFD700;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #FFD700;
+  border-radius: 30px 30px 30px 30px;
+  width: 250px;
+  text-align: center;
+  margin: auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  font-size: 1.3em;
+
 }

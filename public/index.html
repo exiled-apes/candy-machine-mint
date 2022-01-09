@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#D4AF37" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  <style>
+    body {
+      font-family: 'Sofia';
+      font-size: 22px;
+    }
+  </style>
+  <link rel="stylesheet" href="%PUBLIC_URL%/custom.css">
+  <!-- manifest.json provides metadata used when your web app is installed on a
+    user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/ -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,20 +38,221 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <title>React App</title>
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
+<body>
+  <!--
+      Navigacijski izbornik na vrhu stranice
     -->
-  </body>
+  <nav class="navbar sticky-top navbar-expand navbar-light" style="background-color: #d4af37;">
+    <div class="container-fluid">
+      <a class="navbar-brand " href="#"></a>
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://ihrteamnft.com/index.php/home/">IHrteamNFT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Project">Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Mint">Mint</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Roadmap">Roadmap</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#FAQ's">FAQ's</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!--
+      Izbornik sa okonama za društvene mreže
+    -->
+  <div class="icon-bar">
+    <a href="https://discord.gg/ubCf5CerbP" class="discord"><i class="bi bi-discord"></i></a>
+    <a href="https://twitter.com/IHrteamNft" class="twitter"><i class="fa fa-twitter"></i></a>
+    <a href="#" class="google"><i class="fa fa-google"></i></a>
+    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+    <a href="https://www.youtube.com/channel/UCK_vM3nbxP0OkBYLS1m23qA" class="youtube"><i class="fa fa-youtube"></i></a>
+  </div>
+
+  <!--
+      Tekst i slike na početku stranice
+    -->
+
+  <div class="container" id="Project">
+    <h1 class="text-center">Christmas NFT</h1>
+    <div class="row justify-content-start mb-4">
+      <div class="col-sm-6">
+        <p class="text-center">The Christmas trees NFTs came from the idea of sharing joy and happiness all over the
+          world and making these days of peace and prosperity truly real and for everyone. </p>
+        <p class="text-center">Christmas NFT is the first project in the IHrteamNFT team series. We have created 300
+          unique Christmas trees NFTs and now we want to make them available to you. We have prepared the Christmas NFT
+          collection to help associations for children with special needs. </p>
+      </div>
+      <div class="col-sm-3">
+        <img class="img-thumbnail rounded-3 mx-auto border border-5" src="%PUBLIC_URL%/media/163.png" alt="my nft art">
+      </div>
+      <div class="col-sm-3">
+        <img class="img-thumbnail rounded-3 mx-auto border border-5" src="%PUBLIC_URL%/media/15.png" alt="my nft art">
+      </div>
+    </div>
+    <div class="row justify-content-start mb-4">
+      <div class="col-sm-6">
+        <p class="text-center">50% of the sale will be donated to associations for children with special needs. We will
+          donate 20% of our choice and 30% of your choice through the Discord Community. We want to give some gifts
+          under every Christmas tree in the world. </p>
+        <p class="text-center">We prepared gifts for all the holders. 5% of royalty will be shared between the holders
+          unlimited. Each holders of Christmas tree NFT automatically receives one NFT from the next Valentine's Day NFT
+          collection. </p>
+      </div>
+      <div class="col-sm-3">
+        <img class="img-thumbnail rounded-3 mx-auto border border-5" src="%PUBLIC_URL%/media/99.png" alt="my nft art">
+      </div>
+      <div class="col-sm-3">
+        <img class="img-thumbnail rounded-3 mx-auto border border-5" src="%PUBLIC_URL%/media/3.png" alt="my nft art">
+      </div>
+    </div>
+  </div>
+
+  <!--
+      Dio sa Mint gumbom
+    -->
+
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div class="container" id="Mint">
+    <h1 class="text-center">Mint</h1>
+    <div class="row justify-content-center">
+      <div class="col-sm-4">
+        <img class="img-thumbnail rounded-3 mx-auto border border-5" src="%PUBLIC_URL%/media/GIF.gif" alt="my nft art">
+      </div>
+      <div class="col-sm-4" id="root"></div>
+      <div class="col-sm-4" >
+        <img class="img-thumbnail rounded-3 mx-auto border border-5" src="%PUBLIC_URL%/media/3.1.png" alt="my nft art">
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+      Dio sa Roadmap
+    -->
+
+  <div class="container" id="Roadmap">
+    <h1 class="text-center">Roadmap</h1>
+    <div class="col-sm">
+      <img class="img-fluid" src="%PUBLIC_URL%/media/Roadmap-Christmas-NFT.png" alt="my nft art">
+    </div>
+  </div>
+
+  <!--
+      Dio sa FAQ's
+    -->
+
+  <div class="container" id="FAQ's">
+    <h1 class="text-center">FAQ's</h1>
+    <button class="accordion">What is Christmas NFT?</button>
+    <div class="panel">
+      <p>Christmas NFT is community-driven collectibles NFT project. The first in a series of planned team projects.
+        Christmas NFTs are made of 76 traits with over 5,000,000 combinations, but ultimately came out in just 100
+        pieces for public presale and 200 for public sale. Each Tree is a unique, non-fungible token (NFT) on the Solana
+        blockchain.</p>
+    </div>
+
+    <button class="accordion">Why you should buy Christmas NFT.</button>
+    <div class="panel">
+      <p>Christmas NFT is the first project in the IHrteamNFT team series.</p>
+      <p>We prepared gifts for all the holders.</p>
+      <p>5% of royalty will be shared between the holders unlimited</p>
+      <p>Each holders of Christmas tree NFT automatically receives one NFT from the next Valentine's Day NFT collection.
+      </p>
+      <p>50% of the sale will be donated to associations for children with special needs</p>
+    </div>
+
+    <button class="accordion">What will be the mint price and when?</button>
+    <div class="panel">
+      <p>Mint price will be 0.25 SOL (+fee) per Christmas NFT in public pre-sale until 01.02.2022.
+        After that the price will be 0.50 SOL (+ fee) until everything is minted.</p>
+    </div>
+
+    <button class="accordion">How many Trees can be minted per transaction?</button>
+    <div class="panel">
+      <p>You can mint one tree per transaction, but anyone can mint as many trees as they want!</p>
+    </div>
+
+    <button class="accordion">What Solana Wallet You can use?</button>
+    <div class="panel">
+      <p>You will be able to use four of Solana’s main wallets Phantom, Sollet, Solflare and etc.But we recommend
+        Phantom.</p>
+    </div>
+
+    <button class="accordion">How much is the royalty percentage?</button>
+    <div class="panel">
+      <p>Royalty is 10%. 50% of all royalties from trading fees will be send back to holders. (You can earn more by
+        holding more trees!) </p>
+    </div>
+
+    <button class="accordion">Where will be possible to trade with trees?</button>
+    <div class="panel">
+      <p>After launch, second markets will be available : TBA</p>
+    </div>
+
+    <!--
+      Skripta za FAQ's izbornik
+    -->
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          /* Toggle between adding and removing the "active" class,
+          to highlight the button that controls the panel */
+          this.classList.toggle("active");
+
+          /* Toggle between hiding and showing the active panel */
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </div>
+
+  <!--
+      Dio Get in touch
+    -->
+
+  <div class="container">
+    <h1 class="text-center">Get in touch</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-sm-1">
+        <a href="https://discord.gg/ubCf5CerbP" class="discord2"><i class="bi bi-discord"></i></a>
+      </div>
+      <div class="col-sm-1">
+        <a href="https://twitter.com/IHrteamNft" class="twitter2"><i class="fa fa-twitter"></i></a>
+      </div>
+      <div class="col-sm-2">
+        <a>Powered by IHrteamNFT</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+
 </html>
