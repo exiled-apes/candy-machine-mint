@@ -67,13 +67,18 @@ This is a unix time stamp that configures when your mint will be open.
 REACT_APP_SOLANA_NETWORK=devnet
 ```
 
-This identifies the Solana network you want to connect to. Options are `devnet`, `testnet`, and `mainnet`.
+This identifies the Solana network you want to connect to. Options are `devnet`, `testnet`, and `mainnet-beta`.
 
 ```
 REACT_APP_SOLANA_RPC_HOST=https://explorer-api.devnet.solana.com
 ```
 
 This identifies the RPC server your web app will access the Solana network through.
+Use the following for mainnet 
+
+```
+REACT_APP_SOLANA_RPC_HOST=https://explorer-api.mainnet-beta.solana.com
+```
 
 # Getting Started with Create React App
 
