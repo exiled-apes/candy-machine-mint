@@ -336,7 +336,7 @@ const Home = (props: HomeProps) => {
         if (balance && balance > 0) {
             setBalance(balance - (whitelistEnabled ? whitelistPrice : price) - solFeesEstimation);
         }
-        setSolanaExplorerLink(cluster == "devnet" || cluster == "testnet"
+        setSolanaExplorerLink(cluster === "devnet" || cluster === "testnet"
             ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster="+cluster)
             : ("https://explorer.solana.com/address/" + mintPublicKey));
         throwConfetti();
@@ -438,13 +438,13 @@ const Home = (props: HomeProps) => {
         <main>
             <MainContainer>
                 <WalletContainer>
-                    <Logo><a href="#" target="_blank" rel="noopener noreferrer"><img alt="" src="logo.png"/></a></Logo>
+                    <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt="" src="logo.png"/></a></Logo>
                     <Menu>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer">Menu 1</a>
+                        <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">Menu 1</a>
                         </li>
-                        <li><a href="#" target="_blank"
+                        <li><a href="http://localhost:3000/" target="_blank"
                                rel="noopener noreferrer">Menu 2</a></li>
-                        <li><a href="#" target="_blank"
+                        <li><a href="http://localhost:3000/" target="_blank"
                                rel="noopener noreferrer">Menu 3</a></li>
                     </Menu>
                     <Wallet>
