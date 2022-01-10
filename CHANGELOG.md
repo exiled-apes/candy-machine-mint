@@ -1,3 +1,7 @@
+**10 Jan 2022**
+
+Added One-click Vercel Deployment on README.
+
 **09 Jan 2022**
 
 THIS UPDATE REQUIRES A YARN INSTALL
