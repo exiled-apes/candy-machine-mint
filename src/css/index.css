@@ -1,0 +1,157 @@
+/*body {*/
+/*  margin: 0;*/
+/*  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
+/*    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+/*    sans-serif;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  background-color: #303030;*/
+/*  color: #FFFFFF;*/
+/*}*/
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+.logo img {
+  height: 80px;
+}
+
+.counter {
+  margin: -15px 0 30px;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.has-fixed .header-main {
+  top: 0;
+}
+
+#ant-modal {
+  z-index: 100000;
+  position: absolute;
+}
+
+#root {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+#root .btn.btn-md {
+  font-size: 18px !important;
+  padding: 15px 45px !important;
+  white-space: break-spaces;
+}
+
+#root .btn.btn-md[disabled] {
+  font-size: 12px !important;
+  max-width: 80%;
+  overflow: hidden;
+}
+
+.ant-layout {
+  background: transparent;
+}
+
+.ant-layout-header {
+  background: transparent !important;
+}
+
+#root main {
+  background: transparent !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.App-Bar {
+  height: auto !important;
+  padding-top: 0 !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  height: 40px !important;
+  padding: 0 !important;
+  top: auto !important;
+}
+
+.App-Bar-right > .ant-btn.ant-btn-primary.ant-btn-lg {
+  background: transparent !important;
+  border: none !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+}
+
+.ant-btn > span {
+  vertical-align: middle;
+}
+
+.App-Bar-right {
+  margin: 0 auto;
+}
+
+#root main .ant-btn-primary {
+  margin: 0 auto;
+  display: block;
+  white-space: break-spaces;
+  height: auto;
+}
+
+
+.ant-select-dropdown {
+  z-index: 100000 !important;
+}
+
+.header-navbar-s1 .menu > .menu-item > a {
+  padding: 20px 15px !important;
+  font-size: 14px !important;
+}
+
+
+.ant-btn.ant-btn-text.ant-btn-circle.ant-btn-lg.ant-btn-icon-only {
+  display: none !important;
+}
+
+
+.eapps-social-share-buttons {
+  position: fixed !important;
+  z-index: 100 !important;
+}
+
+
+.circle {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  width: 100%;
+  position: relative;
+  background-color: #FFF;
+}
+
+.circle:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.circle-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+}
+
+.score-text {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1em;
+  line-height: 1em;
+  font-size: 32px;
+}
