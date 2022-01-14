@@ -261,6 +261,7 @@ const Home = (props: HomeProps) => {
                   <img src={'/images/martian-banner.gif'} ></img>
                 </div>
                 <div className="col-lg-12">
+                  <br></br><br></br>
                   <div className="nk-block nk-block-token mgb-m30">
                     <div
                       className="row align-items-center justify-content-between gutter-vr-50px">
@@ -303,7 +304,6 @@ const Home = (props: HomeProps) => {
           </div>
         </div>
       </div>
-      <div className="nk-ovm mask-c-dark shape-v mask-contain-bottom"></div>
     </div>
 
   );

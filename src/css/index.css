@@ -14,7 +14,52 @@ code {
     monospace;
 }
 
+.section {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
 
+.section#roadmap, .section#economics{
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+.section#team{
+  padding-top: 0px !important;
+}
+.banner-fs .banner-wrap {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+.header-main {
+  padding: 4px 0 !important;
+}
+.td1 #p.p1{
+  margin-right: 0px;
+  margin-left: 0px;
+  font-variant-numeric: normal;
+  font-variant-east-asian: normal;
+  font-stretch: normal;
+  line-height: normal;
+}
+
+.td1{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(154, 154, 154);
+  padding: 1px 5px;
+}
+
+#economics .section-head, #roadmap .section-head {
+  padding-bottom: 40px !important;
+}
+
+.section-head .title-s4 {
+  padding-bottom: 0px !important;
+}
+ul, ol, table {
+  margin: auto !important;
+}
 
 .logo img {
   height: 80px;
@@ -29,6 +74,14 @@ code {
 .has-fixed .header-main {
   top: 0;
 }
+.has-fixed.is-shrink .header-main {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.has-mask .banner-mask-fix {
+  padding-bottom: 0px !important;
+}
 
 #ant-modal {
   z-index: 100000;
@@ -37,7 +90,6 @@ code {
 
 #root {
   position: relative;
-  padding-bottom: 50px;
 }
 
 #root .btn.btn-md {
