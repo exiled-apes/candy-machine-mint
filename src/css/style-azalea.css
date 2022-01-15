@@ -111,7 +111,7 @@ strong, b {
 a {
     outline: 0;
     transition: all .5s;
-    color: #f42f54
+    color: #34BA8D
 }
 
 a:link, a:visited {
@@ -120,7 +120,7 @@ a:link, a:visited {
 
 a:hover, a:focus, a:active {
     outline: 0;
-    color: #f8aa38
+    color: #2828F7
 }
 
 img {
@@ -957,7 +957,7 @@ h6, .h6, .fz-6 {
 }
 
 .tc-base-white-hover, .tc-light a:not(.btn):not([class*=link-]):hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-default, .tc-default a {
@@ -969,19 +969,19 @@ h6, .h6, .fz-6 {
 }
 
 .tc-primary, .tc-primary a {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-primary a:hover {
-    color: #f8aa38 !important
+    color: #2828F7 !important
 }
 
 .tc-secondary, .tc-secondary a {
-    color: #f8aa38 !important
+    color: #2828F7 !important
 }
 
 .tc-secondary a:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-info, .tc-info a {
@@ -1013,7 +1013,7 @@ h6, .h6, .fz-6 {
 }
 
 .tc-light-alt a:not(.btn):not([class*=link-]):hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-light-alt li {
@@ -1029,7 +1029,7 @@ h6, .h6, .fz-6 {
 }
 
 .tc-theme, .tc-theme a {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-theme-alt, .tc-theme-alt a {
@@ -1053,7 +1053,7 @@ h6, .h6, .fz-6 {
 }
 
 .bg-secondary {
-    background-color: #f8aa38 !important
+    background-color: #2828F7 !important
 }
 
 .bg-light {
@@ -1101,11 +1101,11 @@ h6, .h6, .fz-6 {
 }
 
 .bg-grad {
-    background-image: linear-gradient(90deg, #f42f54 0%, #f8aa38 100%) !important
+    background-image: linear-gradient(90deg, #34BA8D 0%, #2828F7 100%) !important
 }
 
 .bg-grad-alt {
-    background-image: linear-gradient(90deg, #f8aa38 0%, #f42f54 100%) !important
+    background-image: linear-gradient(90deg, #2828F7 0%, #34BA8D 100%) !important
 }
 
 .bg-grad-special {
@@ -1273,7 +1273,7 @@ h6, .h6, .fz-6 {
 }
 
 .bg-theme-accent {
-    background-color: #f42f54 !important
+    background-color: #34BA8D !important
 }
 
 .bg-theme-accent.current {
@@ -1281,7 +1281,7 @@ h6, .h6, .fz-6 {
 }
 
 .bg-theme-accent-alt {
-    background-color: #f8aa38 !important
+    background-color: #2828F7 !important
 }
 
 .bg-theme-accent-alt.current {
@@ -1561,7 +1561,7 @@ h6, .h6, .fz-6 {
 }
 
 .bd-primary {
-    border-color: #f42f54
+    border-color: #34BA8D
 }
 
 .bd-alternet {
@@ -3378,7 +3378,7 @@ hr {
 }
 
 .alert-primary-alt {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .alert-primary-alt .close {
@@ -3395,7 +3395,7 @@ hr {
 }
 
 .alert-secondary-alt {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .alert-secondary-alt .close {
@@ -3481,7 +3481,7 @@ hr {
     color: #fff;
     min-width: 120px;
     max-width: 100%;
-    border: 2px solid #f42f54;
+    border: 2px solid #34BA8D;
     box-sizing: border-box;
     transition: all .5s;
     position: relative;
@@ -3504,7 +3504,7 @@ hr {
 
 .btn-grad {
     border: none;
-    background-image: linear-gradient(to right, #f42f54 0%, #f8aa38 100%)
+    background-image: linear-gradient(to right, #34BA8D 0%, #2828F7 100%)
 }
 
 .btn-grad:before {
@@ -3518,7 +3518,7 @@ hr {
     border-radius: 5px;
     opacity: 0;
     transition: all .5s;
-    background-image: linear-gradient(to right, #f8aa38 0%, #f42f54 100%)
+    background-image: linear-gradient(to right, #2828F7 0%, #34BA8D 100%)
 }
 
 .btn-grad:hover:before {
@@ -3530,27 +3530,27 @@ hr {
 }
 
 .btn-grad-alt {
-    background-image: linear-gradient(to right, #f8aa38 0%, #f42f54 100%)
+    background-image: linear-gradient(to right, #2828F7 0%, #34BA8D 100%)
 }
 
 .btn-grad-alt:before {
-    background-image: linear-gradient(to right, #f42f54 0%, #f8aa38 100%)
+    background-image: linear-gradient(to right, #34BA8D 0%, #2828F7 100%)
 }
 
 .btn-grad-alternet {
-    background-image: linear-gradient(to right, #d31e40 0%, #f42f54 100%)
+    background-image: linear-gradient(to right, #d31e40 0%, #34BA8D 100%)
 }
 
 .btn-grad-alternet:before {
-    background-image: linear-gradient(to right, #f42f54 0%, #d31e40 100%)
+    background-image: linear-gradient(to right, #34BA8D 0%, #d31e40 100%)
 }
 
 .btn-grad-alternet-alt {
-    background-image: linear-gradient(to right, #f42f54 0%, #d31e40 100%)
+    background-image: linear-gradient(to right, #34BA8D 0%, #d31e40 100%)
 }
 
 .btn-grad-alternet-alt:before {
-    background-image: linear-gradient(to right, #d31e40 0%, #f42f54 100%)
+    background-image: linear-gradient(to right, #d31e40 0%, #34BA8D 100%)
 }
 
 .btn-grad-theme {
@@ -3562,11 +3562,11 @@ hr {
 }
 
 .btn-grad-theme-alt {
-    background-image: linear-gradient(to right, #f8aa38 0%, #f42f54 100%)
+    background-image: linear-gradient(to right, #2828F7 0%, #34BA8D 100%)
 }
 
 .btn-grad-theme-alt:before {
-    background-image: linear-gradient(to right, #f42f54 0%, #f8aa38 100%)
+    background-image: linear-gradient(to right, #34BA8D 0%, #2828F7 100%)
 }
 
 .btn:hover, .btn:focus {
@@ -3728,13 +3728,13 @@ hr {
 }
 
 .btn-primary {
-    background-color: #f42f54;
-    border-color: #f42f54
+    background-color: #34BA8D;
+    border-color: #34BA8D
 }
 
 .btn-primary:hover, .btn-primary:focus {
-    background-color: #f8aa38;
-    border-color: #f8aa38
+    background-color: #2828F7;
+    border-color: #2828F7
 }
 
 .btn-primary:hover:focus, .btn-primary:focus:focus {
@@ -3744,23 +3744,23 @@ hr {
 .tc-light .btn-primary:hover, .tc-light .btn-primary:focus {
     background-color: #fff;
     border-color: #fff;
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .btn-primary.btn-outline:hover {
-    background-color: #f42f54;
-    border-color: #f42f54;
+    background-color: #34BA8D;
+    border-color: #34BA8D;
     color: #fff !important
 }
 
 .btn-secondary {
-    background-color: #f8aa38;
-    border-color: #f8aa38
+    background-color: #2828F7;
+    border-color: #2828F7
 }
 
 .btn-secondary:hover, .btn-secondary:focus {
-    background-color: #f42f54;
-    border-color: #f42f54
+    background-color: #34BA8D;
+    border-color: #34BA8D
 }
 
 .btn-secondary.focus:focus {
@@ -3768,8 +3768,8 @@ hr {
 }
 
 .btn-secondary.btn-outline:hover, .btn-secondary.btn-outline:focus {
-    background-color: #f8aa38;
-    border-color: #f8aa38
+    background-color: #2828F7;
+    border-color: #2828F7
 }
 
 .btn-info {
@@ -3973,11 +3973,11 @@ hr {
 }
 
 .btn-play:hover {
-    color: #f8aa38 !important
+    color: #2828F7 !important
 }
 
 .btn-play-s2 {
-    background-image: linear-gradient(to right, #f42f54 0%, #f8aa38 100%);
+    background-image: linear-gradient(to right, #34BA8D 0%, #2828F7 100%);
     border: none
 }
 
@@ -4029,7 +4029,7 @@ hr {
 .btn-play-icon {
     height: 20px;
     width: 14px;
-    background: linear-gradient(to right, #f42f54 0%, #f8aa38 100%);
+    background: linear-gradient(to right, #34BA8D 0%, #2828F7 100%);
     display: block;
     position: absolute;
     top: 50%;
@@ -4090,7 +4090,7 @@ hr {
 }
 
 .btn-play-icon-s2 path {
-    fill: #f42f54
+    fill: #34BA8D
 }
 
 .btn-play-dark {
@@ -4098,7 +4098,7 @@ hr {
 }
 
 .btn-play-dark:hover {
-    color: #f8aa38
+    color: #2828F7
 }
 
 .btn-play-wrap {
@@ -4133,7 +4133,7 @@ hr {
 
 .btn-play-text .text-xs {
     font-size: 12px;
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .btn-play-wrap-s2 .btn-play-text {
@@ -4142,12 +4142,12 @@ hr {
 }
 
 .btn-link {
-    color: #f42f54;
+    color: #34BA8D;
     text-decoration: none
 }
 
 .btn-link:hover, .btn-link:focus {
-    color: #f42f54;
+    color: #34BA8D;
     text-decoration: none;
     box-shadow: 0 1px 0 currentColor
 }
@@ -4155,7 +4155,7 @@ hr {
 .btn-underline {
     padding-left: 0 !important;
     padding-right: 0 !important;
-    color: #f42f54;
+    color: #34BA8D;
     background: 0 0 !important;
     border-color: transparent !important;
     text-decoration: none
@@ -4208,7 +4208,7 @@ hr {
 
 .btn-with-icon {
     padding: 1px;
-    background-color: #f42f54
+    background-color: #34BA8D
 }
 
 .btn-with-icon span {
@@ -4223,7 +4223,7 @@ hr {
     line-height: 47px;
     border-radius: 5px;
     background: #fff;
-    color: #f42f54;
+    color: #34BA8D;
     transition: all .3s
 }
 
@@ -4471,7 +4471,7 @@ hr {
 
 .badge {
     color: #fff;
-    background-color: #f42f54;
+    background-color: #34BA8D;
     display: inline-block;
     font-weight: 600;
     text-transform: uppercase;
@@ -4479,7 +4479,7 @@ hr {
     padding: 5px 16px;
     font-size: 13px;
     line-height: 24px;
-    border: 1px solid #f42f54
+    border: 1px solid #34BA8D
 }
 
 .badge:not(.badge-outline) {
@@ -4487,15 +4487,15 @@ hr {
 }
 
 .badge-primary {
-    background-color: #f42f54;
-    border-color: #f42f54;
-    color: #f42f54
+    background-color: #34BA8D;
+    border-color: #34BA8D;
+    color: #34BA8D
 }
 
 .badge-secondary {
-    background-color: #f8aa38;
-    border-color: #f8aa38;
-    color: #f8aa38
+    background-color: #2828F7;
+    border-color: #2828F7;
+    color: #2828F7
 }
 
 .badge-info {
@@ -4580,8 +4580,8 @@ hr {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #f42f54;
-    border-color: #f42f54;
+    background: #34BA8D;
+    border-color: #34BA8D;
     display: inline-block !important;
     vertical-align: middle;
     padding: 0
@@ -4598,7 +4598,7 @@ hr {
 }
 
 .link:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .link-uc {
@@ -4657,20 +4657,20 @@ hr {
 }
 
 .link-primary {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .link-primary .link-icon.icon-circle {
-    background: #f42f54;
+    background: #34BA8D;
     color: #fff !important
 }
 
 .link-primary:hover {
-    color: #f8aa38 !important
+    color: #2828F7 !important
 }
 
 .link-primary:hover .link-icon.icon-circle {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .link-light {
@@ -4682,7 +4682,7 @@ hr {
 }
 
 .link-light .link-icon {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .link-light .link-icon.icon-circle {
@@ -4695,7 +4695,7 @@ hr {
 }
 
 .link-light:hover .link-icon.icon-circle {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .link-thin {
@@ -4839,11 +4839,11 @@ hr {
 }
 
 .title a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 a:hover .title {
-    color: #f42f54
+    color: #34BA8D
 }
 
 a .title {
@@ -4886,7 +4886,7 @@ a .title {
 }
 
 .title-s1.tc-primary:before, .tc-primary a.title-s1:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .title-s2 {
@@ -4902,11 +4902,11 @@ a .title {
     width: 80px;
     height: 6px;
     border-radius: 3px;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .title-s2:after {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .title-s2-alt {
@@ -4947,7 +4947,7 @@ a .title {
 .title-s5 span:first-child {
     display: block;
     padding-bottom: 13px;
-    color: #f42f54;
+    color: #34BA8D;
     font-weight: 500
 }
 
@@ -4968,7 +4968,7 @@ a .title {
     width: 50px;
     height: 3px;
     border-radius: 2px;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .title-s6 {
@@ -4983,7 +4983,7 @@ a .title {
     width: 5px;
     content: '';
     border-radius: 50%;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .title-s7 span:first-child {
@@ -5189,7 +5189,7 @@ a .title {
     width: 26px;
     line-height: 26px;
     padding: 3px 0;
-    color: #f42f54;
+    color: #34BA8D;
     font-family: "font awesome 5 free";
     font-weight: 700;
     font-size: 13px;
@@ -5198,7 +5198,7 @@ a .title {
 }
 
 .tc-light .list-check li:before {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .list-check-s3 li {
@@ -5210,7 +5210,7 @@ a .title {
 .list-check-s3 li:before {
     width: 35px;
     height: 35px;
-    background: #f42f54;
+    background: #34BA8D;
     border-radius: 50%;
     color: #fff;
     text-align: center;
@@ -5221,7 +5221,7 @@ a .title {
 }
 
 .tc-light .list-check-s3 li:before {
-    background: #f42f54;
+    background: #34BA8D;
     color: #fff
 }
 
@@ -5272,12 +5272,12 @@ a .title {
     font-size: 30px;
     font-weight: 700;
     line-height: 1;
-    color: #f42f54;
+    color: #34BA8D;
     font-family: poppins, sans-serif !important
 }
 
 .tc-light .list-number li:before {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .list-number-s2 li {
@@ -5330,7 +5330,7 @@ a .title {
 }
 
 .tc-light .list-dot li:before {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .list-dot.list-sm {
@@ -5364,7 +5364,7 @@ a .title {
     background: 0 0;
     position: absolute;
     border-radius: 50%;
-    border: 2px solid #f8aa38;
+    border: 2px solid #2828F7;
     left: -38px;
     top: 7px
 }
@@ -5374,7 +5374,7 @@ a .title {
     content: "";
     top: 50%;
     left: 50%;
-    background: #f8aa38
+    background: #2828F7
 }
 
 .list-dot-bar li span:after {
@@ -5633,7 +5633,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 
 .field-inline-s3 .btn-light {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .field-inline-s4 {
@@ -5706,7 +5706,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 
 .input-line:focus {
-    border-bottom-color: #f42f54
+    border-bottom-color: #34BA8D
 }
 
 .field-item-center .input-line {
@@ -5856,7 +5856,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 
 .input-switch:checked ~ label:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .input-switch:checked ~ label:after {
@@ -5916,7 +5916,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     content: '\f00c';
     font-weight: 700;
     font-size: 10px;
-    background-color: #f42f54;
+    background-color: #34BA8D;
     color: #fff;
     opacity: 0;
     transition: all .4s
@@ -6134,7 +6134,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 
 .table-head {
     font-weight: 500;
-    color: #f42f54
+    color: #34BA8D
 }
 
 .table-token {
@@ -6223,7 +6223,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 
 .table-token-s1 tr td:last-child {
-    color: #f42f54;
+    color: #34BA8D;
     font-weight: 400;
     font-size: .88rem
 }
@@ -6368,7 +6368,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .progress-percent-s2 {
@@ -6384,7 +6384,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     width: 18px;
     border-radius: 50%;
     border: 2px solid #fff;
-    background: #f42f54;
+    background: #34BA8D;
     transform: translate(50%, -50%)
 }
 
@@ -6412,7 +6412,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 .progress-info span {
     font-weight: 500;
     font-size: 18px;
-    color: #f8aa38
+    color: #2828F7
 }
 
 .progress-info-s2 {
@@ -6465,7 +6465,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 .progress-point span {
     display: block;
     font-size: 12px;
-    color: #f42f54
+    color: #34BA8D
 }
 
 .progress-point-s1 {
@@ -6590,7 +6590,7 @@ ul.progress-info {
     height: 54px;
     width: 54px;
     border-radius: 50%;
-    border: 2px solid #f42f54;
+    border: 2px solid #34BA8D;
     text-align: center;
     line-height: 50px;
     display: block
@@ -6658,7 +6658,7 @@ ul.progress-info {
 }
 
 .tc-light .countdown-s5 .countdown-time {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .countdown-md .countdown-time {
@@ -6687,7 +6687,7 @@ ul.progress-info {
 }
 
 .tc-light .countdown-s2 .countdown-text {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .countdown-s3 .countdown-text {
@@ -6715,7 +6715,7 @@ ul.progress-info {
 }
 
 .tc-light .countdown-s5 .countdown-text {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .countdown-md .countdown-text {
@@ -6985,7 +6985,7 @@ ul.progress-info {
     font-weight: 500;
     letter-spacing: .1em;
     border: 2px solid #fff;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .text-thumb-xs {
@@ -7233,7 +7233,7 @@ ul.progress-info {
 }
 
 .drop-list a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .drop-list-xs {
@@ -7287,15 +7287,15 @@ ul.progress-info {
     right: -3px;
     content: '-';
     line-height: 18px;
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .breadcumb li a {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .breadcumb li a:hover:not([class]) {
-    color: #f8aa38 !important
+    color: #2828F7 !important
 }
 
 .preloader {
@@ -7372,7 +7372,7 @@ ul.progress-info {
 .spinner-round {
     border-radius: 50%;
     border: 2px solid transparent;
-    border-top-color: #f42f54;
+    border-top-color: #34BA8D;
     animation: spin 2s linear infinite
 }
 
@@ -7388,7 +7388,7 @@ ul.progress-info {
     left: 5px;
     right: 5px;
     bottom: 5px;
-    border-top-color: #f8aa38;
+    border-top-color: #2828F7;
     animation: spin 3s linear infinite
 }
 
@@ -7645,11 +7645,11 @@ ul.progress-info {
 
 .mfp-close-btn-in .mfp-close:hover {
     text-decoration: none;
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-light .mfp-close-btn-in .mfp-close:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .image-popup .mfp-close {
@@ -7877,8 +7877,8 @@ ul.progress-info {
     left: 0;
     bottom: 0;
     right: 0;
-    border-top-color: #f42f54;
-    border-right-color: #f42f54;
+    border-top-color: #34BA8D;
+    border-right-color: #34BA8D;
     animation: rotatecw 30s linear infinite 0s
 }
 
@@ -7887,8 +7887,8 @@ ul.progress-info {
     left: 25px;
     bottom: 25px;
     right: 25px;
-    border-top-color: #f42f54;
-    border-bottom-color: #f42f54;
+    border-top-color: #34BA8D;
+    border-bottom-color: #34BA8D;
     animation: rotateacw 24s linear infinite 0s
 }
 
@@ -7915,13 +7915,13 @@ ul.progress-info {
 }
 
 .nk-circle-animation.accent-alt:before {
-    border-top-color: #f8aa38;
-    border-right-color: #f8aa38
+    border-top-color: #2828F7;
+    border-right-color: #2828F7
 }
 
 .nk-circle-animation.accent-alt:after {
-    border-top-color: #f8aa38;
-    border-bottom-color: #f8aa38
+    border-top-color: #2828F7;
+    border-bottom-color: #2828F7
 }
 
 .nk-circle-pk {
@@ -8204,12 +8204,12 @@ ul.progress-info {
 }
 
 .social li a:hover .social-icon {
-    background: #f8aa38;
+    background: #2828F7;
     color: #fff
 }
 
 .tc-light .social li a:hover .social-icon {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .social li a:hover .social-icon + span {
@@ -8245,7 +8245,7 @@ ul.progress-info {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 12px;
-    color: #f42f54;
+    color: #34BA8D;
     transition: all .3s
 }
 
@@ -8493,7 +8493,7 @@ ul.progress-info {
     top: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #f8aa38;
+    border: 1px solid #2828F7;
     border-radius: 50%
 }
 
@@ -8601,8 +8601,8 @@ ul.progress-info {
 }
 
 .tab-nav-s2 li a:hover, .tab-nav-s2 li a.active {
-    color: #f42f54;
-    border-bottom-color: #f42f54
+    color: #34BA8D;
+    border-bottom-color: #34BA8D
 }
 
 .tab-nav-s2 li a .fas, .tab-nav-s2 li a .far {
@@ -8641,7 +8641,7 @@ ul.progress-info {
 }
 
 .tab-nav-s3 li a.active [class*=title] {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-light .tab-nav-s3 li a.active {
@@ -8722,13 +8722,13 @@ ul.progress-info {
     left: 0;
     bottom: -2px;
     content: '';
-    background: #f42f54;
+    background: #34BA8D;
     opacity: 0;
     transition: all .4s
 }
 
 .tab-nav-line li a:hover, .tab-nav-line li a.active {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tab-nav-line li a.active:after {
@@ -8740,11 +8740,11 @@ ul.progress-info {
 }
 
 .tc-light .tab-nav li a:after {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .tab-nav li a:hover, .tc-light .tab-nav li a.active {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tab-nav-btn {
@@ -8770,22 +8770,22 @@ ul.progress-info {
 }
 
 .tab-nav-btn li a:hover, .tab-nav-btn li a.active {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: rgba(15, 25, 50, .1)
 }
 
 .tc-light .tab-nav-btn li a:hover, .tc-light .tab-nav-btn li a.active {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: rgba(244, 47, 84, .1)
 }
 
 .tab-nav-btn-s2 li a:hover, .tab-nav-btn-s2 li a.active {
     color: #fff !important;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .tab-nav-btn-s2 li a:hover, .tc-light .tab-nav-btn-s2 li a.active {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: rgba(15, 25, 50, .1)
 }
 
@@ -8812,15 +8812,15 @@ ul.progress-info {
 }
 
 .tab-nav-btn-bdr li a:hover, .tab-nav-btn-bdr li a.active {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: 0 0;
-    border-color: #f42f54 !important
+    border-color: #34BA8D !important
 }
 
 .tc-light .tab-nav-btn-bdr li a:hover, .tc-light .tab-nav-btn-bdr li a.active {
     color: #fff !important;
-    background: #f42f54;
-    border-color: #f42f54 !important
+    background: #34BA8D;
+    border-color: #34BA8D !important
 }
 
 .tab-nav-btn-bdr-s2 {
@@ -8851,15 +8851,15 @@ ul.progress-info {
 }
 
 .tab-nav-btn-bdr-s2 li a:hover, .tab-nav-btn-bdr-s2 li a.active {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: 0 0;
-    border-color: #f42f54 !important
+    border-color: #34BA8D !important
 }
 
 .tc-light .tab-nav-btn-bdr-s2 li a:hover, .tc-light .tab-nav-btn-bdr-s2 li a.active {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: 0 0;
-    border-color: #f42f54 !important
+    border-color: #34BA8D !important
 }
 
 .tab-nav-grad li a {
@@ -8885,7 +8885,7 @@ ul.progress-info {
 }
 
 .tc-light .tab-nav-grad li a:before {
-    background: linear-gradient(-45deg, #f42f54 0%, #f8aa38 100%) !important
+    background: linear-gradient(-45deg, #34BA8D 0%, #2828F7 100%) !important
 }
 
 .tab-nav-grad li a:hover, .tab-nav-grad li a.active {
@@ -8952,7 +8952,7 @@ ul.progress-info {
 }
 
 .tc-light .accordion-item-s2.current {
-    border-color: #f42f54 !important
+    border-color: #34BA8D !important
 }
 
 .accordion-item-s2:not(:last-child) {
@@ -9018,7 +9018,7 @@ ul.progress-info {
 }
 
 .tc-light .accordion-title {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .accordion-title-sm {
@@ -9035,7 +9035,7 @@ ul.progress-info {
 }
 
 .tc-light .accordion-title.collapsed:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .accordion-title.collapsed:hover {
@@ -9339,7 +9339,7 @@ ul.progress-info {
     left: 15px;
     top: 50%;
     font-size: 30px;
-    color: #f42f54;
+    color: #34BA8D;
     transform: translateY(-50%)
 }
 
@@ -10547,7 +10547,7 @@ ul.progress-info {
 }
 
 .gfx-screen .flex-control-nav li a.flex-active {
-    background: #f8aa38 !important
+    background: #2828F7 !important
 }
 
 .gfx-slide, .gfx-slide-item {
@@ -10741,21 +10741,21 @@ ul.progress-info {
 .section-head-s3:before {
     top: 60px;
     margin-left: -80px;
-    background: #f8aa38
+    background: #2828F7
 }
 
 .tc-light .section-head-s3:before {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .section-head-s3:after {
     top: 5px;
     margin-left: -50px;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .section-head-s3:after {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .section-head-line {
@@ -10775,8 +10775,8 @@ ul.progress-info {
     content: "";
     border-radius: 50%;
     background: 0 0;
-    border-top: 1px solid #f42f54;
-    border-left: 1px solid #f42f54
+    border-top: 1px solid #34BA8D;
+    border-left: 1px solid #34BA8D
 }
 
 .section-head-line .line-1 {
@@ -10982,7 +10982,7 @@ ul.progress-info {
 }
 
 .feature-icon .icon-grd {
-    background-image: linear-gradient(-45deg, #f42f54 0%, #1b2d59 80%, #1b2d59 100%);
+    background-image: linear-gradient(-45deg, #34BA8D 0%, #1b2d59 80%, #1b2d59 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent
 }
@@ -10993,9 +10993,9 @@ ul.progress-info {
     width: 36px;
     line-height: 36px;
     text-align: center;
-    color: #f8aa38;
+    color: #2828F7;
     border-radius: 50%;
-    background-image: linear-gradient(-45deg, #f42f54 0%, #1b2d59 80%, #1b2d59 100%)
+    background-image: linear-gradient(-45deg, #34BA8D 0%, #1b2d59 80%, #1b2d59 100%)
 }
 
 .feature-icon .icon-circle:after {
@@ -11105,12 +11105,12 @@ ul.progress-info {
 }
 
 .feature-icon-s5-2 .icon {
-    color: #f8aa38;
+    color: #2828F7;
     background: linear-gradient(-90deg, #fff 0%, #fef4e4 100%)
 }
 
 .tc-light .feature-icon-s5-2 .icon {
-    color: #f8aa38
+    color: #2828F7
 }
 
 .feature-icon-s5-3 {
@@ -11122,12 +11122,12 @@ ul.progress-info {
 }
 
 .feature-icon-s5-3 .icon {
-    color: #f42f54;
+    color: #34BA8D;
     background: linear-gradient(-90deg, #fff 0%, #fdd9df 100%)
 }
 
 .tc-light .feature-icon-s5-3 .icon {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .feature-icon-s5-4 {
@@ -11151,7 +11151,7 @@ ul.progress-info {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(to right, #f42f54 0%, #f8aa38 100%);
+    background: linear-gradient(to right, #34BA8D 0%, #2828F7 100%);
     text-align: center;
     line-height: 60px
 }
@@ -11179,7 +11179,7 @@ ul.progress-info {
 
 .feature-icon-s6-bg .icon {
     font-size: 40px;
-    color: #f42f54;
+    color: #34BA8D;
     line-height: 60px;
     margin: 0 auto
 }
@@ -11190,7 +11190,7 @@ ul.progress-info {
     border-radius: 50%;
     text-align: center;
     line-height: 65px;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .feature-icon-s7 .icon {
@@ -11406,7 +11406,7 @@ ul.progress-info {
     left: 30px;
     top: 20px;
     width: 1px;
-    background: #f42f54;
+    background: #34BA8D;
     height: 100%
 }
 
@@ -11712,16 +11712,16 @@ ul.progress-info {
     line-height: 40px;
     border-radius: 50%;
     color: #fff;
-    background: #f8aa38
+    background: #2828F7
 }
 
 .feature-document-link:hover, .feature-document-link:active, .feature-document-link:focus {
-    background: #f42f54;
+    background: #34BA8D;
     color: #fff
 }
 
 .tc-light .feature-document-link:hover, .tc-light .feature-document-link:active, .tc-light .feature-document-link:focus {
-    background: #f42f54;
+    background: #34BA8D;
     color: #fff
 }
 
@@ -11738,7 +11738,7 @@ ul.progress-info {
     border-radius: 4px;
     font-size: .86em;
     font-weight: 500;
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-light .feature-document-link-s2 li a {
@@ -11929,7 +11929,7 @@ ul.progress-info {
         height: 16px;
         border-radius: 50%;
         border: 2px solid #dbe4f7;
-        background: #f42f54
+        background: #34BA8D
     }
 
     .tc-light .feature-s6:after {
@@ -12287,11 +12287,11 @@ ul.progress-info {
 }
 
 .roadmap-s1.roadmap-done:before, .roadmap-s1.roadmap-done:after {
-    border-color: #f42f54
+    border-color: #34BA8D
 }
 
 .roadmap-s1.roadmap-current:before {
-    border-color: #f42f54
+    border-color: #34BA8D
 }
 
 .roadmap-s2 {
@@ -12307,13 +12307,13 @@ ul.progress-info {
 .roadmap-s2:before {
     width: 0;
     height: 4px;
-    background: #f42f54;
+    background: #34BA8D;
     left: 0;
     top: 55px
 }
 
 .tc-light .roadmap-s2:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .roadmap-s2:after {
@@ -12333,12 +12333,12 @@ ul.progress-info {
 }
 
 .roadmap-s2.roadmap-finished:after, .roadmap-s2.roadmap-running:after {
-    background: #f42f54;
+    background: #34BA8D;
     border: 2px solid #fff
 }
 
 .tc-light .roadmap-s2.roadmap-finished:after, .tc-light .roadmap-s2.roadmap-running:after {
-    background: #f42f54;
+    background: #34BA8D;
     border-color: #fff
 }
 
@@ -12412,31 +12412,31 @@ ul.progress-info {
 }
 
 .roadmap-s6-1-2:before {
-    background: linear-gradient(90deg, #f42f54 0%, #f8aa38 100%)
+    background: linear-gradient(90deg, #34BA8D 0%, #2828F7 100%)
 }
 
 .roadmap-s6-1-2:after {
-    border-color: #f8aa38
+    border-color: #2828F7
 }
 
 .roadmap-s6-1-2 .roadmap-head-s6:after {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .roadmap-s6-2-1:before {
-    background: linear-gradient(90deg, #f8aa38 0%, #f42f54 100%)
+    background: linear-gradient(90deg, #2828F7 0%, #34BA8D 100%)
 }
 
 .roadmap-s6-2-1:after {
-    border-color: #f42f54
+    border-color: #34BA8D
 }
 
 .roadmap-s6-2-1 .roadmap-head-s6:after {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .roadmap-s6-2-3:before {
-    background: linear-gradient(90deg, #f8aa38 0%, #202b47 100%)
+    background: linear-gradient(90deg, #2828F7 0%, #202b47 100%)
 }
 
 .roadmap-s6-2-3:after {
@@ -12448,31 +12448,31 @@ ul.progress-info {
 }
 
 .roadmap-s6-3-2:before {
-    background: linear-gradient(90deg, #202b47 0%, #f8aa38 100%)
+    background: linear-gradient(90deg, #202b47 0%, #2828F7 100%)
 }
 
 .roadmap-s6-3-2:after {
-    border-color: #f8aa38
+    border-color: #2828F7
 }
 
 .roadmap-s6-3-2 .roadmap-head-s6:after {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .roadmap-s6-3-1:before {
-    background: linear-gradient(90deg, #202b47 0%, #f42f54 100%)
+    background: linear-gradient(90deg, #202b47 0%, #34BA8D 100%)
 }
 
 .roadmap-s6-3-1:after {
-    border-color: #f42f54
+    border-color: #34BA8D
 }
 
 .roadmap-s6-3-1 .roadmap-head-s6:after {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .roadmap-s6-1-3:before {
-    background: linear-gradient(90deg, #f42f54 0%, #202b47 100%)
+    background: linear-gradient(90deg, #34BA8D 0%, #202b47 100%)
 }
 
 .roadmap-s6-1-3:after {
@@ -12566,7 +12566,7 @@ ul.progress-info {
     left: 0;
     width: 1px;
     height: calc(100% + 30px);
-    background: #f42f54
+    background: #34BA8D
 }
 
 .roadmap-line {
@@ -12603,7 +12603,7 @@ ul.progress-info {
 }
 
 .tc-light .roadmap-line:after, .tc-light .roadmap-line:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .bg-theme-dark .roadmap-line {
@@ -12611,7 +12611,7 @@ ul.progress-info {
 }
 
 .bg-theme-dark .roadmap-line:after, .bg-theme-dark .roadmap-line:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .bg-theme .roadmap-line {
@@ -12619,7 +12619,7 @@ ul.progress-info {
 }
 
 .bg-theme .roadmap-line:after, .bg-theme .roadmap-line:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .roadmap-line-s2 {
@@ -12744,7 +12744,7 @@ ul.progress-info {
 }
 
 .tc-light .roadmap-step:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .roadmap-step:after {
@@ -12758,7 +12758,7 @@ ul.progress-info {
 }
 
 .bg-theme .roadmap-step:before, .bg-theme-dark .roadmap-step:before {
-    background: #f42f54;
+    background: #34BA8D;
     border-color: #0f1932
 }
 
@@ -12870,7 +12870,7 @@ ul.progress-info {
     border-radius: 50%;
     text-align: center;
     color: #fff;
-    background: #f8aa38;
+    background: #2828F7;
     font-family: "font awesome 5 free";
     font-weight: 700;
     font-size: .88rem;
@@ -12949,7 +12949,7 @@ ul.progress-info {
     height: 11px;
     margin-left: -5.5px;
     margin-top: -5.5px;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .roadmap-time-s1:after {
@@ -13028,7 +13028,7 @@ ul.progress-info {
     transform: translateX(-50%);
     border-radius: 50%;
     content: '';
-    background: #f42f54;
+    background: #34BA8D;
     height: 16px;
     width: 16px
 }
@@ -13041,7 +13041,7 @@ ul.progress-info {
     font-weight: 600;
     text-transform: capitalize;
     font-size: 1rem;
-    color: #f42f54
+    color: #34BA8D
 }
 
 .roadmap-time-s5:not(:last-child) {
@@ -13052,8 +13052,8 @@ ul.progress-info {
     position: absolute;
     height: 19px;
     width: 19px;
-    border: 1px solid #f42f54;
-    background: #f42f54;
+    border: 1px solid #34BA8D;
+    background: #34BA8D;
     top: 2px;
     left: -29px;
     border-radius: 50%;
@@ -13067,11 +13067,11 @@ ul.progress-info {
     font-size: 10px;
     text-align: center;
     line-height: 18px;
-    color: #f8aa38
+    color: #2828F7
 }
 
 .tc-light .roadmap-finished .roadmap-time-s5:after {
-    color: #f8aa38;
+    color: #2828F7;
     background: #0f1932
 }
 
@@ -13102,7 +13102,7 @@ ul.progress-info {
     position: relative;
     font-size: 1rem;
     font-weight: 500;
-    color: #f42f54;
+    color: #34BA8D;
     top: -10px
 }
 
@@ -13119,8 +13119,8 @@ ul.progress-info {
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    background: #f42f54;
-    border: 1px solid #f42f54
+    background: #34BA8D;
+    border: 1px solid #34BA8D
 }
 
 .roadmap-done .roadmap-title-s2:before {
@@ -13202,7 +13202,7 @@ ul.progress-info {
     font-size: 36px;
     line-height: 52px;
     text-align: center;
-    color: #f42f54;
+    color: #34BA8D;
     transform: translateY(50%)
 }
 
@@ -13327,7 +13327,7 @@ ul.progress-info {
     width: 100vw;
     height: 1px;
     content: '';
-    background: #f8aa38
+    background: #2828F7
 }
 
 .roadmap-innr {
@@ -13341,7 +13341,7 @@ ul.progress-info {
     width: 1px;
     content: '';
     transform: translateX(-50%);
-    background-image: linear-gradient(to bottom, #f42f54 0%, #f8aa38 100%)
+    background-image: linear-gradient(to bottom, #34BA8D 0%, #2828F7 100%)
 }
 
 .roadmap-item {
@@ -13349,7 +13349,7 @@ ul.progress-info {
 }
 
 .roadmap-item:nth-child(even) .roadmap-innr:before {
-    background-image: linear-gradient(to top, #f42f54 0%, #f8aa38 100%)
+    background-image: linear-gradient(to top, #34BA8D 0%, #2828F7 100%)
 }
 
 @media (min-width: 576px) {
@@ -13543,7 +13543,7 @@ ul.progress-info {
     }
 
     .roadmap-wrap-s1.roadmap-wrap-done:after {
-        border-color: #f42f54
+        border-color: #34BA8D
     }
 
     .roadmap-wrap-s1:nth-child(odd):after {
@@ -13809,7 +13809,7 @@ ul.progress-info {
 }
 
 .token-info-item.color-2:before {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .token-info-item.color-3:before {
@@ -13843,7 +13843,7 @@ ul.progress-info {
 .token-info-item-s1 span {
     font-size: 12px;
     font-weight: 400;
-    color: #f42f54;
+    color: #34BA8D;
     text-transform: uppercase
 }
 
@@ -13944,7 +13944,7 @@ ul.progress-info {
 }
 
 .token-min-s2 span:first-child {
-    color: #f42f54;
+    color: #34BA8D;
     font-size: 12px;
     line-height: 1;
     text-transform: uppercase;
@@ -14090,7 +14090,7 @@ ul.progress-info {
     display: block;
     font-size: 2.4rem;
     font-weight: 300;
-    color: #f42f54
+    color: #34BA8D
 }
 
 .token-sale-title {
@@ -14216,7 +14216,7 @@ ul.progress-info {
 }
 
 .token-stage-bonus {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .token-action-s2 {
@@ -14247,7 +14247,7 @@ ul.progress-info {
 
 .token-action-title {
     width: 30%;
-    background: #f42f54;
+    background: #34BA8D;
     border-radius: 6px 6px 0 0;
     font-weight: 500;
     font-size: 1.2em;
@@ -14257,7 +14257,7 @@ ul.progress-info {
 }
 
 .tc-light .token-action-title {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .token-action-box .token-action-title {
@@ -14635,7 +14635,7 @@ ul.progress-info {
     height: 3px;
     border-radius: 1.5px;
     content: '';
-    background: #f42f54;
+    background: #34BA8D;
     top: 0;
     left: 50%;
     transform: translateX(-50%)
@@ -14686,7 +14686,7 @@ ul.progress-info {
     width: 30px;
     border-radius: 50%;
     border: 6px solid #dbe4f7;
-    background: #f42f54
+    background: #34BA8D
 }
 
 .tc-light .toktmln-item:before {
@@ -14923,7 +14923,7 @@ ul.progress-info {
     content: '';
     height: 100%;
     width: 100%;
-    background: linear-gradient(to top left, #f42f54 0%, #f8aa38 100%);
+    background: linear-gradient(to top left, #34BA8D 0%, #2828F7 100%);
     border-radius: 6px;
     z-index: 1;
     opacity: .2
@@ -14960,7 +14960,7 @@ ul.progress-info {
     right: -33px;
     height: 3px;
     width: 65px;
-    background: linear-gradient(to top left, #f42f54 0%, #f8aa38 100%);
+    background: linear-gradient(to top left, #34BA8D 0%, #2828F7 100%);
     z-index: 1
 }
 
@@ -14997,7 +14997,7 @@ ul.progress-info {
     z-index: -1;
     opacity: 1;
     transition: all .5s ease;
-    background-image: linear-gradient(90deg, #f8aa38 0%, #f42f54 100%)
+    background-image: linear-gradient(90deg, #34BA8D 0%, #2828F7 100%)
 }
 
 .team-s3-alt .team-photo-bg:before {
@@ -15089,13 +15089,13 @@ ul.progress-info {
     width: 34px;
     border-radius: 50%;
     color: #fff !important;
-    background: #f8aa38;
+    background: #2828F7;
     box-shadow: 0 2px 15px 0 rgba(248, 170, 56, .5)
 }
 
 .team-social li a:hover {
     color: #fff !important;
-    background: #f42f54;
+    background: #34BA8D;
     box-shadow: 0 2px 15px 0 rgba(244, 47, 84, .5)
 }
 
@@ -15119,7 +15119,7 @@ ul.progress-info {
 }
 
 .team-social-s2 li a:hover {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background-color: transparent;
     box-shadow: none
 }
@@ -15148,7 +15148,7 @@ ul.progress-info {
 }
 
 .team-s5 .team-social li a {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .team-name {
@@ -15170,7 +15170,7 @@ ul.progress-info {
 }
 
 .team-s3 .team-name {
-    color: #f42f54;
+    color: #34BA8D;
     font-size: 1.125rem !important;
     font-weight: 400;
     margin-bottom: 1px !important
@@ -15213,11 +15213,11 @@ ul.progress-info {
 }
 
 .team-s3-alt .team-position {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-light .team-s3-alt .team-position {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .team-s4 .team-position {
@@ -15232,7 +15232,7 @@ ul.progress-info {
 
 .team-s6 .team-position {
     position: relative;
-    color: #f42f54;
+    color: #34BA8D;
     padding-bottom: 13px;
     margin-bottom: 5px;
     line-height: 1.4
@@ -15245,7 +15245,7 @@ ul.progress-info {
     left: 0;
     bottom: 0;
     content: '';
-    background: linear-gradient(to right, #f42f54 0%, #f8aa38 100%);
+    background: linear-gradient(to right, #34BA8D 0%, #2828F7 100%);
     z-index: 5
 }
 
@@ -15586,7 +15586,7 @@ ul.progress-info {
     line-height: 38px;
     text-align: center;
     color: #fff;
-    background: #f8aa38;
+    background: #2828F7;
     box-shadow: 0 2px 15px 0 rgba(248, 170, 56, .5);
     border-radius: 50%;
     margin-right: 15px;
@@ -15600,7 +15600,7 @@ ul.progress-info {
 }
 
 .bg-secondary .contact-icon {
-    color: #f8aa38
+    color: #2828F7
 }
 
 .contact-list-s1 .contact-icon {
@@ -15616,9 +15616,9 @@ ul.progress-info {
 }
 
 .contact-icon-s2 {
-    color: #f8aa38;
+    color: #2828F7;
     background: 0 0;
-    box-shadow: inset 0 0 0 2px #f8aa38
+    box-shadow: inset 0 0 0 2px #2828F7
 }
 
 .tc-light .contact-icon-s2 {
@@ -15629,14 +15629,14 @@ ul.progress-info {
 
 .contact-icon-s3 {
     position: relative;
-    color: #f42f54;
-    background: linear-gradient(to right, #f42f54 0%, #f8aa38 100%);
+    color: #34BA8D;
+    background: linear-gradient(to right, #34BA8D 0%, #2828F7 100%);
     box-shadow: none
 }
 
 .tc-light .contact-icon-s3 {
     color: #fff;
-    background: linear-gradient(to right, #f42f54 0%, #f8aa38 100%)
+    background: linear-gradient(to right, #34BA8D 0%, #2828F7 100%)
 }
 
 .contact-icon-s3:after {
@@ -15676,11 +15676,11 @@ ul.progress-info {
 }
 
 .bg-theme-accent .contact-icon-s3:after {
-    background: #f42f54
+    background: #34BA8D
 }
 
 .bg-theme-accent-alt .contact-icon-s3:after {
-    background: #f8aa38
+    background: #2828F7
 }
 
 .contact-icon-s3:before {
@@ -15794,7 +15794,7 @@ ul.progress-info {
 }
 
 .social-links li a:hover {
-    color: #f42f54;
+    color: #34BA8D;
     background: #fff
 }
 
@@ -15803,11 +15803,11 @@ ul.progress-info {
 }
 
 .tc-light .social-links li a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .bg-secondary .social-links li a:hover {
-    color: #f8aa38 !important
+    color: #2828F7 !important
 }
 
 .social-links-s2 li a {
@@ -15816,11 +15816,11 @@ ul.progress-info {
 
 .social-links-s2 li a:hover {
     background-color: #fff;
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-light .social-links-s2 li a:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 @media (min-width: 992px) {
@@ -15858,7 +15858,7 @@ ul.progress-info {
 }
 
 .tc-light .wgs-title {
-    color: #f8aa38
+    color: #2828F7
 }
 
 .wgs-logo {
@@ -15904,7 +15904,7 @@ ul.progress-info {
 }
 
 .wgs-links li a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-light .wgs-links li a {
@@ -15912,7 +15912,7 @@ ul.progress-info {
 }
 
 .tc-light .wgs-links li a:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .wgs-links-s2 li {
@@ -15989,8 +15989,8 @@ ul.progress-info {
 
 .wgs-links-tags li a:hover {
     color: #fff;
-    border-color: #f42f54;
-    background: #f42f54
+    border-color: #34BA8D;
+    background: #34BA8D
 }
 
 .wgs-links-3clumn li {
@@ -16043,7 +16043,7 @@ ul.progress-info {
 }
 
 .copyright-text a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-light .copyright-text a {
@@ -16051,7 +16051,7 @@ ul.progress-info {
 }
 
 .tc-light .copyright-text a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .copyright-text-s1 {
@@ -16133,7 +16133,7 @@ ul.progress-info {
 }
 
 .footer-nav li a:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .tc-light .footer-nav li a {
@@ -16141,7 +16141,7 @@ ul.progress-info {
 }
 
 .tc-light .footer-nav li a:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 @media (min-width: 576px) {
@@ -16251,7 +16251,7 @@ ul.progress-info {
 }
 
 .rating-title {
-    background: #f42f54;
+    background: #34BA8D;
     color: #fff;
     padding: 5px 0;
     font-size: .93em;
@@ -16304,7 +16304,7 @@ ul.progress-info {
     font-weight: 500;
     padding: 0 8px;
     color: #fff;
-    background: #f8aa38
+    background: #2828F7
 }
 
 @media (min-width: 420px) {
@@ -16414,7 +16414,7 @@ ul.progress-info {
 }
 
 .active > .chart-data-item:before, .active > .chart-data-item:after {
-    border-color: #f42f54
+    border-color: #34BA8D
 }
 
 .chart-data-item:before {
@@ -16441,7 +16441,7 @@ ul.progress-info {
 }
 
 .active > div > .chart-label {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .chart-info {
@@ -16792,7 +16792,7 @@ ul.progress-info {
 }
 
 .blog-meta li a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .blog-tags {
@@ -16815,8 +16815,8 @@ ul.progress-info {
 
 .blog-tags li a:hover {
     color: #fff;
-    border-color: #f42f54;
-    background: #f42f54
+    border-color: #34BA8D;
+    background: #34BA8D
 }
 
 .blog-featured {
@@ -16929,7 +16929,7 @@ ul.progress-info {
 }
 
 .pagination li a.active, .pagination li a:hover {
-    background: #f42f54;
+    background: #34BA8D;
     color: #fff
 }
 
@@ -17078,13 +17078,13 @@ ul.progress-info {
     min-width: 60px;
     border-radius: 4px;
     color: #fff;
-    background: #f42f54;
+    background: #34BA8D;
     display: inline-block
 }
 
 .doc-download:hover {
     color: #fff !important;
-    background: #f8aa38
+    background: #2828F7
 }
 
 .doc-lang {
@@ -17098,7 +17098,7 @@ ul.progress-info {
 }
 
 .tc-light a.doc-download:hover {
-    color: #f42f54 !important;
+    color: #34BA8D !important;
     background: #fff
 }
 
@@ -17157,17 +17157,17 @@ ul.progress-info {
 }
 
 .tc-light .product-name {
-    color: #f8aa38
+    color: #2828F7
 }
 
 .product-image {
-    border: 2px solid #f42f54;
+    border: 2px solid #34BA8D;
     border-bottom: 0;
     border-radius: 4px 4px 0 0
 }
 
 .tc-light .product-image {
-    border-color: #f8aa38
+    border-color: #2828F7
 }
 
 .qr-code {
@@ -18000,7 +18000,7 @@ ul.progress-info {
     }
 
     .is-transparent:not(.has-fixed):not(.is-light) .header-menu .btn-outline:not([class*=btn-grad]):not(.no-change):hover {
-        color: #f42f54 !important;
+        color: #34BA8D !important;
         border-color: #fff;
         background-color: #fff
     }
@@ -18091,11 +18091,11 @@ ul.progress-info {
 }
 
 .menu-item a .active, .menu-item a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .is-dark .menu-item a .active, .is-dark .menu-item a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .menu-s2 > .menu-item > a {
@@ -18151,7 +18151,7 @@ ul.progress-info {
 }
 
 .menu-item > a.active {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .has-sub > a {
@@ -18188,7 +18188,7 @@ ul.progress-info {
 }
 
 .navbar-toggle.navbar-active {
-    color: #f42f54;
+    color: #34BA8D;
     position: relative;
     z-index: 49
 }
@@ -18306,7 +18306,7 @@ ul.progress-info {
     bottom: 0;
     width: 0;
     height: 3px;
-    background: #f8aa38;
+    background: #2828F7;
     transform: translateX(-50%);
     transition: .3s;
     transform-origin: left;
@@ -18459,7 +18459,7 @@ ul.progress-info {
     }
 
     .menu-sub .menu-item:hover > a {
-        color: #f42f54
+        color: #34BA8D
     }
 
     .menu-item:hover > .menu-sub {
@@ -18594,7 +18594,7 @@ ul.progress-info {
     }
 
     .is-transparent:not(.has-fixed):not(.is-light) .menu > .menu-item:hover > a {
-        color: #f42f54
+        color: #34BA8D
     }
 
     .secondary-navbar {
@@ -18746,7 +18746,7 @@ ul.progress-info {
     height: 80px;
     width: 2px;
     transform: translate(-50%, -50%);
-    background: linear-gradient(to bottom, #f42f54 0%, #f8aa38 100%);
+    background: linear-gradient(to bottom, #34BA8D 0%, #2828F7 100%);
     z-index: 2
 }
 
@@ -19020,7 +19020,7 @@ ul.progress-info {
 }
 
 .footer-links > li > a:hover {
-    color: #f42f54
+    color: #34BA8D
 }
 
 .tc-light .footer-links > li > a {
@@ -19028,7 +19028,7 @@ ul.progress-info {
 }
 
 .tc-light .footer-links > li > a:hover {
-    color: #f42f54 !important
+    color: #34BA8D !important
 }
 
 .mfp-bg, .mfp-wrap, .mfp-wrap[class*=bg-], .mfp-bg[class*=bg-] {
