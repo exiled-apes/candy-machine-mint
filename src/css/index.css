@@ -60,6 +60,13 @@ code {
 .solanaimg{
   width: 32px;display: inline-block;vertical-align: middle;position: relative;top: -2px;margin: 0 5px;
 }
+#footer .container{
+  padding-top: 0px !important;
+  padding-bottom:  0px !important;
+}
+#footer{
+  /*padding-top: 0px !important;*/
+}
 
 ul, ol, table {
   margin: auto !important;

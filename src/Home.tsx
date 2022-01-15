@@ -667,23 +667,17 @@ const Home = (props: HomeProps) => {
       </main>
 
       <footer className="nk-footer bg-theme-alt">
-        <div className="section section-m pb-0 tc-light ov-h has-ovm">
+        <div id="footer" className="section section-m pb-0 tc-light ov-h has-ovm">
           <div className="container py-4">
             <div className="nk-block pb-lg-5">
               <div className="row justify-content-center text-center">
-
+                <div className="col-lg-6 col-md-9">
                   <div className="wide-auto-sm section-head section-head-sm pdb-r">
                     <h4 className="title title-md">Stay up to date with our project</h4>
                   </div>
                   <p>Join our communities.</p></div>
-              
-            </div>
-          </div>
-        </div>
+              </div>
 
-        <div className="section section-footer section-s tc-light bg-transparent">
-          <div className="container">
-            <div className="nk-block block-footer">
               <div className="row">
                 <div className="col">
                   <div className="wgs wgs-text text-center mb-3">
