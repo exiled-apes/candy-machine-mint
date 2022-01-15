@@ -255,7 +255,6 @@ const Home = (props: HomeProps) => {
                                   <button
                                     disabled={isSoldOut || isMinting || !isActive}
                                     onClick={onMint}
-                                    variant="contained"
                                     className={"btn btn-md btn-grad btn-round"}
                                   >
                                     {isSoldOut ? (
