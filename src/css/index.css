@@ -57,6 +57,10 @@ code {
 .section-head .title-s4 {
   padding-bottom: 0px !important;
 }
+.solanaimg{
+  width: 32px;display: inline-block;vertical-align: middle;position: relative;top: -2px;margin: 0 5px;
+}
+
 ul, ol, table {
   margin: auto !important;
 }

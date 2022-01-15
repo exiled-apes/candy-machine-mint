@@ -255,7 +255,7 @@ const Home = (props: HomeProps) => {
                                   <button
                                     disabled={isSoldOut || isMinting || !isActive}
                                     onClick={onMint}
-                                    // variant="contained"
+                                    variant="contained"
                                     className={"btn btn-md btn-grad btn-round"}
                                   >
                                     {isSoldOut ? (
@@ -502,65 +502,57 @@ const Home = (props: HomeProps) => {
                         <p>Launch 2,222 martians to the community for pre-sale..
                         </p></div>
                     </div>
-                    <div className="roadmap roadmap-left roadmap-finished">
+                    <div className="roadmap roadmap-left">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">February 2022</span>
+                          <span className="roadmap-time">March 2022</span>
                           <span className="roadmap-title">Listing on Secondary Markets</span>
                         </div>
                         <p>We will list on Alpha.art and Magic Eden and others.</p></div>
                     </div>
-                    <div className="roadmap roadmap-right roadmap-finished">
+                    <div className="roadmap roadmap-right">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">March 2022</span>
+                          <span className="roadmap-time">April 2022</span>
                           <span
                             className="roadmap-title">Create a verified Martians holder channel - The Martians</span>
                         </div>
                         <p>A discord channel dedicated&nbsp;to floor discussion, networking, education,
                           meet-ups, exclusive holder events etc.<br></br></p></div>
                     </div>
-                    <div className="roadmap roadmap-left roadmap-finished">
+                    <div className="roadmap roadmap-left">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">November 2021</span>
+                          <span className="roadmap-time">May 2022</span>
                           <span className="roadmap-title">Launch Rarity on website</span>
                         </div>
-                        <p>We recognise both our official website ranking
-                          <br></br>In terms of rarity:
+                        <p>Rarity:
                         </p>
+                        <p> To be determined by random Algorithm</p>
                       </div>
                     </div>
                     <div className="roadmap roadmap-right ">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">December 2021</span>
-                          <span className="roadmap-title">Monkey Kingdom Metaverse Party</span>
+                          <span className="roadmap-time">June 2022</span>
+                          <span className="roadmap-title">Martian Army Stargate Launch</span>
                         </div>
                         <ul>
-                          <li>- Road map updated</li>
-                          <li>- Baepes (Female Wukong) release: For every 3 Wukongs in a wallet,
-                            holder will be airdropped a Baepe (must delist your Wukongs!) Snapshot
-                            date on Dec 19th 10pm HKT (UTC+8) Minting for remaining Baepes on Dec
-                            21. All minting proceeds will go to selected charity!
-                          </li>
-                          <li>- Christmas Metaverse Party in Cryptovoxel. Exact date and venue to be
-                            announced later. Welcome to bring friends!
-                          </li>
+                          <li>- Stargate Web 3.0</li>
+                          <li>- Exclusive access to Stargate web if you own at least 1 Martian </li>
+                          <li>- Vote for the releases</li>
+                          <li>- Early access to future collections</li>
                         </ul>
                       </div>
                     </div>
                     <div className="roadmap roadmap-left ">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">Q1 2022</span>
-                          <span className="roadmap-title">Events in the Kingdom</span>
+                          <span className="roadmap-time">July 2022</span>
+                          <span className="roadmap-title">Metaverse Stargate launch</span>
                         </div>
                         <ul>
-                          <li>- Offline MK Art Exhibition</li>
-                          <li>- Lunar New Year Celebrations</li>
-                          <li>- Lunar New Year Fruit drop</li>
-                          <li>- Metaverse Monkey Temple launch</li>
+                          <li>- Metaverse launch</li>
                           <li>- Merch drop!</li>
                         </ul>
                       </div>
@@ -568,16 +560,16 @@ const Home = (props: HomeProps) => {
                     <div className="roadmap roadmap-right ">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">Q2 2022</span>
-                          <span className="roadmap-title">It’s time for the Wukongs to Evolve…</span>
+                          <span className="roadmap-time">Q3 2022</span>
+                          <span className="roadmap-title">It’s time for the Martian Army to evolve</span>
                         </div>
                         <p><br></br></p></div>
                     </div>
                     <div className="roadmap roadmap-left ">
                       <div className="roadmap-step">
                         <div className="roadmap-head">
-                          <span className="roadmap-time">Q3 2022</span>
-                          <span className="roadmap-title">The Kingdom Opens Up…</span>
+                          <span className="roadmap-time">Q4 2022</span>
+                          <span className="roadmap-title">The 2nd wave of the Martian Army is Arriving</span>
                         </div>
                         <p><br></br></p></div>
                     </div>
@@ -674,17 +666,17 @@ const Home = (props: HomeProps) => {
         </section>
       </main>
 
-      <footer className="nk-footer bg-theme-alt section-connect">
+      <footer className="nk-footer bg-theme-alt">
         <div className="section section-m pb-0 tc-light ov-h has-ovm">
           <div className="container py-4">
             <div className="nk-block pb-lg-5">
               <div className="row justify-content-center text-center">
-                <div className="col-lg-6 col-md-9">
+
                   <div className="wide-auto-sm section-head section-head-sm pdb-r">
                     <h4 className="title title-md">Stay up to date with our project</h4>
                   </div>
                   <p>Join our communities.</p></div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -707,10 +699,10 @@ const Home = (props: HomeProps) => {
                       <p><span className="d-sm-block">Copyright © 2022, Martian Army ☁️. </span>All
                         trademarks and copyrights belong to their respective owners.</p>
                       <p>
-                        {/*<a href="https://solana.com/" target="_blank">*/}
-                        {/*  Built on the <img alt="" src="solana-sol-logo.svg"></img>*/}
-                        {/*  Solanablockchain.*/}
-                        {/*</a>*/}
+                        <a href="https://solana.com/" target="_blank" >
+                          Built on the <img alt="" src="solana-sol-logo.svg" className={"solanaimg"}></img>
+                          Solanablockchain.
+                        </a>
                       </p>
                     </div>
                   </div>
