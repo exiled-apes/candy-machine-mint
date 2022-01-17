@@ -236,7 +236,7 @@ const Home = (props: HomeProps) => {
                             <Container >
                               <Container maxWidth="xs" style={{ position: 'relative' }}>
                                 <Paper
-                                  style={{ padding: 24, backgroundColor: '#151A1F', borderRadius: 6 }}
+                                  style={{ padding: 15, backgroundColor: '#151A1F', borderRadius: 6 }}
                                 >
                                   {!wallet.connected ? (
                                     <ConnectButton>Connect Wallet</ConnectButton>
