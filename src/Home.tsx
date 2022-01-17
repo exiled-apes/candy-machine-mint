@@ -683,11 +683,11 @@ const Home = (props: HomeProps) => {
                 <div className="col">
                   <div className="wgs wgs-text text-center mb-3">
                     <ul className="social pdb-m justify-content-center">
-                      <li><a target="_blank" href="https://discord.gg/zBBaT3kbNN"  rel="noreferrer"><em
+                      <li><a target="_blank" href="https://discord.gg/"  rel="noreferrer"><em
                         className="social-icon fab fa-discord"></em></a></li>
-                      <li><a target="_blank" href="https://twitter.com/MonkeyKingdom_"  rel="noreferrer"><em
+                      <li><a target="_blank" href="https://twitter.com/"  rel="noreferrer"><em
                         className="social-icon fab fa-twitter"></em></a></li>
-                      <li><a target="_blank" href="https://www.instagram.com/monkeykingdom_/"  rel="noreferrer"><em
+                      <li><a target="_blank" href="https://www.instagram.com/"  rel="noreferrer"><em
                         className="social-icon fab fa-instagram"></em></a></li>
                     </ul>
                     <div className="copyright-text copyright-text-s3 pdt-m">
