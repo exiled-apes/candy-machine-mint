@@ -1,137 +1,145 @@
-import {useEffect, useState} from "react";
 import styled from "styled-components";
 import 'roboto-regular';
 import Countdown from "react-countdown";
 import {Button, CircularProgress, Snackbar} from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
 
-import * as anchor from "@project-serum/anchor";
+import { useEffect, useMemo, useState, useCallback } from 'react';
+import * as anchor from '@project-serum/anchor';
 
-import {LAMPORTS_PER_SOL} from "@solana/web3.js";
-
-import {useAnchorWallet} from "@solana/wallet-adapter-react";
-import {WalletDialogButton} from "@solana/wallet-adapter-material-ui";
-
+import Paper from '@material-ui/core/Paper';
+import Alert from '@material-ui/lab/Alert';
+import { PublicKey } from '@solana/web3.js';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletDialogButton } from '@solana/wallet-adapter-material-ui';
 import {
-  CandyMachine,
   awaitTransactionSignatureConfirmation,
+  CandyMachineAccount,
+  CANDY_MACHINE_PROGRAM,
   getCandyMachineState,
   mintOneToken,
-  shortenAddress,
-} from "./candy-machine";
+} from './candy-machine';
+import { AlertState } from './utils';
+import { Header } from './Header';
+import { MintButton } from './MintButton';
+import { GatewayProvider } from '@civic/solana-gateway-react';
 
-const Container = styled.div``; // add your styles here
-const ConnectButton = styled(WalletDialogButton)``;
-const CounterText = styled.span``; // add your styles here
-const MintContainer = styled.div``; // add your styles here
-const MintButton = styled(Button)``; // add your styles here
+const ConnectButton = styled(WalletDialogButton)`
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const MintContainer = styled.div``; // add your owns styles here
 
 export interface HomeProps {
-  candyMachineId: anchor.web3.PublicKey;
-  config: anchor.web3.PublicKey;
+  candyMachineId?: anchor.web3.PublicKey;
   connection: anchor.web3.Connection;
   startDate: number;
-  treasury: anchor.web3.PublicKey;
   txTimeout: number;
+  rpcHost: string;
 }
 
-// const main =require('./html-sections/main.html');
-// <div dangerouslySetInnerHTML={{ __html: htmlText }} ></div>
-
 const Home = (props: HomeProps) => {
-  const [balance, setBalance] = useState<number>();
-  const [isActive, setIsActive] = useState(false); // true when countdown completes
-  const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
-  const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-
-  const [itemsAvailable, setItemsAvailable] = useState(0);
-  const [itemsRedeemed, setItemsRedeemed] = useState(0);
-  const [itemsRemaining, setItemsRemaining] = useState(2222);
-
+  const [isUserMinting, setIsUserMinting] = useState(false);
+  const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
-    message: "",
+    message: '',
     severity: undefined,
   });
 
-  const [startDate, setStartDate] = useState(new Date(props.startDate));
+  const rpcUrl = props.rpcHost;
+  const wallet = useWallet();
 
-  const wallet = useAnchorWallet();
-  const [candyMachine, setCandyMachine] = useState<CandyMachine>();
+  const anchorWallet = useMemo(() => {
+    if (
+      !wallet ||
+      !wallet.publicKey ||
+      !wallet.signAllTransactions ||
+      !wallet.signTransaction
+    ) {
+      return;
+    }
 
-  const refreshCandyMachineState = () => {
-    (async () => {
-      if (!wallet) return;
+    return {
+      publicKey: wallet.publicKey,
+      signAllTransactions: wallet.signAllTransactions,
+      signTransaction: wallet.signTransaction,
+    } as anchor.Wallet;
+  }, [wallet]);
 
-      const {
-        candyMachine,
-        goLiveDate,
-        itemsAvailable,
-        itemsRemaining,
-        itemsRedeemed,
-      } = await getCandyMachineState(
-        wallet as anchor.Wallet,
-        props.candyMachineId,
-        props.connection
-      );
+  const refreshCandyMachineState = useCallback(async () => {
+    if (!anchorWallet) {
+      return;
+    }
 
-      setItemsAvailable(itemsAvailable);
-      setItemsRemaining(itemsRemaining);
-      setItemsRedeemed(itemsRedeemed);
-
-      setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
-      setCandyMachine(candyMachine);
-    })();
-  };
+    if (props.candyMachineId) {
+      try {
+        const cndy = await getCandyMachineState(
+          anchorWallet,
+          props.candyMachineId,
+          props.connection,
+        );
+        setCandyMachine(cndy);
+      } catch (e) {
+        console.log('There was a problem fetching Candy Machine state');
+        console.log(e);
+      }
+    }
+  }, [anchorWallet, props.candyMachineId, props.connection]);
 
   const onMint = async () => {
     try {
-      setIsMinting(true);
-      if (wallet && candyMachine?.program) {
-        const mintTxId = await mintOneToken(
-          candyMachine,
-          props.config,
-          wallet.publicKey,
-          props.treasury
-        );
+      setIsUserMinting(true);
+      document.getElementById('#identity')?.click();
+      if (wallet.connected && candyMachine?.program && wallet.publicKey) {
+        const mintTxId = (
+          await mintOneToken(candyMachine, wallet.publicKey)
+        )[0];
 
-        const status = await awaitTransactionSignatureConfirmation(
-          mintTxId,
-          props.txTimeout,
-          props.connection,
-          "singleGossip",
-          false
-        );
+        let status: any = { err: true };
+        if (mintTxId) {
+          status = await awaitTransactionSignatureConfirmation(
+            mintTxId,
+            props.txTimeout,
+            props.connection,
+            true,
+          );
+        }
 
-        if (!status?.err) {
+        if (status && !status.err) {
           setAlertState({
             open: true,
-            message: "Congratulations! Mint succeeded!",
-            severity: "success",
+            message: 'Congratulations! Mint succeeded!',
+            severity: 'success',
           });
         } else {
           setAlertState({
             open: true,
-            message: "Mint failed! Please try again!",
-            severity: "error",
+            message: 'Mint failed! Please try again!',
+            severity: 'error',
           });
         }
       }
     } catch (error: any) {
-      // TODO: blech:
-      let message = error.msg || "Minting failed! Please try again!";
+      let message = error.msg || 'Minting failed! Please try again!';
       if (!error.msg) {
-        if (error.message.indexOf("0x138")) {
-        } else if (error.message.indexOf("0x137")) {
+        if (!error.message) {
+          message = 'Transaction Timeout! Please try again.';
+        } else if (error.message.indexOf('0x137')) {
           message = `SOLD OUT!`;
-        } else if (error.message.indexOf("0x135")) {
+        } else if (error.message.indexOf('0x135')) {
           message = `Insufficient funds to mint. Please fund your wallet.`;
         }
       } else {
         if (error.code === 311) {
           message = `SOLD OUT!`;
-          setIsSoldOut(true);
+          window.location.reload();
         } else if (error.code === 312) {
           message = `Minting period hasn't started yet.`;
         }
@@ -140,33 +148,21 @@ const Home = (props: HomeProps) => {
       setAlertState({
         open: true,
         message,
-        severity: "error",
+        severity: 'error',
       });
     } finally {
-      if (wallet) {
-        const balance = await props.connection.getBalance(wallet.publicKey);
-        setBalance(balance / LAMPORTS_PER_SOL);
-      }
-      setIsMinting(false);
-      refreshCandyMachineState();
+      setIsUserMinting(false);
     }
   };
 
   useEffect(() => {
-    (async () => {
-      if (wallet) {
-        const balance = await props.connection.getBalance(wallet.publicKey);
-        setBalance(balance / LAMPORTS_PER_SOL);
-      }
-    })();
-  }, [wallet, props.connection]);
-
-  useEffect(refreshCandyMachineState, [
-    wallet,
+    refreshCandyMachineState();
+  }, [
+    anchorWallet,
     props.candyMachineId,
     props.connection,
+    refreshCandyMachineState,
   ]);
-
 
   return (
     <div>
@@ -176,7 +172,7 @@ const Home = (props: HomeProps) => {
           <div className="header-container container">
             <div className="header-wrap">
               <div className="header-logo logo">
-                <a href="#" className="logo-link">
+                <a href="/#" className="logo-link">
                   <img className="logo-light" src="/images/logo.png" alt="logo"></img>
                 </a>
               </div>
@@ -195,11 +191,11 @@ const Home = (props: HomeProps) => {
                     <li className="menu-item"><a className="menu-link nav-link" href="#roadmap">Roadmap</a></li>
                     <li className="menu-item"><a className="menu-link nav-link" href="#team">Team</a></li>
                     <li className="menu-item"><a className="menu-link nav-link" href="#faq">FAQ</a></li>
-                    <li className="menu-item"><a target="_blank" href="https://discord.gg/"><em
+                    <li className="menu-item"><a target="_blank" href="https://discord.gg/" rel="noreferrer"><em
                       className="fab fa-discord"></em></a></li>
-                    <li className="menu-item"><a target="_blank" href="https://twitter.com/"><em
+                    <li className="menu-item"><a target="_blank" href="https://twitter.com/" rel="noreferrer"><em
                       className="fab fa-twitter"></em></a></li>
-                    <li className="menu-item"><a target="_blank" href="https://www.instagram.com/"><em
+                    <li className="menu-item"><a target="_blank" href="https://www.instagram.com/" rel="noreferrer"><em
                       className="fab fa-instagram"></em></a></li>
                   </ul>
                 </nav>
@@ -247,60 +243,81 @@ const Home = (props: HomeProps) => {
 
                             {wallet && <p>Remaining: {itemsRemaining}</p>}
 
-                            <Container>
-                              <MintContainer>
-                                {!wallet ? (
-                                  <ConnectButton className={"btn btn-md btn-grad btn-round"}>Connect Wallet</ConnectButton>
-                                ) : (
-                                  <button
-                                    disabled={isSoldOut || isMinting || !isActive}
-                                    onClick={onMint}
-                                    className={"btn btn-md btn-grad btn-round"}
-                                  >
-                                    {isSoldOut ? (
-                                      "SOLD OUT"
-                                    ) : isActive ? (
-                                      isMinting ? (
-                                        <CircularProgress/>
-                                      ) : (
-                                        "MINT"
-                                      )
-                                    ) : (
-                                      <Countdown
-                                        date={startDate}
-                                        onMount={({completed}) => completed && setIsActive(true)}
-                                        onComplete={() => setIsActive(true)}
-                                        renderer={renderCounter}
-                                      />
-                                    )}
-                                  </button>
-                                )}
-                              </MintContainer>
+
+
+
+
+
+                            <Container style={{ marginTop: 100 }}>
+                              <Container maxWidth="xs" style={{ position: 'relative' }}>
+                                <Paper
+                                  style={{ padding: 24, backgroundColor: '#151A1F', borderRadius: 6 }}
+                                >
+                                  {!wallet.connected ? (
+                                    <ConnectButton>Connect Wallet</ConnectButton>
+                                  ) : (
+                                    <>
+                                      <Header candyMachine={candyMachine} />
+                                      <MintContainer>
+                                        {candyMachine?.state.isActive &&
+                                        candyMachine?.state.gatekeeper &&
+                                        wallet.publicKey &&
+                                        wallet.signTransaction ? (
+                                          <GatewayProvider
+                                            wallet={{
+                                              publicKey:
+                                                wallet.publicKey ||
+                                                new PublicKey(CANDY_MACHINE_PROGRAM),
+                                              //@ts-ignore
+                                              signTransaction: wallet.signTransaction,
+                                            }}
+                                            gatekeeperNetwork={
+                                              candyMachine?.state?.gatekeeper?.gatekeeperNetwork
+                                            }
+                                            clusterUrl={rpcUrl}
+                                            options={{ autoShowModal: false }}
+                                          >
+                                            <MintButton
+                                              candyMachine={candyMachine}
+                                              isMinting={isUserMinting}
+                                              onMint={onMint}
+                                            />
+                                          </GatewayProvider>
+                                        ) : (
+                                          <MintButton
+                                            candyMachine={candyMachine}
+                                            isMinting={isUserMinting}
+                                            onMint={onMint}
+                                          />
+                                        )}
+                                      </MintContainer>
+                                    </>
+                                  )}
+                                </Paper>
+                              </Container>
+
                               <Snackbar
                                 open={alertState.open}
                                 autoHideDuration={6000}
-                                onClose={() => setAlertState({...alertState, open: false})}
+                                onClose={() => setAlertState({ ...alertState, open: false })}
                               >
                                 <Alert
-                                  onClose={() => setAlertState({
-                                    ...alertState,
-                                    open: false
-                                  })}
+                                  onClose={() => setAlertState({ ...alertState, open: false })}
                                   severity={alertState.severity}
                                 >
                                   {alertState.message}
                                 </Alert>
                               </Snackbar>
-
                             </Container>
-                          </div
-                          >
+
+
+                          </div>
                         </div>
 
                       </div>
                     </div>
                     <div className="col-lg-5 col-sm-9">
-                      <img src={'/images/martian-banner.gif'}></img>
+                      <img src={'/images/martian-banner.gif'} alt="Martian banner for front page"></img>
                     </div>
                     <div className="col-lg-12">
                       <br></br><br></br>
@@ -316,7 +333,7 @@ const Home = (props: HomeProps) => {
                                   <p>
                                     Feb 2 2022 09:00:00 GMT<br></br>
                                   </p>
-                                  <a rel="nofollow"
+                                  <a  rel="noreferrer"
                                      className="btn btn-sm btn-grad btn-round"
                                      href="https://savvytime.com/converter/gmt/Feb-2-2022/9-00am" target={"_blank"}>Convert
                                     to your time</a>
@@ -354,7 +371,7 @@ const Home = (props: HomeProps) => {
               <div className="row align-items-center gutter-vr-30px justify-content-center justify-content-md-between">
                 <div className="col-mb-9 col-sm-7 col-md-6 col-lg-5">
                   <div className="gfx py-4">
-                    <img src="/images/martian-banner.gif" width="500px" height="500px"/>
+                    <img src="/images/martian-banner.gif" width="500px" height="500px" alt="martian banner for pre minting"/>
                   </div>
                 </div>
                 <div className="        col-sm-10 col-md-6 text-center text-md-left">
@@ -681,18 +698,18 @@ const Home = (props: HomeProps) => {
                 <div className="col">
                   <div className="wgs wgs-text text-center mb-3">
                     <ul className="social pdb-m justify-content-center">
-                      <li><a target="_blank" href="https://discord.gg/zBBaT3kbNN"><em
+                      <li><a target="_blank" href="https://discord.gg/zBBaT3kbNN"  rel="noreferrer"><em
                         className="social-icon fab fa-discord"></em></a></li>
-                      <li><a target="_blank" href="https://twitter.com/MonkeyKingdom_"><em
+                      <li><a target="_blank" href="https://twitter.com/MonkeyKingdom_"  rel="noreferrer"><em
                         className="social-icon fab fa-twitter"></em></a></li>
-                      <li><a target="_blank" href="https://www.instagram.com/monkeykingdom_/"><em
+                      <li><a target="_blank" href="https://www.instagram.com/monkeykingdom_/"  rel="noreferrer"><em
                         className="social-icon fab fa-instagram"></em></a></li>
                     </ul>
                     <div className="copyright-text copyright-text-s3 pdt-m">
                       <p><span className="d-sm-block">Copyright © 2022, Martian Army ☁️. </span>All
                         trademarks and copyrights belong to their respective owners.</p>
                       <p>
-                        <a href="https://solana.com/" target="_blank" >
+                        <a href="https://solana.com/" target="_blank" rel="noreferrer">
                           Built on the <img alt="" src="solana-sol-logo.svg" className={"solanaimg"}></img>
                           Solanablockchain.
                         </a>
@@ -706,26 +723,8 @@ const Home = (props: HomeProps) => {
         </div>
       </footer>
     </div>
+
   );
 };
-
-interface AlertState {
-  open: boolean;
-  message: string;
-  severity: "success" | "info" | "warning" | "error" | undefined;
-}
-
-const renderCounter = (
-  {
-    days, hours, minutes, seconds, completed
-  }
-    : any) => {
-    return (
-      <CounterText>
-        {hours + (days || 0) * 24} hours, {minutes} minutes, {seconds} seconds
-      </CounterText>
-    );
-  }
-;
 
 export default Home;
