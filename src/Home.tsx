@@ -1,11 +1,9 @@
-import styled from "styled-components";
-import 'roboto-regular';
-import Countdown from "react-countdown";
-import {Button, CircularProgress, Snackbar} from "@material-ui/core";
-
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import * as anchor from '@project-serum/anchor';
 
+import styled from 'styled-components';
+import 'roboto-regular';
+import {Container, Snackbar} from "@material-ui/core";
 import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import { PublicKey } from '@solana/web3.js';
@@ -34,7 +32,9 @@ const ConnectButton = styled(WalletDialogButton)`
   font-weight: bold;
 `;
 
-const MintContainer = styled.div``; // add your owns styles here
+const MintContainer = styled.div`
+  
+`; // add your owns styles here
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -211,9 +211,9 @@ const Home = (props: HomeProps) => {
               <div className="banner-wrap ov-v">
                 <div className="container">
                   <div
-                    className="row align-items-center justify-content-center justify-content-lg-between gutter-vr-30px">
+                    className="row align-items-center justify-content-center justify-content-lg-between">
 
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" style={{padding: 0}}>
                       <div className="banner-caption wide-auto text-center text-lg-left">
                         <div className="cpn-head mt-0">
                           <h1 className="title title-xl-2">Welcome to The Martian Army</h1>
@@ -229,26 +229,11 @@ const Home = (props: HomeProps) => {
                         <div id={"mint-box"} className={"cpn-btns"}>
 
                           <div
-                            className={"token-status token-status-s5 bg-theme-alt round no-bd"}>
+                            className={"token-status bg-theme-alt round no-bd"}>
                             <p>
                               Be the first to Pre Mint our Martian Army!
                             </p>
-                            {/*{wallet && ( <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p> )}*/}
-
-                            {/*{wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}*/}
-
-                            {/*{wallet && <p>Total Available: {itemsAvailable}</p>}*/}
-
-                            {wallet && <p>Redeemed: {itemsRedeemed}</p>}
-
-                            {wallet && <p>Remaining: {itemsRemaining}</p>}
-
-
-
-
-
-
-                            <Container style={{ marginTop: 100 }}>
+                            <Container >
                               <Container maxWidth="xs" style={{ position: 'relative' }}>
                                 <Paper
                                   style={{ padding: 24, backgroundColor: '#151A1F', borderRadius: 6 }}
@@ -317,7 +302,7 @@ const Home = (props: HomeProps) => {
                       </div>
                     </div>
                     <div className="col-lg-5 col-sm-9">
-                      <img src={'/images/martian-banner.gif'} alt="Martian banner for front page"></img>
+                      <img src={'/images/martian-banner.gif'} alt="Martian banner for front page" width='110%'></img>
                     </div>
                     <div className="col-lg-12">
                       <br></br><br></br>
@@ -343,7 +328,7 @@ const Home = (props: HomeProps) => {
                                 <div className="stage-info">
                                   <h6 className="title title-s6 title-xs-s2">Remaining
                                     Martians</h6>
-                                  <h2>{itemsRemaining}</h2>
+                                  <h2>2222</h2>
                                 </div>
                               </div>
                               <div className="col-sm-4">
