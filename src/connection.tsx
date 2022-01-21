@@ -339,7 +339,7 @@ import {
     return new Date().getTime() / 1000;
   };
   
-  const DEFAULT_TIMEOUT = 15000;
+  const DEFAULT_TIMEOUT = 30000;
   
   export async function sendSignedTransaction({
     signedTransaction,
