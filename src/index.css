@@ -5,11 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #303030;
+  background-color: #000;
   color: #FFFFFF;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* $brand_color: #870101; */
+
+@font-face {
+    font-family: "CorleoneDue";
+    src: local('CorleoneDue'), url(./assets/fonts/CorleoneDue.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Corleone";
+    src: url(./assets/fonts/Corleone.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Gilroy";
+    src: url(./assets/fonts/Gilroy-Light.ttf) format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Gilroy";
+    src: url(./assets/fonts/Gilroy-ExtraBold.ttf) format("truetype");
+    font-weight: 900;
+    font-style: normal;
 }
