@@ -1,6 +1,6 @@
 # Introduction
 
-The **Candy-Machine-V2-Responsive-UI** project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to the recent **Candy Machine V2** Solana release.
+The **Candy-Machine-V2-Responsive-UI** project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to support the recent **Candy Machine V2** new functionalities : (pre-sale, spl-token to mint, etc...)
 But that's not all, I share with you a **Prod-ready Responsive UI** which can be easily customized in 5mn.
 
 ![Candy Machine Preview Image](https://i.imgur.com/WWSvkBO.png)
