@@ -21,6 +21,7 @@ import {
 
 const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
 const decimals = process.env.REACT_APP_SPL_TOKEN_DECIMALS ? +process.env.REACT_APP_SPL_TOKEN_DECIMALS!.toString() : 9;
+const splTokenName = process.env.REACT_APP_SPL_TOKEN_NAME ? process.env.REACT_APP_SPL_TOKEN_NAME.toString() : "TOKEN";
 
 const WalletContainer = styled.div`
   display: flex;
@@ -294,7 +295,7 @@ const Home = (props: HomeProps) => {
                 setPayWithSplToken(true);
                 // Customize your SPL-TOKEN Label HERE
                 // TODO: get spl-token metadata name
-                setPriceLabel("TOKEN");
+                setPriceLabel(splTokenName);
                 setPrice(cndy.state.price.toNumber() / divider);
                 setWhitelistPrice(cndy.state.price.toNumber() / divider);
             }else {

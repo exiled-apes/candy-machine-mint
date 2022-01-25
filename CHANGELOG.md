@@ -4,7 +4,7 @@ Fixed MINTING using spl-token functionality :
 - price wasn't always properly displayed depending of spl-token decimals
 - wallet balance wasn't anticipated properly
 
-To do so, added REACT_APP_SPL_TOKEN_DECIMALS env variable (set to 9 by default) where user should set the number of decimals being used on its spl-token. By default when creating a spl-token it has 9 decimals.
+To do so, added REACT_APP_SPL_TOKEN_NAME and REACT_APP_SPL_TOKEN_DECIMALS env variable (set to 9 by default) where user should set the number of decimals being used on its spl-token. By default when creating a spl-token it has 9 decimals.
 
 **21 Jan 2022**
 
