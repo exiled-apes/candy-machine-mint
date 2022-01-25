@@ -20,6 +20,7 @@ import {
 } from "./candy-machine";
 
 const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
+const decimals = process.env.REACT_APP_SPL_TOKEN_DECIMALS ? +process.env.REACT_APP_SPL_TOKEN_DECIMALS!.toString() : 9;
 
 const WalletContainer = styled.div`
   display: flex;
@@ -149,8 +150,8 @@ const SolExplorerLink = styled.a`
   outline: none;
   text-decoration: none;
   text-size-adjust: 100%;
-  
-  :hover{
+
+  :hover {
     border-bottom: 2px solid var(--title-text-color);
   }
 `;
@@ -245,12 +246,14 @@ const Home = (props: HomeProps) => {
     const [balance, setBalance] = useState<number>();
     const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
     const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
-    const [solanaExplorerLink, setSolanaExplorerLink] = useState("");
+    const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
     const [itemsAvailable, setItemsAvailable] = useState(0);
     const [itemsRedeemed, setItemsRedeemed] = useState(0);
     const [itemsRemaining, setItemsRemaining] = useState(0);
     const [isSoldOut, setIsSoldOut] = useState(false);
+    const [payWithSplToken, setPayWithSplToken] = useState(false);
     const [price, setPrice] = useState(0);
+    const [priceLabel, setPriceLabel] = useState<string>("SOL");
     const [whitelistPrice, setWhitelistPrice] = useState(0);
     const [whitelistEnabled, setWhitelistEnabled] = useState(false);
     const [whitelistTokenBalance, setWhitelistTokenBalance] = useState(0);
@@ -280,14 +283,35 @@ const Home = (props: HomeProps) => {
             setItemsAvailable(cndy.state.itemsAvailable);
             setItemsRemaining(cndy.state.itemsRemaining);
             setItemsRedeemed(cndy.state.itemsRedeemed);
-            setPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
-            setWhitelistPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
+
+            var divider = 1;
+            if (decimals) {
+                divider = +('1' + new Array(decimals).join('0').slice() + '0');
+            }
+
+            // detect if using spl-token to mint
+            if (cndy.state.tokenMint) {
+                setPayWithSplToken(true);
+                // Customize your SPL-TOKEN Label HERE
+                // TODO: get spl-token metadata name
+                setPriceLabel("TOKEN");
+                setPrice(cndy.state.price.toNumber() / divider);
+                setWhitelistPrice(cndy.state.price.toNumber() / divider);
+            }else {
+                setPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
+                setWhitelistPrice(cndy.state.price.toNumber() / LAMPORTS_PER_SOL);
+            }
+
 
             // fetch whitelist token balance
             if (cndy.state.whitelistMintSettings) {
                 setWhitelistEnabled(true);
                 if (cndy.state.whitelistMintSettings.discountPrice !== null && cndy.state.whitelistMintSettings.discountPrice !== cndy.state.price) {
-                    setWhitelistPrice(cndy.state.whitelistMintSettings.discountPrice?.toNumber() / LAMPORTS_PER_SOL);
+                    if (cndy.state.tokenMint) {
+                        setWhitelistPrice(cndy.state.whitelistMintSettings.discountPrice?.toNumber() / divider);
+                    } else {
+                        setWhitelistPrice(cndy.state.whitelistMintSettings.discountPrice?.toNumber() / LAMPORTS_PER_SOL);
+                    }
                 }
                 let balance = 0;
                 try {
@@ -333,11 +357,11 @@ const Home = (props: HomeProps) => {
         }
         setItemsRedeemed(itemsRedeemed + 1);
         const solFeesEstimation = 0.012; // approx
-        if (balance && balance > 0) {
+        if (!payWithSplToken && balance && balance > 0) {
             setBalance(balance - (whitelistEnabled ? whitelistPrice : price) - solFeesEstimation);
         }
         setSolanaExplorerLink(cluster === "devnet" || cluster === "testnet"
-            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster="+cluster)
+            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster=" + cluster)
             : ("https://explorer.solana.com/address/" + mintPublicKey));
         throwConfetti();
     };
@@ -438,7 +462,8 @@ const Home = (props: HomeProps) => {
         <main>
             <MainContainer>
                 <WalletContainer>
-                    <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt="" src="logo.png"/></a></Logo>
+                    <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
+                                                                                                          src="logo.png"/></a></Logo>
                     <Menu>
                         <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">Menu 1</a>
                         </li>
@@ -462,7 +487,8 @@ const Home = (props: HomeProps) => {
                         <NFT elevation={3}>
                             <h2>My NFT</h2>
                             <br/>
-                            <div><Price label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " SOL") : (price + " SOL")}/><Image
+                            <div><Price
+                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><Image
                                 src="cool-cats.gif"
                                 alt="NFT To Mint"/></div>
                             <br/>

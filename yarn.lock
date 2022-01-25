@@ -1506,13 +1506,13 @@
     eip1193-provider "^1.0.1"
     js-sha3 "^0.8.0"
 
-"@civic/solana-gateway-react@^0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@civic/solana-gateway-react/-/solana-gateway-react-0.4.6.tgz#b137bdba547d3516af72b1238d1e931f93117203"
-  integrity sha512-Mk1YXS7TS6X8jebKT7I/Vzfm+l9WnMZMMw3PvNQ5NpQI6MoOF39DcBac+gyZEsbeWazSCTb4M6CvuZPycMLtlw==
+"@civic/solana-gateway-react@^0.4.10":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@civic/solana-gateway-react/-/solana-gateway-react-0.4.10.tgz#9fec268d1e2bf382f93a820a9a9e56dc223117eb"
+  integrity sha512-de8JeMr0nKfsrTWMQa5H9uk+V6UBqxDICMK2l19TAz9LPIc0yqfu8nvbWkFdUylasYsu15kvu4Vg4eHLAOs/7A==
   dependencies:
     "@identity.com/prove-solana-wallet" "^0.2.3"
-    "@identity.com/solana-gateway-ts" "^0.4.0"
+    "@identity.com/solana-gateway-ts" "^0.7.0-beta1"
     "@solana/web3.js" "^1.20.0"
     "@types/styled-components" "^5.1.15"
     fetch-retry-ts "^1.1.24"
@@ -1642,10 +1642,10 @@
     "@solana/web3.js" "^1.22.0"
     bs58 "^4.0.1"
 
-"@identity.com/solana-gateway-ts@^0.4.0":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@identity.com/solana-gateway-ts/-/solana-gateway-ts-0.4.4.tgz#d201a7ddea26bff1b55a7557d5547e9a02c657ea"
-  integrity sha512-CaP9gdF6cSOUU+mWrCazaUAmgUzfrCwzobUwq68BCWofl2PEMkqiQyWWJhj1zeyChFx88pivSlPET7DVss407g==
+"@identity.com/solana-gateway-ts@^0.7.0-beta1":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@identity.com/solana-gateway-ts/-/solana-gateway-ts-0.7.0.tgz#61ece3f781148b040778bc936128039e52918ecc"
+  integrity sha512-hxOHbQDH3mQ6cBIvEsUZFICJAfgv0V8GB2QpnvXwHoAnPVRpYACHb98P2i93gwyC+jFUEJ5fOQo4eaa06bnAvw==
   dependencies:
     "@solana/web3.js" "^1.22.0"
     async-retry "^1.3.3"
@@ -2280,7 +2280,7 @@
     "@solana/wallet-adapter-solong" "^0.5.2"
     "@solana/wallet-adapter-torus" "^0.6.3"
 
-"@solana/web3.js@^1.17.0", "@solana/web3.js@^1.22.0", "@solana/web3.js@^1.27.0":
+"@solana/web3.js@^1.17.0", "@solana/web3.js@^1.22.0":
   version "1.29.2"
   resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.29.2.tgz#05c162f477c226ee3211f8ee8c1c6d4203e08f54"
   integrity sha512-gtoHzimv7upsKF2DIO4/vNfIMKN+cxSImBHvsdiMyp9IPqb8sctsHVU/+80xXl0JKXVKeairDv5RvVnesJYrtw==
@@ -2335,6 +2335,26 @@
     jayson "^3.4.4"
     js-sha3 "^0.8.0"
     node-fetch "^2.6.1"
+    rpc-websockets "^7.4.2"
+    secp256k1 "^4.0.2"
+    superstruct "^0.14.2"
+    tweetnacl "^1.0.0"
+
+"@solana/web3.js@^1.32.0":
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.32.0.tgz#b9821de52d0e773c363516c3dcef9be701295d82"
+  integrity sha512-jquZ/VBvM3zXAaTJvdWd9mlP0WiZaZqjji0vw5UAsb5IKIossrLhHtyUqMfo41Qkdwu1aVwf7YWG748i4XIJnw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@ethersproject/sha2" "^5.5.0"
+    "@solana/buffer-layout" "^3.0.0"
+    bn.js "^5.0.0"
+    borsh "^0.4.0"
+    bs58 "^4.0.1"
+    buffer "6.0.1"
+    cross-fetch "^3.1.4"
+    jayson "^3.4.4"
+    js-sha3 "^0.8.0"
     rpc-websockets "^7.4.2"
     secp256k1 "^4.0.2"
     superstruct "^0.14.2"
