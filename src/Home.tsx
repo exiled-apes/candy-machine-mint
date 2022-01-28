@@ -198,13 +198,20 @@ const Price = styled(Chip)`
 const Image = styled.img`
   height: 400px;
   width: auto;
-  border-radius: 20px;
+  border-radius: 7px;
+  box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
 `;
 
 const BorderLinearProgress = styled(LinearProgress)`
   margin: 20px 0;
   height: 10px !important;
-  border-radius: 5px;
+  border-radius: 30px;
+  border: 2px solid white;
+  box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
+  > div.MuiLinearProgress-bar1Determinate {
+    border-radius: 30px !important;
+    background-image: linear-gradient(270deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.5));
+  }
 `;
 
 const ShimmerTitle = styled.h1`
