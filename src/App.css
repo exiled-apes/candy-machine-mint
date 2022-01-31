@@ -21,32 +21,5 @@ h3{
 font-weight: normal;
 }
 
-.MuiFab-extended{
-  height: auto;
-  padding-right: 0 !important;
-}
 
-.MuiFab-label{
-  font-weight: bold;
-}
 
-.MuiPaper-root{
-  background-color: var(--card-background-color) !important;
-}
-
-.MuiButton-containedPrimary:not(.MuiButton-fullWidth){
-  border-radius: 24px !important;
-  padding: 6px 16px;
-}
-
-.MuiButton-label{
-  font-size: 1.2em;
-}
-
-.MuiLinearProgress-colorPrimary{
-  background-color:var(--main-text-color) !important;
-}
-
-.MuiLinearProgress-barColorPrimary{
-  background-color:var(--title-text-color) !important;
-}

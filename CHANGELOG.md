@@ -1,3 +1,19 @@
+**31 Jan 2022**
+
+REQUIRE A YARN INSTALL
+
+Upgraded wallets list. Supported wallets are :
+
+- Phantom
+- Slope
+- Solflare
+- Solflare Web
+- Sollet
+- Sollet Extension
+- Solong
+- Ledger
+- SafePal
+
 **25 Jan 2022**
 
 Fixed MINTING using spl-token functionality :

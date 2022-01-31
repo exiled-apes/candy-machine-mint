@@ -5,7 +5,9 @@ But that's not all, I share with you a **Prod-ready Responsive UI** which can be
 
 ![Candy Machine Preview Image](https://i.imgur.com/WWSvkBO.png)
 
-I did this in a few hours, and didn't have the time to make it fully ReactJs best practices compliant. So please be kind :)
+### Supported Wallets
+
+![Supported Wallets](https://i.ibb.co/DC6Wt66/wallets.png)
 
 For instructions on how to set up a V2 candy machine, please refer to Metaplex's documentation [here](https://docs.metaplex.com/candy-machine-v2/Introduction)
 
@@ -60,7 +62,7 @@ REACT_APP_SOLANA_RPC_HOST=https://api.devnet.solana.com
 This identifies the RPC server your web app will access the Solana network through.
 
 
-If you are using a SPL Token to MINT, you have two additional environment parameters to set :
+If you are using a custom SPL Token to MINT, you have two additional environment parameters to set :
 
 
 ```
