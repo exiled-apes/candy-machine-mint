@@ -23,6 +23,8 @@ Vercel will automatically deploy new prod packages for each new commit.
 
 ### Prerequisites
 
+REQUIRE NODEJS VERSION <= 16 (version 17 not supported).
+
 * Download a Code Editor such as Visual Studio Code.
 
 * Ensure you have recent versions of both `node` and `yarn` installed.
