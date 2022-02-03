@@ -23,11 +23,11 @@ Vercel will automatically deploy new prod packages for each new commit.
 
 ### Prerequisites
 
-REQUIRE NODEJS VERSION <= 16 (version 17 not supported).
+**REQUIRE NODEJS VERSION <= 16 (version 17 not supported)**.
 
 * Download a Code Editor such as Visual Studio Code.
 
-* Ensure you have recent versions of both `node` and `yarn` installed.
+* Ensure you have both `nodejs` and `yarn` installed. `nodejs` recommended version is 16.
 
 * Follow the instructions [here](https://docs.solana.com/cli/install-solana-cli-tools) to install the Solana Command Line Toolkit.
 
