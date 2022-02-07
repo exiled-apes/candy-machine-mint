@@ -68,13 +68,13 @@ If you are using a custom SPL Token to MINT, you have two additional environment
 
 
 ```
-REACT_APP_SPL_TOKEN_NAME=
+REACT_APP_SPL_TOKEN_TO_MINT_NAME=
 ```
 
 Spl-token name to display next the price.
 
 ```
-REACT_APP_SPL_TOKEN_DECIMALS=9
+REACT_APP_SPL_TOKEN_TO_MINT_DECIMALS=9
 ```
 
 Spl-token decimals were defined during its creation with --decimals parameter. If you didn't use that parameter, then by default your SPL Token got 9 decimals.
