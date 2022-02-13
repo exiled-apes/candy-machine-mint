@@ -49,7 +49,7 @@ This is a Solana account address. You can get the value for this from the `.cach
 REACT_APP_CANDY_MACHINE_ID=__PLACEHOLDER__
 ```
 
-Same as above; this is a Solana account address. You can get the value for this from the `./cache/temp` file. This file is created when you run the `metaplex upload` command in terminal.
+This is Candy Machine pubkey. You can get the value as a result of `metaplex create_candy_machine` command. 
 
 ```
 REACT_APP_TREASURY_ADDRESS=__PLACEHOLDER__
