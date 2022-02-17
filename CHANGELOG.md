@@ -1,3 +1,7 @@
+**17 Feb 2022**
+
+Code cleanup, minor fixes, and added CI=false .env variable to avoid harmless compilation warnings generating build errors on user code customization.
+
 **07 Feb 2022**
 
 Renamed REACT_APP_SPL_TOKEN_NAME to REACT_APP_SPL_TOKEN_TO_MINT_NAME
