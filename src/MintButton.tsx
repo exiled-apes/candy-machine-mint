@@ -22,7 +22,7 @@ export const MintButton = ({
                                isActive,
                                isSoldOut
                            }: {
-    onMint: () => Promise<void>;
+    onMint: (quantityString: number) => Promise<void>;
     candyMachine: CandyMachine | undefined;
     isMinting: boolean;
     isEnded: boolean;
@@ -40,7 +40,7 @@ export const MintButton = ({
             setIsVerifying(true);
         } else if (gatewayStatus === GatewayStatus.ACTIVE && clicked) {
             console.log('Verified human, now minting...');
-            onMint();
+            onMint(1);
             setClicked(false);
         }
     }, [gatewayStatus, clicked, setClicked, onMint]);
@@ -63,7 +63,7 @@ export const MintButton = ({
                     await requestGatewayToken();
                 } else {
                     console.log('Minting...');
-                    await onMint();
+                    await onMint(1);
                 }
             }}
             variant="contained"
