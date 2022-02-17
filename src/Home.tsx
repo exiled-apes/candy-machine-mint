@@ -398,7 +398,6 @@ const Home = (props: HomeProps) => {
     const onMint = async () => {
         try {
             setIsMinting(true);
-            document.getElementById('#identity')?.click();
             if (wallet && candyMachine?.program && wallet.publicKey) {
                 const mint = anchor.web3.Keypair.generate();
                 const mintTxId = (
