@@ -31,14 +31,14 @@ const getUnixTs = () => {
 };
 
 export function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function awaitTransactionSignatureConfirmation(
   txid: TransactionSignature,
   timeout: number,
   connection: Connection,
-  queryStatus = false,
+  queryStatus = false
 ): Promise<SignatureStatus | null | void> {
   let done = false;
   let status: SignatureStatus | null | void = {
@@ -74,7 +74,7 @@ async function awaitTransactionSignatureConfirmation(
             resolve(status);
           }
         },
-        'recent',
+        'recent'
       );
     } catch (e) {
       done = true;
@@ -84,9 +84,7 @@ async function awaitTransactionSignatureConfirmation(
       // eslint-disable-next-line no-loop-func
       (async () => {
         try {
-          const signatureStatuses = await connection.getSignatureStatuses([
-            txid,
-          ]);
+          const signatureStatuses = await connection.getSignatureStatuses([txid]);
           status = signatureStatuses && signatureStatuses.value[0];
           if (!done) {
             if (!status) {
@@ -125,12 +123,12 @@ async function awaitTransactionSignatureConfirmation(
 async function simulateTransaction(
   connection: Connection,
   transaction: Transaction,
-  commitment: Commitment,
+  commitment: Commitment
 ): Promise<RpcResponseAndContext<SimulatedTransactionResponse>> {
   // @ts-ignore
   transaction.recentBlockhash = await connection._recentBlockhash(
     // @ts-ignore
-    connection._disableBlockhashCaching,
+    connection._disableBlockhashCaching
   );
 
   const signData = transaction.serializeMessage();
@@ -163,12 +161,9 @@ async function sendSignedTransaction({
   const rawTransaction = signedTransaction.serialize();
   const startTime = getUnixTs();
   let slot = 0;
-  const txid: TransactionSignature = await connection.sendRawTransaction(
-    rawTransaction,
-    {
-      skipPreflight: true,
-    },
-  );
+  const txid: TransactionSignature = await connection.sendRawTransaction(rawTransaction, {
+    skipPreflight: true,
+  });
 
   console.log('Started awaiting confirmation for', txid);
 
@@ -182,15 +177,9 @@ async function sendSignedTransaction({
     }
   })();
   try {
-    const confirmation = await awaitTransactionSignatureConfirmation(
-      txid,
-      timeout,
-      connection,
-      true,
-    );
+    const confirmation = await awaitTransactionSignatureConfirmation(txid, timeout, connection, true);
 
-    if (!confirmation)
-      throw new Error('Timed out awaiting confirmation on transaction');
+    if (!confirmation) throw new Error('Timed out awaiting confirmation on transaction');
 
     if (confirmation.err) {
       console.error(confirmation.err);
@@ -205,18 +194,14 @@ async function sendSignedTransaction({
     }
     let simulateResult: SimulatedTransactionResponse | null = null;
     try {
-      simulateResult = (
-        await simulateTransaction(connection, signedTransaction, 'single')
-      ).value;
+      simulateResult = (await simulateTransaction(connection, signedTransaction, 'single')).value;
     } catch (e) {}
     if (simulateResult && simulateResult.err) {
       if (simulateResult.logs) {
         for (let i = simulateResult.logs.length - 1; i >= 0; --i) {
           const line = simulateResult.logs[i];
           if (line.startsWith('Program log: ')) {
-            throw new Error(
-              'Transaction failed: ' + line.slice('Program log: '.length),
-            );
+            throw new Error('Transaction failed: ' + line.slice('Program log: '.length));
           }
         }
       }
@@ -240,7 +225,7 @@ export const sendTransactions = async (
   commitment: Commitment = 'singleGossip',
   successCallback: (txid: string, ind: number) => void = (txid, ind) => {},
   failCallback: (reason: string, ind: number) => boolean = (txid, ind) => false,
-  block?: BlockhashAndFeeCalculator,
+  block?: BlockhashAndFeeCalculator
 ): Promise<{ number: number; txs: { txid: string; slot: number }[] }> => {
   if (!wallet.publicKey) throw new WalletNotConnectedError();
 
@@ -259,12 +244,12 @@ export const sendTransactions = async (
     }
 
     let transaction = new Transaction();
-    instructions.forEach(instruction => transaction.add(instruction));
+    instructions.forEach((instruction) => transaction.add(instruction));
     transaction.recentBlockhash = block.blockhash;
     transaction.setSigners(
       // fee payed by the wallet owner
       wallet.publicKey,
-      ...signers.map(s => s.publicKey),
+      ...signers.map((s) => s.publicKey)
     );
 
     if (signers.length > 0) {
@@ -279,12 +264,7 @@ export const sendTransactions = async (
   const pendingTxns: Promise<{ txid: string; slot: number }>[] = [];
 
   let breakEarlyObject = { breakEarly: false, i: 0 };
-  console.log(
-    'Signed txns length',
-    signedTxns.length,
-    'vs handed in length',
-    instructionSet.length,
-  );
+  console.log('Signed txns length', signedTxns.length, 'vs handed in length', instructionSet.length);
   for (let i = 0; i < signedTxns.length; i++) {
     const signedTxnPromise = sendSignedTransaction({
       connection,
@@ -295,7 +275,7 @@ export const sendTransactions = async (
       .then(({ txid, slot }) => {
         successCallback(txid, i);
       })
-      .catch(reason => {
+      .catch((reason) => {
         // @ts-ignore
         failCallback(signedTxns[i], i);
         if (sequenceType === SequenceType.StopOnFailure) {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Countdown from "react-countdown";
+import Countdown from 'react-countdown';
 import Button from '@material-ui/core/Button';
 import { CircularProgress } from '@material-ui/core';
 import { useEffect, useMemo, useState } from 'react';
@@ -15,14 +15,13 @@ type Props = {
 };
 
 const MintButton = (props: Props) => {
-  const {onMint, candyMachine, isMinting } = props;
+  const { onMint, candyMachine, isMinting } = props;
 
   const { requestGatewayToken, gatewayStatus } = useGateway();
   const [clicked, setClicked] = useState(false);
 
   const startDate = useMemo(() => {
     if (candyMachine) {
-
       if (candyMachine.state.goLiveDate) {
         return anchorBigNumberToDate(candyMachine.state.goLiveDate);
       } else if (candyMachine.state.isPresale) {
@@ -33,7 +32,7 @@ const MintButton = (props: Props) => {
     }
 
     return;
-}, [candyMachine])
+  }, [candyMachine]);
 
   useEffect(() => {
     if (gatewayStatus === GatewayStatus.ACTIVE && clicked) {
@@ -44,10 +43,7 @@ const MintButton = (props: Props) => {
 
   const getMintButtonContent = () => {
     if (!candyMachine?.state.isActive) {
-      <Countdown
-        date={startDate}
-        renderer={renderCounter}
-      />
+      <Countdown date={startDate} renderer={renderCounter} />;
     } else if (candyMachine?.state.isSoldOut) {
       return 'SOLD OUT';
     } else if (isMinting) {
@@ -61,11 +57,7 @@ const MintButton = (props: Props) => {
 
   return (
     <CTAButton
-      disabled={
-        candyMachine?.state.isSoldOut ||
-        isMinting ||
-        !candyMachine?.state.isActive
-      }
+      disabled={candyMachine?.state.isSoldOut || isMinting || !candyMachine?.state.isActive}
       onClick={async () => {
         setClicked(true);
         if (candyMachine?.state.isActive && candyMachine?.state.gatekeeper) {

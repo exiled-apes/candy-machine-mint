@@ -1,10 +1,6 @@
-import * as anchor from "@project-serum/anchor";
+import * as anchor from '@project-serum/anchor';
 import { SystemProgram } from '@solana/web3.js';
-import {
-  MintLayout,
-  TOKEN_PROGRAM_ID,
-  Token,
-} from "@solana/spl-token";
+import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
 
 import { sleep, sendTransactions } from './connection';
 import {
@@ -50,13 +46,9 @@ export interface CandyMachineAccount {
   state: CandyMachineState;
 }
 
-const TOKEN_METADATA_PROGRAM_ID = new anchor.web3.PublicKey(
-  "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
-);
+const TOKEN_METADATA_PROGRAM_ID = new anchor.web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
 
-export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey(
-  "cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ"
-);
+export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey('cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ');
 
 export const shortenAddress = (address: string, chars = 4): string => {
   return `${address.slice(0, chars)}...${address.slice(-chars)}`;
@@ -66,7 +58,7 @@ export const awaitTransactionSignatureConfirmation = async (
   txid: anchor.web3.TransactionSignature,
   timeout: number,
   connection: anchor.web3.Connection,
-  queryStatus = false,
+  queryStatus = false
 ): Promise<anchor.web3.SignatureStatus | null | void> => {
   let done = false;
   let status: anchor.web3.SignatureStatus | null | void = {
@@ -89,9 +81,7 @@ export const awaitTransactionSignatureConfirmation = async (
       // eslint-disable-next-line no-loop-func
       (async () => {
         try {
-          const signatureStatuses = await connection.getSignatureStatuses([
-            txid,
-          ]);
+          const signatureStatuses = await connection.getSignatureStatuses([txid]);
           status = signatureStatuses && signatureStatuses.value[0];
           if (!done) {
             if (!status) {
@@ -130,7 +120,7 @@ export const awaitTransactionSignatureConfirmation = async (
 export const getCandyMachineState = async (
   anchorWallet: anchor.Wallet,
   candyMachineId: anchor.web3.PublicKey,
-  connection: anchor.web3.Connection,
+  connection: anchor.web3.Connection
 ): Promise<CandyMachineAccount> => {
   const provider = new anchor.Provider(connection, anchorWallet, {
     preflightCommitment: 'recent',
@@ -146,8 +136,7 @@ export const getCandyMachineState = async (
   const presale =
     state.data.whitelistMintSettings &&
     state.data.whitelistMintSettings.presale &&
-    (!state.data.goLiveDate ||
-      state.data.goLiveDate.toNumber() > new Date().getTime() / 1000);
+    (!state.data.goLiveDate || state.data.goLiveDate.toNumber() > new Date().getTime() / 1000);
 
   return {
     id: candyMachineId,
@@ -158,8 +147,7 @@ export const getCandyMachineState = async (
       itemsRemaining,
       isSoldOut: itemsRemaining === 0,
       isActive:
-        (presale ||
-          state.data.goLiveDate.toNumber() < new Date().getTime() / 1000) &&
+        (presale || state.data.goLiveDate.toNumber() < new Date().getTime() / 1000) &&
         (state.endSettings
           ? state.endSettings.endSettingType.date
             ? state.endSettings.number.toNumber() > new Date().getTime() / 1000
@@ -178,55 +166,40 @@ export const getCandyMachineState = async (
   };
 };
 
-const getMasterEdition = async (
-  mint: anchor.web3.PublicKey
-): Promise<anchor.web3.PublicKey> => {
+const getMasterEdition = async (mint: anchor.web3.PublicKey): Promise<anchor.web3.PublicKey> => {
   return (
     await anchor.web3.PublicKey.findProgramAddress(
-      [
-        Buffer.from("metadata"),
-        TOKEN_METADATA_PROGRAM_ID.toBuffer(),
-        mint.toBuffer(),
-        Buffer.from("edition"),
-      ],
+      [Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer(), Buffer.from('edition')],
       TOKEN_METADATA_PROGRAM_ID
     )
   )[0];
 };
 
-const getMetadata = async (
-  mint: anchor.web3.PublicKey
-): Promise<anchor.web3.PublicKey> => {
+const getMetadata = async (mint: anchor.web3.PublicKey): Promise<anchor.web3.PublicKey> => {
   return (
     await anchor.web3.PublicKey.findProgramAddress(
-      [
-        Buffer.from("metadata"),
-        TOKEN_METADATA_PROGRAM_ID.toBuffer(),
-        mint.toBuffer(),
-      ],
+      [Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer()],
       TOKEN_METADATA_PROGRAM_ID
     )
   )[0];
 };
 
 const getCandyMachineCreator = async (
-  candyMachine: anchor.web3.PublicKey,
+  candyMachine: anchor.web3.PublicKey
 ): Promise<[anchor.web3.PublicKey, number]> => {
   return await anchor.web3.PublicKey.findProgramAddress(
     [Buffer.from('candy_machine'), candyMachine.toBuffer()],
-    CANDY_MACHINE_PROGRAM,
+    CANDY_MACHINE_PROGRAM
   );
 };
 
 export const mintOneToken = async (
   candyMachine: CandyMachineAccount,
-  payer: anchor.web3.PublicKey,
+  payer: anchor.web3.PublicKey
 ): Promise<(string | undefined)[]> => {
   const mint = anchor.web3.Keypair.generate();
 
-  const userTokenAccountAddress = (
-    await getAtaForMint(mint.publicKey, payer)
-  )[0];
+  const userTokenAccountAddress = (await getAtaForMint(mint.publicKey, payer))[0];
 
   const userPayingAccountAddress = candyMachine.state.tokenMint
     ? (await getAtaForMint(candyMachine.state.tokenMint, payer))[0]
@@ -241,43 +214,17 @@ export const mintOneToken = async (
       fromPubkey: payer,
       newAccountPubkey: mint.publicKey,
       space: MintLayout.span,
-      lamports:
-        await candyMachine.program.provider.connection.getMinimumBalanceForRentExemption(
-          MintLayout.span,
-        ),
+      lamports: await candyMachine.program.provider.connection.getMinimumBalanceForRentExemption(MintLayout.span),
       programId: TOKEN_PROGRAM_ID,
     }),
-    Token.createInitMintInstruction(
-      TOKEN_PROGRAM_ID,
-      mint.publicKey,
-      0,
-      payer,
-      payer,
-    ),
-    createAssociatedTokenAccountInstruction(
-      userTokenAccountAddress,
-      payer,
-      payer,
-      mint.publicKey,
-    ),
-    Token.createMintToInstruction(
-      TOKEN_PROGRAM_ID,
-      mint.publicKey,
-      userTokenAccountAddress,
-      payer,
-      [],
-      1,
-    ),
+    Token.createInitMintInstruction(TOKEN_PROGRAM_ID, mint.publicKey, 0, payer, payer),
+    createAssociatedTokenAccountInstruction(userTokenAccountAddress, payer, payer, mint.publicKey),
+    Token.createMintToInstruction(TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, payer, [], 1),
   ];
 
   if (candyMachine.state.gatekeeper) {
     remainingAccounts.push({
-      pubkey: (
-        await getNetworkToken(
-          payer,
-          candyMachine.state.gatekeeper.gatekeeperNetwork,
-        )
-      )[0],
+      pubkey: (await getNetworkToken(payer, candyMachine.state.gatekeeper.gatekeeperNetwork))[0],
       isWritable: true,
       isSigner: false,
     });
@@ -288,20 +235,14 @@ export const mintOneToken = async (
         isSigner: false,
       });
       remainingAccounts.push({
-        pubkey: (
-          await getNetworkExpire(
-            candyMachine.state.gatekeeper.gatekeeperNetwork,
-          )
-        )[0],
+        pubkey: (await getNetworkExpire(candyMachine.state.gatekeeper.gatekeeperNetwork))[0],
         isWritable: false,
         isSigner: false,
       });
     }
   }
   if (candyMachine.state.whitelistMintSettings) {
-    const mint = new anchor.web3.PublicKey(
-      candyMachine.state.whitelistMintSettings.mint,
-    );
+    const mint = new anchor.web3.PublicKey(candyMachine.state.whitelistMintSettings.mint);
 
     const whitelistToken = (await getAtaForMint(mint, payer))[0];
     remainingAccounts.push({
@@ -324,10 +265,7 @@ export const mintOneToken = async (
         isSigner: true,
       });
       signers.push(whitelistBurnAuthority);
-      const exists =
-        await candyMachine.program.provider.connection.getAccountInfo(
-          whitelistToken,
-        );
+      const exists = await candyMachine.program.provider.connection.getAccountInfo(whitelistToken);
       if (exists) {
         instructions.push(
           Token.createApproveInstruction(
@@ -336,17 +274,10 @@ export const mintOneToken = async (
             whitelistBurnAuthority.publicKey,
             payer,
             [],
-            1,
-          ),
+            1
+          )
         );
-        cleanupInstructions.push(
-          Token.createRevokeInstruction(
-            TOKEN_PROGRAM_ID,
-            whitelistToken,
-            payer,
-            [],
-          ),
-        );
+        cleanupInstructions.push(Token.createRevokeInstruction(TOKEN_PROGRAM_ID, whitelistToken, payer, []));
       }
     }
   }
@@ -373,24 +304,15 @@ export const mintOneToken = async (
         transferAuthority.publicKey,
         payer,
         [],
-        candyMachine.state.price.toNumber(),
-      ),
+        candyMachine.state.price.toNumber()
+      )
     );
-    cleanupInstructions.push(
-      Token.createRevokeInstruction(
-        TOKEN_PROGRAM_ID,
-        userPayingAccountAddress,
-        payer,
-        [],
-      ),
-    );
+    cleanupInstructions.push(Token.createRevokeInstruction(TOKEN_PROGRAM_ID, userPayingAccountAddress, payer, []));
   }
   const metadataAddress = await getMetadata(mint.publicKey);
   const masterEdition = await getMasterEdition(mint.publicKey);
 
-  const [candyMachineCreator, creatorBump] = await getCandyMachineCreator(
-    candyMachineAddress,
-  );
+  const [candyMachineCreator, creatorBump] = await getCandyMachineCreator(candyMachineAddress);
 
   instructions.push(
     await candyMachine.program.instruction.mintNft(creatorBump, {
@@ -412,9 +334,8 @@ export const mintOneToken = async (
         recentBlockhashes: anchor.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
         instructionSysvarAccount: anchor.web3.SYSVAR_INSTRUCTIONS_PUBKEY,
       },
-      remainingAccounts:
-        remainingAccounts.length > 0 ? remainingAccounts : undefined,
-    }),
+      remainingAccounts: remainingAccounts.length > 0 ? remainingAccounts : undefined,
+    })
   );
 
   try {
@@ -423,9 +344,9 @@ export const mintOneToken = async (
         candyMachine.program.provider.connection,
         candyMachine.program.provider.wallet,
         [instructions, cleanupInstructions],
-        [signers, []],
+        [signers, []]
       )
-    ).txs.map(t => t.txid);
+    ).txs.map((t) => t.txid);
   } catch (e) {
     console.log(e);
   }

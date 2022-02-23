@@ -1,16 +1,16 @@
-import * as anchor from "@project-serum/anchor";
-import styled from "styled-components";
-import Alert from "@material-ui/lab/Alert";
-import { Snackbar } from "@material-ui/core";
+import * as anchor from '@project-serum/anchor';
+import styled from 'styled-components';
+import Alert from '@material-ui/lab/Alert';
+import { Snackbar } from '@material-ui/core';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { GatewayProvider } from '@civic/solana-gateway-react';
-import { PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+import { PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { WalletDialogButton } from '@solana/wallet-adapter-material-ui';
 
-import MintButton from "./MintButton";
+import MintButton from './MintButton';
 
-import { AlertState } from "./utils";
+import { AlertState } from './utils';
 import {
   CandyMachineAccount,
   awaitTransactionSignatureConfirmation,
@@ -18,17 +18,17 @@ import {
   getCandyMachineState,
   mintOneToken,
   shortenAddress,
-} from "./candy-machine";
+} from './candy-machine';
 
 type Props = {
   candyMachineId: anchor.web3.PublicKey;
   connection: anchor.web3.Connection;
   txTimeout: number;
   rpcUrl: string;
-}
+};
 
 const Home = (props: Props) => {
-  const { candyMachineId, connection, txTimeout, rpcUrl } = props; 
+  const { candyMachineId, connection, txTimeout, rpcUrl } = props;
 
   const wallet = useWallet();
   const [balance, setBalance] = useState<number>();
@@ -36,17 +36,12 @@ const Home = (props: Props) => {
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
-    message: "",
+    message: '',
     severity: undefined,
   });
 
   const anchorWallet = useMemo(() => {
-    if (
-      !wallet ||
-      !wallet.publicKey ||
-      !wallet.signAllTransactions ||
-      !wallet.signTransaction
-    ) {
+    if (!wallet || !wallet.publicKey || !wallet.signAllTransactions || !wallet.signTransaction) {
       return;
     }
 
@@ -63,11 +58,7 @@ const Home = (props: Props) => {
     }
 
     try {
-      const cndy = await getCandyMachineState(
-        anchorWallet,
-        candyMachineId,
-        connection,
-      );
+      const cndy = await getCandyMachineState(anchorWallet, candyMachineId, connection);
       setCandyMachine(cndy);
     } catch (e) {
       console.log('There was a problem fetching Candy Machine state');
@@ -80,18 +71,11 @@ const Home = (props: Props) => {
       setIsUserMinting(true);
       document.getElementById('#identity')?.click();
       if (wallet.connected && candyMachine?.program && wallet.publicKey) {
-        const mintTxId = (
-          await mintOneToken(candyMachine, wallet.publicKey)
-        )[0];
+        const mintTxId = (await mintOneToken(candyMachine, wallet.publicKey))[0];
 
         let status: any = { err: true };
         if (mintTxId) {
-          status = await awaitTransactionSignatureConfirmation(
-            mintTxId,
-            txTimeout,
-            connection,
-            true,
-          );
+          status = await awaitTransactionSignatureConfirmation(mintTxId, txTimeout, connection, true);
         }
 
         if (status && !status.err) {
@@ -148,18 +132,11 @@ const Home = (props: Props) => {
 
   useEffect(() => {
     refreshCandyMachineState();
-  }, [
-    anchorWallet,
-    candyMachineId,
-    connection,
-    refreshCandyMachineState,
-  ]);
+  }, [anchorWallet, candyMachineId, connection, refreshCandyMachineState]);
 
   return (
     <main>
-      {wallet && wallet.publicKey && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+      {wallet && wallet.publicKey && <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>}
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
@@ -171,42 +148,27 @@ const Home = (props: Props) => {
         </>
       )}
 
-
       <MintContainer>
         {!wallet ? (
           <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          candyMachine?.state.isActive &&
+        ) : candyMachine?.state.isActive &&
           candyMachine?.state.gatekeeper &&
           wallet.publicKey &&
           wallet.signTransaction ? (
-            <GatewayProvider
-              wallet={{
-                publicKey:
-                  wallet.publicKey ||
-                  new PublicKey(CANDY_MACHINE_PROGRAM),
-                //@ts-ignore
-                signTransaction: wallet.signTransaction,
-              }}
-              gatekeeperNetwork={
-                candyMachine?.state?.gatekeeper?.gatekeeperNetwork
-              }
-              clusterUrl={rpcUrl}
-              options={{ autoShowModal: false }}
-            >
-              <MintButton
-                candyMachine={candyMachine}
-                isMinting={isUserMinting}
-                onMint={onMint}
-              />
-            </GatewayProvider>
-          ) : (
-            <MintButton
-              candyMachine={candyMachine}
-              isMinting={isUserMinting}
-              onMint={onMint}
-            />
-          )
+          <GatewayProvider
+            wallet={{
+              publicKey: wallet.publicKey || new PublicKey(CANDY_MACHINE_PROGRAM),
+              //@ts-ignore
+              signTransaction: wallet.signTransaction,
+            }}
+            gatekeeperNetwork={candyMachine?.state?.gatekeeper?.gatekeeperNetwork}
+            clusterUrl={rpcUrl}
+            options={{ autoShowModal: false }}
+          >
+            <MintButton candyMachine={candyMachine} isMinting={isUserMinting} onMint={onMint} />
+          </GatewayProvider>
+        ) : (
+          <MintButton candyMachine={candyMachine} isMinting={isUserMinting} onMint={onMint} />
         )}
       </MintContainer>
 
@@ -215,10 +177,7 @@ const Home = (props: Props) => {
         autoHideDuration={6000}
         onClose={() => setAlertState({ ...alertState, open: false })}
       >
-        <Alert
-          onClose={() => setAlertState({ ...alertState, open: false })}
-          severity={alertState.severity}
-        >
+        <Alert onClose={() => setAlertState({ ...alertState, open: false })} severity={alertState.severity}>
           {alertState.message}
         </Alert>
       </Snackbar>
