@@ -135,7 +135,7 @@ const Home = (props: Props) => {
   }, [anchorWallet, candyMachineId, connection, refreshCandyMachineState]);
 
   return (
-    <main>
+    <main style={{ maxWidth: 640, margin: '0px auto' }}>
       {wallet && wallet.publicKey && <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>}
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}

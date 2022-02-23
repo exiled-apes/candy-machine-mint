@@ -48,7 +48,7 @@ export interface CandyMachineAccount {
 
 const TOKEN_METADATA_PROGRAM_ID = new anchor.web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
 
-export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey('cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ');
+export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
 
 export const shortenAddress = (address: string, chars = 4): string => {
   return `${address.slice(0, chars)}...${address.slice(-chars)}`;
