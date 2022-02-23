@@ -55,7 +55,6 @@ const MintButton = (props: Props) => {
     return 'MINT';
   };
 
-  console.log('candyMachine', candyMachine);
   return (
     <CTAButton
       disabled={candyMachine?.state.isSoldOut || isMinting || !candyMachine?.state.isActive}

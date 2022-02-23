@@ -135,7 +135,7 @@ const Home = (props: Props) => {
   }, [anchorWallet, candyMachineId, connection, refreshCandyMachineState]);
 
   return (
-    <main style={{ maxWidth: 640, margin: '0px auto' }}>
+    <AppContainer>
       {wallet && wallet.publicKey && <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>}
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
@@ -181,9 +181,14 @@ const Home = (props: Props) => {
           {alertState.message}
         </Alert>
       </Snackbar>
-    </main>
+    </AppContainer>
   );
 };
+
+const AppContainer = styled.main`
+  max-width: 640px;
+  margin: 0px auto;
+`;
 
 const ConnectButton = styled(WalletDialogButton)``; // add your styles here
 
