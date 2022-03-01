@@ -46,6 +46,7 @@ export const MintButton = ({
     return (
         <CTAButton
             disabled={
+                clicked ||
                 candyMachine?.state.isSoldOut || isSoldOut ||
                 isMinting ||
                 !isActive ||
@@ -69,7 +70,7 @@ export const MintButton = ({
                 'SOLD OUT'
             ) : isActive ? (
                 isVerifying ? 'VERIFYING...' :
-                    isMinting ? (
+                    isMinting || clicked ? (
                         <CircularProgress/>
                     ) : (
                         "MINT"
