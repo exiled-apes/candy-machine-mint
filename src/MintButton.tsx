@@ -18,12 +18,14 @@ export const MintButton = ({
                                onMint,
                                candyMachine,
                                isMinting,
+                               isEnded,
                                isActive,
                                isSoldOut
                            }: {
     onMint: () => Promise<void>;
     candyMachine: CandyMachine | undefined;
     isMinting: boolean;
+    isEnded: boolean;
     isActive: boolean;
     isSoldOut: boolean;
 }) => {
@@ -47,8 +49,10 @@ export const MintButton = ({
         <CTAButton
             disabled={
                 clicked ||
-                candyMachine?.state.isSoldOut || isSoldOut ||
+                candyMachine?.state.isSoldOut ||
+                isSoldOut ||
                 isMinting ||
+                isEnded ||
                 !isActive ||
                 isVerifying
             }
@@ -75,7 +79,7 @@ export const MintButton = ({
                     ) : (
                         "MINT"
                     )
-            ) : (candyMachine?.state.goLiveDate ? (
+            ) : isEnded ? "ENDED" : (candyMachine?.state.goLiveDate ? (
                 "SOON"
             ) : (
                 "UNAVAILABLE"

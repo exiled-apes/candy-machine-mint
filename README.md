@@ -1,7 +1,14 @@
 # Introduction
 
-The **Candy-Machine-V2-Responsive-UI** project is a fork of the famous [Candy-Machine-Mint](https://github.com/exiled-apes/candy-machine-mint) upgraded to support the recent **Candy Machine V2** new functionalities : (pre-sale, spl-token to mint, etc...)
-But that's not all, I share with you a **Prod-ready Responsive UI** which can be easily customized in 5mn.
+**Prod-ready Responsive UI** which can be easily customized in 5mn.
+
+All Candy Machine V2 functionalities are implemented, auto detected and maintained up-to-date :
+
+- public mint (with countdown when date in future)
+- civic support (gatekeeper)
+- presale/whitelist
+- end date / end number (endSettings)
+- spl-token to mint
 
 ![Candy Machine Preview Image](https://i.imgur.com/WWSvkBO.png)
 

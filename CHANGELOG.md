@@ -1,3 +1,9 @@
+**03 Mar 2022**
+
+endSettings now properly managed on front end :
+- remaining time to mint when using end date settings
+- total available updated when using end mint number settings
+
 **17 Feb 2022**
 
 Code cleanup, minor fixes, and added CI=false .env variable to avoid harmless compilation warnings generating build errors on user code customization.

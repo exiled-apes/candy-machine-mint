@@ -278,6 +278,8 @@ const Home = (props: HomeProps) => {
     const [whitelistPrice, setWhitelistPrice] = useState(0);
     const [whitelistEnabled, setWhitelistEnabled] = useState(false);
     const [whitelistTokenBalance, setWhitelistTokenBalance] = useState(0);
+    const [isEnded, setIsEnded] = useState(false);
+    const [endDate, setEndDate] = useState<Date>();
 
     const [alertState, setAlertState] = useState<AlertState>({
         open: false,
@@ -352,18 +354,65 @@ const Home = (props: HomeProps) => {
                     balance = 0;
                 }
                 setWhitelistTokenBalance(balance);
-                setIsActive(balance > 0);
+                setIsActive(!isEnded && balance > 0);
             } else {
                 setWhitelistEnabled(false);
+            }
+
+            // end the mint when date is reached
+            if (cndy?.state.endSettings?.endSettingType.date) {
+                setEndDate(toDate(cndy.state.endSettings.number));
+                if (
+                    cndy.state.endSettings.number.toNumber() <
+                    new Date().getTime() / 1000
+                ) {
+                    setIsEnded(true);
+                    setIsActive(false);
+                }
+            }
+            // end the mint when amount is reached
+            if (cndy?.state.endSettings?.endSettingType.amount) {
+                let limit = Math.min(
+                    cndy.state.endSettings.number.toNumber(),
+                    cndy.state.itemsAvailable,
+                );
+                setItemsAvailable(limit);
+                if (cndy.state.itemsRedeemed < limit) {
+                    setItemsRemaining(limit - cndy.state.itemsRedeemed);
+                } else {
+                    setItemsRemaining(0);
+                    cndy.state.isSoldOut = true;
+                    setIsEnded(true);
+                }
+            } else {
+                setItemsRemaining(cndy.state.itemsRemaining);
+            }
+
+            if (cndy.state.isSoldOut) {
+                setIsActive(false);
             }
         })();
     };
 
-    const renderCounter = ({days, hours, minutes, seconds}: any) => {
+    const renderGoLiveDateCounter = ({days, hours, minutes, seconds}: any) => {
         return (
             <div><Card elevation={1}><h1>{days}</h1><br/>Days</Card><Card elevation={1}><h1>{hours}</h1>
                 <br/>Hours</Card><Card elevation={1}><h1>{minutes}</h1><br/>Mins</Card><Card elevation={1}>
                 <h1>{seconds}</h1><br/>Secs</Card></div>
+        );
+    };
+
+    const renderEndDateCounter = ({days, hours, minutes}: any) => {
+        let label = "";
+        if (days > 0) {
+            label += days + " days "
+        }
+        if (hours > 0) {
+            label += hours + " hours "
+        }
+        label += (minutes+1) + " minutes left to MINT."
+        return (
+            <div><h3>{label}</h3></div>
         );
     };
 
@@ -374,7 +423,7 @@ const Home = (props: HomeProps) => {
         if (whitelistTokenBalance && whitelistTokenBalance > 0) {
             let balance = whitelistTokenBalance - 1;
             setWhitelistTokenBalance(balance);
-            setIsActive(balance > 0);
+            setIsActive(!isEnded && balance > 0);
         }
         setItemsRedeemed(itemsRedeemed + 1);
         const solFeesEstimation = 0.012; // approx
@@ -382,8 +431,8 @@ const Home = (props: HomeProps) => {
             setBalance(balance - (whitelistEnabled ? whitelistPrice : price) - solFeesEstimation);
         }
         setSolanaExplorerLink(cluster === "devnet" || cluster === "testnet"
-            ? ("https://explorer.solana.com/address/" + mintPublicKey + "?cluster=" + cluster)
-            : ("https://explorer.solana.com/address/" + mintPublicKey));
+            ? ("https://solscan.io/token/" + mintPublicKey + "?cluster=" + cluster)
+            : ("https://solscan.io/token/" + mintPublicKey));
         throwConfetti();
     };
 
@@ -476,6 +525,7 @@ const Home = (props: HomeProps) => {
         wallet,
         props.candyMachineId,
         props.connection,
+        isEnded
     ]);
 
     return (
@@ -513,7 +563,16 @@ const Home = (props: HomeProps) => {
                                 alt="NFT To Mint"/></div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) &&
-                              <h3>You have {whitelistTokenBalance} whitelist mint(s) remaining.</h3>}
+                              <h3>You own {whitelistTokenBalance} WL mint {whitelistTokenBalance > 1 ? "tokens" : "token" }.</h3>}
+                            {wallet && isActive && endDate && Date.now() < endDate.getTime() &&
+                              <Countdown
+                                date={toDate(candyMachine?.state?.endSettings?.number)}
+                                onMount={({completed}) => completed && setIsEnded(true)}
+                                onComplete={() => {
+                                    setIsEnded(true);
+                                }}
+                                renderer={renderEndDateCounter}
+                              />}
                             {wallet && isActive &&
                                 /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
                               <h3>TOTAL MINTED : {itemsRedeemed} / {itemsAvailable}</h3>}
@@ -521,14 +580,14 @@ const Home = (props: HomeProps) => {
                                                                          value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                             <br/>
                             <MintButtonContainer>
-                                {!isActive && candyMachine?.state.goLiveDate ? (
+                                {!isActive && !isEnded && candyMachine?.state.goLiveDate ? (
                                     <Countdown
                                         date={toDate(candyMachine?.state.goLiveDate)}
-                                        onMount={({completed}) => completed && setIsActive(true)}
+                                        onMount={({completed}) => completed && setIsActive(!isEnded)}
                                         onComplete={() => {
-                                            setIsActive(true);
+                                            setIsActive(!isEnded);
                                         }}
-                                        renderer={renderCounter}
+                                        renderer={renderGoLiveDateCounter}
                                     />) : (
                                     !wallet ? (
                                             <ConnectButton>Connect Wallet</ConnectButton>
@@ -557,6 +616,7 @@ const Home = (props: HomeProps) => {
                                                     candyMachine={candyMachine}
                                                     isMinting={isMinting}
                                                     isActive={isActive}
+                                                    isEnded={isEnded}
                                                     isSoldOut={isSoldOut}
                                                     onMint={onMint}
                                                 />
@@ -566,6 +626,7 @@ const Home = (props: HomeProps) => {
                                                 candyMachine={candyMachine}
                                                 isMinting={isMinting}
                                                 isActive={isActive}
+                                                isEnded={isEnded}
                                                 isSoldOut={isSoldOut}
                                                 onMint={onMint}
                                             />
@@ -573,8 +634,7 @@ const Home = (props: HomeProps) => {
                             </MintButtonContainer>
                             <br/>
                             {wallet && isActive && solanaExplorerLink &&
-                              <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solana
-                                Explorer</SolExplorerLink>}
+                              <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solscan</SolExplorerLink>}
                         </NFT>
                     </DesContainer>
                     <DesContainer>
