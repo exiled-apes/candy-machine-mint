@@ -70,22 +70,23 @@ const ConnectButton = styled(WalletMultiButton)`
 `;
 
 const NFT = styled(Paper)`
-  min-width: 400px;
+  min-width: 500px;
+  margin: 0 auto;
   padding: 5px 20px 20px 20px;
   flex: 1 1 auto;
   background-color: var(--card-background-color) !important;
-
-`;
-const Des = styled(NFT)`
-  text-align: left;
-  padding-top: 0px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
 `;
 
 const Card = styled(Paper)`
   display: inline-block;
-  background-color: var(--card-background-lighter-color) !important;
+  background-color: var(--countdown-background-color) !important;
   margin: 5px;
+  min-width: 40px;
   padding: 24px;
+  h1{
+    margin:0px;
+  }
 `;
 
 const MintButtonContainer = styled.div`
@@ -199,7 +200,8 @@ const Price = styled(Chip)`
   position: absolute;
   margin: 5px;
   font-weight: bold;
-  font-size: 1em !important;
+  font-size: 1.2em !important;
+  font-family: 'Patrick Hand', cursive !important;
 `;
 
 const Image = styled.img`
@@ -210,7 +212,7 @@ const Image = styled.img`
 `;
 
 const BorderLinearProgress = styled(LinearProgress)`
-  margin: 20px 0;
+  margin: 20px;
   height: 10px !important;
   border-radius: 30px;
   border: 2px solid white;
@@ -228,7 +230,7 @@ const BorderLinearProgress = styled(LinearProgress)`
 `;
 
 const ShimmerTitle = styled.h1`
-  margin: 50px auto;
+  margin: 20px auto;
   text-transform: uppercase;
   animation: glow 2s ease-in-out infinite alternate;
   color: var(--main-text-color);
@@ -239,20 +241,6 @@ const ShimmerTitle = styled.h1`
     to {
       text-shadow: 0 0 30px var(--title-text-color), 0 0 10px var(--title-text-color);
     }
-  }
-`;
-
-const GoldTitle = styled.h2`
-  color: var(--title-text-color);
-`;
-
-const LogoAligner = styled.div`
-  display: flex;
-  align-items: center;
-
-  img {
-    max-height: 35px;
-    margin-right: 10px;
   }
 `;
 
@@ -280,6 +268,8 @@ const Home = (props: HomeProps) => {
     const [whitelistTokenBalance, setWhitelistTokenBalance] = useState(0);
     const [isEnded, setIsEnded] = useState(false);
     const [endDate, setEndDate] = useState<Date>();
+    const [isPresale, setIsPresale] = useState(false);
+    const [isWLOnly, setIsWLOnly] = useState(false);
 
     const [alertState, setAlertState] = useState<AlertState>({
         open: false,
@@ -329,6 +319,9 @@ const Home = (props: HomeProps) => {
             // fetch whitelist token balance
             if (cndy.state.whitelistMintSettings) {
                 setWhitelistEnabled(true);
+                setIsPresale(cndy.state.whitelistMintSettings.presale);
+                setIsWLOnly(!isPresale && cndy.state.whitelistMintSettings.discountPrice === null);
+
                 if (cndy.state.whitelistMintSettings.discountPrice !== null && cndy.state.whitelistMintSettings.discountPrice !== cndy.state.price) {
                     if (cndy.state.tokenMint) {
                         setWhitelistPrice(cndy.state.whitelistMintSettings.discountPrice?.toNumber() / divider);
@@ -336,6 +329,7 @@ const Home = (props: HomeProps) => {
                         setWhitelistPrice(cndy.state.whitelistMintSettings.discountPrice?.toNumber() / LAMPORTS_PER_SOL);
                     }
                 }
+
                 let balance = 0;
                 try {
                     const tokenBalance =
@@ -354,7 +348,7 @@ const Home = (props: HomeProps) => {
                     balance = 0;
                 }
                 setWhitelistTokenBalance(balance);
-                setIsActive(!isEnded && balance > 0);
+                setIsActive(isPresale && !isEnded && balance > 0);
             } else {
                 setWhitelistEnabled(false);
             }
@@ -396,9 +390,9 @@ const Home = (props: HomeProps) => {
 
     const renderGoLiveDateCounter = ({days, hours, minutes, seconds}: any) => {
         return (
-            <div><Card elevation={1}><h1>{days}</h1><br/>Days</Card><Card elevation={1}><h1>{hours}</h1>
-                <br/>Hours</Card><Card elevation={1}><h1>{minutes}</h1><br/>Mins</Card><Card elevation={1}>
-                <h1>{seconds}</h1><br/>Secs</Card></div>
+            <div><Card elevation={1}><h1>{days}</h1>Days</Card><Card elevation={1}><h1>{hours}</h1>
+                Hours</Card><Card elevation={1}><h1>{minutes}</h1>Mins</Card><Card elevation={1}>
+                <h1>{seconds}</h1>Secs</Card></div>
         );
     };
 
@@ -423,7 +417,7 @@ const Home = (props: HomeProps) => {
         if (whitelistTokenBalance && whitelistTokenBalance > 0) {
             let balance = whitelistTokenBalance - 1;
             setWhitelistTokenBalance(balance);
-            setIsActive(!isEnded && balance > 0);
+            setIsActive(isPresale && !isEnded && balance > 0);
         }
         setItemsRedeemed(itemsRedeemed + 1);
         const solFeesEstimation = 0.012; // approx
@@ -525,7 +519,8 @@ const Home = (props: HomeProps) => {
         wallet,
         props.candyMachineId,
         props.connection,
-        isEnded
+        isEnded,
+        isPresale
     ]);
 
     return (
@@ -574,13 +569,12 @@ const Home = (props: HomeProps) => {
                                 renderer={renderEndDateCounter}
                               />}
                             {wallet && isActive &&
-                                /* <p>Total Minted : {100 - (itemsRemaining * 100 / itemsAvailable)}%</p>}*/
                               <h3>TOTAL MINTED : {itemsRedeemed} / {itemsAvailable}</h3>}
                             {wallet && isActive && <BorderLinearProgress variant="determinate"
                                                                          value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                             <br/>
                             <MintButtonContainer>
-                                {!isActive && !isEnded && candyMachine?.state.goLiveDate ? (
+                                {!isActive && !isEnded && candyMachine?.state.goLiveDate && (!isWLOnly || whitelistTokenBalance > 0) ? (
                                     <Countdown
                                         date={toDate(candyMachine?.state.goLiveDate)}
                                         onMount={({completed}) => completed && setIsActive(!isEnded)}
@@ -591,7 +585,7 @@ const Home = (props: HomeProps) => {
                                     />) : (
                                     !wallet ? (
                                             <ConnectButton>Connect Wallet</ConnectButton>
-                                        ) :
+                                        ) : (!isWLOnly || whitelistTokenBalance > 0) ?
                                         candyMachine?.state.gatekeeper &&
                                         wallet.publicKey &&
                                         wallet.signTransaction ? (
@@ -630,41 +624,14 @@ const Home = (props: HomeProps) => {
                                                 isSoldOut={isSoldOut}
                                                 onMint={onMint}
                                             />
-                                        ))}
+                                        ) :
+                                        <h1>Mint is private.</h1>
+                                        )}
                             </MintButtonContainer>
                             <br/>
                             {wallet && isActive && solanaExplorerLink &&
                               <SolExplorerLink href={solanaExplorerLink} target="_blank">View on Solscan</SolExplorerLink>}
                         </NFT>
-                    </DesContainer>
-                    <DesContainer>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 1</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                        </Des>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 2</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                        </Des>
-                        <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 3</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                        </Des>
                     </DesContainer>
                 </MintContainer>
             </MainContainer>

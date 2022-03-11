@@ -115,12 +115,14 @@ yarn build
 ```
 :root {
   --main-background-color: #343A50;
-  --card-background-color: #51576D;
-  --card-background-lighter-color: #7A7F92;
+  --card-background-color: #804980;
+  --countdown-background-color: #433765;
   --main-text-color:#F7F6F4;
   --title-text-color:#3CBA8B;
 }
 ```
+
+Next to that, make sure to update background image by overwriting your own background PNG file in src/img folder.
 
 ##### 4.2 `public` folder :
 
@@ -132,6 +134,7 @@ yarn build
 Scroll down down to line 380 (`return <main> [...]`) and start to update all titles/menu/text/images/text... as wished in the whole React HTML block.
 
 That's it ! Enjoy your beautiful candy machine :)
+
 
 ##  Available Commands Recap :
 
