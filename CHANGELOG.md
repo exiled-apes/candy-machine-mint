@@ -1,3 +1,10 @@
+**26 Apr 2022**
+
+Multi-mints feature :
+
+You can now mint multiple NFTs in a single transaction.
+This is V3.00 release.
+
 **11 Mar 2022**
 
 More user-friendly UI.
