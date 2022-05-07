@@ -394,7 +394,7 @@ const Home = (props: HomeProps) => {
     async function mintMany(quantityString: number) {
         if (wallet && candyMachine?.program && wallet.publicKey) {
             const quantity = Number(quantityString);
-            const futureBalance = (balance || 0) - ((whitelistEnabled ? whitelistPrice : price) * quantity);
+            const futureBalance = (balance || 0) - ((whitelistEnabled && (whitelistTokenBalance > 0) ? whitelistPrice : price) * quantity);
             const signedTransactions: any = await mintMultipleToken(
                 candyMachine,
                 wallet.publicKey,
@@ -671,7 +671,7 @@ const Home = (props: HomeProps) => {
                                                 isEnded={isEnded}
                                                 isSoldOut={isSoldOut}
                                                 onMint={startMint}
-                                                price={whitelistEnabled ? whitelistPrice : price}
+                                                price={whitelistEnabled && (whitelistTokenBalance > 0) ? whitelistPrice : price}
                                             />
                                         ) :
                                         <h1>Mint is private.</h1>
