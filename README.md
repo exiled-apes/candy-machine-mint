@@ -55,6 +55,12 @@ Vercel will automatically deploy new prod packages for each new commit.
 git clone https://github.com/Fulgurus/candy-machine-v2-responsive-ui.git
 ```
 
+If you want to get previous UI (without multi mint functionality) instead of the new one, you can git clone the main branch :
+
+```
+git clone https://github.com/Fulgurus/candy-machine-v2-responsive-ui/tree/main
+```
+
 #### 2. Define your environment variables (.env file)
 
 Rename the `.env.example` file at the root directory to `.env` and update the following variables in the `.env` file:
