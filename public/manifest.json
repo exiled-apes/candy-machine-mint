@@ -1,9 +1,9 @@
 {
-  "short_name": "Mint Page",
-  "name": "Mint Page",
+  "short_name": "Astro Pups",
+  "name": "Astro Pups",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "unrevealed.png",
       "type": "image/png",
       "sizes": "358x358"
     }

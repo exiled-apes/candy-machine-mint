@@ -35,8 +35,8 @@ const WalletContainer = styled.div`
 const WalletAmount = styled.div`
   color: black;
   width: auto;
-  padding: 5px 5px 5px 16px;
-  min-width: 48px;
+  padding: 1px 1px 1px 6px;
+  min-width: 38px;
   min-height: auto;
   border-radius: 22px;
   background-color: var(--main-text-color);
@@ -167,7 +167,7 @@ const Price = styled(Chip)`
 `;
 
 const Image = styled.img`
-  height: 400px;
+  height: 250px;
   width: auto;
   border-radius: 7px;
   box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
@@ -588,12 +588,14 @@ const Home = (props: HomeProps) => {
                 <MintContainer>
                     <DesContainer>
                         <NFT elevation={3}>
-                            <h2>My NFT</h2>
+                            {/* <h2>My NFT</h2> */}
                             <br/>
                             <div><Price
-                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><Image
-                                src="cool-cats.gif"
-                                alt="NFT To Mint"/></div>
+                                label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/>
+                                <Image
+                                src="unrevealed.jpeg"
+                                alt="NFT To Mint"/>
+                                </div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) && isBurnToken &&
                               <h3>You own {whitelistTokenBalance} WL mint {whitelistTokenBalance > 1 ? "tokens" : "token" }.</h3>}

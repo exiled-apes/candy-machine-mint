@@ -1,16 +1,16 @@
 /* Customize your main colors in :root variables */
 :root {
   --main-background-color: #343A50;
-  --card-background-color: #804980;
+  --card-background-color: #2c1c2c;
   --countdown-background-color: #433765;
   --main-text-color:#F7F6F4;
   --title-text-color:#3CBA8B;
 }
 
 body{
-/*  background-color:var(--main-background-color);*/
+ /* background-color:var(--main-background-color); */
   background: url("img/background.png");
-  background-size: cover;
+  background-size: no-repeat;
   font-family: 'Patrick Hand', cursive;
   font-size: 1.1em;
 }
