@@ -12,8 +12,8 @@ import {
   WalletProvider,
 } from "@solana/wallet-adapter-react";
 
+import { createTheme, ThemeProvider } from "@mui/material";
 import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
-import { createTheme, ThemeProvider } from "@material-ui/core";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import { SlopeWalletAdapter } from "@solana/wallet-adapter-slope";
 import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
@@ -41,28 +41,30 @@ const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
 const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 const theme = createTheme({
-    palette: {
-        type: 'dark',
+  palette: {
+    mode: "dark",
+  },
+  components: {
+    MuiButtonBase: {
+      styleOverrides: {
+        root: { justifyContent: "flex-start" },
+      },
     },
-    overrides: {
-        MuiButtonBase: {
-            root: {
-                justifyContent: 'flex-start',
-            },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: undefined,
+          padding: "12px 16px",
         },
-        MuiButton: {
-            root: {
-                textTransform: undefined,
-                padding: '12px 16px',
-            },
-            startIcon: {
-                marginRight: 8,
-            },
-            endIcon: {
-                marginLeft: 8,
-            },
+        startIcon: {
+          marginRight: 8,
         },
+        endIcon: {
+          marginLeft: 8,
+        },
+      },
     },
+  },
 });
 
 const App = () => {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Countdown from "react-countdown";
-import { Button, CircularProgress, Snackbar } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+import { Button, CircularProgress, Snackbar } from "@mui/material";
+import Alert from "@mui/lab/Alert";
 
 import * as anchor from "@project-serum/anchor";
 
