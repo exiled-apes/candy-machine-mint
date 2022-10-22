@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Countdown from "react-countdown";
-import { Button, CircularProgress, Snackbar } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+import { Button, CircularProgress, Snackbar } from "@mui/material";
+import Alert from "@mui/lab/Alert";
 
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+import { SolanaMobileWalletAdapterWalletName } from "@solana-mobile/wallet-adapter-mobile";
 
 import {
   CandyMachine,
@@ -54,12 +55,14 @@ const Home = (props: HomeProps) => {
 
   const [startDate, setStartDate] = useState(new Date(props.startDate));
 
-  const wallet = useAnchorWallet();
+  const anchorWallet = useAnchorWallet();
+  const { connect, publicKey, wallet } = useWallet();
+
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
   const refreshCandyMachineState = () => {
     (async () => {
-      if (!wallet) return;
+      if (!anchorWallet) return;
 
       const {
         candyMachine,
@@ -68,7 +71,7 @@ const Home = (props: HomeProps) => {
         itemsRemaining,
         itemsRedeemed,
       } = await getCandyMachineState(
-        wallet as anchor.Wallet,
+        anchorWallet as anchor.Wallet,
         props.candyMachineId,
         props.connection
       );
@@ -86,11 +89,11 @@ const Home = (props: HomeProps) => {
   const onMint = async () => {
     try {
       setIsMinting(true);
-      if (wallet && candyMachine?.program) {
+      if (publicKey && candyMachine?.program) {
         const mintTxId = await mintOneToken(
           candyMachine,
           props.config,
-          wallet.publicKey,
+          publicKey,
           props.treasury
         );
 
@@ -141,8 +144,8 @@ const Home = (props: HomeProps) => {
         severity: "error",
       });
     } finally {
-      if (wallet) {
-        const balance = await props.connection.getBalance(wallet.publicKey);
+      if (publicKey) {
+        const balance = await props.connection.getBalance(publicKey);
         setBalance(balance / LAMPORTS_PER_SOL);
       }
       setIsMinting(false);
@@ -152,36 +155,45 @@ const Home = (props: HomeProps) => {
 
   useEffect(() => {
     (async () => {
-      if (wallet) {
-        const balance = await props.connection.getBalance(wallet.publicKey);
+      if (publicKey) {
+        const balance = await props.connection.getBalance(publicKey);
         setBalance(balance / LAMPORTS_PER_SOL);
       }
     })();
-  }, [wallet, props.connection]);
+  }, [publicKey, props.connection]);
 
   useEffect(refreshCandyMachineState, [
-    wallet,
+    anchorWallet,
     props.candyMachineId,
     props.connection,
   ]);
 
   return (
     <main>
-      {wallet && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+      {publicKey && <p>Wallet {shortenAddress(publicKey.toBase58() || "")}</p>}
 
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+      {publicKey && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
+      {publicKey && <p>Total Available: {itemsAvailable}</p>}
 
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
+      {publicKey && <p>Redeemed: {itemsRedeemed}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
+      {publicKey && <p>Remaining: {itemsRemaining}</p>}
 
       <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
+        {!publicKey ? (
+          <ConnectButton
+            onClick={(e) => {
+              if (
+                wallet?.adapter.name === SolanaMobileWalletAdapterWalletName
+              ) {
+                connect();
+                e.preventDefault();
+              }
+            }}
+          >
+            Connect Wallet
+          </ConnectButton>
         ) : (
           <MintButton
             disabled={isSoldOut || isMinting || !isActive}
