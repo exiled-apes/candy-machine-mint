@@ -6,13 +6,6 @@ import Home from "./Home";
 import * as anchor from "@project-serum/anchor";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import {
-  getPhantomWallet,
-  getSlopeWallet,
-  getSolflareWallet,
-  getSolletWallet,
-  getSolletExtensionWallet,
-} from "@solana/wallet-adapter-wallets";
 
 import {
   ConnectionProvider,
@@ -21,6 +14,10 @@ import {
 
 import { WalletDialogProvider } from "@solana/wallet-adapter-material-ui";
 import { createTheme, ThemeProvider } from "@material-ui/core";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
+import { SlopeWalletAdapter } from "@solana/wallet-adapter-slope";
+import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
+import { SolletWalletAdapter, SolletExtensionWalletAdapter } from "@solana/wallet-adapter-sollet";
 
 const treasury = new anchor.web3.PublicKey(
   process.env.REACT_APP_TREASURY_ADDRESS!
@@ -73,13 +70,13 @@ const App = () => {
 
   const wallets = useMemo(
     () => [
-        getPhantomWallet(),
-        getSlopeWallet(),
-        getSolflareWallet(),
-        getSolletWallet({ network }),
-        getSolletExtensionWallet({ network })
+      new PhantomWalletAdapter(),
+      new SlopeWalletAdapter(),
+      new SolflareWalletAdapter({network}),
+      new SolletWalletAdapter({network}),
+      new SolletExtensionWalletAdapter({network}),
     ],
-    []
+    [],
   );
 
   return (
